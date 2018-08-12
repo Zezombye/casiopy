@@ -1,0 +1,234 @@
+Hitachi Optimizing Linkage Editor (Ver. 7.1.03.000)31-Jul-2018 19:37:03
+
+*** Options ***
+
+-subcommand=C:\Users\Zezombye\AppData\Local\Temp\hmk1E52.tmp
+noprelink
+sdebug
+rom D=R
+nomessage
+list "C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\FXADDINror.map"
+show symbol
+nooptimize
+start P_TOP,P,C,D,C$VTBL,C$INIT/0300200,B_BR_Size,B,R/08100000
+fsymbol P
+nologo
+input "C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\CasioPy.obj"
+input "D:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj"
+library "D:\CASIO\fx-9860G SDK\OS\FX\lib\fx9860G_library.lib"
+output "C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\FXADDINror.abs"
+-nomessage=1100
+end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+P_TOP
+                                  00300200  0030020b         c   4
+P
+                                  0030020c  0030066f       464   4
+C
+                                  00300670  003006a7        38   4
+D
+                                  003006a8  003006ab         4   4
+B_BR_Size
+                                  08100000  08100003         4   4
+B
+                                  08100004  08100007         4   4
+R
+                                  08100008  0810000b         4   4
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=P_TOP
+FILE=C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\CasioPy.obj
+                                  00300200  0030020b         c
+  _InitializeSystem
+                                  00300200         c   func ,g         * 
+
+SECTION=P
+FILE=C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\CasioPy.obj
+                                  0030020c  00300257        4c
+  _AddIn_main
+                                  0030020c        4c   func ,g         * 
+FILE=D:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  00300258  00300373       11c
+  ___LINK_PROTECT
+                                  00300258         4   func ,g         * 
+  _SetQuitHandler
+                                  0030025c         6   func ,g         * 
+  _OnAppCloseDefault
+                                  00300262        54   func ,g         * 
+  __INITSCT_ADDIN
+                                  003002b6        48   func ,g         * 
+  _INIT_ADDIN_APPLICATION
+                                  003002fe        76   func ,g         * 
+FILE=_Bdel_cychdr
+                                  00300374  00300383        10
+  _Bdel_cychdr
+                                  00300374         0   none ,g         * 
+FILE=_Bdisp_AllClr_DDVRAM
+                                  00300384  00300393        10
+  _Bdisp_AllClr_DDVRAM
+                                  00300384         0   none ,g         * 
+FILE=_BfileFLS_CloseFile
+                                  00300394  003003a3        10
+  _BfileFLS_CloseFile
+                                  00300394         0   none ,g         * 
+FILE=_Bkey_Set_RepeatTime_Default
+                                  003003a4  003003b3        10
+  _Bkey_Set_RepeatTime_Default
+                                  003003a4         0   none ,g         * 
+FILE=_CallbackAtQuitMainFunction
+                                  003003b4  003003c3        10
+  _CallbackAtQuitMainFunction
+                                  003003b4         0   none ,g         * 
+FILE=_flsFindClose
+                                  003003c4  003003d3        10
+  _flsFindClose
+                                  003003c4         0   none ,g         * 
+FILE=_getkey
+                                  003003d4  003003e3        10
+  _GetKey
+                                  003003d4         0   none ,g         * 
+FILE=_GLibAddinAplExecutionCheck
+                                  003003e4  003003f3        10
+  _GLibAddinAplExecutionCheck
+                                  003003e4         0   none ,g         * 
+FILE=_Hmem_SetMMU
+                                  003003f4  00300403        10
+  _Hmem_SetMMU
+                                  003003f4         0   none ,g         * 
+FILE=_Print
+                                  00300404  00300413        10
+  _Print
+                                  00300404         0   none ,g         * 
+FILE=dispbios
+                                  00300414  00300589       176
+  _PrintMini
+                                  00300414        1c   func ,g         * 
+  _locate
+                                  00300430        28   func ,g         * 
+  _Bdisp_ReadArea_DD
+                                  00300458       132   func ,g         * 
+FILE=__divls
+                                  0030058c  0030063f        b4
+  __divls
+                                  0030058c         0   none ,g         * 
+  divls_zero
+                                  0030062a         0   none ,l         * 
+  A_errno
+                                  00300638         0   none ,l         * 
+  n_zerono
+                                  0030063c         0   none ,l         * 
+FILE=_DD_GET
+                                  00300640  0030064f        10
+  _DD_GET
+                                  00300640         0   none ,g         * 
+FILE=_locate
+                                  00300650  0030065f        10
+  _locate_OS
+                                  00300650         0   none ,g         * 
+FILE=_PrintMiniSd
+                                  00300660  0030066f        10
+  _PrintMiniSd
+                                  00300660         0   none ,g         * 
+
+SECTION=C
+FILE=addin_sct
+                                  00300694  003006a7        14
+  _B_BGN
+                                  00300694         0   none ,g         * 
+  _B_END
+                                  00300698         0   none ,g         * 
+  _R_BGN
+                                  0030069c         0   none ,g         * 
+  _R_END
+                                  003006a0         0   none ,g         * 
+  _D_ROM
+                                  003006a4         0   none ,g         * 
+
+SECTION=B_BR_Size
+FILE=C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug\CasioPy.obj
+                                  08100000  08100003         4
+  _BR_Size
+                                  08100000         4   data ,g         * 
+
+SECTION=B
+FILE=_errno
+                                  08100004  08100007         4
+  __errno
+                                  08100004         4   data ,g         * 
+
+SECTION=R
+FILE=D:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  08100008  0810000b         4
+  _gb_OnAppClose
+                                  08100008         4   data ,g         * 
+
+Absolute value symbols
+FILE=_Bdel_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_AllClr_DDVRAM
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_BfileFLS_CloseFile
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bkey_Set_RepeatTime_Default
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_CallbackAtQuitMainFunction
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_flsFindClose
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_getkey
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_GLibAddinAplExecutionCheck
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Hmem_SetMMU
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Print
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=__divls
+  zerodiv
+                                  0000044e         0   none ,l         * 
+FILE=_DD_GET
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_locate
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_PrintMiniSd
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO
+
+*** Variable Accessible with Abs8 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Variable Accessible with Abs16 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Function Call ***
+
+SYMBOL                              COUNTS  OPTIMIZE

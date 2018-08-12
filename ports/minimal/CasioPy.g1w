@@ -1,0 +1,15 @@
+[DLSimProject]
+Name=CasioPy
+Version=1.00.0000
+Model=:fx-9860G.dlm
+SourcePath=SRC
+MemoryPath=INIT
+MemCardPath=SDCard
+
+[Program1]
+Program=CASIOPY.G1A
+Debug=Debug\FXADDINror.dbg
+LoadAddress=80000000:90100000
+
+[Files]
+SourceFile=:CasioPy.c

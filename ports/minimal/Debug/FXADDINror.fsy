@@ -1,0 +1,51 @@
+;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2018.07.31
+;fsymbol = P
+
+;SECTION NAME = P
+ .export _AddIn_main
+_AddIn_main: .equ h'0030020c
+ .export ___LINK_PROTECT
+___LINK_PROTECT: .equ h'00300258
+ .export _SetQuitHandler
+_SetQuitHandler: .equ h'0030025c
+ .export _OnAppCloseDefault
+_OnAppCloseDefault: .equ h'00300262
+ .export __INITSCT_ADDIN
+__INITSCT_ADDIN: .equ h'003002b6
+ .export _INIT_ADDIN_APPLICATION
+_INIT_ADDIN_APPLICATION: .equ h'003002fe
+ .export _Bdel_cychdr
+_Bdel_cychdr: .equ h'00300374
+ .export _Bdisp_AllClr_DDVRAM
+_Bdisp_AllClr_DDVRAM: .equ h'00300384
+ .export _BfileFLS_CloseFile
+_BfileFLS_CloseFile: .equ h'00300394
+ .export _Bkey_Set_RepeatTime_Default
+_Bkey_Set_RepeatTime_Default: .equ h'003003a4
+ .export _CallbackAtQuitMainFunction
+_CallbackAtQuitMainFunction: .equ h'003003b4
+ .export _flsFindClose
+_flsFindClose: .equ h'003003c4
+ .export _GetKey
+_GetKey: .equ h'003003d4
+ .export _GLibAddinAplExecutionCheck
+_GLibAddinAplExecutionCheck: .equ h'003003e4
+ .export _Hmem_SetMMU
+_Hmem_SetMMU: .equ h'003003f4
+ .export _Print
+_Print: .equ h'00300404
+ .export _PrintMini
+_PrintMini: .equ h'00300414
+ .export _locate
+_locate: .equ h'00300430
+ .export _Bdisp_ReadArea_DD
+_Bdisp_ReadArea_DD: .equ h'00300458
+ .export __divls
+__divls: .equ h'0030058c
+ .export _DD_GET
+_DD_GET: .equ h'00300640
+ .export _locate_OS
+_locate_OS: .equ h'00300650
+ .export _PrintMiniSd
+_PrintMiniSd: .equ h'00300660
+ .end
