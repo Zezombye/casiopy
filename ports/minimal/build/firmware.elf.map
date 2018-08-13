@@ -3,13 +3,13 @@ Archive member included to satisfy reference by file (symbol)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
                               build/py/objstr.o (___movmemSI16)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
-                              /tmp/ccRkAaxi.o (___sdivsi3)
+                              build/py/objrange.o (___sdivsi3)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivsi3.o)
-                              /tmp/ccjw44K3.o (___udivsi3)
+                              build/py/mpprint.o (___udivsi3)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
-                              /tmp/ccjw44K3.o (___udivdi3)
+                              build/tinyprintf.o (___udivdi3)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
-                              /tmp/ccjw44K3.o (___umoddi3)
+                              build/tinyprintf.o (___umoddi3)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_si_to_sf.o)
                               build/py/binary.o (___floatsisf)
 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sf_to_df.o)
@@ -69,42 +69,42 @@ Archive member included to satisfy reference by file (symbol)
 ./libfx.a(exp.robj)           build/py/objcomplex.o (_exp)
 ./libfx.a(floor.robj)         build/py/objfloat.o (_floor)
 ./libfx.a(fmod.robj)          build/py/objfloat.o (_fmod)
-./libfx.a(isalpha.robj)       /tmp/ccAZxb38.o (_isalpha)
+./libfx.a(isalpha.robj)       build/console.o (_isalpha)
 ./libfx.a(log.robj)           build/py/objcomplex.o (_log)
 ./libfx.a(pow.robj)           build/py/parsenum.o (_pow)
 ./libfx.a(sin.robj)           build/py/objcomplex.o (_sin)
-./libfx.a(sprintf.robj)       /tmp/ccSVEjCl.o (_sprintf)
+./libfx.a(sprintf.robj)       build/edit.o (_sprintf)
 ./libfx.a(sqrt.robj)          build/py/objcomplex.o (_sqrt)
-./libfx.a(tolower.robj)       /tmp/ccAZxb38.o (_tolower)
+./libfx.a(tolower.robj)       build/console.o (_tolower)
 ./libfx.a(_Bdisp_AllClr_DDVRAM.robj)
-                              /tmp/ccRkAaxi.o (_Bdisp_AllClr_DDVRAM)
+                              build/casiopy.o (_Bdisp_AllClr_DDVRAM)
 ./libfx.a(_Bdisp_ClearLineVRAM.robj)
-                              /tmp/ccSVEjCl.o (_Bdisp_ClearLineVRAM)
+                              build/edit.o (_Bdisp_ClearLineVRAM)
 ./libfx.a(_Bdisp_PutDisp_DD.robj)
-                              /tmp/ccSVEjCl.o (_Bdisp_PutDisp_DD)
+                              build/edit.o (_Bdisp_PutDisp_DD)
 ./libfx.a(_Bdisp_PutLineVRAM.robj)
-                              /tmp/ccSVEjCl.o (_Bdisp_DrawLineVRAM)
+                              build/edit.o (_Bdisp_DrawLineVRAM)
 ./libfx.a(_Bdisp_SetPoint_DDVRAM.robj)
-                              /tmp/ccBvHLm2.o (_Bdisp_SetPoint_DDVRAM)
+                              build/font.o (_Bdisp_SetPoint_DDVRAM)
 ./libfx.a(_Bfile_FindClose.robj)
-                              /tmp/ccSVEjCl.o (_Bfile_FindClose)
+                              build/edit.o (_Bfile_FindClose)
 ./libfx.a(_Bfile_FindFirst.robj)
-                              /tmp/ccSVEjCl.o (_Bfile_FindFirst)
+                              build/edit.o (_Bfile_FindFirst)
 ./libfx.a(_Bfile_FindNext.robj)
-                              /tmp/ccSVEjCl.o (_Bfile_FindNext)
+                              build/edit.o (_Bfile_FindNext)
 ./libfx.a(_Bkey_Set_RepeatTime.robj)
-                              /tmp/ccSVEjCl.o (_Bkey_Set_RepeatTime)
-./libfx.a(_free.robj)         /tmp/ccSVEjCl.o (_free)
-./libfx.a(_getkey.robj)       /tmp/ccRkAaxi.o (_GetKey)
-./libfx.a(_malloc.robj)       /tmp/ccSVEjCl.o (_malloc)
-./libfx.a(_PopUpWin.robj)     /tmp/ccSVEjCl.o (_PopUpWin)
-./libfx.a(_Print.robj)        /tmp/ccSVEjCl.o (_Print)
-./libfx.a(_PrintXY.robj)      /tmp/ccRkAaxi.o (_PrintXY)
-./libfx.a(_RestoreDisp.robj)  /tmp/ccSVEjCl.o (_RestoreDisp)
-./libfx.a(_SaveDisp.robj)     /tmp/ccSVEjCl.o (_SaveDisp)
-./libfx.a(dispbios.robj)      /tmp/ccSVEjCl.o (_locate)
-./libfx.a(filebios.robj)      /tmp/ccSVEjCl.o (_Bfile_CloseFile)
-./libfx.a(keybios.robj)       /tmp/ccAZxb38.o (_GetKeyWait)
+                              build/edit.o (_Bkey_Set_RepeatTime)
+./libfx.a(_free.robj)         build/edit.o (_free)
+./libfx.a(_getkey.robj)       build/py/parsenum.o (_GetKey)
+./libfx.a(_malloc.robj)       build/edit.o (_malloc)
+./libfx.a(_PopUpWin.robj)     build/edit.o (_PopUpWin)
+./libfx.a(_Print.robj)        build/edit.o (_Print)
+./libfx.a(_PrintXY.robj)      build/casiopy.o (_PrintXY)
+./libfx.a(_RestoreDisp.robj)  build/edit.o (_RestoreDisp)
+./libfx.a(_SaveDisp.robj)     build/edit.o (_SaveDisp)
+./libfx.a(dispbios.robj)      build/edit.o (_locate)
+./libfx.a(filebios.robj)      build/edit.o (_Bfile_CloseFile)
+./libfx.a(keybios.robj)       build/console.o (_GetKeyWait)
 ./libfx.a(__dtoid.robj)       ./libfx.a(atan2.robj) (__dtoid)
 ./libfx.a(__idtod.robj)       ./libfx.a(atan2.robj) (__idtod)
 ./libfx.a(__i_fmdd.robj)      ./libfx.a(fmod.robj) (__in_fmodd)
@@ -215,83 +215,39 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
-_sClip              0x4               /tmp/ccSVEjCl.o
-_cPBar              0xa               /tmp/ccSxmYVs.o
-key                 0x4               /tmp/ccRkAaxi.o
-_sText              0x4               /tmp/ccSVEjCl.o
-_iAppMode           0x4               /tmp/ccSVEjCl.o
-_iNewFile           0x4               /tmp/ccSVEjCl.o
-_cSBar              0xa               /tmp/ccSxmYVs.o
+_sClip              0x4               build/edit.o
+_cPBar              0xa               build/menu.o
+key                 0x4               build/py/parsenum.o
+_sText              0x4               build/edit.o
+_iAppMode           0x4               build/edit.o
+_iNewFile           0x4               build/edit.o
+_cSBar              0xa               build/menu.o
 mp_state_ctx        0x1b4             build/py/mpstate.o
-_sMNode             0xd20             /tmp/ccSxmYVs.o
-_iClipSize          0x4               /tmp/ccSVEjCl.o
-_iTextSize          0x4               /tmp/ccSVEjCl.o
+_sMNode             0xd20             build/menu.o
+_iClipSize          0x4               build/edit.o
+_iTextSize          0x4               build/edit.o
 mp_showbc_const_table
                     0x4               build/py/showbc.o
-_sConfig            0x100             /tmp/ccSVEjCl.o
-_iBinary            0x4               /tmp/ccSVEjCl.o
-_sFiles             0x4               /tmp/ccSVEjCl.o
-_cStatusHideStack   0xa               /tmp/ccAZxb38.o
-_sFolders           0x4               /tmp/ccSVEjCl.o
-_iSaved             0x4               /tmp/ccSVEjCl.o
+_sConfig            0x100             build/edit.o
+_iBinary            0x4               build/edit.o
+_sFiles             0x4               build/edit.o
+_cStatusHideStack   0xa               build/console.o
+_sFolders           0x4               build/edit.o
+_iSaved             0x4               build/edit.o
 mp_showbc_code_start
                     0x4               build/py/showbc.o
-_sRoot              0x5               /tmp/ccSVEjCl.o
-_sFile              0xd               /tmp/ccSVEjCl.o
-_sFolder            0xd               /tmp/ccSVEjCl.o
+_sRoot              0x5               build/edit.o
+_sFile              0xd               build/edit.o
+_sFolder            0xd               build/edit.o
 
 Discarded input sections
 
- .text          0x0000000000000000        0x0 /tmp/ccAt0bPL.o
- .data          0x0000000000000000        0x0 /tmp/ccAt0bPL.o
- .bss           0x0000000000000000        0x0 /tmp/ccAt0bPL.o
- .text          0x0000000000000000       0x48 /tmp/cc2fkEcC.o
- .data          0x0000000000000000        0x0 /tmp/cc2fkEcC.o
- .bss           0x0000000000000000        0x0 /tmp/cc2fkEcC.o
- .rodata        0x0000000000000000        0x6 /tmp/cc2fkEcC.o
- .comment       0x0000000000000000       0x12 /tmp/cc2fkEcC.o
- .text          0x0000000000000000       0x40 /tmp/ccW7uK2A.o
- .data          0x0000000000000000        0x0 /tmp/ccW7uK2A.o
- .bss           0x0000000000000000        0x0 /tmp/ccW7uK2A.o
- .rodata        0x0000000000000000        0x6 /tmp/ccW7uK2A.o
- .comment       0x0000000000000000       0x12 /tmp/ccW7uK2A.o
- .text          0x0000000000000000       0x40 /tmp/cc4P0R4t.o
- .data          0x0000000000000000        0x0 /tmp/cc4P0R4t.o
- .bss           0x0000000000000000        0x0 /tmp/cc4P0R4t.o
- .rodata        0x0000000000000000       0x16 /tmp/cc4P0R4t.o
- .comment       0x0000000000000000       0x12 /tmp/cc4P0R4t.o
- .text          0x0000000000000000       0x44 /tmp/ccEL3l1h.o
- .data          0x0000000000000000        0x0 /tmp/ccEL3l1h.o
- .bss           0x0000000000000000        0x0 /tmp/ccEL3l1h.o
- .rodata        0x0000000000000000        0x6 /tmp/ccEL3l1h.o
- .comment       0x0000000000000000       0x12 /tmp/ccEL3l1h.o
- .data          0x0000000000000000        0x0 /tmp/ccjw44K3.o
- .bss           0x0000000000000000        0x0 /tmp/ccYjSoQ2.o
- .text          0x0000000000000000     0xd33c /tmp/ccSVEjCl.o
- .data          0x0000000000000000        0x8 /tmp/ccSVEjCl.o
- .bss           0x0000000000000000       0x44 /tmp/ccSVEjCl.o
- .rodata        0x0000000000000000      0x9da /tmp/ccSVEjCl.o
- .comment       0x0000000000000000       0x12 /tmp/ccSVEjCl.o
- COMMON         0x0000000000000000      0x14d /tmp/ccSVEjCl.o
- .text          0x0000000000000000      0xeec /tmp/ccAZxb38.o
- .data          0x0000000000000000      0x268 /tmp/ccAZxb38.o
- .bss           0x0000000000000000        0x8 /tmp/ccAZxb38.o
- .rodata        0x0000000000000000        0x2 /tmp/ccAZxb38.o
- .comment       0x0000000000000000       0x12 /tmp/ccAZxb38.o
- COMMON         0x0000000000000000        0xa /tmp/ccAZxb38.o
- .text          0x0000000000000000     0x1be0 /tmp/ccSxmYVs.o
- .data          0x0000000000000000        0x1 /tmp/ccSxmYVs.o
- .bss           0x0000000000000000        0x3 /tmp/ccSxmYVs.o
- .rodata        0x0000000000000000      0x169 /tmp/ccSxmYVs.o
- .comment       0x0000000000000000       0x12 /tmp/ccSxmYVs.o
- COMMON         0x0000000000000000      0xd38 /tmp/ccSxmYVs.o
- .text          0x0000000000000000      0x9d4 /tmp/ccBvHLm2.o
- .data          0x0000000000000000      0x4f0 /tmp/ccBvHLm2.o
- .bss           0x0000000000000000        0x4 /tmp/ccBvHLm2.o
- .comment       0x0000000000000000       0x12 /tmp/ccBvHLm2.o
- .text          0x0000000000000000       0x4e /tmp/ccwJgy9y.o
- .data          0x0000000000000000        0x0 /tmp/ccwJgy9y.o
- .bss           0x0000000000000000        0x0 /tmp/ccwJgy9y.o
+ .text          0x0000000000000000        0x0 /tmp/ccUfBwnf.o
+ .data          0x0000000000000000        0x0 /tmp/ccUfBwnf.o
+ .bss           0x0000000000000000        0x0 /tmp/ccUfBwnf.o
+ .text          0x0000000000000000       0x4e /tmp/ccbusVzt.o
+ .data          0x0000000000000000        0x0 /tmp/ccbusVzt.o
+ .bss           0x0000000000000000        0x0 /tmp/ccbusVzt.o
  .text          0x0000000000000000        0x0 build/py/mpstate.o
  .data          0x0000000000000000        0x0 build/py/mpstate.o
  .bss           0x0000000000000000        0x0 build/py/mpstate.o
@@ -1044,6 +1000,7 @@ Discarded input sections
  .text.mp_parse_num_decimal
                 0x0000000000000000      0x3e8 build/py/parsenum.o
  .comment       0x0000000000000000       0x12 build/py/parsenum.o
+ COMMON         0x0000000000000000        0x4 build/py/parsenum.o
  .text          0x0000000000000000        0x0 build/py/emitglue.o
  .data          0x0000000000000000        0x0 build/py/emitglue.o
  .bss           0x0000000000000000        0x0 build/py/emitglue.o
@@ -2778,9 +2735,9 @@ Discarded input sections
  .rodata.mp_module_sys_globals_table
                 0x0000000000000000       0x50 build/py/modsys.o
  .rodata.mp_sys_print_exception_obj
-                0x0000000000000000        0xc build/py/modsys.o
+                0x0000000000000000       0x10 build/py/modsys.o
  .rodata.mp_sys_exit_obj
-                0x0000000000000000        0xc build/py/modsys.o
+                0x0000000000000000       0x10 build/py/modsys.o
  .rodata.mp_sys_implementation_obj
                 0x0000000000000000       0x10 build/py/modsys.o
  .rodata.mp_sys_implementation_version_info_obj
@@ -2873,6 +2830,385 @@ Discarded input sections
  .text.mp_find_frozen_module
                 0x0000000000000000       0x80 build/py/frozenmod.o
  .comment       0x0000000000000000       0x12 build/py/frozenmod.o
+ .text          0x0000000000000000        0x0 build/casiopy.o
+ .data          0x0000000000000000        0x0 build/casiopy.o
+ .bss           0x0000000000000000        0x0 build/casiopy.o
+ .rodata.waitForKey.str1.4
+                0x0000000000000000       0xde build/casiopy.o
+ .text.waitForKey
+                0x0000000000000000      0x404 build/casiopy.o
+ .text.casiopy_print
+                0x0000000000000000      0x124 build/casiopy.o
+ .data.font     0x0000000000000000      0x200 build/casiopy.o
+ .bss.posY      0x0000000000000000        0x4 build/casiopy.o
+ .bss.posX      0x0000000000000000        0x4 build/casiopy.o
+ .text          0x0000000000000000        0x0 build/nan.o
+ .data          0x0000000000000000        0x0 build/nan.o
+ .bss           0x0000000000000000        0x0 build/nan.o
+ .rodata.nan.str1.4
+                0x0000000000000000        0x6 build/nan.o
+ .text.nan      0x0000000000000000       0x2c build/nan.o
+ .comment       0x0000000000000000       0x12 build/nan.o
+ .text          0x0000000000000000        0x0 build/copysign.o
+ .data          0x0000000000000000        0x0 build/copysign.o
+ .bss           0x0000000000000000        0x0 build/copysign.o
+ .rodata.copysign.str1.4
+                0x0000000000000000        0x6 build/copysign.o
+ .text.copysign
+                0x0000000000000000       0x2c build/copysign.o
+ .comment       0x0000000000000000       0x12 build/copysign.o
+ .text          0x0000000000000000        0x0 build/nearbyint.o
+ .data          0x0000000000000000        0x0 build/nearbyint.o
+ .bss           0x0000000000000000        0x0 build/nearbyint.o
+ .rodata.nearbyint.str1.4
+                0x0000000000000000        0x6 build/nearbyint.o
+ .text.nearbyint
+                0x0000000000000000       0x2c build/nearbyint.o
+ .comment       0x0000000000000000       0x12 build/nearbyint.o
+ .text          0x0000000000000000        0x0 build/fesetenv.o
+ .data          0x0000000000000000        0x0 build/fesetenv.o
+ .bss           0x0000000000000000        0x0 build/fesetenv.o
+ .rodata.libc_fesetenv.str1.4
+                0x0000000000000000        0x6 build/fesetenv.o
+ .text.libc_fesetenv
+                0x0000000000000000       0x28 build/fesetenv.o
+ .comment       0x0000000000000000       0x12 build/fesetenv.o
+ .text          0x0000000000000000        0x0 build/tinyprintf.o
+ .data          0x0000000000000000        0x0 build/tinyprintf.o
+ .bss           0x0000000000000000        0x0 build/tinyprintf.o
+ .text._vsnprintf_putcf
+                0x0000000000000000       0x16 build/tinyprintf.o
+ .text.init_printf
+                0x0000000000000000       0x14 build/tinyprintf.o
+ .text.tfp_printf
+                0x0000000000000000       0x2c build/tinyprintf.o
+ .text.tfp_vsnprintf
+                0x0000000000000000       0x40 build/tinyprintf.o
+ .text.tfp_snprintf
+                0x0000000000000000       0x1c build/tinyprintf.o
+ .bss.stdout_putp
+                0x0000000000000000        0x4 build/tinyprintf.o
+ .bss.stdout_putf
+                0x0000000000000000        0x4 build/tinyprintf.o
+ .text          0x0000000000000000        0x0 build/MonochromeLib.o
+ .data          0x0000000000000000        0x0 build/MonochromeLib.o
+ .bss           0x0000000000000000        0x0 build/MonochromeLib.o
+ .text.ML_vram_adress
+                0x0000000000000000       0x24 build/MonochromeLib.o
+ .text.ML_clear_vram
+                0x0000000000000000       0x64 build/MonochromeLib.o
+ .text.ML_clear_screen
+                0x0000000000000000       0x18 build/MonochromeLib.o
+ .text.ML_display_vram
+                0x0000000000000000       0x3c build/MonochromeLib.o
+ .text.ML_pixel
+                0x0000000000000000       0xa4 build/MonochromeLib.o
+ .text.ML_line  0x0000000000000000       0xb4 build/MonochromeLib.o
+ .text.ML_horizontal_line
+                0x0000000000000000      0x2a8 build/MonochromeLib.o
+ .text.ML_vertical_line
+                0x0000000000000000       0xe8 build/MonochromeLib.o
+ .rodata.SysCall
+                0x0000000000000000        0x4 build/MonochromeLib.o
+ .data.SysCallCode
+                0x0000000000000000        0xc build/MonochromeLib.o
+ .comment       0x0000000000000000       0x12 build/MonochromeLib.o
+ .text          0x0000000000000000        0x0 build/edit.o
+ .data          0x0000000000000000        0x0 build/edit.o
+ .bss           0x0000000000000000        0x0 build/edit.o
+ .text.Rectangle.part.6
+                0x0000000000000000       0x4c build/edit.o
+ .text.toupper2
+                0x0000000000000000       0x18 build/edit.o
+ .text.tolower2
+                0x0000000000000000       0x18 build/edit.o
+ .rodata.BindCharHandle.str1.4
+                0x0000000000000000        0xd build/edit.o
+ .text.BindCharHandle
+                0x0000000000000000      0x184 build/edit.o
+ .text.SetEditorFont
+                0x0000000000000000       0x50 build/edit.o
+ .text.SDCardPresent
+                0x0000000000000000       0x28 build/edit.o
+ .text.CalcLines
+                0x0000000000000000       0xa0 build/edit.o
+ .text.LineLength
+                0x0000000000000000       0x40 build/edit.o
+ .text.MoveCursor
+                0x0000000000000000      0x5e8 build/edit.o
+ .rodata.DumpTextLines.str1.4
+                0x0000000000000000        0x2 build/edit.o
+ .text.DumpTextLines
+                0x0000000000000000      0x154 build/edit.o
+ .rodata.PrintFileName.str1.4
+                0x0000000000000000       0x62 build/edit.o
+ .text.PrintFileName
+                0x0000000000000000      0x1cc build/edit.o
+ .rodata.PrintInfoBar.str1.4
+                0x0000000000000000       0x1a build/edit.o
+ .text.PrintInfoBar
+                0x0000000000000000       0xc4 build/edit.o
+ .rodata.MainDirectory.str1.4
+                0x0000000000000000       0x21 build/edit.o
+ .text.MainDirectory
+                0x0000000000000000      0x37c build/edit.o
+ .text.Font2Char
+                0x0000000000000000       0x14 build/edit.o
+ .text.Char2Font
+                0x0000000000000000       0x12 build/edit.o
+ .rodata.FilePath.str1.4
+                0x0000000000000000       0x1e build/edit.o
+ .text.FilePath
+                0x0000000000000000      0x108 build/edit.o
+ .rodata.AppendDirEntry.str1.4
+                0x0000000000000000        0x6 build/edit.o
+ .text.AppendDirEntry
+                0x0000000000000000      0x114 build/edit.o
+ .rodata.ReadDirectory.str1.4
+                0x0000000000000000       0x26 build/edit.o
+ .text.ReadDirectory
+                0x0000000000000000      0x344 build/edit.o
+ .rodata.PrintFileEntry.str1.4
+                0x0000000000000000       0x2b build/edit.o
+ .text.PrintFileEntry
+                0x0000000000000000       0xfc build/edit.o
+ .rodata.PrintFolderEntry.str1.4
+                0x0000000000000000       0x11 build/edit.o
+ .text.PrintFolderEntry
+                0x0000000000000000       0x88 build/edit.o
+ .rodata.GetFolder.str1.4
+                0x0000000000000000       0x20 build/edit.o
+ .text.GetFolder
+                0x0000000000000000      0x3ec build/edit.o
+ .rodata.PrintConfigEntry.str1.4
+                0x0000000000000000      0x1cc build/edit.o
+ .text.PrintConfigEntry
+                0x0000000000000000      0x35c build/edit.o
+ .rodata.ConfigImport.str1.4
+                0x0000000000000000       0x10 build/edit.o
+ .rodata        0x0000000000000000       0x1e build/edit.o
+ .text.ConfigImport
+                0x0000000000000000       0xb0 build/edit.o
+ .text.ConfigExport
+                0x0000000000000000       0x64 build/edit.o
+ .text.FolderExist
+                0x0000000000000000       0x9c build/edit.o
+ .text.FileExist
+                0x0000000000000000       0x6c build/edit.o
+ .text.ConvertNewLine2CRLF
+                0x0000000000000000       0x70 build/edit.o
+ .text.ConvertNewLine2LF
+                0x0000000000000000       0x4c build/edit.o
+ .text.PopupContinueYesNo
+                0x0000000000000000      0x110 build/edit.o
+ .text.PopupMessage
+                0x0000000000000000      0x1a8 build/edit.o
+ .rodata.AboutPopup.str1.4
+                0x0000000000000000       0x62 build/edit.o
+ .text.AboutPopup
+                0x0000000000000000       0x38 build/edit.o
+ .rodata.ReadFile.str1.4
+                0x0000000000000000       0x36 build/edit.o
+ .text.ReadFile
+                0x0000000000000000      0x188 build/edit.o
+ .rodata.WriteFile.str1.4
+                0x0000000000000000       0x13 build/edit.o
+ .text.WriteFile
+                0x0000000000000000      0x1f0 build/edit.o
+ .rodata.CopyFile.str1.4
+                0x0000000000000000       0x6c build/edit.o
+ .text.CopyFile
+                0x0000000000000000      0x27c build/edit.o
+ .rodata.DeleteFile.str1.4
+                0x0000000000000000        0xf build/edit.o
+ .text.DeleteFile
+                0x0000000000000000       0x94 build/edit.o
+ .rodata.PopupMemory.str1.4
+                0x0000000000000000       0x37 build/edit.o
+ .text.PopupMemory
+                0x0000000000000000      0x180 build/edit.o
+ .rodata.GetFileName.str1.4
+                0x0000000000000000       0x3c build/edit.o
+ .text.GetFileName
+                0x0000000000000000      0x180 build/edit.o
+ .rodata.QuitHandler.str1.4
+                0x0000000000000000       0x56 build/edit.o
+ .text.QuitHandler
+                0x0000000000000000      0x170 build/edit.o
+ .rodata.GetFolderName.str1.4
+                0x0000000000000000       0x20 build/edit.o
+ .text.GetFolderName
+                0x0000000000000000      0x120 build/edit.o
+ .rodata.Explorer.str1.4
+                0x0000000000000000      0x119 build/edit.o
+ .text.Explorer
+                0x0000000000000000      0xc18 build/edit.o
+ .text.Configuration
+                0x0000000000000000      0x5bc build/edit.o
+ .rodata.GetSearchString.str1.4
+                0x0000000000000000       0x36 build/edit.o
+ .text.GetSearchString
+                0x0000000000000000      0x120 build/edit.o
+ .text.Rectangle
+                0x0000000000000000       0x78 build/edit.o
+ .rodata.CharacterSelect.str1.4
+                0x0000000000000000      0x11f build/edit.o
+ .text.CharacterSelect
+                0x0000000000000000      0x4c4 build/edit.o
+ .rodata.Editor.str1.4
+                0x0000000000000000      0x178 build/edit.o
+ .text.Editor   0x0000000000000000     0x17e8 build/edit.o
+ .rodata.edit_main.str1.4
+                0x0000000000000000       0x8e build/edit.o
+ .text.edit_main
+                0x0000000000000000      0x298 build/edit.o
+ .data.iACy.4420
+                0x0000000000000000        0x4 build/edit.o
+ .data.iCy.4418
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iACx.4419
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iCx.4417  0x0000000000000000        0x4 build/edit.o
+ .bss.iARow.4107
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iRow.4106
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iStart.4105
+                0x0000000000000000        0x4 build/edit.o
+ .bss.sFolder0.3852
+                0x0000000000000000       0x24 build/edit.o
+ .bss.iSeek.3851
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iHandle.3850
+                0x0000000000000000        0x4 build/edit.o
+ .bss.iMark.3734
+                0x0000000000000000        0x4 build/edit.o
+ .comment       0x0000000000000000       0x12 build/edit.o
+ COMMON         0x0000000000000000      0x14d build/edit.o
+ .text          0x0000000000000000        0x0 build/console.o
+ .data          0x0000000000000000        0x0 build/console.o
+ .bss           0x0000000000000000        0x0 build/console.o
+ .text.KeyboardStatusHide
+                0x0000000000000000        0xc build/console.o
+ .text.KeyboardStatusHideStore
+                0x0000000000000000       0x28 build/console.o
+ .text.KeyboardStatusHideRestore
+                0x0000000000000000       0x24 build/console.o
+ .text.KbHit    0x0000000000000000       0x20 build/console.o
+ .text.KeyMap   0x0000000000000000       0x5c build/console.o
+ .text.KeyNormalCase
+                0x0000000000000000       0x28 build/console.o
+ .text.Key2Char
+                0x0000000000000000       0x88 build/console.o
+ .text.KeyboardStatusLocation
+                0x0000000000000000       0x14 build/console.o
+ .rodata.PrintKeyboardStatus.str1.4
+                0x0000000000000000        0x2 build/console.o
+ .text.PrintKeyboardStatus
+                0x0000000000000000       0xd8 build/console.o
+ .text.GetKeyb  0x0000000000000000      0x108 build/console.o
+ .text.KeyboardStatusChangeCase
+                0x0000000000000000       0x40 build/console.o
+ .text.GetString
+                0x0000000000000000      0x33c build/console.o
+ .data._sKeyCode
+                0x0000000000000000      0x258 build/console.o
+ .bss._cKeyStatusHide
+                0x0000000000000000        0x1 build/console.o
+ .bss._cHIndex  0x0000000000000000        0x1 build/console.o
+ .bss._cShiftKill
+                0x0000000000000000        0x1 build/console.o
+ .bss._cAlphaKill
+                0x0000000000000000        0x1 build/console.o
+ .data._iKbStatPy
+                0x0000000000000000        0x4 build/console.o
+ .data._iKbStatPx
+                0x0000000000000000        0x4 build/console.o
+ .data._iACase  0x0000000000000000        0x4 build/console.o
+ .bss._iShift   0x0000000000000000        0x4 build/console.o
+ .data._iAlpha  0x0000000000000000        0x4 build/console.o
+ .comment       0x0000000000000000       0x12 build/console.o
+ COMMON         0x0000000000000000        0xa build/console.o
+ .text          0x0000000000000000        0x0 build/menu.o
+ .data          0x0000000000000000        0x0 build/menu.o
+ .bss           0x0000000000000000        0x0 build/menu.o
+ .text.NextButton
+                0x0000000000000000       0x38 build/menu.o
+ .text.MenuStoreBar
+                0x0000000000000000       0x28 build/menu.o
+ .text.MenuEnableNode
+                0x0000000000000000       0x24 build/menu.o
+ .text.MenuDisableNode
+                0x0000000000000000       0x28 build/menu.o
+ .text.MenuSetNode
+                0x0000000000000000       0x64 build/menu.o
+ .text.MenuSetPrgmNode
+                0x0000000000000000       0x7c build/menu.o
+ .rodata.MenuClear.str1.4
+                0x0000000000000000        0x1 build/menu.o
+ .text.MenuClear
+                0x0000000000000000       0x68 build/menu.o
+ .rodata.MenuInitialize.str1.4
+                0x0000000000000000      0x169 build/menu.o
+ .text.MenuInitialize
+                0x0000000000000000      0x788 build/menu.o
+ .text.MenuGetBar
+                0x0000000000000000        0xc build/menu.o
+ .text.MenuPrintNode
+                0x0000000000000000      0x200 build/menu.o
+ .text.MenuPrintBar
+                0x0000000000000000       0x2c build/menu.o
+ .text.MenuSetBar
+                0x0000000000000000       0x20 build/menu.o
+ .text.MenuRestoreBar
+                0x0000000000000000       0x30 build/menu.o
+ .text.MenuFunctionKey
+                0x0000000000000000       0xec build/menu.o
+ .data._cSIndex
+                0x0000000000000000        0x1 build/menu.o
+ .bss._cInverse
+                0x0000000000000000        0x1 build/menu.o
+ .bss._cBarLevel
+                0x0000000000000000        0x1 build/menu.o
+ .bss._cMBar    0x0000000000000000        0x1 build/menu.o
+ .comment       0x0000000000000000       0x12 build/menu.o
+ COMMON         0x0000000000000000      0xd38 build/menu.o
+ .text          0x0000000000000000        0x0 build/font.o
+ .data          0x0000000000000000        0x0 build/font.o
+ .bss           0x0000000000000000        0x0 build/font.o
+ .text.DefineFontContext
+                0x0000000000000000       0x18 build/font.o
+ .text.SetFontContext
+                0x0000000000000000        0xc build/font.o
+ .text.SetFont  0x0000000000000000       0x14 build/font.o
+ .text.SetColor
+                0x0000000000000000       0x14 build/font.o
+ .text.SetOffset
+                0x0000000000000000       0x18 build/font.o
+ .text.SetColorCntx
+                0x0000000000000000       0x18 build/font.o
+ .text.GetScrCAx
+                0x0000000000000000       0x2c build/font.o
+ .text.GetScrCAy
+                0x0000000000000000       0x2c build/font.o
+ .text.PrintCharXY
+                0x0000000000000000      0x110 build/font.o
+ .text.PrintStrXY
+                0x0000000000000000       0x6c build/font.o
+ .text.PrintChar
+                0x0000000000000000       0x3c build/font.o
+ .text.PrintStr
+                0x0000000000000000       0x3c build/font.o
+ .text.SetCursor
+                0x0000000000000000       0xd8 build/font.o
+ .data._sFCntx  0x0000000000000000       0xa0 build/font.o
+ .data._sFData  0x0000000000000000       0x50 build/font.o
+ .bss._iCntx    0x0000000000000000        0x4 build/font.o
+ .data._iFont3x7
+                0x0000000000000000      0x200 build/font.o
+ .data._iFont3x5
+                0x0000000000000000      0x200 build/font.o
+ .comment       0x0000000000000000       0x12 build/font.o
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
@@ -2939,7 +3275,7 @@ Discarded input sections
  .rodata.parse_compile_execute.str1.4
                 0x0000000000000000        0x2 build/lib/utils/pyexec.o
  .text.parse_compile_execute
-                0x0000000000000000      0x134 build/lib/utils/pyexec.o
+                0x0000000000000000      0x13c build/lib/utils/pyexec.o
  .text.pyb_set_repl_info
                 0x0000000000000000       0x18 build/lib/utils/pyexec.o
  .rodata.pyexec_raw_repl.str1.4
@@ -2949,13 +3285,13 @@ Discarded input sections
  .rodata.pyexec_friendly_repl.str1.4
                 0x0000000000000000       0x8d build/lib/utils/pyexec.o
  .text.pyexec_friendly_repl
-                0x0000000000000000      0x1a8 build/lib/utils/pyexec.o
+                0x0000000000000000      0x1ac build/lib/utils/pyexec.o
  .text.pyexec_file
                 0x0000000000000000        0xc build/lib/utils/pyexec.o
  .rodata.pyexec_frozen_module.str1.4
                 0x0000000000000000       0x1c build/lib/utils/pyexec.o
  .text.pyexec_frozen_module
-                0x0000000000000000       0x4c build/lib/utils/pyexec.o
+                0x0000000000000000       0x50 build/lib/utils/pyexec.o
  .rodata.pyb_set_repl_info_obj
                 0x0000000000000000        0x8 build/lib/utils/pyexec.o
  .bss.pyexec_system_exit
@@ -2966,6 +3302,9 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/lib/libc/string0.o
  .data          0x0000000000000000        0x0 build/lib/libc/string0.o
  .bss           0x0000000000000000        0x0 build/lib/libc/string0.o
+ .text.memcpy   0x0000000000000000       0x58 build/lib/libc/string0.o
+ .text.memmove  0x0000000000000000       0x34 build/lib/libc/string0.o
+ .text.memset   0x0000000000000000       0x50 build/lib/libc/string0.o
  .text.memcmp   0x0000000000000000       0x22 build/lib/libc/string0.o
  .text.memchr   0x0000000000000000       0x1c build/lib/libc/string0.o
  .text.strlen   0x0000000000000000       0x10 build/lib/libc/string0.o
@@ -2976,6 +3315,7 @@ Discarded input sections
  .text.strcat   0x0000000000000000       0x20 build/lib/libc/string0.o
  .text.strchr   0x0000000000000000       0x18 build/lib/libc/string0.o
  .text.strstr   0x0000000000000000       0x60 build/lib/libc/string0.o
+ .comment       0x0000000000000000       0x12 build/lib/libc/string0.o
  .text          0x0000000000000000        0x0 build/lib/mp-readline/readline.o
  .data          0x0000000000000000        0x0 build/lib/mp-readline/readline.o
  .bss           0x0000000000000000        0x0 build/lib/mp-readline/readline.o
@@ -3026,6 +3366,7 @@ Discarded input sections
  .text          0x0000000000000000       0x78 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
  .data          0x0000000000000000        0x0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
  .bss           0x0000000000000000        0x0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
+ .text          0x0000000000000000       0xa0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
  .data          0x0000000000000000        0x0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
  .bss           0x0000000000000000        0x0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
  .data          0x0000000000000000        0x0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivsi3.o)
@@ -3543,19 +3884,8 @@ ram              0x0000000008100000 0x0000000000010000
 
 Linker script and memory map
 
-LOAD /tmp/ccAt0bPL.o
-LOAD /tmp/ccRkAaxi.o
-LOAD /tmp/cc2fkEcC.o
-LOAD /tmp/ccW7uK2A.o
-LOAD /tmp/cc4P0R4t.o
-LOAD /tmp/ccEL3l1h.o
-LOAD /tmp/ccjw44K3.o
-LOAD /tmp/ccYjSoQ2.o
-LOAD /tmp/ccSVEjCl.o
-LOAD /tmp/ccAZxb38.o
-LOAD /tmp/ccSxmYVs.o
-LOAD /tmp/ccBvHLm2.o
-LOAD /tmp/ccwJgy9y.o
+LOAD /tmp/ccUfBwnf.o
+LOAD /tmp/ccbusVzt.o
 LOAD build/py/mpstate.o
 LOAD build/py/nlr.o
 LOAD build/py/nlrx86.o
@@ -3668,6 +3998,17 @@ LOAD build/py/showbc.o
 LOAD build/py/repl.o
 LOAD build/py/smallint.o
 LOAD build/py/frozenmod.o
+LOAD build/casiopy.o
+LOAD build/nan.o
+LOAD build/copysign.o
+LOAD build/nearbyint.o
+LOAD build/fesetenv.o
+LOAD build/tinyprintf.o
+LOAD build/MonochromeLib.o
+LOAD build/edit.o
+LOAD build/console.o
+LOAD build/menu.o
+LOAD build/font.o
 LOAD build/main.o
 LOAD build/uart_core.o
 LOAD build/lib/utils/printf.o
@@ -3679,105 +4020,104 @@ LOAD build/build/_frozen_mpy.o
 LOAD /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a
 LOAD ./libfx.a
 
-.text           0x0000000000300200     0x3ed8
+.text           0x0000000000300200      0x628
  *(.pretext)
- .pretext       0x0000000000300200      0x138 /tmp/ccAt0bPL.o
+ .pretext       0x0000000000300200      0x138 /tmp/ccUfBwnf.o
                 0x0000000000300200                start
  *(.text)
- .text          0x0000000000300338      0xdd8 /tmp/ccRkAaxi.o
-                0x0000000000300338                _main
-                0x00000000003003a0                _waitForKey
-                0x0000000000300e64                _casiopy_print
- .text          0x0000000000301110     0x1408 /tmp/ccjw44K3.o
-                0x0000000000301bfa                _tfp_format
-                0x00000000003021e2                _init_printf
-                0x000000000030221c                _tfp_printf
-                0x00000000003022d4                _tfp_vsnprintf
-                0x0000000000302398                _tfp_snprintf
-                0x000000000030244c                _tfp_vsprintf
-                0x00000000003024c4                _tfp_sprintf
- .text          0x0000000000302518     0x1630 /tmp/ccYjSoQ2.o
-                0x0000000000302518                _ML_vram_adress
-                0x000000000030254c                _ML_clear_vram
-                0x0000000000302688                _ML_clear_screen
-                0x0000000000302748                _ML_display_vram
-                0x0000000000302830                _ML_pixel
-                0x0000000000302aee                _ML_line
-                0x0000000000302d5c                _ML_horizontal_line
-                0x00000000003037dc                _ML_vertical_line
- .text          0x0000000000303b48       0xa0 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
-                0x0000000000303b48                ___sdivsi3
- .text          0x0000000000303be8       0x6c /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivsi3.o)
-                0x0000000000303c0a                ___udivsi3
- .text          0x0000000000303c54      0x1f8 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
-                0x0000000000303c54                ___udivdi3
- .text          0x0000000000303e4c      0x228 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
-                0x0000000000303e4c                ___umoddi3
- *fill*         0x0000000000304074        0x4 
- .text          0x0000000000304078       0x60 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udiv_qrnnd_16.o)
-                0x0000000000304078                ___udiv_qrnnd_16
+ .text          0x0000000000300338       0x6c /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivsi3.o)
+                0x000000000030035a                ___udivsi3
+ .text          0x00000000003003a4      0x1f8 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
+                0x00000000003003a4                ___udivdi3
+ .text          0x000000000030059c      0x228 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
+                0x000000000030059c                ___umoddi3
+ *fill*         0x00000000003007c4        0x4 
+ .text          0x00000000003007c8       0x60 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udiv_qrnnd_16.o)
+                0x00000000003007c8                ___udiv_qrnnd_16
 
-.text.memcpy    0x00000000003040d8       0x58
- .text.memcpy   0x00000000003040d8       0x58 build/lib/libc/string0.o
-                0x00000000003040d8                _memcpy
+.text.startup.main
+                0x0000000000300828       0x58
+ .text.startup.main
+                0x0000000000300828       0x58 build/casiopy.o
+                0x0000000000300828                _main
 
-.text.memmove   0x0000000000304130       0x34
- .text.memmove  0x0000000000304130       0x34 build/lib/libc/string0.o
-                0x0000000000304130                _memmove
+.text.ulli2a    0x0000000000300880       0xe4
+ .text.ulli2a   0x0000000000300880       0xe4 build/tinyprintf.o
 
-.text.memset    0x0000000000304164       0x50
- .text.memset   0x0000000000304164       0x50 build/lib/libc/string0.o
-                0x0000000000304164                _memset
+.text.uli2a     0x0000000000300964       0x88
+ .text.uli2a    0x0000000000300964       0x88 build/tinyprintf.o
 
-P               0x00000000003041b4       0x30
- P              0x00000000003041b4       0x10 ./libfx.a(_Bdisp_AllClr_DDVRAM.robj)
-                0x00000000003041b4                _Bdisp_AllClr_DDVRAM
- P              0x00000000003041c4       0x10 ./libfx.a(_getkey.robj)
-                0x00000000003041c4                _GetKey
- P              0x00000000003041d4       0x10 ./libfx.a(_PrintXY.robj)
-                0x00000000003041d4                _PrintXY
+.text.ui2a      0x00000000003009ec       0x88
+ .text.ui2a     0x00000000003009ec       0x88 build/tinyprintf.o
 
-.rodata         0x00000000003041e4      0x1f0
+.text.putchw    0x0000000000300a74      0x104
+ .text.putchw   0x0000000000300a74      0x104 build/tinyprintf.o
+
+.text._vsprintf_putcf
+                0x0000000000300b78        0xe
+ .text._vsprintf_putcf
+                0x0000000000300b78        0xe build/tinyprintf.o
+
+.text.tfp_format
+                0x0000000000300b88      0x2c0
+ .text.tfp_format
+                0x0000000000300b88      0x2c0 build/tinyprintf.o
+                0x0000000000300b88                _tfp_format
+
+.text.tfp_vsprintf
+                0x0000000000300e48       0x30
+ .text.tfp_vsprintf
+                0x0000000000300e48       0x30 build/tinyprintf.o
+                0x0000000000300e48                _tfp_vsprintf
+
+.text.tfp_sprintf
+                0x0000000000300e78       0x1c
+ .text.tfp_sprintf
+                0x0000000000300e78       0x1c build/tinyprintf.o
+                0x0000000000300e78                _tfp_sprintf
+
+P               0x0000000000300e94       0x30
+ P              0x0000000000300e94       0x10 ./libfx.a(_Bdisp_AllClr_DDVRAM.robj)
+                0x0000000000300e94                _Bdisp_AllClr_DDVRAM
+ P              0x0000000000300ea4       0x10 ./libfx.a(_getkey.robj)
+                0x0000000000300ea4                _GetKey
+ P              0x0000000000300eb4       0x10 ./libfx.a(_PrintXY.robj)
+                0x0000000000300eb4                _PrintXY
+
+.rodata         0x0000000000300ec4      0x100
  *(.rodata)
- .rodata        0x00000000003041e4       0xee /tmp/ccRkAaxi.o
- *fill*         0x00000000003042d2        0x2 
- .rodata        0x00000000003042d4      0x100 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_clz.o)
-                0x00000000003042d4                ___clz_tab
+ .rodata        0x0000000000300ec4      0x100 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_clz.o)
+                0x0000000000300ec4                ___clz_tab
  *(.rodata.str1.4)
-                0x00000000003043d4                _romdata = .
+                0x0000000000300fc4                _romdata = .
 
-.rela.dyn       0x00000000003043d4        0x0
- .rela.text     0x00000000003043d4        0x0 /tmp/ccRkAaxi.o
+.rodata.main.str1.4
+                0x0000000000300fc4       0x10
+ .rodata.main.str1.4
+                0x0000000000300fc4       0x10 build/casiopy.o
 
-.bss            0x0000000008100000       0x18
+.rela.dyn       0x0000000000300fd4        0x0
+ .rela.text.startup.main
+                0x0000000000300fd4        0x0 build/casiopy.o
+
+.bss            0x0000000008100000        0x4
                 0x0000000008100000                _bbss = .
                 0x0000000008100000                _bssdatasize = .
                 0x0000000008100000        0x4 LONG 0x0
  *(.bss)
- .bss           0x0000000008100004        0x8 /tmp/ccRkAaxi.o
-                0x0000000008100004                _posX
-                0x0000000008100008                _posY
- .bss           0x000000000810000c        0x8 /tmp/ccjw44K3.o
  *(COMMON)
- COMMON         0x0000000008100014        0x4 /tmp/ccRkAaxi.o
-                0x0000000008100014                _key
-                0x0000000008100018                _ebss = .
+                0x0000000008100004                _ebss = .
 
-.data           0x0000000008100018      0x210 load address 0x00000000003043d4
-                0x0000000008100018                _bdata = .
+.data           0x0000000008100004        0x0 load address 0x0000000000300fc4
+                0x0000000008100004                _bdata = .
  *(.data)
- .data          0x0000000008100018      0x200 /tmp/ccRkAaxi.o
-                0x0000000008100018                _font
- .data          0x0000000008100218       0x10 /tmp/ccYjSoQ2.o
-                0x0000000008100228                _edata = .
+                0x0000000008100004                _edata = .
 OUTPUT(build/firmware.elf elf32-sh)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccRkAaxi.o
+ .comment       0x0000000000000000       0x11 build/casiopy.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccjw44K3.o
- .comment       0x0000000000000011       0x12 /tmp/ccYjSoQ2.o
- .comment       0x0000000000000011       0x12 build/lib/libc/string0.o
+ .comment       0x0000000000000011       0x12 build/tinyprintf.o
  .comment       0x0000000000000011       0x12 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
  .comment       0x0000000000000011       0x12 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
  .comment       0x0000000000000011       0x12 /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_clz.o)
@@ -3824,162 +4164,162 @@ OUTPUT(build/firmware.elf elf32-sh)
 Cross Reference Table
 
 Symbol                                            File
-_AboutPopup                                       /tmp/ccSVEjCl.o
-_AppendDirEntry                                   /tmp/ccSVEjCl.o
+_AboutPopup                                       build/edit.o
+_AppendDirEntry                                   build/edit.o
 _BMCSRenameVariable                               ./libfx.a(_BMCSRenameVariable.robj)
                                                   ./libfx.a(filebios.robj)
 _Bdisp_AllClr_DDVRAM                              ./libfx.a(_Bdisp_AllClr_DDVRAM.robj)
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccRkAaxi.o
+                                                  build/edit.o
+                                                  build/casiopy.o
 _Bdisp_ClearLineVRAM                              ./libfx.a(_Bdisp_ClearLineVRAM.robj)
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/menu.o
+                                                  build/edit.o
 _Bdisp_DrawLineVRAM                               ./libfx.a(_Bdisp_PutLineVRAM.robj)
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/menu.o
+                                                  build/edit.o
 _Bdisp_PutDisp_DD                                 ./libfx.a(_Bdisp_PutDisp_DD.robj)
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/console.o
+                                                  build/edit.o
 _Bdisp_ReadArea_DD                                ./libfx.a(dispbios.robj)
 _Bdisp_SetPoint_DDVRAM                            ./libfx.a(_Bdisp_SetPoint_DDVRAM.robj)
-                                                  /tmp/ccBvHLm2.o
+                                                  build/font.o
 _BfileMCS_GetFileHandle                           ./libfx.a(filebios.robj)
 _BfileMCS_HandleCheck                             ./libfx.a(filebios.robj)
 _Bfile_CloseFile                                  ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_CloseFile_OS                               ./libfx.a(_Bfile_CloseFile.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_CreateDirectory                            ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_CreateEntry                                ./libfx.a(_Bfile_CreateEntry.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_CreateFile                                 ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_CreateMainMemory                           ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_DeleteDirectory                            ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_DeleteEntry                                ./libfx.a(_Bfile_DeleteEntry.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_DeleteFile                                 ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_DeleteMainMemory                           ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_FindClose                                  ./libfx.a(_Bfile_FindClose.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_FindFirst                                  ./libfx.a(_Bfile_FindFirst.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_FindNext                                   ./libfx.a(_Bfile_FindNext.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_GetFileSize                                ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_GetFileSize_OS                             ./libfx.a(_Bfile_GetFileSize.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_GetMediaFree                               ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_GetMediaFree_OS                            ./libfx.a(_Bfile_GetMediaFree.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_OpenFile                                   ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_OpenFile_OS                                ./libfx.a(_Bfile_OpenFile.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_OpenMainMemory                             ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_ReadFile                                   ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_ReadFile_OS                                ./libfx.a(_Bfile_ReadFile.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_RenameMainMemory                           ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_SeekFile                                   ./libfx.a(filebios.robj)
 _Bfile_SeekFile_OS                                ./libfx.a(_Bfile_SeekFile.robj)
                                                   ./libfx.a(filebios.robj)
 _Bfile_WriteFile                                  ./libfx.a(filebios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _Bfile_WriteFile_OS                               ./libfx.a(_Bfile_WriteFile.robj)
                                                   ./libfx.a(filebios.robj)
-_BindCharHandle                                   /tmp/ccSVEjCl.o
+_BindCharHandle                                   build/edit.o
 _Bkey_GetKeyTableInfo                             ./libfx.a(keybios.robj)
 _Bkey_GetKeyTableInfoJumpFunc                     ./libfx.a(_Bkey_GetKeyTableInfoJumpFunc.robj)
                                                   ./libfx.a(keybios.robj)
 _Bkey_GetKeyWait                                  ./libfx.a(_Bkey_GetKeyWait.robj)
                                                   ./libfx.a(keybios.robj)
 _Bkey_Set_RepeatTime                              ./libfx.a(_Bkey_Set_RepeatTime.robj)
-                                                  /tmp/ccSVEjCl.o
-_CalcLines                                        /tmp/ccSVEjCl.o
-_Char2Font                                        /tmp/ccSVEjCl.o
-_CharacterSelect                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccAZxb38.o
+                                                  build/edit.o
+_CalcLines                                        build/edit.o
+_Char2Font                                        build/edit.o
+_CharacterSelect                                  build/edit.o
+                                                  build/console.o
 _Chattering                                       ./libfx.a(_Chattering.robj)
                                                   ./libfx.a(keybios.robj)
-_ConfigExport                                     /tmp/ccSVEjCl.o
-_ConfigImport                                     /tmp/ccSVEjCl.o
-_Configuration                                    /tmp/ccSVEjCl.o
-_ConvertNewLine2CRLF                              /tmp/ccSVEjCl.o
-_ConvertNewLine2LF                                /tmp/ccSVEjCl.o
-_CopyFile                                         /tmp/ccSVEjCl.o
+_ConfigExport                                     build/edit.o
+_ConfigImport                                     build/edit.o
+_Configuration                                    build/edit.o
+_ConvertNewLine2CRLF                              build/edit.o
+_ConvertNewLine2LF                                build/edit.o
+_CopyFile                                         build/edit.o
 _DD_GET                                           ./libfx.a(_DD_GET.robj)
                                                   ./libfx.a(dispbios.robj)
-_DefineFontContext                                /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-_DeleteFile                                       /tmp/ccSVEjCl.o
-_DumpTextLines                                    /tmp/ccSVEjCl.o
-_Editor                                           /tmp/ccSVEjCl.o
-_Explorer                                         /tmp/ccSVEjCl.o
-_FileExist                                        /tmp/ccSVEjCl.o
-_FilePath                                         /tmp/ccSVEjCl.o
-_FolderExist                                      /tmp/ccSVEjCl.o
-_Font2Char                                        /tmp/ccSVEjCl.o
+_DefineFontContext                                build/font.o
+                                                  build/edit.o
+_DeleteFile                                       build/edit.o
+_DumpTextLines                                    build/edit.o
+_Editor                                           build/edit.o
+_Explorer                                         build/edit.o
+_FileExist                                        build/edit.o
+_FilePath                                         build/edit.o
+_FolderExist                                      build/edit.o
+_Font2Char                                        build/edit.o
 _GLibGetAddinLibInfo                              ./libfx.a(_GLibGetAddinLibInfo.robj)
                                                   ./libfx.a(keybios.robj)
 _GLibGetOSVersionInfo                             ./libfx.a(_GLibGetOSVersionInfo.robj)
                                                   ./libfx.a(keybios.robj)
 _GetAppName                                       ./libfx.a(_GetAppName.robj)
                                                   ./libfx.a(filebios.robj)
-_GetFileName                                      /tmp/ccSVEjCl.o
-_GetFolder                                        /tmp/ccSVEjCl.o
-_GetFolderName                                    /tmp/ccSVEjCl.o
+_GetFileName                                      build/edit.o
+_GetFolder                                        build/edit.o
+_GetFolderName                                    build/edit.o
 _GetKey                                           ./libfx.a(_getkey.robj)
                                                   build/main.o
+                                                  build/console.o
+                                                  build/edit.o
+                                                  build/fesetenv.o
+                                                  build/nearbyint.o
+                                                  build/copysign.o
+                                                  build/nan.o
+                                                  build/casiopy.o
                                                   build/py/parsenum.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccEL3l1h.o
-                                                  /tmp/cc4P0R4t.o
-                                                  /tmp/ccW7uK2A.o
-                                                  /tmp/cc2fkEcC.o
-                                                  /tmp/ccRkAaxi.o
 _GetKeyWait                                       ./libfx.a(keybios.robj)
-                                                  /tmp/ccAZxb38.o
-_GetKeyb                                          /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_GetScrCAx                                        /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-_GetScrCAy                                        /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-_GetSearchString                                  /tmp/ccSVEjCl.o
-_GetString                                        /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/console.o
+_GetKeyb                                          build/console.o
+                                                  build/edit.o
+_GetScrCAx                                        build/font.o
+                                                  build/edit.o
+_GetScrCAy                                        build/font.o
+                                                  build/edit.o
+_GetSearchString                                  build/edit.o
+_GetString                                        build/console.o
+                                                  build/edit.o
 _Hkey_Check_Key_SDK                               ./libfx.a(keybios.robj)
 _IsKeyDown                                        ./libfx.a(keybios.robj)
 _IsKeyUp                                          ./libfx.a(keybios.robj)
-_KbHit                                            /tmp/ccAZxb38.o
-_Key2Char                                         /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
+_KbHit                                            build/console.o
+_Key2Char                                         build/console.o
+                                                  build/edit.o
 _KeyCodeConvert                                   ./libfx.a(keybios.robj)
-_KeyMap                                           /tmp/ccAZxb38.o
-_KeyNormalCase                                    /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_KeyboardStatusChangeCase                         /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_KeyboardStatusHide                               /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_KeyboardStatusHideRestore                        /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_KeyboardStatusHideStore                          /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_KeyboardStatusLocation                           /tmp/ccAZxb38.o
-_LineLength                                       /tmp/ccSVEjCl.o
+_KeyMap                                           build/console.o
+_KeyNormalCase                                    build/console.o
+                                                  build/edit.o
+_KeyboardStatusChangeCase                         build/console.o
+                                                  build/edit.o
+_KeyboardStatusHide                               build/console.o
+                                                  build/edit.o
+_KeyboardStatusHideRestore                        build/console.o
+                                                  build/edit.o
+_KeyboardStatusHideStore                          build/console.o
+                                                  build/edit.o
+_KeyboardStatusLocation                           build/console.o
+_LineLength                                       build/edit.o
 _MCSDelVar2                                       ./libfx.a(_MCSDelVar2.robj)
                                                   ./libfx.a(filebios.robj)
 _MCSFile_InitAll                                  ./libfx.a(filebios.robj)
@@ -3994,109 +4334,109 @@ _MCSOvwDat2                                       ./libfx.a(_MCSOvwDat2.robj)
 _MCSPutVar2                                       ./libfx.a(_MCSPutVar2.robj)
                                                   ./libfx.a(filebios.robj)
 _MCSpt                                            ./libfx.a(filebios.robj)
-_ML_clear_screen                                  /tmp/ccYjSoQ2.o
-_ML_clear_vram                                    /tmp/ccYjSoQ2.o
-_ML_display_vram                                  /tmp/ccYjSoQ2.o
-                                                  /tmp/ccRkAaxi.o
-_ML_horizontal_line                               /tmp/ccYjSoQ2.o
-_ML_line                                          /tmp/ccYjSoQ2.o
-_ML_pixel                                         /tmp/ccYjSoQ2.o
-                                                  /tmp/ccBvHLm2.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccRkAaxi.o
-_ML_vertical_line                                 /tmp/ccYjSoQ2.o
-_ML_vram_adress                                   /tmp/ccYjSoQ2.o
-                                                  /tmp/ccRkAaxi.o
-_MainDirectory                                    /tmp/ccSVEjCl.o
-_MenuClear                                        /tmp/ccSxmYVs.o
-_MenuDisableNode                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuEnableNode                                   /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuFunctionKey                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuGetBar                                       /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuInitialize                                   /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuPrintBar                                     /tmp/ccSxmYVs.o
-_MenuPrintNode                                    /tmp/ccSxmYVs.o
-_MenuRestoreBar                                   /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuSetBar                                       /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuSetNode                                      /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MenuSetPrgmNode                                  /tmp/ccSxmYVs.o
-_MenuStoreBar                                     /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_MoveCursor                                       /tmp/ccSVEjCl.o
-_NextButton                                       /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
+_ML_clear_screen                                  build/MonochromeLib.o
+_ML_clear_vram                                    build/MonochromeLib.o
+_ML_display_vram                                  build/MonochromeLib.o
+                                                  build/casiopy.o
+_ML_horizontal_line                               build/MonochromeLib.o
+_ML_line                                          build/MonochromeLib.o
+_ML_pixel                                         build/MonochromeLib.o
+                                                  build/font.o
+                                                  build/menu.o
+                                                  build/casiopy.o
+_ML_vertical_line                                 build/MonochromeLib.o
+_ML_vram_adress                                   build/MonochromeLib.o
+                                                  build/casiopy.o
+_MainDirectory                                    build/edit.o
+_MenuClear                                        build/menu.o
+_MenuDisableNode                                  build/menu.o
+                                                  build/edit.o
+_MenuEnableNode                                   build/menu.o
+                                                  build/edit.o
+_MenuFunctionKey                                  build/menu.o
+                                                  build/edit.o
+_MenuGetBar                                       build/menu.o
+                                                  build/edit.o
+_MenuInitialize                                   build/menu.o
+                                                  build/edit.o
+_MenuPrintBar                                     build/menu.o
+_MenuPrintNode                                    build/menu.o
+_MenuRestoreBar                                   build/menu.o
+                                                  build/edit.o
+_MenuSetBar                                       build/menu.o
+                                                  build/edit.o
+_MenuSetNode                                      build/menu.o
+                                                  build/edit.o
+_MenuSetPrgmNode                                  build/menu.o
+_MenuStoreBar                                     build/menu.o
+                                                  build/edit.o
+_MoveCursor                                       build/edit.o
+_NextButton                                       build/menu.o
+                                                  build/edit.o
 _PopUpWin                                         ./libfx.a(_PopUpWin.robj)
-                                                  /tmp/ccSVEjCl.o
-_PopupContinueYesNo                               /tmp/ccSVEjCl.o
-_PopupMemory                                      /tmp/ccSVEjCl.o
-_PopupMessage                                     /tmp/ccSVEjCl.o
+                                                  build/edit.o
+_PopupContinueYesNo                               build/edit.o
+_PopupMemory                                      build/edit.o
+_PopupMessage                                     build/edit.o
 _Print                                            ./libfx.a(_Print.robj)
-                                                  /tmp/ccSVEjCl.o
-_PrintChar                                        /tmp/ccBvHLm2.o
-_PrintCharXY                                      /tmp/ccBvHLm2.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-_PrintConfigEntry                                 /tmp/ccSVEjCl.o
-_PrintFileEntry                                   /tmp/ccSVEjCl.o
-_PrintFileName                                    /tmp/ccSVEjCl.o
-_PrintFolderEntry                                 /tmp/ccSVEjCl.o
-_PrintInfoBar                                     /tmp/ccSVEjCl.o
-_PrintKeyboardStatus                              /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
+_PrintChar                                        build/font.o
+_PrintCharXY                                      build/font.o
+                                                  build/menu.o
+                                                  build/edit.o
+_PrintConfigEntry                                 build/edit.o
+_PrintFileEntry                                   build/edit.o
+_PrintFileName                                    build/edit.o
+_PrintFolderEntry                                 build/edit.o
+_PrintInfoBar                                     build/edit.o
+_PrintKeyboardStatus                              build/console.o
+                                                  build/edit.o
 _PrintMini                                        ./libfx.a(dispbios.robj)
 _PrintMiniSd                                      ./libfx.a(_PrintMiniSd.robj)
                                                   ./libfx.a(dispbios.robj)
-_PrintStr                                         /tmp/ccBvHLm2.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_PrintStrXY                                       /tmp/ccBvHLm2.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
+_PrintStr                                         build/font.o
+                                                  build/console.o
+                                                  build/edit.o
+_PrintStrXY                                       build/font.o
+                                                  build/menu.o
+                                                  build/console.o
+                                                  build/edit.o
 _PrintXY                                          ./libfx.a(_PrintXY.robj)
-                                                  /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccRkAaxi.o
-_QuitHandler                                      /tmp/ccSVEjCl.o
-_ReadDirectory                                    /tmp/ccSVEjCl.o
-_ReadFile                                         /tmp/ccSVEjCl.o
-_Rectangle                                        /tmp/ccSVEjCl.o
+                                                  build/font.o
+                                                  build/edit.o
+                                                  build/casiopy.o
+_QuitHandler                                      build/edit.o
+_ReadDirectory                                    build/edit.o
+_ReadFile                                         build/edit.o
+_Rectangle                                        build/edit.o
 _RestoreDisp                                      ./libfx.a(_RestoreDisp.robj)
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_SDCardPresent                                    /tmp/ccSVEjCl.o
+                                                  build/console.o
+                                                  build/edit.o
+_SDCardPresent                                    build/edit.o
 _SaveDisp                                         ./libfx.a(_SaveDisp.robj)
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_SetColor                                         /tmp/ccBvHLm2.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_SetColorCntx                                     /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-_SetCursor                                        /tmp/ccBvHLm2.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_SetEditorFont                                    /tmp/ccSVEjCl.o
-_SetFont                                          /tmp/ccBvHLm2.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-_SetFontContext                                   /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/console.o
+                                                  build/edit.o
+_SetColor                                         build/font.o
+                                                  build/menu.o
+                                                  build/console.o
+                                                  build/edit.o
+_SetColorCntx                                     build/font.o
+                                                  build/edit.o
+_SetCursor                                        build/font.o
+                                                  build/console.o
+                                                  build/edit.o
+_SetEditorFont                                    build/edit.o
+_SetFont                                          build/font.o
+                                                  build/menu.o
+                                                  build/console.o
+                                                  build/edit.o
+_SetFontContext                                   build/font.o
+                                                  build/edit.o
 _SetIntFlagPaturn                                 ./libfx.a(_SetIntFlagPaturn.robj)
                                                   ./libfx.a(keybios.robj)
-_SetOffset                                        /tmp/ccBvHLm2.o
-                                                  /tmp/ccSVEjCl.o
-_WriteFile                                        /tmp/ccSVEjCl.o
+_SetOffset                                        build/font.o
+                                                  build/edit.o
+_WriteFile                                        build/edit.o
 __2PAID                                           ./libfx.a(constd.robj)
 __Delay                                           ./libfx.a(keybios.robj)
 __FOURD                                           ./libfx.a(constd.robj)
@@ -4243,6 +4583,7 @@ ___movmemSI56                                     /home/Zezombye/opt/sh3eb-elf/l
 ___movmemSI60                                     /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
 ___movmemSI64                                     /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
 ___movmemSI8                                      /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
+                                                  build/edit.o
 ___movstr                                         /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
 ___movstrSI12                                     /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
 ___movstrSI16                                     /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_movmem.o)
@@ -4283,7 +4624,6 @@ ___pack_f                                         /home/Zezombye/opt/sh3eb-elf/l
 ___sdivsi3                                        /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_sdivsi3.o)
                                                   build/py/smallint.o
                                                   build/py/objrange.o
-                                                  /tmp/ccRkAaxi.o
 ___subdf3                                         /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_addsub_df.o)
                                                   build/py/objfloat.o
                                                   build/py/objcomplex.o
@@ -4298,16 +4638,16 @@ ___udiv_qrnnd_16                                  /home/Zezombye/opt/sh3eb-elf/l
                                                   /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
                                                   /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
 ___udivdi3                                        /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
-                                                  /tmp/ccjw44K3.o
+                                                  build/tinyprintf.o
 ___udivsi3                                        /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivsi3.o)
                                                   /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
                                                   /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_udivdi3.o)
+                                                  build/tinyprintf.o
                                                   build/py/objint.o
                                                   build/py/map.o
                                                   build/py/mpprint.o
-                                                  /tmp/ccjw44K3.o
 ___umoddi3                                        /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_umoddi3.o)
-                                                  /tmp/ccjw44K3.o
+                                                  build/tinyprintf.o
 ___unorddf2                                       /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/libgcc.a(_unord_df.o)
                                                   build/py/objint.o
                                                   build/py/objfloat.o
@@ -4342,17 +4682,17 @@ __app_cosd                                        ./libfx.a(_a_cosd.robj)
 __app_sind                                        ./libfx.a(_a_sind.robj)
                                                   ./libfx.a(_in_sind.robj)
                                                   ./libfx.a(_in_cosd.robj)
-__cAlphaKill                                      /tmp/ccAZxb38.o
-__cBarLevel                                       /tmp/ccSxmYVs.o
-__cHIndex                                         /tmp/ccAZxb38.o
-__cInverse                                        /tmp/ccSxmYVs.o
-__cKeyStatusHide                                  /tmp/ccAZxb38.o
-__cMBar                                           /tmp/ccSxmYVs.o
-__cPBar                                           /tmp/ccSxmYVs.o
-__cSBar                                           /tmp/ccSxmYVs.o
-__cSIndex                                         /tmp/ccSxmYVs.o
-__cShiftKill                                      /tmp/ccAZxb38.o
-__cStatusHideStack                                /tmp/ccAZxb38.o
+__cAlphaKill                                      build/console.o
+__cBarLevel                                       build/menu.o
+__cHIndex                                         build/console.o
+__cInverse                                        build/menu.o
+__cKeyStatusHide                                  build/console.o
+__cMBar                                           build/menu.o
+__cPBar                                           build/menu.o
+__cSBar                                           build/menu.o
+__cSIndex                                         build/menu.o
+__cShiftKill                                      build/console.o
+__cStatusHideStack                                build/console.o
 __calcnpw                                         ./libfx.a(_calcnpw.robj)
                                                   ./libfx.a(_xti.robj)
 __ctype                                           ./libfx.a(_ctype.robj)
@@ -4410,20 +4750,20 @@ __errno                                           ./libfx.a(_errno.robj)
                                                   ./libfx.a(atan2.robj)
 __fmtout                                          ./libfx.a(_fmtout.robj)
                                                   ./libfx.a(sprintf.robj)
-__iACase                                          /tmp/ccAZxb38.o
-__iAlpha                                          /tmp/ccAZxb38.o
-__iAppMode                                        /tmp/ccSVEjCl.o
-__iBinary                                         /tmp/ccSVEjCl.o
-__iClipSize                                       /tmp/ccSVEjCl.o
-__iCntx                                           /tmp/ccBvHLm2.o
-__iFont3x5                                        /tmp/ccBvHLm2.o
-__iFont3x7                                        /tmp/ccBvHLm2.o
-__iKbStatPx                                       /tmp/ccAZxb38.o
-__iKbStatPy                                       /tmp/ccAZxb38.o
-__iNewFile                                        /tmp/ccSVEjCl.o
-__iSaved                                          /tmp/ccSVEjCl.o
-__iShift                                          /tmp/ccAZxb38.o
-__iTextSize                                       /tmp/ccSVEjCl.o
+__iACase                                          build/console.o
+__iAlpha                                          build/console.o
+__iAppMode                                        build/edit.o
+__iBinary                                         build/edit.o
+__iClipSize                                       build/edit.o
+__iCntx                                           build/font.o
+__iFont3x5                                        build/font.o
+__iFont3x7                                        build/font.o
+__iKbStatPx                                       build/console.o
+__iKbStatPy                                       build/console.o
+__iNewFile                                        build/edit.o
+__iSaved                                          build/edit.o
+__iShift                                          build/console.o
+__iTextSize                                       build/edit.o
 __idtod                                           ./libfx.a(__idtod.robj)
                                                   ./libfx.a(sqrt.robj)
                                                   ./libfx.a(sin.robj)
@@ -4572,19 +4912,19 @@ __rsft                                            ./libfx.a(_rsft.robj)
 __rsfts                                           ./libfx.a(_rsfts.robj)
                                                   ./libfx.a(_calcnpw.robj)
                                                   ./libfx.a(_its.robj)
-__sClip                                           /tmp/ccSVEjCl.o
-__sConfig                                         /tmp/ccSVEjCl.o
-__sFCntx                                          /tmp/ccBvHLm2.o
-__sFData                                          /tmp/ccBvHLm2.o
-__sFile                                           /tmp/ccSVEjCl.o
-__sFiles                                          /tmp/ccSVEjCl.o
-__sFolder                                         /tmp/ccSVEjCl.o
-__sFolders                                        /tmp/ccSVEjCl.o
-__sKeyCode                                        /tmp/ccAZxb38.o
-__sMNode                                          /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
-__sRoot                                           /tmp/ccSVEjCl.o
-__sText                                           /tmp/ccSVEjCl.o
+__sClip                                           build/edit.o
+__sConfig                                         build/edit.o
+__sFCntx                                          build/font.o
+__sFData                                          build/font.o
+__sFile                                           build/edit.o
+__sFiles                                          build/edit.o
+__sFolder                                         build/edit.o
+__sFolders                                        build/edit.o
+__sKeyCode                                        build/console.o
+__sMNode                                          build/menu.o
+                                                  build/edit.o
+__sRoot                                           build/edit.o
+__sText                                           build/edit.o
 __setsbit                                         ./libfx.a(_setsbit.robj)
                                                   ./libfx.a(_mult64.robj)
                                                   ./libfx.a(_calcnpw.robj)
@@ -4605,27 +4945,27 @@ __xti                                             ./libfx.a(_xti.robj)
                                                   ./libfx.a(_fmtout.robj)
 _atan2                                            ./libfx.a(atan2.robj)
                                                   build/py/objcomplex.o
-_bbss                                             /tmp/ccAt0bPL.o
-_bdata                                            /tmp/ccAt0bPL.o
-_bssdatasize                                      /tmp/ccAt0bPL.o
-_casiopy_print                                    /tmp/ccRkAaxi.o
+_bbss                                             /tmp/ccUfBwnf.o
+_bdata                                            /tmp/ccUfBwnf.o
+_bssdatasize                                      /tmp/ccUfBwnf.o
+_casiopy_print                                    build/casiopy.o
                                                   build/lib/utils/pyexec.o
                                                   build/uart_core.o
                                                   build/main.o
+                                                  build/fesetenv.o
+                                                  build/nearbyint.o
+                                                  build/copysign.o
+                                                  build/nan.o
                                                   build/py/parsenum.o
-                                                  /tmp/ccEL3l1h.o
-                                                  /tmp/cc4P0R4t.o
-                                                  /tmp/ccW7uK2A.o
-                                                  /tmp/cc2fkEcC.o
 _closure_type                                     build/py/objclosure.o
-_copysign                                         /tmp/ccW7uK2A.o
+_copysign                                         build/copysign.o
                                                   build/py/objfloat.o
 _cos                                              ./libfx.a(cos.robj)
                                                   build/py/objcomplex.o
 _do_str                                           build/main.o
-_ebss                                             /tmp/ccAt0bPL.o
-_edata                                            /tmp/ccAt0bPL.o
-_edit_main                                        /tmp/ccSVEjCl.o
+_ebss                                             /tmp/ccUfBwnf.o
+_edata                                            /tmp/ccUfBwnf.o
+_edit_main                                        build/edit.o
 _emit_bc_free                                     build/py/emitbc.o
                                                   build/py/compile.o
 _emit_bc_new                                      build/py/emitbc.o
@@ -4639,9 +4979,9 @@ _floor                                            ./libfx.a(floor.robj)
                                                   build/py/objfloat.o
 _fmod                                             ./libfx.a(fmod.robj)
                                                   build/py/objfloat.o
-_font                                             /tmp/ccRkAaxi.o
+_font                                             build/casiopy.o
 _free                                             ./libfx.a(_free.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _gb_pKeyMatrix                                    ./libfx.a(keybios.robj)
 _gc_alloc                                         build/py/gc.o
                                                   build/py/malloc.o
@@ -4673,22 +5013,22 @@ _gc_sweep_all                                     build/py/gc.o
 _gc_unlock                                        build/py/gc.o
                                                   build/py/modmicropython.o
 _index                                            build/uart_core.o
-_init_printf                                      /tmp/ccjw44K3.o
+_init_printf                                      build/tinyprintf.o
 _isalpha                                          ./libfx.a(isalpha.robj)
-                                                  /tmp/ccAZxb38.o
+                                                  build/console.o
 _key                                              build/main.o
+                                                  build/edit.o
+                                                  build/casiopy.o
                                                   build/py/vm.o
                                                   build/py/parsenum.o
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccRkAaxi.o
-_libc_fesetenv                                    /tmp/ccEL3l1h.o
+_libc_fesetenv                                    build/fesetenv.o
 _locate                                           ./libfx.a(dispbios.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _locate_OS                                        ./libfx.a(_locate.robj)
                                                   ./libfx.a(dispbios.robj)
 _log                                              ./libfx.a(log.robj)
                                                   build/py/objcomplex.o
-_longjmp                                          /tmp/ccwJgy9y.o
+_longjmp                                          /tmp/ccbusVzt.o
                                                   build/py/nlrsetjmp.o
 _m_free                                           build/py/malloc.o
                                                   build/py/objtype.o
@@ -4762,10 +5102,10 @@ _m_realloc_maybe                                  build/py/malloc.o
                                                   build/py/objexcept.o
                                                   build/py/parse.o
                                                   build/py/qstr.o
-_main                                             /tmp/ccRkAaxi.o
-                                                  /tmp/ccAt0bPL.o
+_main                                             build/casiopy.o
+                                                  /tmp/ccUfBwnf.o
 _malloc                                           ./libfx.a(_malloc.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _memchr                                           build/lib/libc/string0.o
 _memcmp                                           build/lib/libc/string0.o
                                                   ./libfx.a(_xti.robj)
@@ -4788,6 +5128,7 @@ _memcpy                                           build/lib/libc/string0.o
                                                   ./libfx.a(_fmtout.robj)
                                                   build/lib/mp-readline/readline.o
                                                   build/lib/utils/printf.o
+                                                  build/edit.o
                                                   build/py/builtinimport.o
                                                   build/py/binary.o
                                                   build/py/sequence.o
@@ -4805,19 +5146,20 @@ _memcpy                                           build/lib/libc/string0.o
                                                   build/py/compile.o
                                                   build/py/qstr.o
                                                   build/py/gc.o
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccRkAaxi.o
 _memmove                                          build/lib/libc/string0.o
+                                                  build/casiopy.o
                                                   build/py/objstr.o
                                                   build/py/objlist.o
                                                   build/py/vstr.o
-                                                  /tmp/ccRkAaxi.o
 _memset                                           build/lib/libc/string0.o
                                                   ./libfx.a(_pow10.robj)
                                                   ./libfx.a(_mult.robj)
                                                   ./libfx.a(_power.robj)
                                                   ./libfx.a(_div64.robj)
                                                   build/lib/mp-readline/readline.o
+                                                  build/console.o
+                                                  build/edit.o
+                                                  build/casiopy.o
                                                   build/py/bc.o
                                                   build/py/binary.o
                                                   build/py/objtype.o
@@ -4827,9 +5169,6 @@ _memset                                           build/lib/libc/string0.o
                                                   build/py/objint.o
                                                   build/py/compile.o
                                                   build/py/gc.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
-                                                  /tmp/ccRkAaxi.o
 _mp_arg_check_num                                 build/py/argcheck.o
                                                   build/py/objzip.o
                                                   build/py/objtype.o
@@ -6180,9 +6519,9 @@ _mp_vprintf                                       build/py/mpprint.o
                                                   build/py/objexcept.o
                                                   build/py/vstr.o
 _mpy_main                                         build/main.o
-_nan                                              /tmp/cc2fkEcC.o
+_nan                                              build/nan.o
                                                   build/py/parsenum.o
-_nearbyint                                        /tmp/cc4P0R4t.o
+_nearbyint                                        build/nearbyint.o
                                                   build/py/modbuiltins.o
 _nlr_jump                                         build/py/nlrsetjmp.o
                                                   build/py/bc.o
@@ -6218,10 +6557,9 @@ _nlr_push_tail                                    build/py/nlr.o
                                                   build/py/objgetitemiter.o
                                                   build/py/runtime_utils.o
                                                   build/py/runtime.o
-_posX                                             /tmp/ccRkAaxi.o
-_posY                                             /tmp/ccRkAaxi.o
+_posX                                             build/casiopy.o
+_posY                                             build/casiopy.o
 _pow                                              ./libfx.a(pow.robj)
-                                                  build/lib/utils/pyexec.o
                                                   build/py/modbuiltins.o
                                                   build/py/objfloat.o
                                                   build/py/parsenum.o
@@ -6288,7 +6626,7 @@ _readline_init0                                   build/lib/mp-readline/readline
 _readline_note_newline                            build/lib/mp-readline/readline.o
 _readline_process_char                            build/lib/mp-readline/readline.o
 _readline_push_history                            build/lib/mp-readline/readline.o
-_romdata                                          /tmp/ccAt0bPL.o
+_romdata                                          /tmp/ccUfBwnf.o
 _scope_find                                       build/py/scope.o
                                                   build/py/emitcommon.o
                                                   build/py/compile.o
@@ -6304,7 +6642,7 @@ _scope_free                                       build/py/scope.o
                                                   build/py/compile.o
 _scope_new                                        build/py/scope.o
                                                   build/py/compile.o
-_setjmp                                           /tmp/ccwJgy9y.o
+_setjmp                                           /tmp/ccbusVzt.o
                                                   build/lib/utils/pyexec.o
                                                   build/main.o
                                                   build/py/vm.o
@@ -6317,7 +6655,7 @@ _sin                                              ./libfx.a(sin.robj)
 _snprintf                                         build/lib/utils/printf.o
                                                   build/lib/mp-readline/readline.o
 _sprintf                                          ./libfx.a(sprintf.robj)
-                                                  /tmp/ccSVEjCl.o
+                                                  build/edit.o
 _sqrt                                             ./libfx.a(sqrt.robj)
                                                   build/py/objcomplex.o
 _stpcpy                                           build/lib/libc/string0.o
@@ -6351,11 +6689,12 @@ _strchr                                           build/lib/libc/string0.o
                                                   build/py/objfloat.o
 _strcmp                                           build/lib/libc/string0.o
                                                   build/lib/mp-readline/readline.o
+                                                  build/edit.o
                                                   build/py/lexer.o
-                                                  /tmp/ccSVEjCl.o
 _strcpy                                           build/lib/libc/string0.o
-                                                  /tmp/ccSxmYVs.o
-                                                  /tmp/ccSVEjCl.o
+                                                  build/menu.o
+                                                  build/edit.o
+                                                  build/casiopy.o
 _strlen                                           build/lib/libc/string0.o
                                                   ./libfx.a(_fmtout.robj)
                                                   build/lib/mp-readline/readline.o
@@ -6363,6 +6702,8 @@ _strlen                                           build/lib/libc/string0.o
                                                   build/lib/utils/stdout_helpers.o
                                                   build/lib/utils/printf.o
                                                   build/main.o
+                                                  build/console.o
+                                                  build/edit.o
                                                   build/py/frozenmod.o
                                                   build/py/binary.o
                                                   build/py/objint.o
@@ -6370,24 +6711,22 @@ _strlen                                           build/lib/libc/string0.o
                                                   build/py/mpprint.o
                                                   build/py/vstr.o
                                                   build/py/qstr.o
-                                                  /tmp/ccAZxb38.o
-                                                  /tmp/ccSVEjCl.o
 _strncmp                                          build/lib/libc/string0.o
                                                   ./libfx.a(filebios.robj)
                                                   build/py/repl.o
 _strstr                                           build/lib/libc/string0.o
 _teststr                                          build/uart_core.o
-_tfp_format                                       /tmp/ccjw44K3.o
-_tfp_printf                                       /tmp/ccjw44K3.o
-_tfp_snprintf                                     /tmp/ccjw44K3.o
-_tfp_sprintf                                      /tmp/ccjw44K3.o
-                                                  /tmp/ccRkAaxi.o
-_tfp_vsnprintf                                    /tmp/ccjw44K3.o
-_tfp_vsprintf                                     /tmp/ccjw44K3.o
+_tfp_format                                       build/tinyprintf.o
+_tfp_printf                                       build/tinyprintf.o
+_tfp_snprintf                                     build/tinyprintf.o
+_tfp_sprintf                                      build/tinyprintf.o
+                                                  build/casiopy.o
+_tfp_vsnprintf                                    build/tinyprintf.o
+_tfp_vsprintf                                     build/tinyprintf.o
 _tolower                                          ./libfx.a(tolower.robj)
-                                                  /tmp/ccAZxb38.o
-_tolower2                                         /tmp/ccSVEjCl.o
-_toupper2                                         /tmp/ccSVEjCl.o
+                                                  build/console.o
+_tolower2                                         build/edit.o
+_toupper2                                         build/edit.o
 _unichar_isalpha                                  build/py/unicode.o
                                                   build/py/repl.o
                                                   build/py/objstr.o
@@ -6478,6 +6817,6 @@ _vstr_null_terminated_str                         build/py/vstr.o
                                                   build/py/lexer.o
 _vstr_printf                                      build/py/vstr.o
 _vstr_vprintf                                     build/py/vstr.o
-_waitForKey                                       /tmp/ccRkAaxi.o
+_waitForKey                                       build/casiopy.o
                                                   build/lib/mp-readline/readline.o
-start                                             /tmp/ccAt0bPL.o
+start                                             /tmp/ccUfBwnf.o

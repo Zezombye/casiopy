@@ -25,8 +25,8 @@ LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections
 else
 CROSS_COMPILE = sh3eb-elf-
 LD = sh3eb-elf-gcc
-CFLAGS = $(INC) -Wall -std=c11 -m3 -mb -mrenesas $(COPT) -lgcc 
-LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections -nostdlib -T addin.ld crt0.s casiopy.c nan.c copysign.c nearbyint.c fesetenv.c tinyprintf.c MonochromeLib.c -mrenesas edit.c console.c menu.c font.c -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -I include setjmp.s
+CFLAGS = $(INC) -Wall -std=c11 -m3 -mb -mrenesas $(COPT) -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -I include -nostdlib
+LDFLAGS = $(CFLAGS) -Wl,-Map=$@.map,--cref -Wl,--gc-sections -nostdlib -T addin.ld crt0.s setjmp.s 
 #LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections -nostdlib -T addin.ld crt0.s casiopy.c nan.c copysign.c nearbyint.c fesetenv.c MonochromeLib.c -mrenesas -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -I include setjmp.s
 endif
 
@@ -41,6 +41,17 @@ endif
 LIBS =
 
 SRC_C = \
+	casiopy.c \
+	nan.c \
+	copysign.c \
+	nearbyint.c \
+	fesetenv.c \
+	tinyprintf.c \
+	MonochromeLib.c \
+	edit.c \
+	console.c \
+	menu.c \
+	font.c \
 	main.c \
 	uart_core.c \
 	lib/utils/printf.c \
