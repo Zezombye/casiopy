@@ -23,11 +23,13 @@ int main(void)
 	return 1;*/
 	
 	char str[20];
-	tfp_sprintf(str, "%s.%d.%c.%x", "ok", -12, '@', 0xb4);
+	tfp_sprintf(str, "test");
 
 	Bdisp_AllClr_DDVRAM();
-	PrintXY(1, 1, (const unsigned char *)str, 0);
-
+	PrintXY(2, 1, (const unsigned char *)str, 0);
+	GetKey(&key);
+	mpy_main();
+	
 	unsigned int key;
 	while(1) GetKey(&key);
 

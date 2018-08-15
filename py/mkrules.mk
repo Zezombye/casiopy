@@ -23,7 +23,7 @@ endif
 vpath %.S . $(TOP)
 $(BUILD)/%.o: %.S
 	$(ECHO) "CC $<"
-	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
+	$(Q)$(CC) -c -o $@ $< $(CFLAGS)
 
 vpath %.s . $(TOP)
 $(BUILD)/%.o: %.s
@@ -32,7 +32,7 @@ $(BUILD)/%.o: %.s
 
 define compile_c
 $(ECHO) "CC $<"
-$(Q)$(CC) $(CFLAGS) -c -MD -o $@ $<
+$(Q)$(CC) -c $< -o $@ -MD $(CFLAGS)
 @# The following fixes the dependency file.
 @# See http://make.paulandlesley.org/autodep.html for details.
 @# Regex adjusted from the above to play better with Windows paths, etc.
@@ -51,9 +51,9 @@ QSTR_GEN_EXTRA_CFLAGS += -I$(BUILD)/tmp
 
 vpath %.c . $(TOP)
 
-$(BUILD)/%.pp: %.c
-	$(ECHO) "PreProcess $<"
-	$(Q)$(CC) $(CFLAGS) -E -Wp,-C,-dD,-dI -o $@ $<
+#$(BUILD)/%.pp: %.c
+#	$(ECHO) "PreProcess $<"
+#	$(Q)$(CC) $(CFLAGS) -E -Wp,-C,-dD,-dI -o $@ $<
 
 # The following rule uses | to create an order only prerequisite. Order only
 # prerequisites only get built if they don't exist. They don't cause timestamp
@@ -72,7 +72,7 @@ $(OBJ): | $(HEADER_BUILD)/qstrdefs.generated.h $(HEADER_BUILD)/mpversion.h
 # - else, process all source files ($^) [this covers "make -B" which can set $? to empty]
 $(HEADER_BUILD)/qstr.i.last: $(SRC_QSTR) $(QSTR_GLOBAL_DEPENDENCIES) | $(HEADER_BUILD)/mpversion.h
 	$(ECHO) "GEN $@"
-	$(Q)$(CPP) $(QSTR_GEN_EXTRA_CFLAGS) $(CFLAGS) $(if $(filter $?,$(QSTR_GLOBAL_DEPENDENCIES)),$^,$(if $?,$?,$^)) >$(HEADER_BUILD)/qstr.i.last;
+	$(Q)$(CPP) $(QSTR_GEN_EXTRA_CFLAGS) $(if $(filter $?,$(QSTR_GLOBAL_DEPENDENCIES)),$^,$(if $?,$?,$^)) $(CFLAGS) >$(HEADER_BUILD)/qstr.i.last;
 
 $(HEADER_BUILD)/qstr.split: $(HEADER_BUILD)/qstr.i.last
 	$(ECHO) "GEN $@"

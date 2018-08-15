@@ -386,8 +386,8 @@ friendly_repl_reset:
     #if MICROPY_PY_BUILTINS_HELP
     mp_hal_stdout_tx_str("Type \"help()\" for more information.\r\n");
     #endif
-
-	printf("Value 8.0 ^ 3 = %lf\n", pow(8.0, 3));
+	volatile int test = -1;
+	//printf("Value 10 ^ -1 = %lf\n", pow(10, test));
     // to test ctrl-C
     /*
     {

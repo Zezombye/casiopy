@@ -50,6 +50,12 @@ typedef long int wchar_t;
 # 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
 # 149 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
 typedef int ptrdiff_t;
+# 426 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+typedef struct {
+  long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
+  long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
+# 437 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+} max_align_t;
 # 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
 # 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 1 3 4
 # 24 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
@@ -652,7 +658,20 @@ void __eprintf (const char *, const char *, unsigned int, const char *);
 extern long double _strtold_r (struct _reent *, const char *restrict, char **restrict);
 
 extern long double strtold (const char *restrict, char **restrict);
-# 335 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+
+
+
+
+
+
+
+void * aligned_alloc(size_t, size_t) __attribute__((__malloc__)) __attribute__((__alloc_align__(1)))
+     __attribute__((__alloc_size__(2)));
+int at_quick_exit(void (*)(void));
+_Noreturn void
+ quick_exit(int);
+
+
 
 # 34 "../../py/parsenum.c" 2
 
@@ -1249,7 +1268,7 @@ static inline
 # 373 "../../py/obj.h" 3 4
              _Bool 
 # 373 "../../py/obj.h"
-                  MP_MAP_SLOT_IS_FILLED(const mp_map_t *map, size_t pos) { return ((map)->table[pos].key != (((mp_obj_t)(void*)0)) && (map)->table[pos].key != (((mp_obj_t)(void*)4))); }
+                  MP_MAP_SLOT_IS_FILLED(const mp_map_t *map, size_t pos) { return ((map)->table[pos].key != (((mp_obj_t)(void*)0)) && (map)->table[pos].key != (((mp_obj_t)(void*)8))); }
 
 void mp_map_init(mp_map_t *map, size_t n);
 void mp_map_init_fixed_table(mp_map_t *map, size_t n, const mp_obj_t *table);
@@ -1272,7 +1291,7 @@ static inline
 # 392 "../../py/obj.h" 3 4
              _Bool 
 # 392 "../../py/obj.h"
-                  MP_SET_SLOT_IS_FILLED(const mp_set_t *set, size_t pos) { return ((set)->table[pos] != (((mp_obj_t)(void*)0)) && (set)->table[pos] != (((mp_obj_t)(void*)4))); }
+                  MP_SET_SLOT_IS_FILLED(const mp_set_t *set, size_t pos) { return ((set)->table[pos] != (((mp_obj_t)(void*)0)) && (set)->table[pos] != (((mp_obj_t)(void*)8))); }
 
 void mp_set_init(mp_set_t *set, size_t n);
 mp_obj_t mp_set_lookup(mp_set_t *set, mp_obj_t index, mp_map_lookup_kind_t lookup_kind);
@@ -2306,192 +2325,13 @@ mp_int_t mp_small_int_floor_divide(mp_int_t num, mp_int_t denom);
 # 39 "../../py/parsenum.c" 2
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-
-# 86 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-
-# 86 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-extern double atan (double);
-extern double cos (double);
-extern double sin (double);
-extern double tan (double);
-extern double tanh (double);
-extern double frexp (double, int *);
-extern double modf (double, double *);
-extern double ceil (double);
-extern double fabs (double);
-extern double floor (double);
-
-
-
-
-
-
-extern double acos (double);
-extern double asin (double);
-extern double atan2 (double, double);
-extern double cosh (double);
-extern double sinh (double);
-extern double exp (double);
-extern double ldexp (double, int);
-extern double log (double);
-extern double log10 (double);
-extern double pow (double, double);
-extern double sqrt (double);
-extern double fmod (double, double);
-# 150 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-    typedef float float_t;
-    typedef double double_t;
-# 194 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-extern int __isinff (float x);
-extern int __isinfd (double x);
-extern int __isnanf (float x);
-extern int __isnand (double x);
-extern int __fpclassifyf (float x);
-extern int __fpclassifyd (double x);
-extern int __signbitf (float x);
-extern int __signbitd (double x);
-# 290 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-extern double infinity (void);
-extern double nan (const char *);
-extern double copysign (double, double);
-extern double logb (double);
-extern int ilogb (double);
-
-extern double asinh (double);
-extern double cbrt (double);
-extern double nextafter (double, double);
-extern double rint (double);
-extern double scalbn (double, int);
-
-extern double exp2 (double);
-extern double scalbln (double, long int);
-extern double tgamma (double);
-extern double nearbyint (double);
-extern long int lrint (double);
-extern long long int llrint (double);
-extern double round (double);
-extern long int lround (double);
-extern long long int llround (double);
-extern double trunc (double);
-extern double remquo (double, double, int *);
-extern double fdim (double, double);
-extern double fmax (double, double);
-extern double fmin (double, double);
-extern double fma (double, double, double);
-
-
-extern double log1p (double);
-extern double expm1 (double);
-
-
-
-extern double acosh (double);
-extern double atanh (double);
-extern double remainder (double, double);
-extern double gamma (double);
-extern double lgamma (double);
-extern double erf (double);
-extern double erfc (double);
-extern double log2 (double);
-
-
-
-
-
-extern double hypot (double, double);
-
-
-
-
-
-
-extern float atanf (float);
-extern float cosf (float);
-extern float sinf (float);
-extern float tanf (float);
-extern float tanhf (float);
-extern float frexpf (float, int *);
-extern float modff (float, float *);
-extern float ceilf (float);
-extern float fabsf (float);
-extern float floorf (float);
-
-
-extern float acosf (float);
-extern float asinf (float);
-extern float atan2f (float, float);
-extern float coshf (float);
-extern float sinhf (float);
-extern float expf (float);
-extern float ldexpf (float, int);
-extern float logf (float);
-extern float log10f (float);
-extern float powf (float, float);
-extern float sqrtf (float);
-extern float fmodf (float, float);
-
-
-
-
-extern float exp2f (float);
-extern float scalblnf (float, long int);
-extern float tgammaf (float);
-extern float nearbyintf (float);
-extern long int lrintf (float);
-extern long long int llrintf (float);
-extern float roundf (float);
-extern long int lroundf (float);
-extern long long int llroundf (float);
-extern float truncf (float);
-extern float remquof (float, float, int *);
-extern float fdimf (float, float);
-extern float fmaxf (float, float);
-extern float fminf (float, float);
-extern float fmaf (float, float, float);
-
-extern float infinityf (void);
-extern float nanf (const char *);
-extern float copysignf (float, float);
-extern float logbf (float);
-extern int ilogbf (float);
-
-extern float asinhf (float);
-extern float cbrtf (float);
-extern float nextafterf (float, float);
-extern float rintf (float);
-extern float scalbnf (float, int);
-extern float log1pf (float);
-extern float expm1f (float);
-
-
-extern float acoshf (float);
-extern float atanhf (float);
-extern float remainderf (float, float);
-extern float gammaf (float);
-extern float lgammaf (float);
-extern float erff (float);
-extern float erfcf (float);
-extern float log2f (float);
-extern float hypotf (float, float);
-# 490 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-extern long double hypotl (long double, long double);
-extern long double sqrtl (long double);
-# 662 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h" 3 4
-
-# 42 "../../py/parsenum.c" 2
-
-
-
-# 44 "../../py/parsenum.c"
 static __attribute__((noreturn)) void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {
 
 
     if (lex != 
-# 47 "../../py/parsenum.c" 3 4
+# 44 "../../py/parsenum.c" 3 4
               ((void *)0)
-# 47 "../../py/parsenum.c"
+# 44 "../../py/parsenum.c"
                   ) {
         ((mp_obj_base_t*)((void*)exc))->type = &mp_type_SyntaxError;
         mp_obj_exception_add_traceback(exc, lex->source_name, lex->tok_line, MP_QSTR_NULL);
@@ -2503,13 +2343,13 @@ mp_obj_t mp_parse_num_integer(const char *restrict str_, size_t len, int base, m
     const byte *restrict str = (const byte *)str_;
     const byte *restrict top = str + len;
     
-# 57 "../../py/parsenum.c" 3 4
+# 54 "../../py/parsenum.c" 3 4
    _Bool 
-# 57 "../../py/parsenum.c"
+# 54 "../../py/parsenum.c"
         neg = 
-# 57 "../../py/parsenum.c" 3 4
+# 54 "../../py/parsenum.c" 3 4
               0
-# 57 "../../py/parsenum.c"
+# 54 "../../py/parsenum.c"
                    ;
     mp_obj_t ret_val;
 
@@ -2530,9 +2370,9 @@ mp_obj_t mp_parse_num_integer(const char *restrict str_, size_t len, int base, m
         } else if (*str == '-') {
             str++;
             neg = 
-# 76 "../../py/parsenum.c" 3 4
+# 73 "../../py/parsenum.c" 3 4
                  1
-# 76 "../../py/parsenum.c"
+# 73 "../../py/parsenum.c"
                      ;
         }
     }
@@ -2623,9 +2463,9 @@ value_error:
         vstr_init_print(&vstr, 50, &print);
         mp_printf(&print, "invalid syntax for integer with base %d: ", base);
         mp_str_print_quoted(&print, str_val_start, top - str_val_start, 
-# 165 "../../py/parsenum.c" 3 4
+# 162 "../../py/parsenum.c" 3 4
                                                                        1
-# 165 "../../py/parsenum.c"
+# 162 "../../py/parsenum.c"
                                                                            );
         mp_obj_t exc = mp_obj_new_exception_arg1(&mp_type_ValueError,
             mp_obj_new_str_from_vstr(&mp_type_str, &vstr));
@@ -2642,34 +2482,34 @@ typedef enum {
 
 
 mp_obj_t mp_parse_num_decimal(const char *str, size_t len, 
-# 180 "../../py/parsenum.c" 3 4
+# 177 "../../py/parsenum.c" 3 4
                                                           _Bool 
-# 180 "../../py/parsenum.c"
+# 177 "../../py/parsenum.c"
                                                                allow_imag, 
-# 180 "../../py/parsenum.c" 3 4
+# 177 "../../py/parsenum.c" 3 4
                                                                            _Bool 
-# 180 "../../py/parsenum.c"
+# 177 "../../py/parsenum.c"
                                                                                 force_complex, mp_lexer_t *lex) {
-# 196 "../../py/parsenum.c"
+# 193 "../../py/parsenum.c"
     const char *top = str + len;
     mp_float_t dec_val = 0;
     
-# 198 "../../py/parsenum.c" 3 4
+# 195 "../../py/parsenum.c" 3 4
    _Bool 
-# 198 "../../py/parsenum.c"
+# 195 "../../py/parsenum.c"
         dec_neg = 
-# 198 "../../py/parsenum.c" 3 4
+# 195 "../../py/parsenum.c" 3 4
                   0
-# 198 "../../py/parsenum.c"
+# 195 "../../py/parsenum.c"
                        ;
     
-# 199 "../../py/parsenum.c" 3 4
+# 196 "../../py/parsenum.c" 3 4
    _Bool 
-# 199 "../../py/parsenum.c"
+# 196 "../../py/parsenum.c"
         imag = 
-# 199 "../../py/parsenum.c" 3 4
+# 196 "../../py/parsenum.c" 3 4
                0
-# 199 "../../py/parsenum.c"
+# 196 "../../py/parsenum.c"
                     ;
 
 
@@ -2683,9 +2523,9 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
         } else if (*str == '-') {
             str++;
             dec_neg = 
-# 211 "../../py/parsenum.c" 3 4
+# 208 "../../py/parsenum.c" 3 4
                      1
-# 211 "../../py/parsenum.c"
+# 208 "../../py/parsenum.c"
                          ;
         }
     }
@@ -2698,11 +2538,7 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
         if (str + 2 < top && (str[1] | 0x20) == 'n' && (str[2] | 0x20) == 'f') {
 
             str += 3;
-            dec_val = 
-# 223 "../../py/parsenum.c" 3 4
-                     (__builtin_inff())
-# 223 "../../py/parsenum.c"
-                             ;
+            dec_val = 1e99999999999999999999999;
             if (str + 4 < top && (str[0] | 0x20) == 'i' && (str[1] | 0x20) == 'n' && (str[2] | 0x20) == 'i' && (str[3] | 0x20) == 't' && (str[4] | 0x20) == 'y') {
 
                 str += 5;
@@ -2721,13 +2557,13 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
 
         parse_dec_in_t in = PARSE_DEC_IN_INTG;
         
-# 241 "../../py/parsenum.c" 3 4
+# 238 "../../py/parsenum.c" 3 4
        _Bool 
-# 241 "../../py/parsenum.c"
+# 238 "../../py/parsenum.c"
             exp_neg = 
-# 241 "../../py/parsenum.c" 3 4
+# 238 "../../py/parsenum.c" 3 4
                       0
-# 241 "../../py/parsenum.c"
+# 238 "../../py/parsenum.c"
                            ;
         int exp_val = 0;
         int exp_extra = 0;
@@ -2769,9 +2605,9 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
                     } else if (str[0] == '-') {
                         str++;
                         exp_neg = 
-# 281 "../../py/parsenum.c" 3 4
+# 278 "../../py/parsenum.c" 3 4
                                  1
-# 281 "../../py/parsenum.c"
+# 278 "../../py/parsenum.c"
                                      ;
                     }
                 }
@@ -2780,9 +2616,9 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
                 }
             } else if (allow_imag && (dig | 0x20) == 'j') {
                 imag = 
-# 288 "../../py/parsenum.c" 3 4
+# 285 "../../py/parsenum.c" 3 4
                       1
-# 288 "../../py/parsenum.c"
+# 285 "../../py/parsenum.c"
                           ;
                 break;
             } else if (dig == '_') {
@@ -2808,7 +2644,9 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
   casiopy_print("""l", 1);GetKey(&key);;
   printf("\n%d", exp_val);
   printf("\n%f\n", dec_val);
+  casiopy_print("""p", 1);GetKey(&key);;
   printf("%.60lf\n", pow(10, exp_val));
+  casiopy_print("""q", 1);GetKey(&key);;
         dec_val *= pow(10, exp_val);
 
   printf("\n%.60f\n", dec_val);

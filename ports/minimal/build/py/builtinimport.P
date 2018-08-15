@@ -19,10 +19,7 @@ build/py/builtinimport.o: ../../py/builtinimport.c \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_stdint.h \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_pthreadtypes.h \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/endian.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/endian.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_endian.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/endian.h \
+ include/endian.h \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/wordsize.h \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_timespec.h \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/sysmacros.h \
@@ -68,10 +65,7 @@ build/py/builtinimport.o: ../../py/builtinimport.c \
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_stdint.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_pthreadtypes.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/endian.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/endian.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_endian.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/endian.h :
+ include/endian.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/wordsize.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_timespec.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/sysmacros.h :

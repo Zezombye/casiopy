@@ -262,8 +262,13 @@ void tfp_format(void *putp, putcf putf, const char *fmt, va_list va)
 #endif
     char ch;
     p.bf = bf;
-
+	char str[2] = {0};
+	int key;
+	locate(1,1); Print("a"); GetKey(&key);
+	
     while ((ch = *(fmt++))) {
+		str[0] = ch;
+	    //Print(str); GetKey(&key);
         if (ch != '%') {
             putf(putp, ch);
         } else {

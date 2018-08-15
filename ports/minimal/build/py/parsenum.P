@@ -32,8 +32,7 @@ build/py/parsenum.o: ../../py/parsenum.c \
  ../../py/mpprint.h ../../py/runtime0.h ../../py/objlist.h \
  ../../py/objexcept.h ../../py/objtuple.h ../../py/pystack.h \
  ../../py/parsenumbase.h ../../py/parsenum.h ../../py/lexer.h \
- ../../py/reader.h ../../py/smallint.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h
+ ../../py/reader.h ../../py/smallint.h
 ../../py/parsenum.c :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h :
  /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h :
@@ -69,4 +68,3 @@ build/py/parsenum.o: ../../py/parsenum.c \
  ../../py/objexcept.h ../../py/objtuple.h ../../py/pystack.h :
  ../../py/parsenumbase.h ../../py/parsenum.h ../../py/lexer.h :
  ../../py/reader.h ../../py/smallint.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/math.h :

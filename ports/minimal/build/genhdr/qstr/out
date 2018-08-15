@@ -218,10 +218,6 @@ Q(__name__)
 
 Q(__name__)
 
-Q(__name__)
-
-Q(__name__)
-
 Q(__new__)
 
 Q(__new__)
@@ -288,31 +284,15 @@ Q(_star_)
 
 Q(abs)
 
-Q(acos)
-
 Q(all)
 
 Q(any)
 
 Q(append)
 
-Q(append)
-
 Q(args)
 
 Q(argv)
-
-Q(array)
-
-Q(array)
-
-Q(array)
-
-Q(asin)
-
-Q(atan)
-
-Q(atan2)
 
 Q(big)
 
@@ -339,8 +319,6 @@ Q(bytes)
 Q(bytes)
 
 Q(callable)
-
-Q(ceil)
 
 Q(chr)
 
@@ -372,17 +350,11 @@ Q(copy)
 
 Q(copy)
 
-Q(copysign)
-
-Q(cos)
-
 Q(count)
 
 Q(count)
 
 Q(count)
-
-Q(degrees)
 
 Q(dict)
 
@@ -394,8 +366,6 @@ Q(dir)
 
 Q(divmod)
 
-Q(e)
-
 Q(end)
 
 Q(endswith)
@@ -406,13 +376,7 @@ Q(exec)
 
 Q(exit)
 
-Q(exp)
-
 Q(extend)
-
-Q(extend)
-
-Q(fabs)
 
 Q(find)
 
@@ -420,15 +384,9 @@ Q(float)
 
 Q(float)
 
-Q(floor)
-
 Q(flush)
 
-Q(fmod)
-
 Q(format)
-
-Q(frexp)
 
 Q(from_bytes)
 
@@ -498,15 +456,9 @@ Q(isalpha)
 
 Q(isdigit)
 
-Q(isfinite)
-
-Q(isinf)
-
 Q(isinstance)
 
 Q(islower)
-
-Q(isnan)
 
 Q(isspace)
 
@@ -526,8 +478,6 @@ Q(iterator)
 
 Q(iterator)
 
-Q(iterator)
-
 Q(join)
 
 Q(key)
@@ -535,8 +485,6 @@ Q(key)
 Q(keys)
 
 Q(keys)
-
-Q(ldexp)
 
 Q(len)
 
@@ -550,8 +498,6 @@ Q(little)
 
 Q(locals)
 
-Q(log)
-
 Q(lower)
 
 Q(lstrip)
@@ -560,8 +506,6 @@ Q(map)
 
 Q(map)
 
-Q(math)
-
 Q(micropython)
 
 Q(micropython)
@@ -569,8 +513,6 @@ Q(micropython)
 Q(micropython)
 
 Q(micropython)
-
-Q(modf)
 
 Q(module)
 
@@ -596,8 +538,6 @@ Q(path)
 
 Q(pend_throw)
 
-Q(pi)
-
 Q(pop)
 
 Q(pop)
@@ -606,13 +546,9 @@ Q(popitem)
 
 Q(pow)
 
-Q(pow)
-
 Q(print)
 
 Q(print_exception)
-
-Q(radians)
 
 Q(range)
 
@@ -660,15 +596,11 @@ Q(setattr)
 
 Q(setdefault)
 
-Q(sin)
-
 Q(sort)
 
 Q(sorted)
 
 Q(split)
-
-Q(sqrt)
 
 Q(start)
 
@@ -704,15 +636,11 @@ Q(sys)
 
 Q(sys)
 
-Q(tan)
-
 Q(throw)
 
 Q(throw)
 
 Q(to_bytes)
-
-Q(trunc)
 
 Q(tuple)
 
