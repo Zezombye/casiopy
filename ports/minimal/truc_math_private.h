@@ -1,6 +1,8 @@
 #ifndef truc_math_private
 #define truc_math_private
 
+#include <stdint.h>
+
 #ifndef GET_HIGH_WORD
 # define GET_HIGH_WORD(i,d)					\
 do {								\
@@ -33,10 +35,10 @@ typedef union
   double value;
   struct
   {
-    __uint32_t msw;
-    __uint32_t lsw;
+    uint32_t msw;
+    uint32_t lsw;
   } parts;
-  __uint64_t word;
+  uint64_t word;
 } ieee_double_shape_type;
 
 #endif

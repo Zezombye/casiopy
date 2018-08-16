@@ -6,12 +6,10 @@
 # 1 "../../py/mpconfig.h" 1
 # 45 "../../py/mpconfig.h"
 # 1 "./mpconfigport.h" 1
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 1 3 4
-# 16 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h" 1 3 4
-# 34 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h" 3 4
-
-# 34 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h" 3 4
+# 1 "include/stdint.h" 1
+# 16 "include/stdint.h"
+# 1 "include/stdint-gcc.h" 1
+# 34 "include/stdint-gcc.h"
 typedef signed char int8_t;
 
 
@@ -71,97 +69,93 @@ typedef unsigned int uintptr_t;
 
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
-# 17 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 2 3 4
+# 17 "include/stdint.h" 2
 # 2 "./mpconfigport.h" 2
-# 70 "./mpconfigport.h"
-
 # 70 "./mpconfigport.h"
 typedef int mp_int_t;
 typedef unsigned mp_uint_t;
 
 typedef long mp_off_t;
 # 82 "./mpconfigport.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 1 3 4
-# 14 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h" 1 3 4
-# 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 2 3 4
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h" 1 3 4
+# 1 "include/alloca.h" 1
+# 10 "include/alloca.h"
+# 1 "include/_ansi.h" 1
+# 10 "include/_ansi.h"
+# 1 "include/newlib.h" 1
+# 14 "include/newlib.h"
+# 1 "include/_newlib_version.h" 1
+# 15 "include/newlib.h" 2
+# 11 "include/_ansi.h" 2
+# 1 "include/sys/config.h" 1
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h" 1 3 4
-# 5 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h" 1 3 4
-# 6 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h" 2 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 2 3 4
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 1 3 4
-# 13 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 1 3 4
-# 14 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 149 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
-
-# 149 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 1 "include/machine/ieeefp.h" 1
+# 5 "include/sys/config.h" 2
+# 1 "include/sys/features.h" 1
+# 6 "include/sys/config.h" 2
+# 12 "include/_ansi.h" 2
+# 11 "include/alloca.h" 2
+# 1 "include/sys/reent.h" 1
+# 13 "include/sys/reent.h"
+# 1 "include/_ansi.h" 1
+# 14 "include/sys/reent.h" 2
+# 1 "include/stddef.h" 1
+# 149 "include/stddef.h"
 typedef int ptrdiff_t;
-# 216 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 216 "include/stddef.h"
 typedef unsigned int size_t;
-# 328 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 328 "include/stddef.h"
 typedef long int wchar_t;
-# 426 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 426 "include/stddef.h"
 typedef struct {
   long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
   long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
-# 437 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 437 "include/stddef.h"
 } max_align_t;
-# 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 1 3 4
-# 24 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 1 3 4
+# 15 "include/sys/reent.h" 2
+# 1 "include/sys/_types.h" 1
+# 24 "include/sys/_types.h"
+# 1 "include/machine/_types.h" 1
 
 
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 1 3 4
-# 41 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 1 "include/machine/_default_types.h" 1
+# 41 "include/machine/_default_types.h"
 typedef signed char __int8_t;
 
 typedef unsigned char __uint8_t;
-# 55 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 55 "include/machine/_default_types.h"
 typedef short int __int16_t;
 
 typedef short unsigned int __uint16_t;
-# 77 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 77 "include/machine/_default_types.h"
 typedef long int __int32_t;
 
 typedef long unsigned int __uint32_t;
-# 103 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 103 "include/machine/_default_types.h"
 typedef long long int __int64_t;
 
 typedef long long unsigned int __uint64_t;
-# 134 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 134 "include/machine/_default_types.h"
 typedef signed char __int_least8_t;
 
 typedef unsigned char __uint_least8_t;
-# 160 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 160 "include/machine/_default_types.h"
 typedef short int __int_least16_t;
 
 typedef short unsigned int __uint_least16_t;
-# 182 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 182 "include/machine/_default_types.h"
 typedef long int __int_least32_t;
 
 typedef long unsigned int __uint_least32_t;
-# 200 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 200 "include/machine/_default_types.h"
 typedef long long int __int_least64_t;
 
 typedef long long unsigned int __uint_least64_t;
-# 214 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 214 "include/machine/_default_types.h"
 typedef long long int __intmax_t;
 
 
@@ -181,8 +175,8 @@ typedef long long unsigned int __uintmax_t;
 typedef int __intptr_t;
 
 typedef unsigned int __uintptr_t;
-# 7 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 2 3 4
-# 17 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 3 4
+# 7 "include/machine/_types.h" 2
+# 17 "include/machine/_types.h"
 typedef __int64_t __blkcnt_t;
 
 
@@ -217,19 +211,19 @@ typedef __uint16_t __sa_family_t;
 
 
 typedef int __socklen_t;
-# 25 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 1 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 3 4
+# 25 "include/sys/_types.h" 2
+# 1 "include/sys/lock.h" 1
+# 12 "include/sys/lock.h"
 typedef void *_LOCK_T;
-# 42 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 3 4
+# 42 "include/sys/lock.h"
 void __cygwin_lock_init(_LOCK_T *);
 void __cygwin_lock_init_recursive(_LOCK_T *);
 void __cygwin_lock_fini(_LOCK_T *);
 void __cygwin_lock_lock(_LOCK_T *);
 int __cygwin_lock_trylock(_LOCK_T *);
 void __cygwin_lock_unlock(_LOCK_T *);
-# 26 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
-# 44 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 26 "include/sys/_types.h" 2
+# 44 "include/sys/_types.h"
 typedef long _off_t;
 
 
@@ -237,9 +231,9 @@ typedef long _off_t;
 
 
 typedef int __pid_t;
-# 65 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 65 "include/sys/_types.h"
 typedef __uint32_t __id_t;
-# 88 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 88 "include/sys/_types.h"
 typedef __uint32_t __mode_t;
 
 
@@ -256,20 +250,20 @@ typedef _off_t __off_t;
 
 
 typedef _off64_t __loff_t;
-# 114 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 114 "include/sys/_types.h"
 typedef long _fpos_t;
-# 129 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 129 "include/sys/_types.h"
 typedef unsigned int __size_t;
-# 145 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 145 "include/sys/_types.h"
 typedef signed int _ssize_t;
-# 156 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 156 "include/sys/_types.h"
 typedef _ssize_t __ssize_t;
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 357 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 1 "include/stddef.h" 1
+# 357 "include/stddef.h"
 typedef unsigned int wint_t;
-# 160 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
+# 160 "include/sys/_types.h" 2
 
 
 
@@ -311,7 +305,7 @@ typedef unsigned long __clockid_t;
 
 
 typedef unsigned long __timer_t;
-# 210 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 210 "include/sys/_types.h"
 typedef unsigned short __nlink_t;
 typedef long __suseconds_t;
 typedef unsigned long __useconds_t;
@@ -320,7 +314,7 @@ typedef unsigned long __useconds_t;
 
 
 typedef char * __va_list;
-# 16 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
+# 16 "include/sys/reent.h" 2
 
 
 
@@ -328,7 +322,7 @@ typedef char * __va_list;
 
 
 typedef unsigned long __ULong;
-# 38 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 38 "include/sys/reent.h"
 struct _reent;
 
 struct __locale_t;
@@ -374,7 +368,7 @@ struct _on_exit_args {
 
  __ULong _is_cxa;
 };
-# 93 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 93 "include/sys/reent.h"
 struct _atexit {
  struct _atexit *_next;
  int _ind;
@@ -382,12 +376,12 @@ struct _atexit {
  void (*_fns[32])(void);
         struct _on_exit_args _on_exit_args;
 };
-# 117 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 117 "include/sys/reent.h"
 struct __sbuf {
  unsigned char *_base;
  int _size;
 };
-# 181 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 181 "include/sys/reent.h"
 struct __sFILE {
   unsigned char *_p;
   int _r;
@@ -438,7 +432,7 @@ struct __sFILE {
   _mbstate_t _mbstate;
   int _flags2;
 };
-# 287 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 287 "include/sys/reent.h"
 typedef struct __sFILE __FILE;
 
 
@@ -449,7 +443,7 @@ struct _glue
   int _niobs;
   __FILE *_iobs;
 };
-# 319 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 319 "include/sys/reent.h"
 struct _rand48 {
   unsigned short _seed[3];
   unsigned short _mult[3];
@@ -459,7 +453,7 @@ struct _rand48 {
 
 
 };
-# 569 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 569 "include/sys/reent.h"
 struct _reent
 {
   int _errno;
@@ -542,16 +536,14 @@ struct _reent
   __FILE __sf[3];
 
 };
-# 775 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 775 "include/sys/reent.h"
 extern struct _reent *_impure_ptr ;
 extern struct _reent *const _global_impure_ptr ;
 
 void _reclaim_reent (struct _reent *);
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h" 2 3 4
+# 12 "include/alloca.h" 2
 # 83 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
-# 577 "../../py/mpconfig.h"
-
 # 577 "../../py/mpconfig.h"
 typedef double mp_float_t;
 # 28 "<stdin>" 2

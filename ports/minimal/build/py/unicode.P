@@ -1,40 +1,16 @@
-build/py/unicode.o: ../../py/unicode.c \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h \
- ../../py/unicode.h ../../py/mpconfig.h mpconfigport.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h \
- ../../py/misc.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h
-../../py/unicode.c :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h :
- ../../py/unicode.h ../../py/mpconfig.h mpconfigport.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h :
- ../../py/misc.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h :
+build/py/unicode.o: ../../py/unicode.c include/stdint.h \
+ include/stdint-gcc.h ../../py/unicode.h ../../py/mpconfig.h \
+ mpconfigport.h include/alloca.h include/_ansi.h include/newlib.h \
+ include/_newlib_version.h include/sys/config.h include/machine/ieeefp.h \
+ include/sys/features.h include/sys/reent.h include/_ansi.h \
+ include/stddef.h include/sys/_types.h include/machine/_types.h \
+ include/machine/_default_types.h include/sys/lock.h ../../py/misc.h \
+ include/stdbool.h
+../../py/unicode.c include/stdint.h :
+ include/stdint-gcc.h ../../py/unicode.h ../../py/mpconfig.h :
+ mpconfigport.h include/alloca.h include/_ansi.h include/newlib.h :
+ include/_newlib_version.h include/sys/config.h include/machine/ieeefp.h :
+ include/sys/features.h include/sys/reent.h include/_ansi.h :
+ include/stddef.h include/sys/_types.h include/machine/_types.h :
+ include/machine/_default_types.h include/sys/lock.h ../../py/misc.h :
+ include/stdbool.h :

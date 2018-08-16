@@ -21,6 +21,7 @@ static char rcsid[] = "$NetBSD: s_copysign.c,v 1.8 1995/05/10 20:46:57 jtc Exp $
  */
 
 #include <math.h>
+#include <stdint.h>
 #include "truc_math_private.h"
 //#include <libm-alias-double.h>
 
@@ -30,7 +31,7 @@ double copysign (double x, double y)
   casiopy_print("test4", 5);
   GetKey(&key);
   return 0.0;
-  __uint32_t hx, hy;
+  uint32_t hx, hy;
   GET_HIGH_WORD (hx, x);
   GET_HIGH_WORD (hy, y);
   SET_HIGH_WORD (x, (hx & 0x7fffffff) | (hy & 0x80000000));

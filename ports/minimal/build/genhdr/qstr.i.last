@@ -8,97 +8,95 @@ int key;
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h" 1 3 4
+# 1 "include/stdbool.h" 1
 # 33 "../../py/parsenum.c" 2
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h" 1 3 4
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 1 3 4
-# 14 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h" 1 3 4
-# 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h" 2 3 4
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h" 1 3 4
+# 1 "include/stdlib.h" 1
+# 10 "include/stdlib.h"
+# 1 "include/machine/ieeefp.h" 1
+# 11 "include/stdlib.h" 2
+# 1 "include/_ansi.h" 1
+# 10 "include/_ansi.h"
+# 1 "include/newlib.h" 1
+# 14 "include/newlib.h"
+# 1 "include/_newlib_version.h" 1
+# 15 "include/newlib.h" 2
+# 11 "include/_ansi.h" 2
+# 1 "include/sys/config.h" 1
 
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h" 1 3 4
-# 6 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h" 2 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 2 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
+# 1 "include/sys/features.h" 1
+# 6 "include/sys/config.h" 2
+# 12 "include/_ansi.h" 2
+# 12 "include/stdlib.h" 2
 
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 216 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
-
-# 216 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 1 "include/stddef.h" 1
+# 216 "include/stddef.h"
 typedef unsigned int size_t;
-# 328 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 328 "include/stddef.h"
 typedef long int wchar_t;
-# 17 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
+# 17 "include/stdlib.h" 2
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 1 3 4
-# 13 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h" 1 3 4
-# 14 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 149 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 1 "include/sys/reent.h" 1
+# 13 "include/sys/reent.h"
+# 1 "include/_ansi.h" 1
+# 14 "include/sys/reent.h" 2
+# 1 "include/stddef.h" 1
+# 149 "include/stddef.h"
 typedef int ptrdiff_t;
-# 426 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 426 "include/stddef.h"
 typedef struct {
   long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
   long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
-# 437 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 437 "include/stddef.h"
 } max_align_t;
-# 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 1 3 4
-# 24 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 1 3 4
+# 15 "include/sys/reent.h" 2
+# 1 "include/sys/_types.h" 1
+# 24 "include/sys/_types.h"
+# 1 "include/machine/_types.h" 1
 
 
 
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 1 3 4
-# 41 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 1 "include/machine/_default_types.h" 1
+# 41 "include/machine/_default_types.h"
 typedef signed char __int8_t;
 
 typedef unsigned char __uint8_t;
-# 55 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 55 "include/machine/_default_types.h"
 typedef short int __int16_t;
 
 typedef short unsigned int __uint16_t;
-# 77 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 77 "include/machine/_default_types.h"
 typedef long int __int32_t;
 
 typedef long unsigned int __uint32_t;
-# 103 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 103 "include/machine/_default_types.h"
 typedef long long int __int64_t;
 
 typedef long long unsigned int __uint64_t;
-# 134 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 134 "include/machine/_default_types.h"
 typedef signed char __int_least8_t;
 
 typedef unsigned char __uint_least8_t;
-# 160 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 160 "include/machine/_default_types.h"
 typedef short int __int_least16_t;
 
 typedef short unsigned int __uint_least16_t;
-# 182 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 182 "include/machine/_default_types.h"
 typedef long int __int_least32_t;
 
 typedef long unsigned int __uint_least32_t;
-# 200 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 200 "include/machine/_default_types.h"
 typedef long long int __int_least64_t;
 
 typedef long long unsigned int __uint_least64_t;
-# 214 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h" 3 4
+# 214 "include/machine/_default_types.h"
 typedef long long int __intmax_t;
 
 
@@ -118,8 +116,8 @@ typedef long long unsigned int __uintmax_t;
 typedef int __intptr_t;
 
 typedef unsigned int __uintptr_t;
-# 7 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 2 3 4
-# 17 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h" 3 4
+# 7 "include/machine/_types.h" 2
+# 17 "include/machine/_types.h"
 typedef __int64_t __blkcnt_t;
 
 
@@ -154,19 +152,19 @@ typedef __uint16_t __sa_family_t;
 
 
 typedef int __socklen_t;
-# 25 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 1 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 3 4
+# 25 "include/sys/_types.h" 2
+# 1 "include/sys/lock.h" 1
+# 12 "include/sys/lock.h"
 typedef void *_LOCK_T;
-# 42 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h" 3 4
+# 42 "include/sys/lock.h"
 void __cygwin_lock_init(_LOCK_T *);
 void __cygwin_lock_init_recursive(_LOCK_T *);
 void __cygwin_lock_fini(_LOCK_T *);
 void __cygwin_lock_lock(_LOCK_T *);
 int __cygwin_lock_trylock(_LOCK_T *);
 void __cygwin_lock_unlock(_LOCK_T *);
-# 26 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
-# 44 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 26 "include/sys/_types.h" 2
+# 44 "include/sys/_types.h"
 typedef long _off_t;
 
 
@@ -174,9 +172,9 @@ typedef long _off_t;
 
 
 typedef int __pid_t;
-# 65 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 65 "include/sys/_types.h"
 typedef __uint32_t __id_t;
-# 88 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 88 "include/sys/_types.h"
 typedef __uint32_t __mode_t;
 
 
@@ -193,20 +191,20 @@ typedef _off_t __off_t;
 
 
 typedef _off64_t __loff_t;
-# 114 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 114 "include/sys/_types.h"
 typedef long _fpos_t;
-# 129 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 129 "include/sys/_types.h"
 typedef unsigned int __size_t;
-# 145 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 145 "include/sys/_types.h"
 typedef signed int _ssize_t;
-# 156 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 156 "include/sys/_types.h"
 typedef _ssize_t __ssize_t;
 
 
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 357 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 3 4
+# 1 "include/stddef.h" 1
+# 357 "include/stddef.h"
 typedef unsigned int wint_t;
-# 160 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 2 3 4
+# 160 "include/sys/_types.h" 2
 
 
 
@@ -248,7 +246,7 @@ typedef unsigned long __clockid_t;
 
 
 typedef unsigned long __timer_t;
-# 210 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h" 3 4
+# 210 "include/sys/_types.h"
 typedef unsigned short __nlink_t;
 typedef long __suseconds_t;
 typedef unsigned long __useconds_t;
@@ -257,7 +255,7 @@ typedef unsigned long __useconds_t;
 
 
 typedef char * __va_list;
-# 16 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 2 3 4
+# 16 "include/sys/reent.h" 2
 
 
 
@@ -265,7 +263,7 @@ typedef char * __va_list;
 
 
 typedef unsigned long __ULong;
-# 38 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 38 "include/sys/reent.h"
 struct _reent;
 
 struct __locale_t;
@@ -311,7 +309,7 @@ struct _on_exit_args {
 
  __ULong _is_cxa;
 };
-# 93 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 93 "include/sys/reent.h"
 struct _atexit {
  struct _atexit *_next;
  int _ind;
@@ -319,12 +317,12 @@ struct _atexit {
  void (*_fns[32])(void);
         struct _on_exit_args _on_exit_args;
 };
-# 117 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 117 "include/sys/reent.h"
 struct __sbuf {
  unsigned char *_base;
  int _size;
 };
-# 181 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 181 "include/sys/reent.h"
 struct __sFILE {
   unsigned char *_p;
   int _r;
@@ -375,7 +373,7 @@ struct __sFILE {
   _mbstate_t _mbstate;
   int _flags2;
 };
-# 287 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 287 "include/sys/reent.h"
 typedef struct __sFILE __FILE;
 
 
@@ -386,7 +384,7 @@ struct _glue
   int _niobs;
   __FILE *_iobs;
 };
-# 319 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 319 "include/sys/reent.h"
 struct _rand48 {
   unsigned short _seed[3];
   unsigned short _mult[3];
@@ -396,7 +394,7 @@ struct _rand48 {
 
 
 };
-# 569 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 569 "include/sys/reent.h"
 struct _reent
 {
   int _errno;
@@ -479,22 +477,22 @@ struct _reent
   __FILE __sf[3];
 
 };
-# 775 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h" 3 4
+# 775 "include/sys/reent.h"
 extern struct _reent *_impure_ptr ;
 extern struct _reent *const _global_impure_ptr ;
 
 void _reclaim_reent (struct _reent *);
-# 19 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/cdefs.h" 1 3 4
-# 45 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/cdefs.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
-# 46 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/cdefs.h" 2 3 4
-# 20 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/stdlib.h" 1 3 4
-# 15 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/stdlib.h" 3 4
+# 19 "include/stdlib.h" 2
+# 1 "include/sys/cdefs.h" 1
+# 45 "include/sys/cdefs.h"
+# 1 "include/stddef.h" 1
+# 46 "include/sys/cdefs.h" 2
+# 20 "include/stdlib.h" 2
+# 1 "include/machine/stdlib.h" 1
+# 15 "include/machine/stdlib.h"
 char *mkdtemp (char *);
-# 21 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 2 3 4
-# 33 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 21 "include/stdlib.h" 2
+# 33 "include/stdlib.h"
 
 
 typedef struct
@@ -577,7 +575,7 @@ size_t mbstowcs (wchar_t *restrict, const char *restrict, size_t);
 size_t _mbstowcs_r (struct _reent *, wchar_t *restrict, const char *restrict, size_t, _mbstate_t *);
 size_t wcstombs (char *restrict, const wchar_t *restrict, size_t);
 size_t _wcstombs_r (struct _reent *, char *restrict, const wchar_t *restrict, size_t, _mbstate_t *);
-# 133 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 133 "include/stdlib.h"
 char * _mkdtemp_r (struct _reent *, char *);
 int _mkostemp_r (struct _reent *, char *, int);
 int _mkostemps_r (struct _reent *, char *, int, int);
@@ -587,7 +585,7 @@ char * _mktemp_r (struct _reent *, char *) __attribute__ ((__deprecated__("the u
 void qsort (void *__base, size_t __nmemb, size_t __size, __compar_fn_t _compar);
 int rand (void);
 void * realloc (void *__r, size_t __size) ;
-# 156 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 156 "include/stdlib.h"
 void srand (unsigned __seed);
 double strtod (const char *restrict __n, char **restrict __end_PTR);
 double _strtod_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR);
@@ -604,9 +602,9 @@ long strtol (const char *restrict __n, char **restrict __end_PTR, int __base);
 long _strtol_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long strtoul (const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long _strtoul_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
-# 188 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 188 "include/stdlib.h"
 int system (const char *__string);
-# 199 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 199 "include/stdlib.h"
 void _Exit (int __status) __attribute__ ((__noreturn__));
 
 
@@ -618,10 +616,10 @@ void * _reallocf_r (struct _reent *, void *, size_t);
 
 
 int _setenv_r (struct _reent *, const char *__string, const char *__value, int __overwrite);
-# 221 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 221 "include/stdlib.h"
 char * __itoa (int, char *, int);
 char * __utoa (unsigned, char *, int);
-# 260 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 260 "include/stdlib.h"
 long long atoll (const char *__nptr);
 
 long long _atoll_r (struct _reent *, const char *__nptr);
@@ -635,7 +633,7 @@ long long _strtoll_r (struct _reent *, const char *restrict __n, char **restrict
 unsigned long long strtoull (const char *restrict __n, char **restrict __end_PTR, int __base);
 
 unsigned long long _strtoull_r (struct _reent *, const char *restrict __n, char **restrict __end_PTR, int __base);
-# 281 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 281 "include/stdlib.h"
 int _unsetenv_r (struct _reent *, const char *__string);
 
 
@@ -654,7 +652,7 @@ void _mstats_r (struct _reent *, char *);
 int _system_r (struct _reent *, const char *);
 
 void __eprintf (const char *, const char *, unsigned int, const char *);
-# 318 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdlib.h" 3 4
+# 318 "include/stdlib.h"
 extern long double _strtold_r (struct _reent *, const char *restrict, char **restrict);
 
 extern long double strtold (const char *restrict, char **restrict);
@@ -679,10 +677,10 @@ _Noreturn void
 # 29 "../../py/runtime.h"
 # 1 "../../py/mpstate.h" 1
 # 29 "../../py/mpstate.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 1 3 4
-# 16 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h" 1 3 4
-# 34 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h" 3 4
+# 1 "include/stdint.h" 1
+# 16 "include/stdint.h"
+# 1 "include/stdint-gcc.h" 1
+# 34 "include/stdint-gcc.h"
 typedef signed char int8_t;
 
 
@@ -742,21 +740,19 @@ typedef unsigned int uintptr_t;
 
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
-# 17 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h" 2 3 4
+# 17 "include/stdint.h" 2
 # 30 "../../py/mpstate.h" 2
 
 # 1 "../../py/mpconfig.h" 1
 # 45 "../../py/mpconfig.h"
 # 1 "./mpconfigport.h" 1
 # 70 "./mpconfigport.h"
-
-# 70 "./mpconfigport.h"
 typedef int mp_int_t;
 typedef unsigned mp_uint_t;
 
 typedef long mp_off_t;
 # 82 "./mpconfigport.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h" 1 3 4
+# 1 "include/alloca.h" 1
 # 83 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
 # 577 "../../py/mpconfig.h"
@@ -766,7 +762,7 @@ typedef double mp_float_t;
 # 33 "../../py/mpstate.h" 2
 # 1 "../../py/misc.h" 1
 # 35 "../../py/misc.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h" 1 3 4
+# 1 "include/stddef.h" 1
 # 36 "../../py/misc.h" 2
 
 typedef unsigned char byte;
@@ -782,11 +778,7 @@ void *m_malloc0(size_t num_bytes);
 
 
 void *m_realloc(void *ptr, size_t new_num_bytes);
-void *m_realloc_maybe(void *ptr, size_t new_num_bytes, 
-# 97 "../../py/misc.h" 3 4
-                                                      _Bool 
-# 97 "../../py/misc.h"
-                                                           allow_move);
+void *m_realloc_maybe(void *ptr, size_t new_num_bytes, _Bool allow_move);
 void m_free(void *ptr);
 
 __attribute__((noreturn)) void m_malloc_fail(size_t num_bytes);
@@ -804,46 +796,14 @@ static inline const byte *utf8_next_char(const byte *s) { return s + 1; }
 static inline size_t utf8_charlen(const byte *str, size_t len) { (void)str; return len; }
 
 
-
-# 137 "../../py/misc.h" 3 4
-_Bool 
-# 137 "../../py/misc.h"
-    unichar_isspace(unichar c);
-
-# 138 "../../py/misc.h" 3 4
-_Bool 
-# 138 "../../py/misc.h"
-    unichar_isalpha(unichar c);
-
-# 139 "../../py/misc.h" 3 4
-_Bool 
-# 139 "../../py/misc.h"
-    unichar_isprint(unichar c);
-
-# 140 "../../py/misc.h" 3 4
-_Bool 
-# 140 "../../py/misc.h"
-    unichar_isdigit(unichar c);
-
-# 141 "../../py/misc.h" 3 4
-_Bool 
-# 141 "../../py/misc.h"
-    unichar_isxdigit(unichar c);
-
-# 142 "../../py/misc.h" 3 4
-_Bool 
-# 142 "../../py/misc.h"
-    unichar_isident(unichar c);
-
-# 143 "../../py/misc.h" 3 4
-_Bool 
-# 143 "../../py/misc.h"
-    unichar_isupper(unichar c);
-
-# 144 "../../py/misc.h" 3 4
-_Bool 
-# 144 "../../py/misc.h"
-    unichar_islower(unichar c);
+_Bool unichar_isspace(unichar c);
+_Bool unichar_isalpha(unichar c);
+_Bool unichar_isprint(unichar c);
+_Bool unichar_isdigit(unichar c);
+_Bool unichar_isxdigit(unichar c);
+_Bool unichar_isident(unichar c);
+_Bool unichar_isupper(unichar c);
+_Bool unichar_islower(unichar c);
 unichar unichar_tolower(unichar c);
 unichar unichar_toupper(unichar c);
 mp_uint_t unichar_xdigit_value(unichar c);
@@ -856,11 +816,7 @@ typedef struct _vstr_t {
     size_t alloc;
     size_t len;
     char *buf;
-    
-# 157 "../../py/misc.h" 3 4
-   _Bool 
-# 157 "../../py/misc.h"
-        fixed_buf : 1;
+    _Bool fixed_buf : 1;
 } vstr_t;
 
 
@@ -898,35 +854,33 @@ extern mp_uint_t mp_verbose_flag;
 # 34 "../../py/mpstate.h" 2
 # 1 "../../py/nlr.h" 1
 # 32 "../../py/nlr.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h" 1 3 4
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/features.h" 1 3 4
-# 12 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h" 2 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/wordsize.h" 1 3 4
-# 13 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h" 2 3 4
+# 1 "include/limits.h" 1
+# 11 "include/limits.h"
+# 1 "include/features.h" 1
+# 12 "include/limits.h" 2
+# 1 "include/bits/wordsize.h" 1
+# 13 "include/limits.h" 2
 # 33 "../../py/nlr.h" 2
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/assert.h" 1 3 4
-# 39 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/assert.h" 3 4
-
-# 39 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/assert.h" 3 4
+# 1 "include/assert.h" 1
+# 39 "include/assert.h"
 void __assert (const char *, int, const char *)
      __attribute__ ((__noreturn__));
 void __assert_func (const char *, int, const char *, const char *)
      __attribute__ ((__noreturn__));
 # 34 "../../py/nlr.h" 2
 # 68 "../../py/nlr.h"
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/setjmp.h" 1 3 4
-# 10 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/setjmp.h" 3 4
-# 1 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/setjmp.h" 1 3 4
+# 1 "include/setjmp.h" 1
+# 10 "include/setjmp.h"
+# 1 "include/machine/setjmp.h" 1
 
 
-# 376 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/setjmp.h" 3 4
+# 376 "include/machine/setjmp.h"
 typedef int jmp_buf[20];
 
 
 
 
-# 11 "/home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/setjmp.h" 2 3 4
+# 11 "include/setjmp.h" 2
 
 
 
@@ -942,8 +896,6 @@ int setjmp (jmp_buf __jmpb);
 # 69 "../../py/nlr.h" 2
 
 
-
-# 71 "../../py/nlr.h"
 typedef struct _nlr_buf_t nlr_buf_t;
 struct _nlr_buf_t {
 
@@ -1192,20 +1144,12 @@ struct _mp_obj_base_t {
 };
 typedef struct _mp_obj_base_t mp_obj_base_t;
 # 84 "../../py/obj.h"
-static inline 
-# 84 "../../py/obj.h" 3 4
-             _Bool 
-# 84 "../../py/obj.h"
-                  MP_OBJ_IS_SMALL_INT(mp_const_obj_t o)
+static inline _Bool MP_OBJ_IS_SMALL_INT(mp_const_obj_t o)
     { return ((((mp_int_t)(o)) & 1) != 0); }
 
 
 
-static inline 
-# 89 "../../py/obj.h" 3 4
-             _Bool 
-# 89 "../../py/obj.h"
-                  MP_OBJ_IS_QSTR(mp_const_obj_t o)
+static inline _Bool MP_OBJ_IS_QSTR(mp_const_obj_t o)
     { return ((((mp_int_t)(o)) & 3) == 2); }
 
 
@@ -1221,11 +1165,7 @@ mp_float_t mp_obj_float_get(mp_obj_t self_in);
 mp_obj_t mp_obj_new_float(mp_float_t value);
 
 
-static inline 
-# 105 "../../py/obj.h" 3 4
-             _Bool 
-# 105 "../../py/obj.h"
-                  MP_OBJ_IS_OBJ(mp_const_obj_t o)
+static inline _Bool MP_OBJ_IS_OBJ(mp_const_obj_t o)
     { return ((((mp_int_t)(o)) & 3) == 0); }
 # 246 "../../py/obj.h"
 typedef mp_const_obj_t mp_rom_obj_t;
@@ -1264,11 +1204,7 @@ typedef enum _mp_map_lookup_kind_t {
 
 extern const mp_map_t mp_const_empty_map;
 
-static inline 
-# 373 "../../py/obj.h" 3 4
-             _Bool 
-# 373 "../../py/obj.h"
-                  MP_MAP_SLOT_IS_FILLED(const mp_map_t *map, size_t pos) { return ((map)->table[pos].key != (((mp_obj_t)(void*)0)) && (map)->table[pos].key != (((mp_obj_t)(void*)8))); }
+static inline _Bool MP_MAP_SLOT_IS_FILLED(const mp_map_t *map, size_t pos) { return ((map)->table[pos].key != (((mp_obj_t)(void*)0)) && (map)->table[pos].key != (((mp_obj_t)(void*)8))); }
 
 void mp_map_init(mp_map_t *map, size_t n);
 void mp_map_init_fixed_table(mp_map_t *map, size_t n, const mp_obj_t *table);
@@ -1287,11 +1223,7 @@ typedef struct _mp_set_t {
     mp_obj_t *table;
 } mp_set_t;
 
-static inline 
-# 392 "../../py/obj.h" 3 4
-             _Bool 
-# 392 "../../py/obj.h"
-                  MP_SET_SLOT_IS_FILLED(const mp_set_t *set, size_t pos) { return ((set)->table[pos] != (((mp_obj_t)(void*)0)) && (set)->table[pos] != (((mp_obj_t)(void*)8))); }
+static inline _Bool MP_SET_SLOT_IS_FILLED(const mp_set_t *set, size_t pos) { return ((set)->table[pos] != (((mp_obj_t)(void*)0)) && (set)->table[pos] != (((mp_obj_t)(void*)8))); }
 
 void mp_set_init(mp_set_t *set, size_t n);
 mp_obj_t mp_set_lookup(mp_set_t *set, mp_obj_t index, mp_map_lookup_kind_t lookup_kind);
@@ -1357,11 +1289,7 @@ typedef struct _mp_buffer_info_t {
 typedef struct _mp_buffer_p_t {
     mp_int_t (*get_buffer)(mp_obj_t obj, mp_buffer_info_t *bufinfo, mp_uint_t flags);
 } mp_buffer_p_t;
-
-# 458 "../../py/obj.h" 3 4
-_Bool 
-# 458 "../../py/obj.h"
-    mp_get_buffer(mp_obj_t obj, mp_buffer_info_t *bufinfo, mp_uint_t flags);
+_Bool mp_get_buffer(mp_obj_t obj, mp_buffer_info_t *bufinfo, mp_uint_t flags);
 void mp_get_buffer_raise(mp_obj_t obj, mp_buffer_info_t *bufinfo, mp_uint_t flags);
 
 struct _mp_obj_type_t {
@@ -1513,11 +1441,7 @@ static inline mp_obj_t mp_obj_new_bool(mp_int_t x) { return x ? (((mp_obj_t)&mp_
 mp_obj_t mp_obj_new_cell(mp_obj_t obj);
 mp_obj_t mp_obj_new_int(mp_int_t value);
 mp_obj_t mp_obj_new_int_from_uint(mp_uint_t value);
-mp_obj_t mp_obj_new_int_from_str_len(const char **str, size_t len, 
-# 629 "../../py/obj.h" 3 4
-                                                                  _Bool 
-# 629 "../../py/obj.h"
-                                                                       neg, unsigned int base);
+mp_obj_t mp_obj_new_int_from_str_len(const char **str, size_t len, _Bool neg, unsigned int base);
 mp_obj_t mp_obj_new_int_from_ll(long long val);
 mp_obj_t mp_obj_new_int_from_ull(unsigned long long val);
 mp_obj_t mp_obj_new_str(const char* data, size_t len);
@@ -1553,62 +1477,30 @@ mp_obj_t mp_obj_new_memoryview(byte typecode, size_t nitems, void *items);
 
 mp_obj_type_t *mp_obj_get_type(mp_const_obj_t o_in);
 const char *mp_obj_get_type_str(mp_const_obj_t o_in);
-
-# 665 "../../py/obj.h" 3 4
-_Bool 
-# 665 "../../py/obj.h"
-    mp_obj_is_subclass_fast(mp_const_obj_t object, mp_const_obj_t classinfo);
+_Bool mp_obj_is_subclass_fast(mp_const_obj_t object, mp_const_obj_t classinfo);
 mp_obj_t mp_instance_cast_to_native_base(mp_const_obj_t self_in, mp_const_obj_t native_type);
 
 void mp_obj_print_helper(const mp_print_t *print, mp_obj_t o_in, mp_print_kind_t kind);
 void mp_obj_print(mp_obj_t o, mp_print_kind_t kind);
 void mp_obj_print_exception(const mp_print_t *print, mp_obj_t exc);
 
+_Bool mp_obj_is_true(mp_obj_t arg);
+_Bool mp_obj_is_callable(mp_obj_t o_in);
+_Bool mp_obj_equal(mp_obj_t o1, mp_obj_t o2);
 
-# 672 "../../py/obj.h" 3 4
-_Bool 
-# 672 "../../py/obj.h"
-    mp_obj_is_true(mp_obj_t arg);
-
-# 673 "../../py/obj.h" 3 4
-_Bool 
-# 673 "../../py/obj.h"
-    mp_obj_is_callable(mp_obj_t o_in);
-
-# 674 "../../py/obj.h" 3 4
-_Bool 
-# 674 "../../py/obj.h"
-    mp_obj_equal(mp_obj_t o1, mp_obj_t o2);
-
-static inline 
-# 676 "../../py/obj.h" 3 4
-             _Bool 
-# 676 "../../py/obj.h"
-                  mp_obj_is_integer(mp_const_obj_t o) { return (MP_OBJ_IS_SMALL_INT(o) || (MP_OBJ_IS_OBJ(o) && (((mp_obj_base_t*)((void*)o))->type == (&mp_type_int)))) || (MP_OBJ_IS_OBJ(o) && (((mp_obj_base_t*)((void*)o))->type == (&mp_type_bool))); }
+static inline _Bool mp_obj_is_integer(mp_const_obj_t o) { return (MP_OBJ_IS_SMALL_INT(o) || (MP_OBJ_IS_OBJ(o) && (((mp_obj_base_t*)((void*)o))->type == (&mp_type_int)))) || (MP_OBJ_IS_OBJ(o) && (((mp_obj_base_t*)((void*)o))->type == (&mp_type_bool))); }
 mp_int_t mp_obj_get_int(mp_const_obj_t arg);
 mp_int_t mp_obj_get_int_truncated(mp_const_obj_t arg);
-
-# 679 "../../py/obj.h" 3 4
-_Bool 
-# 679 "../../py/obj.h"
-    mp_obj_get_int_maybe(mp_const_obj_t arg, mp_int_t *value);
+_Bool mp_obj_get_int_maybe(mp_const_obj_t arg, mp_int_t *value);
 
 mp_float_t mp_obj_get_float(mp_obj_t self_in);
-
-# 682 "../../py/obj.h" 3 4
-_Bool 
-# 682 "../../py/obj.h"
-    mp_obj_get_float_maybe(mp_obj_t arg, mp_float_t *value);
+_Bool mp_obj_get_float_maybe(mp_obj_t arg, mp_float_t *value);
 void mp_obj_get_complex(mp_obj_t self_in, mp_float_t *real, mp_float_t *imag);
 
 
 void mp_obj_get_array(mp_obj_t o, size_t *len, mp_obj_t **items);
 void mp_obj_get_array_fixed_n(mp_obj_t o, size_t len, mp_obj_t **items);
-size_t mp_get_index(const mp_obj_type_t *type, size_t len, mp_obj_t index, 
-# 688 "../../py/obj.h" 3 4
-                                                                          _Bool 
-# 688 "../../py/obj.h"
-                                                                               is_slice);
+size_t mp_get_index(const mp_obj_type_t *type, size_t len, mp_obj_t index, _Bool is_slice);
 mp_obj_t mp_obj_id(mp_obj_t o_in);
 mp_obj_t mp_obj_len(mp_obj_t o_in);
 mp_obj_t mp_obj_len_maybe(mp_obj_t o_in);
@@ -1627,21 +1519,9 @@ mp_int_t mp_obj_int_get_checked(mp_const_obj_t self_in);
 
 
 
-
-# 707 "../../py/obj.h" 3 4
-_Bool 
-# 707 "../../py/obj.h"
-    mp_obj_is_exception_type(mp_obj_t self_in);
-
-# 708 "../../py/obj.h" 3 4
-_Bool 
-# 708 "../../py/obj.h"
-    mp_obj_is_exception_instance(mp_obj_t self_in);
-
-# 709 "../../py/obj.h" 3 4
-_Bool 
-# 709 "../../py/obj.h"
-    mp_obj_exception_match(mp_obj_t exc, mp_const_obj_t exc_type);
+_Bool mp_obj_is_exception_type(mp_obj_t self_in);
+_Bool mp_obj_is_exception_instance(mp_obj_t self_in);
+_Bool mp_obj_exception_match(mp_obj_t exc, mp_const_obj_t exc_type);
 void mp_obj_exception_clear_traceback(mp_obj_t self_in);
 void mp_obj_exception_add_traceback(mp_obj_t self_in, qstr file, size_t line, qstr block);
 void mp_obj_exception_get_traceback(mp_obj_t self_in, size_t *n, size_t **values);
@@ -1651,21 +1531,13 @@ mp_obj_t mp_alloc_emergency_exception_buf(mp_obj_t size_in);
 void mp_init_emergency_exception_buf(void);
 
 
-
-# 719 "../../py/obj.h" 3 4
-_Bool 
-# 719 "../../py/obj.h"
-    mp_obj_str_equal(mp_obj_t s1, mp_obj_t s2);
+_Bool mp_obj_str_equal(mp_obj_t s1, mp_obj_t s2);
 qstr mp_obj_str_get_qstr(mp_obj_t self_in);
 const char *mp_obj_str_get_str(mp_obj_t self_in);
 const char *mp_obj_str_get_data(mp_obj_t self_in, size_t *len);
 mp_obj_t mp_obj_str_intern(mp_obj_t str);
 mp_obj_t mp_obj_str_intern_checked(mp_obj_t obj);
-void mp_str_print_quoted(const mp_print_t *print, const byte *str_data, size_t str_len, 
-# 725 "../../py/obj.h" 3 4
-                                                                                       _Bool 
-# 725 "../../py/obj.h"
-                                                                                            is_bytes);
+void mp_str_print_quoted(const mp_print_t *print, const byte *str_data, size_t str_len, _Bool is_bytes);
 
 
 
@@ -1731,11 +1603,7 @@ typedef struct _mp_obj_fun_builtin_fixed_t {
 
 typedef struct _mp_obj_fun_builtin_var_t {
     mp_obj_base_t base;
-    
-# 791 "../../py/obj.h" 3 4
-   _Bool 
-# 791 "../../py/obj.h"
-        is_kw : 1;
+    _Bool is_kw : 1;
     mp_uint_t n_args_min : 15;
     mp_uint_t n_args_max : 16;
     union {
@@ -1760,11 +1628,7 @@ static inline mp_obj_dict_t *mp_obj_module_get_globals(mp_obj_t module) {
     return ((mp_obj_module_t*)((void*)module))->globals;
 }
 
-
-# 816 "../../py/obj.h" 3 4
-_Bool 
-# 816 "../../py/obj.h"
-    mp_obj_is_package(mp_obj_t module);
+_Bool mp_obj_is_package(mp_obj_t module);
 
 
 
@@ -1795,16 +1659,8 @@ void mp_seq_multiply(const void *items, size_t item_sz, size_t len, size_t times
 
 
 
-
-# 847 "../../py/obj.h" 3 4
-_Bool 
-# 847 "../../py/obj.h"
-    mp_seq_cmp_bytes(mp_uint_t op, const byte *data1, size_t len1, const byte *data2, size_t len2);
-
-# 848 "../../py/obj.h" 3 4
-_Bool 
-# 848 "../../py/obj.h"
-    mp_seq_cmp_objs(mp_uint_t op, const mp_obj_t *items1, size_t len1, const mp_obj_t *items2, size_t len2);
+_Bool mp_seq_cmp_bytes(mp_uint_t op, const byte *data1, size_t len1, const byte *data2, size_t len2);
+_Bool mp_seq_cmp_objs(mp_uint_t op, const mp_obj_t *items1, size_t len1, const mp_obj_t *items2, size_t len2);
 mp_obj_t mp_seq_index_obj(const mp_obj_t *items, size_t len, size_t n_args, const mp_obj_t *args);
 mp_obj_t mp_seq_count_obj(const mp_obj_t *items, size_t len, mp_obj_t value);
 mp_obj_t mp_seq_extract_slice(size_t len, const mp_obj_t *seq, mp_bound_slice_t *indexes);
@@ -2003,11 +1859,7 @@ typedef enum {
 } mp_arg_flag_t;
 
 typedef union _mp_arg_val_t {
-    
-# 48 "../../py/runtime.h" 3 4
-   _Bool 
-# 48 "../../py/runtime.h"
-        u_bool;
+    _Bool u_bool;
     mp_int_t u_int;
     mp_obj_t u_obj;
     mp_rom_obj_t u_rom_obj;
@@ -2031,11 +1883,7 @@ void mp_handle_pending_tail(mp_uint_t atomic_state);
 # 78 "../../py/runtime.h"
 int mp_print_mp_int(const mp_print_t *print, mp_obj_t x, int base, int base_char, int flags, char fill, int width, int prec);
 
-void mp_arg_check_num(size_t n_args, size_t n_kw, size_t n_args_min, size_t n_args_max, 
-# 80 "../../py/runtime.h" 3 4
-                                                                                       _Bool 
-# 80 "../../py/runtime.h"
-                                                                                            takes_kw);
+void mp_arg_check_num(size_t n_args, size_t n_kw, size_t n_args_min, size_t n_args_max, _Bool takes_kw);
 void mp_arg_parse_all(size_t n_pos, const mp_obj_t *pos, mp_map_t *kws, size_t n_allowed, const mp_arg_t *allowed, mp_arg_val_t *out_vals);
 void mp_arg_parse_all_kw_array(size_t n_pos, size_t n_kw, const mp_obj_t *args, size_t n_allowed, const mp_arg_t *allowed, mp_arg_val_t *out_vals);
 __attribute__((noreturn)) void mp_arg_error_terse_mismatch(void);
@@ -2062,11 +1910,7 @@ mp_obj_t mp_call_function_1(mp_obj_t fun, mp_obj_t arg);
 mp_obj_t mp_call_function_2(mp_obj_t fun, mp_obj_t arg1, mp_obj_t arg2);
 mp_obj_t mp_call_function_n_kw(mp_obj_t fun, size_t n_args, size_t n_kw, const mp_obj_t *args);
 mp_obj_t mp_call_method_n_kw(size_t n_args, size_t n_kw, const mp_obj_t *args);
-mp_obj_t mp_call_method_n_kw_var(
-# 107 "../../py/runtime.h" 3 4
-                                _Bool 
-# 107 "../../py/runtime.h"
-                                     have_self, size_t n_args_n_kw, const mp_obj_t *args);
+mp_obj_t mp_call_method_n_kw_var(_Bool have_self, size_t n_args_n_kw, const mp_obj_t *args);
 mp_obj_t mp_call_method_self_n_kw(mp_obj_t meth, mp_obj_t self, size_t n_args, size_t n_kw, const mp_obj_t *args);
 
 
@@ -2086,11 +1930,7 @@ mp_obj_t mp_load_attr(mp_obj_t base, qstr attr);
 void mp_convert_member_lookup(mp_obj_t obj, const mp_obj_type_t *type, mp_obj_t member, mp_obj_t *dest);
 void mp_load_method(mp_obj_t base, qstr attr, mp_obj_t *dest);
 void mp_load_method_maybe(mp_obj_t base, qstr attr, mp_obj_t *dest);
-void mp_load_method_protected(mp_obj_t obj, qstr attr, mp_obj_t *dest, 
-# 135 "../../py/runtime.h" 3 4
-                                                                      _Bool 
-# 135 "../../py/runtime.h"
-                                                                           catch_all_exc);
+void mp_load_method_protected(mp_obj_t obj, qstr attr, mp_obj_t *dest, _Bool catch_all_exc);
 void mp_load_super_method(qstr attr, mp_obj_t *dest);
 void mp_store_attr(mp_obj_t base, qstr attr, mp_obj_t val);
 
@@ -2136,11 +1976,7 @@ typedef struct _mp_reader_t {
 
 void mp_reader_new_mem(mp_reader_t *reader, const byte *buf, size_t len, size_t free_len);
 void mp_reader_new_file(mp_reader_t *reader, const char *filename);
-void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, 
-# 44 "../../py/reader.h" 3 4
-                                                            _Bool 
-# 44 "../../py/reader.h"
-                                                                 close_fd);
+void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, _Bool close_fd);
 # 34 "../../py/lexer.h" 2
 
 
@@ -2303,36 +2139,192 @@ mp_lexer_t *mp_lexer_new_from_file(const char *filename);
 
 
 mp_obj_t mp_parse_num_integer(const char *restrict str, size_t len, int base, mp_lexer_t *lex);
-mp_obj_t mp_parse_num_decimal(const char *str, size_t len, 
-# 35 "../../py/parsenum.h" 3 4
-                                                          _Bool 
-# 35 "../../py/parsenum.h"
-                                                               allow_imag, 
-# 35 "../../py/parsenum.h" 3 4
-                                                                           _Bool 
-# 35 "../../py/parsenum.h"
-                                                                                force_complex, mp_lexer_t *lex);
+mp_obj_t mp_parse_num_decimal(const char *str, size_t len, _Bool allow_imag, _Bool force_complex, mp_lexer_t *lex);
 # 38 "../../py/parsenum.c" 2
 # 1 "../../py/smallint.h" 1
 # 64 "../../py/smallint.h"
-
-# 64 "../../py/smallint.h" 3 4
-_Bool 
-# 64 "../../py/smallint.h"
-    mp_small_int_mul_overflow(mp_int_t x, mp_int_t y);
+_Bool mp_small_int_mul_overflow(mp_int_t x, mp_int_t y);
 mp_int_t mp_small_int_modulo(mp_int_t dividend, mp_int_t divisor);
 mp_int_t mp_small_int_floor_divide(mp_int_t num, mp_int_t denom);
 # 39 "../../py/parsenum.c" 2
+# 1 "include/math.h" 1
+# 10 "include/math.h"
 
+# 86 "include/math.h"
+extern double atan (double);
+extern double cos (double);
+extern double sin (double);
+extern double tan (double);
+extern double tanh (double);
+extern double frexp (double, int *);
+extern double modf (double, double *);
+extern double ceil (double);
+extern double fabs (double);
+extern double floor (double);
+
+
+
+
+
+
+extern double acos (double);
+extern double asin (double);
+extern double atan2 (double, double);
+extern double cosh (double);
+extern double sinh (double);
+extern double exp (double);
+extern double ldexp (double, int);
+extern double log (double);
+extern double log10 (double);
+extern double pow (double, double);
+extern double sqrt (double);
+extern double fmod (double, double);
+# 150 "include/math.h"
+    typedef float float_t;
+    typedef double double_t;
+# 194 "include/math.h"
+extern int __isinff (float x);
+extern int __isinfd (double x);
+extern int __isnanf (float x);
+extern int __isnand (double x);
+extern int __fpclassifyf (float x);
+extern int __fpclassifyd (double x);
+extern int __signbitf (float x);
+extern int __signbitd (double x);
+# 290 "include/math.h"
+extern double infinity (void);
+extern double nan (const char *);
+extern double copysign (double, double);
+extern double logb (double);
+extern int ilogb (double);
+
+extern double asinh (double);
+extern double cbrt (double);
+extern double nextafter (double, double);
+extern double rint (double);
+extern double scalbn (double, int);
+
+extern double exp2 (double);
+extern double scalbln (double, long int);
+extern double tgamma (double);
+extern double nearbyint (double);
+extern long int lrint (double);
+extern long long int llrint (double);
+extern double round (double);
+extern long int lround (double);
+extern long long int llround (double);
+extern double trunc (double);
+extern double remquo (double, double, int *);
+extern double fdim (double, double);
+extern double fmax (double, double);
+extern double fmin (double, double);
+extern double fma (double, double, double);
+
+
+extern double log1p (double);
+extern double expm1 (double);
+
+
+
+extern double acosh (double);
+extern double atanh (double);
+extern double remainder (double, double);
+extern double gamma (double);
+extern double lgamma (double);
+extern double erf (double);
+extern double erfc (double);
+extern double log2 (double);
+
+
+
+
+
+extern double hypot (double, double);
+
+
+
+
+
+
+extern float atanf (float);
+extern float cosf (float);
+extern float sinf (float);
+extern float tanf (float);
+extern float tanhf (float);
+extern float frexpf (float, int *);
+extern float modff (float, float *);
+extern float ceilf (float);
+extern float fabsf (float);
+extern float floorf (float);
+
+
+extern float acosf (float);
+extern float asinf (float);
+extern float atan2f (float, float);
+extern float coshf (float);
+extern float sinhf (float);
+extern float expf (float);
+extern float ldexpf (float, int);
+extern float logf (float);
+extern float log10f (float);
+extern float powf (float, float);
+extern float sqrtf (float);
+extern float fmodf (float, float);
+
+
+
+
+extern float exp2f (float);
+extern float scalblnf (float, long int);
+extern float tgammaf (float);
+extern float nearbyintf (float);
+extern long int lrintf (float);
+extern long long int llrintf (float);
+extern float roundf (float);
+extern long int lroundf (float);
+extern long long int llroundf (float);
+extern float truncf (float);
+extern float remquof (float, float, int *);
+extern float fdimf (float, float);
+extern float fmaxf (float, float);
+extern float fminf (float, float);
+extern float fmaf (float, float, float);
+
+extern float infinityf (void);
+extern float nanf (const char *);
+extern float copysignf (float, float);
+extern float logbf (float);
+extern int ilogbf (float);
+
+extern float asinhf (float);
+extern float cbrtf (float);
+extern float nextafterf (float, float);
+extern float rintf (float);
+extern float scalbnf (float, int);
+extern float log1pf (float);
+extern float expm1f (float);
+
+
+extern float acoshf (float);
+extern float atanhf (float);
+extern float remainderf (float, float);
+extern float gammaf (float);
+extern float lgammaf (float);
+extern float erff (float);
+extern float erfcf (float);
+extern float log2f (float);
+extern float hypotf (float, float);
+# 490 "include/math.h"
+extern long double hypotl (long double, long double);
+extern long double sqrtl (long double);
+# 662 "include/math.h"
+
+# 40 "../../py/parsenum.c" 2
 
 static __attribute__((noreturn)) void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {
 
 
-    if (lex != 
-# 44 "../../py/parsenum.c" 3 4
-              ((void *)0)
-# 44 "../../py/parsenum.c"
-                  ) {
+    if (lex != ((void *)0)) {
         ((mp_obj_base_t*)((void*)exc))->type = &mp_type_SyntaxError;
         mp_obj_exception_add_traceback(exc, lex->source_name, lex->tok_line, MP_QSTR_NULL);
     }
@@ -2342,15 +2334,7 @@ static __attribute__((noreturn)) void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {
 mp_obj_t mp_parse_num_integer(const char *restrict str_, size_t len, int base, mp_lexer_t *lex) {
     const byte *restrict str = (const byte *)str_;
     const byte *restrict top = str + len;
-    
-# 54 "../../py/parsenum.c" 3 4
-   _Bool 
-# 54 "../../py/parsenum.c"
-        neg = 
-# 54 "../../py/parsenum.c" 3 4
-              0
-# 54 "../../py/parsenum.c"
-                   ;
+    _Bool neg = 0;
     mp_obj_t ret_val;
 
 
@@ -2369,11 +2353,7 @@ mp_obj_t mp_parse_num_integer(const char *restrict str_, size_t len, int base, m
             str++;
         } else if (*str == '-') {
             str++;
-            neg = 
-# 73 "../../py/parsenum.c" 3 4
-                 1
-# 73 "../../py/parsenum.c"
-                     ;
+            neg = 1;
         }
     }
 
@@ -2462,11 +2442,7 @@ value_error:
         mp_print_t print;
         vstr_init_print(&vstr, 50, &print);
         mp_printf(&print, "invalid syntax for integer with base %d: ", base);
-        mp_str_print_quoted(&print, str_val_start, top - str_val_start, 
-# 162 "../../py/parsenum.c" 3 4
-                                                                       1
-# 162 "../../py/parsenum.c"
-                                                                           );
+        mp_str_print_quoted(&print, str_val_start, top - str_val_start, 1);
         mp_obj_t exc = mp_obj_new_exception_arg1(&mp_type_ValueError,
             mp_obj_new_str_from_vstr(&mp_type_str, &vstr));
         raise_exc(exc, lex);
@@ -2481,36 +2457,12 @@ typedef enum {
 
 
 
-mp_obj_t mp_parse_num_decimal(const char *str, size_t len, 
-# 177 "../../py/parsenum.c" 3 4
-                                                          _Bool 
-# 177 "../../py/parsenum.c"
-                                                               allow_imag, 
-# 177 "../../py/parsenum.c" 3 4
-                                                                           _Bool 
-# 177 "../../py/parsenum.c"
-                                                                                force_complex, mp_lexer_t *lex) {
+mp_obj_t mp_parse_num_decimal(const char *str, size_t len, _Bool allow_imag, _Bool force_complex, mp_lexer_t *lex) {
 # 193 "../../py/parsenum.c"
     const char *top = str + len;
     mp_float_t dec_val = 0;
-    
-# 195 "../../py/parsenum.c" 3 4
-   _Bool 
-# 195 "../../py/parsenum.c"
-        dec_neg = 
-# 195 "../../py/parsenum.c" 3 4
-                  0
-# 195 "../../py/parsenum.c"
-                       ;
-    
-# 196 "../../py/parsenum.c" 3 4
-   _Bool 
-# 196 "../../py/parsenum.c"
-        imag = 
-# 196 "../../py/parsenum.c" 3 4
-               0
-# 196 "../../py/parsenum.c"
-                    ;
+    _Bool dec_neg = 0;
+    _Bool imag = 0;
 
 
     for (; str < top && unichar_isspace(*str); str++) {
@@ -2522,11 +2474,7 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
             str++;
         } else if (*str == '-') {
             str++;
-            dec_neg = 
-# 208 "../../py/parsenum.c" 3 4
-                     1
-# 208 "../../py/parsenum.c"
-                         ;
+            dec_neg = 1;
         }
     }
 
@@ -2538,7 +2486,7 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
         if (str + 2 < top && (str[1] | 0x20) == 'n' && (str[2] | 0x20) == 'f') {
 
             str += 3;
-            dec_val = 1e99999999999999999999999;
+            dec_val = (__builtin_inff());
             if (str + 4 < top && (str[0] | 0x20) == 'i' && (str[1] | 0x20) == 'n' && (str[2] | 0x20) == 'i' && (str[3] | 0x20) == 't' && (str[4] | 0x20) == 'y') {
 
                 str += 5;
@@ -2556,15 +2504,7 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
   casiopy_print("""f", 1);GetKey(&key);;
 
         parse_dec_in_t in = PARSE_DEC_IN_INTG;
-        
-# 238 "../../py/parsenum.c" 3 4
-       _Bool 
-# 238 "../../py/parsenum.c"
-            exp_neg = 
-# 238 "../../py/parsenum.c" 3 4
-                      0
-# 238 "../../py/parsenum.c"
-                           ;
+        _Bool exp_neg = 0;
         int exp_val = 0;
         int exp_extra = 0;
         while (str < top) {
@@ -2604,22 +2544,14 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len,
                         str++;
                     } else if (str[0] == '-') {
                         str++;
-                        exp_neg = 
-# 278 "../../py/parsenum.c" 3 4
-                                 1
-# 278 "../../py/parsenum.c"
-                                     ;
+                        exp_neg = 1;
                     }
                 }
                 if (str == top) {
                     goto value_error;
                 }
             } else if (allow_imag && (dig | 0x20) == 'j') {
-                imag = 
-# 285 "../../py/parsenum.c" 3 4
-                      1
-# 285 "../../py/parsenum.c"
-                          ;
+                imag = 1;
                 break;
             } else if (dig == '_') {
                 continue;

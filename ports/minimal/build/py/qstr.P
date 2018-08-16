@@ -1,88 +1,34 @@
-build/py/qstr.o: ../../py/qstr.c \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/assert.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/string.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/cdefs.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/string.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdio.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdarg.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/types.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_stdint.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_pthreadtypes.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/types.h \
- include/endian.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/wordsize.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_timespec.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/sysmacros.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/stdio.h \
- ../../py/mpstate.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h \
- ../../py/mpconfig.h mpconfigport.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h \
- ../../py/mpthread.h ../../py/misc.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h \
- ../../py/nlr.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/features.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/setjmp.h \
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/setjmp.h \
+build/py/qstr.o: ../../py/qstr.c include/assert.h include/_ansi.h \
+ include/newlib.h include/_newlib_version.h include/sys/config.h \
+ include/machine/ieeefp.h include/sys/features.h include/string.h \
+ include/sys/reent.h include/_ansi.h include/stddef.h \
+ include/sys/_types.h include/machine/_types.h \
+ include/machine/_default_types.h include/sys/lock.h include/sys/cdefs.h \
+ include/sys/string.h include/stdio.h include/stdarg.h \
+ include/sys/types.h include/sys/_stdint.h include/sys/_pthreadtypes.h \
+ include/machine/types.h include/endian.h include/bits/wordsize.h \
+ include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h \
+ ../../py/mpstate.h include/stdint.h include/stdint-gcc.h \
+ ../../py/mpconfig.h mpconfigport.h include/alloca.h ../../py/mpthread.h \
+ ../../py/misc.h include/stdbool.h ../../py/nlr.h include/limits.h \
+ include/features.h include/setjmp.h include/machine/setjmp.h \
  ../../py/obj.h ../../py/qstr.h build/genhdr/qstrdefs.generated.h \
  ../../py/mpprint.h ../../py/runtime0.h ../../py/objlist.h \
  ../../py/objexcept.h ../../py/objtuple.h ../../py/gc.h
-../../py/qstr.c :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/assert.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/newlib.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_newlib_version.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/config.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/ieeefp.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/features.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/string.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/reent.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/_ansi.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stddef.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/_default_types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/lock.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/cdefs.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/string.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdio.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdarg.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/types.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_stdint.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_pthreadtypes.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/types.h :
- include/endian.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/bits/wordsize.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/_timespec.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/sysmacros.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/sys/stdio.h :
- ../../py/mpstate.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdint-gcc.h :
- ../../py/mpconfig.h mpconfigport.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/alloca.h :
- ../../py/mpthread.h ../../py/misc.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/stdbool.h :
- ../../py/nlr.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/limits.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/features.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/setjmp.h :
- /home/Zezombye/opt/sh3eb-elf/lib/gcc/sh3eb-elf/7.3.0/include/machine/setjmp.h :
+../../py/qstr.c include/assert.h include/_ansi.h :
+ include/newlib.h include/_newlib_version.h include/sys/config.h :
+ include/machine/ieeefp.h include/sys/features.h include/string.h :
+ include/sys/reent.h include/_ansi.h include/stddef.h :
+ include/sys/_types.h include/machine/_types.h :
+ include/machine/_default_types.h include/sys/lock.h include/sys/cdefs.h :
+ include/sys/string.h include/stdio.h include/stdarg.h :
+ include/sys/types.h include/sys/_stdint.h include/sys/_pthreadtypes.h :
+ include/machine/types.h include/endian.h include/bits/wordsize.h :
+ include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h :
+ ../../py/mpstate.h include/stdint.h include/stdint-gcc.h :
+ ../../py/mpconfig.h mpconfigport.h include/alloca.h ../../py/mpthread.h :
+ ../../py/misc.h include/stdbool.h ../../py/nlr.h include/limits.h :
+ include/features.h include/setjmp.h include/machine/setjmp.h :
  ../../py/obj.h ../../py/qstr.h build/genhdr/qstrdefs.generated.h :
  ../../py/mpprint.h ../../py/runtime0.h ../../py/objlist.h :
  ../../py/objexcept.h ../../py/objtuple.h ../../py/gc.h :
