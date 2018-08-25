@@ -237,7 +237,7 @@ STATIC mp_obj_t mp_builtin_input(size_t n_args, const mp_obj_t *args) {
     }
     vstr_t line;
     vstr_init(&line, 16);
-    int ret = mp_hal_readline(&line, "");
+    int ret = mp_hal_readline(&line, "", NULL);
     if (ret == CHAR_CTRL_C) {
         nlr_raise(mp_obj_new_exception(&mp_type_KeyboardInterrupt));
     }

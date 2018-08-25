@@ -25,8 +25,8 @@ LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections
 else
 CROSS_COMPILE = sh3eb-elf-
 LD = sh3eb-elf-gcc
-CFLAGS = $(INC) -Wall -std=c11 -m3 -mb -mrenesas -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -I include -nostdlib -O2
-LDFLAGS = $(CFLAGS) -Wl,--gc-sections -nostdlib -T addin.ld crt0.s setjmp.s 
+CFLAGS = $(INC) -Wall -std=c11 -m3 -mb -mrenesas -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-char-subscripts -I include -nostdlib -O2
+LDFLAGS = $(CFLAGS) -Wl,--gc-sections -nostdlib crt0.s setjmp.s syscalls.s -T addin.ld
 #LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections -nostdlib -T addin.ld crt0.s casiopy.c nan.c copysign.c nearbyint.c fesetenv.c MonochromeLib.c -mrenesas -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -I include setjmp.s
 endif
 

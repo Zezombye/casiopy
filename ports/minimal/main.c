@@ -35,8 +35,12 @@ static char *stack_top;
 static char heap[2048];
 #endif
 
-int mpy_main() {
+int mpy_main(char *text) {
+	ML_clear_vram();
+	ML_display_vram();
     int stack_dummy;
+	extern int rx_index;
+	rx_index = 1;
     stack_top = (char*)&stack_dummy;
 
     #if MICROPY_ENABLE_GC
@@ -54,15 +58,14 @@ int mpy_main() {
     }
     #else
 	//Print("7");GetKey(&key);
-    pyexec_friendly_repl();
+    pyexec_friendly_repl(text);
     #endif
     //do_str("print('hello world!', list(x+1 for x in range(10)), end='eol\\n')", MP_PARSE_SINGLE_INPUT);
     //do_str("for i in range(10):\r\n  print(i)", MP_PARSE_FILE_INPUT);
     #else
-	casiopy_print("8", 1);
+	casiopy_print("azer", 4);
     pyexec_frozen_module("frozentest.py");
     #endif
-	casiopy_print("9", 1);GetKey(&key);
     mp_deinit();
     return 0;
 }

@@ -1,6 +1,6 @@
         .section .pretext
-        .global start
-start:
+        .global initialize
+initialize:
         sts.l   pr, @-r15
  
         ! set up TLB

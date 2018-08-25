@@ -44,7 +44,7 @@ extern int pyexec_system_exit;
 #define PYEXEC_SWITCH_MODE (0x200)
 
 int pyexec_raw_repl(void);
-int pyexec_friendly_repl(void);
+int pyexec_friendly_repl(char *text);
 int pyexec_file(const char *filename);
 int pyexec_frozen_module(const char *name);
 void pyexec_event_repl_init(void);

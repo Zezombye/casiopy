@@ -1,5 +1,5 @@
 OUTPUT_ARCH(sh3)
-ENTRY(start)
+ENTRY(initialize)
 MEMORY
 {
         rom  : o = 0x00300200, l = 512k
@@ -28,4 +28,7 @@ SECTIONS
                 *(.data);
                 _edata = . ;
         } > ram
+		/DISCARD/ : {
+			*(.eh_frame)
+		}
 }

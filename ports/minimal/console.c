@@ -7,6 +7,7 @@
 #include "font.h"
 #include "menu.h"
 #include "console.h"
+#include "tinyprintf.h"
 
 // ------------------------------------------------------------------------------------- 
 // Global variables
@@ -177,6 +178,8 @@ int KeyNormalCase(int iKey)
 // Get keyboard key
 unsigned int GetKeyb(void)
 {
+	
+  
   //Variables
   unsigned int iKey; //Keyboard code
     
@@ -197,6 +200,7 @@ unsigned int GetKeyb(void)
   }
         
   //Get keystroke
+  
   GetKey(&iKey);
   iKey=KeyMap(iKey,_iShift,_iAlpha);
         
@@ -267,7 +271,7 @@ char Key2Char(unsigned int iKey)
   char cChr=0;
   
   //Translation
-  if(iKey>=32 && iKey <=126)
+  if(iKey>='A' && iKey <= 'Z' || iKey >= 'a' && iKey <= 'z')
   {
     if(isalpha(iKey) && _iACase==ALPHALOWER) 
       cChr=tolower(iKey);
@@ -280,8 +284,10 @@ char Key2Char(unsigned int iKey)
   else if(iKey==KEY_CHAR_DIV)    cChr='/';
   else if(iKey==KEY_CHAR_PMINUS) cChr='_';
   else if(iKey==KEY_CHAR_POW)    cChr='^';
-  else if(iKey==KEY_CTRL_EXE)    cChr=10;
-  else if(iKey==KEY_CHAR_CR)     cChr=10;
+  else if(iKey==KEY_CTRL_EXE)    cChr='\n';
+  else if(iKey==KEY_CHAR_CR)     cChr='\n';
+  else if(iKey > 127) cChr = '\0';
+  else cChr = iKey;
   
   //Return character
   return(cChr);

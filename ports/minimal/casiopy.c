@@ -1,13 +1,16 @@
+
 #include <fxlib.h>
-#include <keybios.h>
-#include <math.h>
-#include <string.h>
+#include "tinyprintf.h"
 
 unsigned int key;
-int posX = 0;
-int posY = 0;
+int shellPosX = 0;
+int shellPosY = 0;
 
-int main(void)
+char shiftPressed = 1;
+char alphaPressed = 0;
+char alphaLock = 0;
+
+int main(int isappli, unsigned short optnum)
 {
 	/*char str[50] = {0};
 	tfp_sprintf(str, "abc");
@@ -21,14 +24,21 @@ int main(void)
 	//Print((unsigned char *)"gcc add-in");
 	while(1) GetKey(&key);
 	return 1;*/
+	//getkey();
+	//mpy_main();
+	edit_main();
 	
-	char str[20];
-	tfp_sprintf(str, "test");
-
-	Bdisp_AllClr_DDVRAM();
-	PrintXY(2, 1, (const unsigned char *)str, 0);
-	GetKey(&key);
 	mpy_main();
+	/*char str[20];
+	tfp_sprintf(str, "test");
+	
+	Bdisp_AllClr_DDVRAM();
+	locate(1,1);
+	Print(str);
+	GetKey(&key);
+	volatile int test = 7;
+	locate(1,pow(test, 1.0));
+	Print("test");*/
 	
 	unsigned int key;
 	while(1) GetKey(&key);
@@ -36,9 +46,38 @@ int main(void)
 	return 1;
 }
 
+void updateModifiers(int key) {
 
-//Wait for input, then returns a string
-void waitForKey(char* str) {
+	/*if (key == KEY_CTRL_SHIFT) {
+		shiftPressed = 1;
+		alphaLock = 0;
+	} else if (key == KEY_CTRL_ALPHA) {
+		alphaPressed = 0;
+		if (shiftPressed) {
+			alphaLock = 1;
+		}
+	}*/
+
+}
+
+//Wait for input, then returns a string or a control key
+int waitForKey(char* str) {
+	
+	//See https://bible.planet-casio.com/simlo/chm/v20/fx_legacy_keyboard.htm for the syscall
+	/*int column, row;
+	int type_of_waiting = 0;
+	int timeout_period = 0;
+	int key;
+	int menu = 0;
+	locate(1,1); Print("azer");
+	ML_display_vram();
+	//GetKeyWait_syscall(&column, &row, type_of_waiting, timeout_period, menu, &key);
+	key = GetKeyWait_syscall();
+	locate(1,1); Print("reza");
+	ML_display_vram();*/
+	
+	unsigned int key;
+	
 	GetKey(&key);
 	
 	switch(key) {
@@ -104,12 +143,15 @@ void waitForKey(char* str) {
 		case KEY_CHAR_Z: strcpy(str,"z"); break;
 		case KEY_CHAR_SPACE: strcpy(str," "); break;
 		case KEY_CHAR_DQUATE: strcpy(str,"\""); break;
+		
+		case KEY_CTRL_EXIT: strcpy(str, ""); return KEY_CTRL_EXIT; break;
 	}
+	return 0;
 	
 }
 
 // Font 3x7 data
-int font[128]={
+static const int font[128]={
  2022255, //Character 000 [NUL]
  2022255, //Character 001 [SOH]
  2022255, //Character 002 [STX]
@@ -238,8 +280,9 @@ int font[128]={
 108696, //Character 125 [}]
 20032,  //Character 126 [~]
 0, //Character 127 []
-
 };
+
+
 
 void casiopy_print(char* str, unsigned int len) {
 	char tempstr[2] = {0};
@@ -249,24 +292,24 @@ void casiopy_print(char* str, unsigned int len) {
 	
 	for (int i = 0; i < len; i++) {
 		tempstr[0] = str[i];
-		if (posX > 125) {
-			posX = 0;
-			posY += charHeight;
+		if (shellPosX > 125) {
+			shellPosX = 0;
+			shellPosY += charHeight;
 		}
-		if (posY > 62) {
+		if (shellPosY > 62) {
 			//Shift VRAM up 7 pixels
 			char* vram_start = ML_vram_adress();
 			memmove(vram_start, vram_start+7*128/8, (64-7)*128/8);
 			memset(vram_start+(64-7)*128/8, 0, 7*128/8);
-			posY = 56;
+			shellPosY = 56;
 		}
 		if (str[i] == '\r' || str[i] == 0x08) {
 			continue;
 		} else if (str[i] == '\n') {
-			posX = 0;
-			posY += charHeight;
+			shellPosX = 0;
+			shellPosY += charHeight;
 		} else {
-			//locate(posX, posY);
+			//locate(shellPosX, shellPosY);
 			//Print(tempstr);
 			
 			unsigned long j = 1 << ((charHeight*charLength)%32)-1; //initializes a long for bit checking. The long is equal to 0b10000.. with number of zeroes being the maximum length of the character, minus 1 because there's already a 1.
@@ -275,7 +318,7 @@ void casiopy_print(char* str, unsigned int len) {
 				
 				if (font[str[i]] & j) { //checks if the bit that is a 1 in the j is also a 1 in the character
 				
-					ML_pixel(posX+k%(charLength), posY+k/charLength, 1); //if so, locates the pixel at the coordinates, using modulo and division to calculate the coordinates relative to the top left of the character
+					ML_pixel(shellPosX+k%(charLength), shellPosY+k/charLength, 1); //if so, locates the pixel at the coordinates, using modulo and division to calculate the coordinates relative to the top left of the character
 				}
 				
 				if (j != 1)
@@ -284,7 +327,7 @@ void casiopy_print(char* str, unsigned int len) {
 					j = 2147483648;
 				
 			}
-			posX += charLength+1;
+			shellPosX += charLength+1;
 		}
 		
 		//Sleep(50);

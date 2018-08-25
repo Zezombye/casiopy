@@ -8,6 +8,7 @@
 #include "menu.h"
 #include "font.h"
 #include "console.h"
+#include "tinyprintf.h"
 
 // ------------------------------------------------------------------------------------- 
 // Global variables
@@ -54,23 +55,48 @@ void MenuInitialize(void)
   MenuClear();
   
   //Main menu bar
-  MenuSetNode(MENUBARMAIN,0,"FILE",-1          ,MENUBARFILE,0,NULL);
+  //MenuSetNode(MENUBARMAIN,0,"FILE",-1          ,MENUBARFILE,0,NULL);
   
-  //MenuSetNode(MENUBARFILE,0,"RUN",NODEEXPLEXE,-1         ,0,NULL);
+  MenuSetNode(MENUBARMAIN,0,"EXE",NODEEXPLEXE,-1         ,0,NULL);
   MenuSetNode(MENUBARMAIN,1,"EDIT",-1          ,MENUBAREDIT,0,NULL);
   MenuSetNode(MENUBARMAIN,2,"GOTO",-1          ,MENUBARGOTO,0,NULL);
-  MenuSetNode(MENUBARMAIN,3,"PRGM",-1          ,MENUBARPRGM,0,NULL);
+  MenuSetNode(MENUBARMAIN,3,"PRGM",-1          ,MENUBARPRGM1,0,NULL);
   MenuSetNode(MENUBARMAIN,4,"A<>a",NODEALPHA   ,-1         ,0,NULL);
   MenuSetNode(MENUBARMAIN,5,"CHAR",NODECHARSEL ,-1         ,0,NULL);
   
   //Prgm menu bar
-  MenuSetPrgmNode(MENUBARPRGM,0,"if","if", NODEPRGM1);
-  MenuSetPrgmNode(MENUBARPRGM,1,"else","else", NODEPRGM2);
-  MenuSetPrgmNode(MENUBARPRGM,2,"for","for", NODEPRGM3);
-  MenuSetPrgmNode(MENUBARPRGM,3,"prnt","print(", NODEPRGM4);
-  MenuSetPrgmNode(MENUBARPRGM,4,"inpt","input(", NODEPRGM5);
-  MenuSetNode(MENUBARPRGM,5,"    ",-1          ,MENUBAREDI2,1,NextButton);
+  //Control characters: 
+  //\a = stop moving cursor (to put characters after the cursor)
+  //\b = add newline + tab
+  //\f = add newline and remove tab
+  MenuSetPrgmNode(MENUBARPRGM1,0,"if","if \a:\b", NODEPRGM1);
+  MenuSetPrgmNode(MENUBARPRGM1,1,"else","else:\b", NODEPRGM2);
+  MenuSetPrgmNode(MENUBARPRGM1,2,"i/e","if \a:\b\felse:\b", NODEPRGM3);
+  MenuSetPrgmNode(MENUBARPRGM1,3,"prnt","print(\a)", NODEPRGM4);
+  MenuSetPrgmNode(MENUBARPRGM1,4,"inpt","input(\a)", NODEPRGM5);
+  MenuSetNode(MENUBARPRGM1,5,"    ",-1          ,MENUBARPRGM2,1,NextButton);
   
+  //Prgm2 menu bar
+  MenuSetPrgmNode(MENUBARPRGM2,0,"for","for \a:\b", NODEPRGM6);
+  MenuSetPrgmNode(MENUBARPRGM2,1,"f/rn","for \a in range(,):\b", NODEPRGM7);
+  MenuSetPrgmNode(MENUBARPRGM2,2,"whle","while \a:\b", NODEPRGM8);
+  MenuSetPrgmNode(MENUBARPRGM2,3,"ctnu","continue", NODEPRGM9);
+  MenuSetPrgmNode(MENUBARPRGM2,4,"brk","break", NODEPRGM10);
+  MenuSetNode(MENUBARPRGM2,5,"    ",-1          ,MENUBARPRGM3,1,NextButton);
+  
+  MenuSetPrgmNode(MENUBARPRGM3,0,"def","def \a():\b", NODEPRGM11);
+  MenuSetPrgmNode(MENUBARPRGM3,1,"rtrn","return ", NODEPRGM12);
+  MenuSetPrgmNode(MENUBARPRGM3,2,"iprt","import ", NODEPRGM13);
+  MenuSetPrgmNode(MENUBARPRGM3,3,"f/i*","from \a import *", NODEPRGM14);
+  MenuSetPrgmNode(MENUBARPRGM3,4,"#","#", NODEPRGM15);
+  MenuSetNode(MENUBARPRGM3,5,"    ",-1          ,MENUBARPRGM4,1,NextButton);
+  
+  MenuSetPrgmNode(MENUBARPRGM4,0,"and"," and ", NODEPRGM16);
+  MenuSetPrgmNode(MENUBARPRGM4,1,"or"," or ", NODEPRGM17);
+  MenuSetPrgmNode(MENUBARPRGM4,2,"not","not ", NODEPRGM18);
+  MenuSetPrgmNode(MENUBARPRGM4,3,"flse","False", NODEPRGM19);
+  MenuSetPrgmNode(MENUBARPRGM4,4,"true","True", NODEPRGM20);
+  MenuSetNode(MENUBARPRGM4,5,"    ",-1          ,MENUBARPRGM1,1,NextButton);
   
   //File menu bar
   MenuSetNode(MENUBARFILE,0,"SAVE",NODEFILESAVE,-1         ,0,NULL);
@@ -270,6 +296,7 @@ void MenuSetPrgmNode(char cMBar, char cNode, char *sName, char* outputText, int 
   _sMNode[cMBar][cNode].cSBar = -1;
   _sMNode[cMBar][cNode].cInv  = 0;
   _sMNode[cMBar][cNode].pFunc = NULL;
+  _sMNode[cMBar][cNode].outputText = malloc(strlen(outputText));
   strcpy(_sMNode[cMBar][cNode].outputText,outputText);
   _sMNode[cMBar][cNode].cUsed = 1;
 }
@@ -376,8 +403,12 @@ int MenuFunctionKey(unsigned int iKey)
   //Set new bar for parent nodes
   else
   {
-    _cPBar[_cBarLevel]=_cMBar;
-    _cBarLevel++;
+	//If the button has a function, assume it's a "next" button, and therefore don't increase level
+	if (_sMNode[_cMBar][cNode].pFunc == NULL) {
+		_cPBar[_cBarLevel]=_cMBar;
+		_cBarLevel++;
+	}
+
     _cMBar=_sMNode[_cMBar][cNode].cSBar;
     MenuPrintBar(_cMBar);
     return(NODENOFUNCT);

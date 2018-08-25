@@ -38,7 +38,7 @@
 #define CHAR_CTRL_U (21)
 
 void readline_init0(void);
-int readline(vstr_t *line, const char *prompt);
+int readline(vstr_t *line, const char *prompt, char *text);
 void readline_push_history(const char *line);
 
 void readline_init(vstr_t *line, const char *prompt);

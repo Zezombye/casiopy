@@ -92,28 +92,6 @@ void Sleep(int millisecond);
 void SetQuitHandler(void (*callback)(void));
 int INIT_ADDIN_APPLICATION(int isAppli, unsigned short OptionNum);
 
-// Standard declarations
-/*
-#ifndef _SIZE_T
-#define _SIZE_T
-typedef int size_t;
-#endif // _SIZE_T
-
-void *malloc(size_t size);
-void *calloc(size_t num, size_t size);
-void *realloc(void *ptr, size_t size);
-void free(const void *pointer);
-
-int sprintf(char *str, const char *format, ...);
-int vsprintf(char *str, const char *format, __builtin_va_list args);
-
-void *memcpy(void *dest, const void *src, size_t len);
-void *memset(void *pointer, int value, size_t len);
-
-#ifndef NULL
-	#define NULL ((void *)0)
-#endif
-*/
 
 #endif
 

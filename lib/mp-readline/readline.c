@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <keybios.h>
 
 #include "py/mpstate.h"
 #include "py/repl.h"
@@ -82,7 +83,7 @@ STATIC void mp_hal_move_cursor_back(uint pos) {
 
 STATIC void mp_hal_erase_line_from_cursor(uint n_chars_to_erase) {
     (void)n_chars_to_erase;
-    mp_hal_stdout_tx_strn("\x1b[K", 3);
+    mp_hal_stdout_tx_strn("\x1b", 1);
 }
 #endif
 
@@ -419,13 +420,44 @@ void readline_init(vstr_t *line, const char *prompt) {
     #endif
 }
 
-int readline(vstr_t *line, const char *prompt) {
+int readline_index = 0;
+
+int readline(vstr_t *line, const char *prompt, char *text) {
     readline_init(line, prompt);
+	
+	if (text != NULL) {
+		for (;text[readline_index] != 0;) {
+			//str[0] = text[i];
+			//casiopy_print(str, 1);
+			int r;
+			if (text[readline_index] != 0x0C) {
+				if (text[readline_index] == '\n') {
+					r = readline_process_char('\r');
+				} else {
+					r = readline_process_char(text[readline_index]);
+				}
+				readline_index++;
+			} else {
+				/*casiopy_print("azer");
+				char str[10];
+				waitForKey(str);*/
+				r = readline_process_char('\r');
+				readline_index++;
+			}
+			if (r >= 0) {
+				return r;
+			}
+		}
+	}
+
+	
     for (;;) {
 		//casiopy_print("b", 1);
 		char str[10] = {0};
 		
-		waitForKey(str);
+		if (waitForKey(str) == KEY_CTRL_EXIT) {
+			return -KEY_CTRL_EXIT;
+		}
 		
 		for (int i = 0; str[i]; i++) {
 			

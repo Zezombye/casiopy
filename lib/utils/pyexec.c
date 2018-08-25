@@ -28,6 +28,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <keybios.h>
 
 #include "py/compile.h"
 #include "py/runtime.h"
@@ -369,10 +370,16 @@ raw_repl_reset:
     }
 }
 
-int pyexec_friendly_repl(void) {
+int pyexec_friendly_repl(char *text) {
 	unsigned int key;
     vstr_t line;
     vstr_init(&line, 32);
+	
+	/*for (int i = 0; text[i] != 0x0C; i++) {
+		//str[0] = text[i];
+		//casiopy_print(str, 1);
+		readline_process_char(text[i]);
+	}*/
 
 #if defined(USE_HOST_MODE) && MICROPY_HW_HAS_LCD
     // in host mode, we enable the LCD for the repl
@@ -425,7 +432,7 @@ friendly_repl_reset:
         #endif
 
         vstr_reset(&line);
-        int ret = readline(&line, ">>> ");
+        int ret = readline(&line, ">>> ", text);
         mp_parse_input_kind_t parse_input_kind = MP_PARSE_SINGLE_INPUT;
 
         if (ret == CHAR_CTRL_A) {
@@ -473,13 +480,15 @@ friendly_repl_reset:
                 }
             }
             parse_input_kind = MP_PARSE_FILE_INPUT;
+        } else if (ret == -KEY_CTRL_EXIT) {
+			return;
         } else if (vstr_len(&line) == 0) {
             continue;
-        } else {
+		} else {
             // got a line with non-zero length, see if it needs continuing
             while (mp_repl_continue_with_input(vstr_null_terminated_str(&line))) {
                 vstr_add_byte(&line, '\n');
-                ret = readline(&line, "... ");
+                ret = readline(&line, "... ", text);
                 if (ret == CHAR_CTRL_C) {
                     // cancel everything
                     mp_hal_stdout_tx_str("\r\n");

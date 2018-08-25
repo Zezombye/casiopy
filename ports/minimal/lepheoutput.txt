@@ -1,0 +1,25 @@
+
+
+mkdir -p build
+
+
+
+
+
+sh3eb-elf-as -c crt0.s -o build/crt0.s.o
+
+sh3eb-elf-gcc -c main.c -o build/main.c.o  -m3 -mb -mrenesas -std=c11 -Wall -Wextra -I include -O2
+
+sh3eb-elf-gcc -c tinyprintf.c -o build/tinyprintf.c.o  -m3 -mb -mrenesas -std=c11 -Wall -Wextra -I include -O2
+
+
+
+
+sh3eb-elf-gcc build/crt0.s.o build/main.c.o build/tinyprintf.c.o -o build/tests.elf -m3 -mb -mrenesas -std=c11 -Wall -Wextra -I include -O2 -nostdlib -L . -lfx -T addin.ld -lgcc
+
+
+
+
+sh3eb-elf-objcopy -O binary -R .bss -R .comment build/tests.elf build/tests.bin
+
+g1a-wrapper build/tests.bin -o tests.g1a -i icon.bmp
