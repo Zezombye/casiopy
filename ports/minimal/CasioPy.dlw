@@ -9,15 +9,15 @@ Height=4845
 Width=5580
 State=0
 Flags=00000020
-Setting=89:2:CasioPy.c
+Setting=85:2:CasioPy.c
 OptionA=0
 
 [_2]
 Type=1
 Order=3
-Top=-15
+Top=0
 Left=7860
-Height=4785
+Height=4830
 Width=5610
 State=0
 Flags=00000001

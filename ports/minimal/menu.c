@@ -9,6 +9,7 @@
 #include "font.h"
 #include "console.h"
 #include "tinyprintf.h"
+#include "MonochromeLib.h"
 
 // ------------------------------------------------------------------------------------- 
 // Global variables
@@ -60,43 +61,60 @@ void MenuInitialize(void)
   MenuSetNode(MENUBARMAIN,0,"EXE",NODEEXPLEXE,-1         ,0,NULL);
   MenuSetNode(MENUBARMAIN,1,"EDIT",-1          ,MENUBAREDIT,0,NULL);
   MenuSetNode(MENUBARMAIN,2,"GOTO",-1          ,MENUBARGOTO,0,NULL);
-  MenuSetNode(MENUBARMAIN,3,"PRGM",-1          ,MENUBARPRGM1,0,NULL);
+  MenuSetNode(MENUBARMAIN,3,"PRGM",-1          ,MENUBARPRGM,0,NULL);
   MenuSetNode(MENUBARMAIN,4,"A<>a",NODEALPHA   ,-1         ,0,NULL);
   MenuSetNode(MENUBARMAIN,5,"CHAR",NODECHARSEL ,-1         ,0,NULL);
   
-  //Prgm menu bar
-  //Control characters: 
-  //\a = stop moving cursor (to put characters after the cursor)
-  //\b = add newline + tab
-  //\f = add newline and remove tab
-  MenuSetPrgmNode(MENUBARPRGM1,0,"if","if \a:\b", NODEPRGM1);
-  MenuSetPrgmNode(MENUBARPRGM1,1,"else","else:\b", NODEPRGM2);
-  MenuSetPrgmNode(MENUBARPRGM1,2,"i/e","if \a:\b\felse:\b", NODEPRGM3);
-  MenuSetPrgmNode(MENUBARPRGM1,3,"prnt","print(\a)", NODEPRGM4);
-  MenuSetPrgmNode(MENUBARPRGM1,4,"inpt","input(\a)", NODEPRGM5);
-  MenuSetNode(MENUBARPRGM1,5,"    ",-1          ,MENUBARPRGM2,1,NextButton);
   
-  //Prgm2 menu bar
-  MenuSetPrgmNode(MENUBARPRGM2,0,"for","for \a:\b", NODEPRGM6);
-  MenuSetPrgmNode(MENUBARPRGM2,1,"f/rn","for \a in range(,):\b", NODEPRGM7);
-  MenuSetPrgmNode(MENUBARPRGM2,2,"whle","while \a:\b", NODEPRGM8);
-  MenuSetPrgmNode(MENUBARPRGM2,3,"ctnu","continue", NODEPRGM9);
-  MenuSetPrgmNode(MENUBARPRGM2,4,"brk","break", NODEPRGM10);
-  MenuSetNode(MENUBARPRGM2,5,"    ",-1          ,MENUBARPRGM3,1,NextButton);
+  MenuSetNode(MENUBARPRGM, 0, "STMT", -1, MENUBARPRGM0, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 1, "LOOP", -1, MENUBARPRGM1, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 2, "I/O", -1, MENUBARPRGM2, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 3, "REL", -1, MENUBARPRGM3, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 4, "BOOL", -1, MENUBARPRGM4, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 5, "EXPT", -1, MENUBARPRGM5, 0, NULL);
   
-  MenuSetPrgmNode(MENUBARPRGM3,0,"def","def \a():\b", NODEPRGM11);
-  MenuSetPrgmNode(MENUBARPRGM3,1,"rtrn","return ", NODEPRGM12);
-  MenuSetPrgmNode(MENUBARPRGM3,2,"iprt","import ", NODEPRGM13);
-  MenuSetPrgmNode(MENUBARPRGM3,3,"f/i*","from \a import *", NODEPRGM14);
-  MenuSetPrgmNode(MENUBARPRGM3,4,"#","#", NODEPRGM15);
-  MenuSetNode(MENUBARPRGM3,5,"    ",-1          ,MENUBARPRGM4,1,NextButton);
+  MenuSetPrgmNode(MENUBARPRGM0,0,"if","if \a:\n", NODEPRGM0);
+  MenuSetPrgmNode(MENUBARPRGM0,1,"else","else:\n", NODEPRGM1);
+  MenuSetPrgmNode(MENUBARPRGM0,2,"i/e","if \a:\n\n\belse:\n", NODEPRGM2);
+  MenuSetPrgmNode(MENUBARPRGM0,3,"elif","elif:\n", NODEPRGM3);
+  MenuSetPrgmNode(MENUBARPRGM0,4,"def","def \a():\n", NODEPRGM4);
+  MenuSetPrgmNode(MENUBARPRGM0,5,"rtrn","return ", NODEPRGM5);
   
-  MenuSetPrgmNode(MENUBARPRGM4,0,"and"," and ", NODEPRGM16);
-  MenuSetPrgmNode(MENUBARPRGM4,1,"or"," or ", NODEPRGM17);
-  MenuSetPrgmNode(MENUBARPRGM4,2,"not","not ", NODEPRGM18);
-  MenuSetPrgmNode(MENUBARPRGM4,3,"flse","False", NODEPRGM19);
-  MenuSetPrgmNode(MENUBARPRGM4,4,"true","True", NODEPRGM20);
-  MenuSetNode(MENUBARPRGM4,5,"    ",-1          ,MENUBARPRGM1,1,NextButton);
+  MenuSetPrgmNode(MENUBARPRGM1,0,"for","for \a:\n", NODEPRGM6);
+  MenuSetPrgmNode(MENUBARPRGM1,1,"f/in","for \a in :\n", NODEPRGM7);
+  MenuSetPrgmNode(MENUBARPRGM1,2,"f/rn","for \a in range():\n", NODEPRGM8);
+  MenuSetPrgmNode(MENUBARPRGM1,3,"whle","while \a:\n", NODEPRGM9);
+  MenuSetPrgmNode(MENUBARPRGM1,4,"brk","break", NODEPRGM10);
+  MenuSetPrgmNode(MENUBARPRGM1,5,"ctnu","continue", NODEPRGM11);
+    
+  MenuSetPrgmNode(MENUBARPRGM2,0,"prnt","print(\a)", NODEPRGM12);
+  MenuSetPrgmNode(MENUBARPRGM2,1,"inpt","input(\a)", NODEPRGM13);
+  MenuSetPrgmNode(MENUBARPRGM2,2,"iprt","import ", NODEPRGM14);
+  MenuSetPrgmNode(MENUBARPRGM2,3,"f/i*","from \a import *", NODEPRGM15);
+  MenuSetPrgmNode(MENUBARPRGM2,4,"math","import math", NODEPRGM16);
+  MenuSetPrgmNode(MENUBARPRGM2,5,"rand","import random", NODEPRGM17);
+  
+  MenuSetPrgmNode(MENUBARPRGM3,0,"==","==", NODEPRGM18);
+  MenuSetPrgmNode(MENUBARPRGM3,1,"!=","!=", NODEPRGM19);
+  MenuSetPrgmNode(MENUBARPRGM3,2,">=",">=", NODEPRGM20);
+  MenuSetPrgmNode(MENUBARPRGM3,3,"<=","<=", NODEPRGM21);
+  MenuSetPrgmNode(MENUBARPRGM3,4,">",">", NODEPRGM22);
+  MenuSetPrgmNode(MENUBARPRGM3,5,"<","<", NODEPRGM23);
+  
+  MenuSetPrgmNode(MENUBARPRGM4,0,"and"," and ", NODEPRGM24);
+  MenuSetPrgmNode(MENUBARPRGM4,1,"or"," or ", NODEPRGM25);
+  MenuSetPrgmNode(MENUBARPRGM4,2,"not","not ", NODEPRGM26);
+  MenuSetPrgmNode(MENUBARPRGM4,3,"flse","False", NODEPRGM27);
+  MenuSetPrgmNode(MENUBARPRGM4,4,"true","True", NODEPRGM28);
+  MenuSetPrgmNode(MENUBARPRGM4,5,"none","None", NODEPRGM29);
+  
+  MenuSetPrgmNode(MENUBARPRGM5,0,"try","try:\n", NODEPRGM30);
+  MenuSetPrgmNode(MENUBARPRGM5,1,"expt","except \a:\n", NODEPRGM31);
+  MenuSetPrgmNode(MENUBARPRGM5,2,"t/ex","try:\n\a\n\bexcept :\n", NODEPRGM31);
+  MenuSetPrgmNode(MENUBARPRGM5,3,"fnly","finally:\n", NODEPRGM33);
+  MenuSetPrgmNode(MENUBARPRGM5,4,"t/ef","try:\n\a\n\bexcept :\n\n\bfinally:\n", NODEPRGM34);
+  MenuSetPrgmNode(MENUBARPRGM5,5,"rse","raise ", NODEPRGM35);
+  
   
   //File menu bar
   MenuSetNode(MENUBARFILE,0,"SAVE",NODEFILESAVE,-1         ,0,NULL);
@@ -420,9 +438,9 @@ int MenuFunctionKey(unsigned int iKey)
 // Menu Print Bar
 void MenuPrintBar(char cBar)
 {
+  unsigned int key;
   //Variables
   char i;
-  
   //Print menu nodes
   for(i=0;i<MAXMENUNODE;i++){
     MenuPrintNode(cBar,i);
@@ -433,6 +451,7 @@ void MenuPrintBar(char cBar)
 // Menu Print Node
 void MenuPrintNode(char cBar,char cNode)
 {
+  unsigned int key;
   //Clear node space
   Bdisp_ClearLineVRAM(
   cNode*(5*4+1)+2,56+0,(cNode+1)*(5*4+1)-1,56+0);
@@ -457,16 +476,19 @@ void MenuPrintNode(char cBar,char cNode)
     //Final nodes
     if(_sMNode[cBar][cNode].cSBar==-1 || 
       (_sMNode[cBar][cNode].cSBar!=-1 && _sMNode[cBar][cNode].cInv==1)){
+		  
+	  
       SetFont(FONTS);
       Bdisp_DrawLineVRAM(
       cNode*(5*4+1)+2,56+0,(cNode+1)*(5*4+1)-1-0,56+0);
       Bdisp_DrawLineVRAM(
       cNode*(5*4+1)+2,56+0,cNode*(5*4+1)+2,56+7);
       SetColor(COLNOR);
-      if(_sMNode[cBar][cNode].pFunc!=NULL)
+      if(_sMNode[cBar][cNode].pFunc!=NULL) {
         (*_sMNode[cBar][cNode].pFunc)(2+cNode*(5*4+1)+2,58);
-      else
+      } else {
         PrintStrXY(2+cNode*(5*4+1)+2,58,_sMNode[cBar][cNode].sName);
+	  }
     }
     
     //Parent nodes

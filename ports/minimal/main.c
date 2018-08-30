@@ -8,10 +8,14 @@
 #include "py/gc.h"
 #include "py/mperrno.h"
 #include "lib/utils/pyexec.h"
+#include "MonochromeLib.h"
 
 
 
 unsigned int key;
+extern int shellPosX;
+extern int shellPosY;
+extern int readline_index;
 
 #if MICROPY_ENABLE_COMPILER
 void do_str(const char *src, mp_parse_input_kind_t input_kind) {
@@ -38,6 +42,9 @@ static char heap[2048];
 int mpy_main(char *text) {
 	ML_clear_vram();
 	ML_display_vram();
+	shellPosX = 0;
+	shellPosY = 0;
+	readline_index = 0;
     int stack_dummy;
 	extern int rx_index;
 	rx_index = 1;

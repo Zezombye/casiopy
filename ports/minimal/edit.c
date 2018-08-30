@@ -15,6 +15,7 @@
 #include "menu.h"
 #include "tinyprintf.h"
 #include "i18n.h"
+#include "MonochromeLib.h"
 
 // ----------------------------------------------------------------
 // Constants
@@ -406,6 +407,9 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
     char sString[16]="";         //Search string
     char *sText;                 //Text buffer
     char *sClip;                 //Clip buffer
+	
+    //Get Key
+	char strKey[50] = {0};
     
     //Application mode
     _iAppMode=EDITOR;
@@ -476,8 +480,8 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
       strcpy(_sFile,sFile);
       memcpy(&_sConfig,sConfig,sizeof(struct Config));      
       
-      //Get Key
-      iKey=GetKeyb();
+	  
+      iKey=waitForKey(strKey);
       
       //Get menu commands
       if(iKey==KEY_CTRL_F1 || iKey==KEY_CTRL_F2
@@ -485,55 +489,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
       || iKey==KEY_CTRL_F5 || iKey==KEY_CTRL_F6)
         iKey=-MenuFunctionKey(iKey);
       
-	  if (-iKey >= NODEPRGM1) {
-		
-		
-		//int mBar = MENUBARPRGM2;
-		int node = (-iKey - NODEPRGM1)%5;
-		
-		int mBar = MENUBARPRGM1 + (-iKey-NODEPRGM1)/5;
-		int j;
-		extern struct MNode _sMNode[MAXMENUBARS][MAXMENUNODE];
-		int charsAfterCursorCounter = 0;
-		char countCharsAfterCursor = 0;
-		
-		for (j = 0; _sMNode[mBar][node].outputText[j]; j++) {
-			cChr = _sMNode[mBar][node].outputText[j];
-			
-			
-			if (cChr == '\a') {
-				countCharsAfterCursor = 1;
-				continue;
-			} else if (cChr == '\b') {
-				int nbIndents = tabIndentForCurrentLine + 1;
-				insertChar('\n');
-				for (int k = 0; k < nbIndents*2; k++) {
-					insertChar(' ');
-				}
-				charsAfterCursorCounter += 1+nbIndents*2;
-			} else if (cChr == '\f') {
-				int nbIndents = tabIndentForCurrentLine -1;
-				insertChar('\n');
-				for (int k = 0; k < nbIndents*2; k++) {
-					insertChar(' ');
-				}
-				charsAfterCursorCounter += 1+nbIndents*2;
-			} else {
-				if (countCharsAfterCursor) {
-					charsAfterCursorCounter++;
-				}
-				insertChar(cChr);
-			}
-			
-			
-		}
-		
-		for (j = 0; j < charsAfterCursorCounter; j++) {
-			MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-		}
-		
-		
-	  }
+
 	  
       //Process keys
       switch(iKey)
@@ -1087,31 +1043,155 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
         
 		
 		
-        //Print rest of characters
+        //Print characters
         default: 
 			/*Do not insert characters in clip mode*/
 			if(iClipMode==1) break;
-			/*Translate key into character*/
-			cChr=Key2Char(iKey);
 			
-			//Keep number of indents
-			int nbIndents = tabIndentForCurrentLine;
+			if (-iKey >= NODEPRGM0) {
+		
+				//Find the menu text and put it instead of str
+				
+				int node = (-iKey - NODEPRGM0)%6;
+				int mBar = MENUBARPRGM0 + (-iKey-NODEPRGM0)/6;
+				extern struct MNode _sMNode[MAXMENUBARS][MAXMENUNODE];
+
+				strcpy(strKey, _sMNode[mBar][node].outputText);
 			
-			//Increase number of indents if current character is ':'
-			iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-			if (iPtr > 0 && sText[iPtr-1] == ':') nbIndents++;
+			}
 			
+			int charsAfterCursorCounter = 0;
+			char countCharsAfterCursor = 0;
 			
-			insertChar(cChr);
-			
-			if (cChr == '\n') {
-				for (int j = 0; j < nbIndents*2; j++) {
-					insertChar(' ');
+			for (int j = 0; strKey[j]; j++) {
+				cChr = strKey[j];
+				
+				if (cChr == '\a') {
+					countCharsAfterCursor = 1;
+					continue;
+					
+				} else if (cChr == '\b') {
+					if(iLines[iTopLine+iCy-1]+iCx+leftMostColumn==0) {
+						//Mark cursor position
+						MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+
+						//Delete character from text
+						iLen=strlen(sText);
+						iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+						if(iPtr<iLen-1)
+						{
+						for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
+						CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+						}
+						MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+						iColumn=iCx;
+						iRefresh=1;
+						iSaved=0;
+						break;
+					}
+					  
+					MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+					MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+					  
+					iLen=strlen(sText);
+					iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+					  
+					char isSpace = 0;
+					if (iPtr < iLen-1) isSpace = sText[iPtr] == ' ';
+					  
+					if(iPtr<iLen-1)
+					{
+						for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
+						CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+					}
+					iColumn=iCx;
+					MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+					iRefresh=1;
+					iSaved=0;
+					
+					if (countCharsAfterCursor) {
+						charsAfterCursorCounter--;
+					}
+					  
+					if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ') {
+						MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+						MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+						  
+						iLen=strlen(sText);
+						iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+						  
+						if(iPtr<iLen-1)
+						{
+							for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
+							CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+						}
+						iColumn=iCx;
+						MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+						iRefresh=1;
+						iSaved=0;
+						if (countCharsAfterCursor) {
+							charsAfterCursorCounter--;
+						}
+					}
+										
+				} else {
+					
+					int nbIndents = tabIndentForCurrentLine;
+				
+					//Increase number of indents if current character is ':'
+					iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+					if (iPtr > 0 && sText[iPtr-1] == ':') nbIndents++;
+					
+					if (cChr == '\r') cChr = '\n';
+					
+					insertChar(cChr);
+					
+					int j = 0;
+					if (cChr == '\n') {
+						for (j = 0; j < nbIndents*2; j++) {
+							insertChar(' ');
+						}
+					}
+					
+					if (countCharsAfterCursor) {
+						charsAfterCursorCounter += j+1;
+					}
 				}
+				
+				
+				
+				/*} else if (cChr == '\b') {
+					int nbIndents = tabIndentForCurrentLine + 1;
+					insertChar('\n');
+					for (int k = 0; k < nbIndents*2; k++) {
+						insertChar(' ');
+					}
+					charsAfterCursorCounter += 1+nbIndents*2;
+				} else if (cChr == '\f') {
+					int nbIndents = tabIndentForCurrentLine -1;
+					insertChar('\n');
+					for (int k = 0; k < nbIndents*2; k++) {
+						insertChar(' ');
+					}
+					charsAfterCursorCounter += 1+nbIndents*2;
+				} else {
+					if (countCharsAfterCursor) {
+						charsAfterCursorCounter++;
+					}
+					insertChar(cChr);
+				}*/
+				
+				
+			}
+			
+			for (int j = 0; j < charsAfterCursorCounter; j++) {
+				MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 			}
           
           break;
       }     
+	  
+	  
 
       //Calculate clip ending
       if(iClipMode==1)
@@ -2430,15 +2510,18 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
   //Main loop
   iExit=0;
   do{
-    
+    //GetKey(&key);
     //Number of window lines
     if(sConfig->iDispFree==1)
       iLines=5;
     else
       iLines=6;
     
+	//GetKey(&key);
     //Init display
     if(iReadFiles==1) Bdisp_AllClr_DDVRAM();
+	
+	//GetKey(&key);
     
     //Get file table
     if(iReadFiles==1)
@@ -2446,6 +2529,8 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
       iFiles=0;
       ReadDirectory(sRoot,sFolder,_sFiles,&iFiles,sConfig->iMaxFiles,1,0,sConfig->iHideSysFiles); 
     }
+	
+	//GetKey(&key);
     
     //Set menu bar
     if(iReadFiles==1)
@@ -2512,6 +2597,7 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
     //Rewrite screen
     if(iRefresh==1)
     {
+	  	//GetKey(&key);
       SetFont(FONTL);
       SetColor(COLNOR);
       if(strcmp(sRoot,"main")==0) 
@@ -2547,6 +2633,7 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
       }
       else
       {
+			//GetKey(&key);
         PrintStr(0,1,"                     ");
         PrintStr(0,2,"                     ");
         PrintStr(0,3,STR_NOPROGS);

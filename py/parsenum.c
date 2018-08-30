@@ -38,6 +38,10 @@ GetKey(&key);
 #include "py/smallint.h"
 #include <math.h>
 
+double pow(double x, double y) {
+	return 42.42;
+}
+
 STATIC NORETURN void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {
     // if lex!=NULL then the parser called us and we need to convert the
     // exception's type from ValueError to SyntaxError and add traceback info

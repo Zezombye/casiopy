@@ -5,6 +5,7 @@
 #include "stdio.h"
 #include "font.h"
 #include "tinyprintf.h"
+#include "MonochromeLib.h"
 
 // ------------------------------------------------------------------------------------- 
 // Global variables
@@ -344,6 +345,7 @@ int GetScrCAy(void){ return(_sFData[_sFCntx[_iCntx].iFont].iSy); }
 // Print char function
 void PrintCharXY(int iPx0,int iPy0, char cChr)
 {
+	unsigned int key;
   //Variables
   int i,j;
   int iPx,iPy;
@@ -380,21 +382,22 @@ void PrintCharXY(int iPx0,int iPy0, char cChr)
     iColB=(_sFCntx[_iCntx].iColor==COLNOR?0:1);
     iBitmap=_sFData[_sFCntx[_iCntx].iFont].iChData[cChr0];
     for(j=0;j<=iAy-1;j++){
-    for(i=0;i<=iAx-1;i++){
-      if(iPx+i>=0 && iPx+i<=127 && iPy+j>=0 && iPy+j<=63)
-      {
-        if(i<iAx-1 && j<iAy-1)
-        {
-          if(iBitmap&iCount) 
-            ML_pixel(iPx+i,iPy+j,iColF);
-          else
-            ML_pixel(iPx+i,iPy+j,iColB);
-          iCount=iCount*2;
-        }
-        else
-          ML_pixel(iPx+i,iPy+j,iColB);
-      }
-    }}
+		for(i=0;i<=iAx-1;i++){
+		  if(iPx+i>=0 && iPx+i<=127 && iPy+j>=0 && iPy+j<=63)
+		  {
+			if(i<iAx-1 && j<iAy-1)
+			{
+			  if(iBitmap&iCount) 
+				ML_pixel(iPx+i,iPy+j,iColF);
+			  else
+				ML_pixel(iPx+i,iPy+j,iColB);
+			  iCount=iCount*2;
+			}
+			else
+			  ML_pixel(iPx+i,iPy+j,iColB);
+		  }
+		}
+	}
   
   }
 
@@ -404,6 +407,7 @@ void PrintCharXY(int iPx0,int iPy0, char cChr)
 // Print string function (location by pixels)
 void PrintStrXY(int iPx, int iPy,char *sStr)
 {
+	unsigned int key;
   //Variables
   int i;
   int iPx0=0,iPy0=0;

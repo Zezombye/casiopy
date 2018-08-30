@@ -14,26 +14,27 @@
 #ifndef MONOCHROMELIB
 #define MONOCHROMELIB
 
-/****************************************************/
-/** uncomment #define of functions you want to use **/
-/****************************************************/
+//While waiting for ML bug on SH4 to be fixed...
+#define ML_pixel(x,y,col) Bdisp_SetPoint_VRAM(x,y,col)
+#define ML_display_vram() Bdisp_PutDisp_DD()
+#define ML_clear_vram() Bdisp_AllClr_VRAM()
 
 // #define ML_ALL //Auto define all functions
 
-#define ML_CLEAR_VRAM
-#define ML_CLEAR_SCREEN
- #define ML_DISPLAY_VRAM
+//#define ML_CLEAR_VRAM
+//#define ML_CLEAR_SCREEN
+// #define ML_DISPLAY_VRAM
 
 // #define ML_SET_CONTRAST
 // #define ML_GET_CONTRAST
 
-#define ML_PIXEL
+//#define ML_PIXEL
 // #define ML_POINT
 // #define ML_PIXEL_TEST
 
- #define ML_LINE
- #define ML_HORIZONTAL_LINE
- #define ML_VERTICAL_LINE
+ //#define ML_LINE
+ //#define ML_HORIZONTAL_LINE
+ //#define ML_VERTICAL_LINE
 
 // #define ML_RECTANGLE
 
@@ -91,7 +92,7 @@ typedef enum {ML_TRANSPARENT=-1, ML_WHITE, ML_BLACK, ML_XOR, ML_CHECKER} ML_Colo
 
 char* ML_vram_adress();
 
-void ML_clear_vram();
+/*void ML_clear_vram();
 void ML_clear_screen();
 void ML_display_vram();
 
@@ -141,7 +142,7 @@ void ML_bmp_16_and(const unsigned short *bmp, int x, int y);
 void ML_bmp_16_xor(const unsigned short *bmp, int x, int y);
 void ML_bmp_16_or_cl(const unsigned short *bmp, int x, int y);
 void ML_bmp_16_and_cl(const unsigned short *bmp, int x, int y);
-void ML_bmp_16_xor_cl(const unsigned short *bmp, int x, int y);
+void ML_bmp_16_xor_cl(const unsigned short *bmp, int x, int y);*/
 
 #ifdef __cplusplus
 }

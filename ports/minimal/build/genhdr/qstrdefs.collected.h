@@ -218,6 +218,8 @@ Q(__name__)
 
 Q(__name__)
 
+Q(__name__)
+
 Q(__new__)
 
 Q(__new__)
@@ -340,6 +342,8 @@ Q(closure)
 
 Q(closure)
 
+Q(collect)
+
 Q(complex)
 
 Q(complex)
@@ -364,7 +368,11 @@ Q(dict_view)
 
 Q(dir)
 
+Q(disable)
+
 Q(divmod)
+
+Q(enable)
 
 Q(end)
 
@@ -407,6 +415,10 @@ Q(function)
 Q(function)
 
 Q(function)
+
+Q(gc)
+
+Q(gc)
 
 Q(generator)
 
@@ -455,6 +467,8 @@ Q(int)
 Q(isalpha)
 
 Q(isdigit)
+
+Q(isenabled)
 
 Q(isinstance)
 
@@ -505,6 +519,10 @@ Q(lstrip)
 Q(map)
 
 Q(map)
+
+Q(mem_alloc)
+
+Q(mem_free)
 
 Q(micropython)
 

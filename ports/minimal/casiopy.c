@@ -1,6 +1,10 @@
 
 #include <fxlib.h>
 #include "tinyprintf.h"
+#include "MonochromeLib.h"
+
+
+
 
 unsigned int key;
 int shellPosX = 0;
@@ -12,23 +16,26 @@ char alphaLock = 0;
 
 int main(int isappli, unsigned short optnum)
 {
+		
 	/*char str[50] = {0};
 	tfp_sprintf(str, "abc");
 	locate(1,7); Print(str);
 	GetKey(&key);
-	edit_main();
-	//locate(1,7);
-	
-	//mpy_main();
-	
-	//Print((unsigned char *)"gcc add-in");
-	while(1) GetKey(&key);
-	return 1;*/
+	edit_main();*/
 	//getkey();
 	//mpy_main();
-	edit_main();
 	
-	mpy_main();
+	//ML_pixel(1,1,1);
+	/*GetKey(&key);
+	char str[30] = {0};
+	tfp_sprintf(str, "%p", ML_vram_adress());
+	locate(1,1); Print(str);
+	
+	GetKey(&key);*/
+	
+	edit_main();
+	//mpy_main();
+	
 	/*char str[20];
 	tfp_sprintf(str, "test");
 	
@@ -78,9 +85,13 @@ int waitForKey(char* str) {
 	
 	unsigned int key;
 	
+	
+	
 	GetKey(&key);
 	
 	switch(key) {
+		
+		//Normal case
 		
 		case KEY_CHAR_0: strcpy(str,"0"); break;
 		case KEY_CHAR_1: strcpy(str,"1"); break;
@@ -104,16 +115,23 @@ int waitForKey(char* str) {
 		case KEY_CHAR_LPAR: strcpy(str,"("); break;
 		case KEY_CHAR_RPAR: strcpy(str,")"); break;
 		case KEY_CHAR_COMMA: strcpy(str,"\b"); break;
-		case KEY_CHAR_STORE: strcpy(str,"="); break;
+		case KEY_CHAR_STORE: strcpy(str,"  "); break;
 		case KEY_CHAR_SQUARE: strcpy(str,"**2"); break;
 		case KEY_CHAR_POW: strcpy(str,"**"); break;
 		
-		case KEY_CHAR_EQUAL: strcpy(str,"=="); break;
+		//Shift
+		
+		case KEY_CHAR_IMGNRY: strcpy(str, "1j"); break;
+		case KEY_CHAR_EQUAL: strcpy(str,"="); break;
 		case KEY_CHAR_LBRCKT: strcpy(str,"["); break;
 		case KEY_CHAR_RBRCKT: strcpy(str,"]"); break;
 		case KEY_CHAR_LBRACE: strcpy(str,"{"); break;
 		case KEY_CHAR_RBRACE: strcpy(str,"}"); break;
 		case KEY_CHAR_EXPN10 : strcpy(str,"e"); break;
+		case KEY_CHAR_LIST: strcpy(str, "[0 for i in range(\a)]"); break;
+		case KEY_CHAR_MAT: strcpy(str, "[[0 for i in range(\a)] for j in range()]"); break;
+		
+		//Alpha
 		
 		case KEY_CHAR_A: strcpy(str,"a"); break;
 		case KEY_CHAR_B: strcpy(str,"b"); break;
@@ -144,7 +162,22 @@ int waitForKey(char* str) {
 		case KEY_CHAR_SPACE: strcpy(str," "); break;
 		case KEY_CHAR_DQUATE: strcpy(str,"\""); break;
 		
-		case KEY_CTRL_EXIT: strcpy(str, ""); return KEY_CTRL_EXIT; break;
+		//Control characters (no string returned);
+		
+		case KEY_CTRL_EXIT:
+		case KEY_CTRL_UP:
+		case KEY_CTRL_DOWN:
+		case KEY_CTRL_LEFT:
+		case KEY_CTRL_RIGHT:
+		case KEY_CTRL_F1:
+		case KEY_CTRL_F2:
+		case KEY_CTRL_F3:
+		case KEY_CTRL_F4:
+		case KEY_CTRL_F5:
+		case KEY_CTRL_F6:
+		default:
+			strcpy(str, "");
+			return key;
 	}
 	return 0;
 	
