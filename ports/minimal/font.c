@@ -143,7 +143,7 @@ static const unsigned int _iFont3x5[128]={
 };
 
 // Font 3x7 data
-static const int _iFont3x7[128]={
+const int _iFont3x7[128]={
  2022255, //Character 000 [NUL]
  2022255, //Character 001 [SOH]
  2022255, //Character 002 [STX]

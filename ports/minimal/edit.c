@@ -55,6 +55,7 @@
 //Application mode
 #define EDITOR   1
 #define EXPLORER 2
+#define SHELL 3
 
 //New line mode
 #define NEWLMODELF   0 
@@ -489,7 +490,10 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
       || iKey==KEY_CTRL_F5 || iKey==KEY_CTRL_F6)
         iKey=-MenuFunctionKey(iKey);
       
-
+	  //If in clipboard mode, DEL doesn't print \b but deletes selected text
+	  if (iClipMode==1 && iKey == KEY_CTRL_DEL) {
+		iKey = -NODEEDITDEL;
+	  }
 	  
       //Process keys
       switch(iKey)
@@ -556,24 +560,28 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           break;
           
         //Cursor home
+		case KEY_CTRL_HOME:
         case -NODEGOTOHOME: 
           MoveCursor(&tabIndentForCurrentLine, CURSORHOME,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
                      &iRefresh,iLNum,iLines,sText,iCntx);
           break;
 
         //Cursor end
+		case KEY_CTRL_END:
         case -NODEGOTOEND: 
           MoveCursor(&tabIndentForCurrentLine, CURSOREND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
           &iRefresh,iLNum,iLines,sText,iCntx);
           break;
       
         //Page up
+		case KEY_CTRL_PAGEUP:
         case -NODEGOTOPGU: 
           MoveCursor(&tabIndentForCurrentLine, CURSORPAGEUP,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
                      &iRefresh,iLNum,iLines,sText,iCntx);
           break;
 
         //Page down
+		case KEY_CTRL_PAGEDOWN:
         case -NODEGOTOPGD: 
           MoveCursor(&tabIndentForCurrentLine, CURSORPAGEDOWN,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
           &iRefresh,iLNum,iLines,sText,iCntx);
@@ -975,74 +983,6 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           iSaved=0;
           break;
         
-        //Delete backwards
-        case KEY_CTRL_DEL: 
-          
-          //Do not delete in clip mode
-          if(iClipMode==1) break;
-          
-          if(iLines[iTopLine+iCy-1]+iCx+leftMostColumn==0) {
-			//Mark cursor position
-			MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-
-			//Delete character from text
-			iLen=strlen(sText);
-			iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-			if(iPtr<iLen-1)
-			{
-			for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
-			CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
-			}
-			MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-			iColumn=iCx;
-			iRefresh=1;
-			iSaved=0;
-			break;
-		  }
-		  
-          MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-          MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-          
-          iLen=strlen(sText);
-          iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-		  
-		  char isSpace = 0;
-		  if (iPtr < iLen-1) isSpace = sText[iPtr] == ' ';
-		  
-          if(iPtr<iLen-1)
-          {
-            for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
-            CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
-          }
-          iColumn=iCx;
-          MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-          iRefresh=1;
-          iSaved=0;
-		  
-		  if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ') {
-			  MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-			  MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-			  
-			  iLen=strlen(sText);
-			  iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-			  
-			  if(iPtr<iLen-1)
-			  {
-				for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
-				CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
-			  }
-			  iColumn=iCx;
-			  MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-			  iRefresh=1;
-			  iSaved=0;
-		  }
-		  
-          break;
-		  
-		  
-        
-		
-		
         //Print characters
         default: 
 			/*Do not insert characters in clip mode*/
@@ -1095,7 +1035,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 					  
 					iLen=strlen(sText);
 					iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-					  
+					
 					char isSpace = 0;
 					if (iPtr < iLen-1) isSpace = sText[iPtr] == ' ';
 					  
@@ -1113,7 +1053,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 						charsAfterCursorCounter--;
 					}
 					  
-					if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ') {
+					if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ' && (iCx+leftMostColumn)%2 == 1) {
 						MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 						MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 						  
@@ -1157,30 +1097,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 						charsAfterCursorCounter += j+1;
 					}
 				}
-				
-				
-				
-				/*} else if (cChr == '\b') {
-					int nbIndents = tabIndentForCurrentLine + 1;
-					insertChar('\n');
-					for (int k = 0; k < nbIndents*2; k++) {
-						insertChar(' ');
-					}
-					charsAfterCursorCounter += 1+nbIndents*2;
-				} else if (cChr == '\f') {
-					int nbIndents = tabIndentForCurrentLine -1;
-					insertChar('\n');
-					for (int k = 0; k < nbIndents*2; k++) {
-						insertChar(' ');
-					}
-					charsAfterCursorCounter += 1+nbIndents*2;
-				} else {
-					if (countCharsAfterCursor) {
-						charsAfterCursorCounter++;
-					}
-					insertChar(cChr);
-				}*/
-				
+								
 				
 			}
 			
@@ -1203,6 +1120,8 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
       //Soft refresh (only text)
       if(iRefresh==1)
       {
+		  
+        //PrintKeyboardStatus();
         DumpTextLines(sText,iLines,iLNum,iTopLine, leftMostColumn,iStart,iEnd,iCntx);
         Bdisp_PutDisp_DD();
       }
@@ -1213,8 +1132,9 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
         Bdisp_AllClr_DDVRAM();
         MenuSetBar(MENUBARMAIN);
         PrintFileName(sRoot,sFile,iBinary,iSaved);
-        PrintInfoBar(sFolder,tabIndentForCurrentLine,iCy+iTopLine,sConfig);
-        PrintKeyboardStatus();
+        PrintInfoBar(sFolder,iCx+leftMostColumn,iCy+iTopLine,sConfig);
+        //PrintInfoBar(sFolder,tabIndentForCurrentLine,iCy+iTopLine,sConfig);
+        //PrintKeyboardStatus();
         DumpTextLines(sText,iLines,iLNum,iTopLine, leftMostColumn,iStart,iEnd,iCntx);
         Bdisp_PutDisp_DD();
       }
@@ -1681,16 +1601,18 @@ void MoveCursor(int *tabIndentForCurrentLine, int iCmd,int iTimes, int *iCx0, in
         }
         iColumn=iCx+leftMostColumn;
         break;
-            
+      
+	  
+	  //These two commands cause bugs when clipboard is used, and the editor seems to work fine without them.
       //Cursor mark
       case CURSORMARK: 
-        iMark=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+        //iMark=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
         break;
       
       //Cursor find
       case CURSORFIND:
 		
-        if(iMark>=strlen(sText)) iMark=strlen(sText)-1;
+        /*if(iMark>=strlen(sText)) iMark=strlen(sText)-1;
         for(i=-1;i<2;i++){
         for(j=0;j<GetScrCAx();j++){
           if(iLines[iTopLine+iCy-1+i]+j+leftMostColumn==iMark)
@@ -1727,7 +1649,7 @@ void MoveCursor(int *tabIndentForCurrentLine, int iCmd,int iTimes, int *iCx0, in
             break;
           }  
         }}
-        iColumn=iCx+leftMostColumn;
+        iColumn=iCx+leftMostColumn;*/
         break;		
 		
 

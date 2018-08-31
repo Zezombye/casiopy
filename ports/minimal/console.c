@@ -9,8 +9,14 @@
 #include "console.h"
 #include "tinyprintf.h"
 
+//Application mode
+#define EDITOR   1
+#define EXPLORER 2
+#define SHELL 3
+
 // ------------------------------------------------------------------------------------- 
 // Global variables
+extern int _iAppMode;
 int _iAlpha=ALPHALOCK;
 int _iShift=SHIFTOFF;
 int _iACase=ALPHALOWER;
@@ -21,6 +27,242 @@ char _cShiftKill=0;
 char _cHIndex=0;
 char _cKeyStatusHide=0;
 char _cStatusHideStack[MAXSTATUSHIDE];
+
+char shiftPressed = 0;
+char alphaPressed = 0;
+char alphaLock = 0;
+
+void updateModifiers(int key) {
+
+	if (key == KEY_CTRL_SHIFT) {
+		shiftPressed = !shiftPressed;
+		alphaPressed = 0;
+		alphaLock = 0;
+	} else if (key == KEY_CTRL_ALPHA) {
+		
+		_iACase = ALPHALOWER;
+		if (shiftPressed) {
+			alphaLock = 1;
+			alphaPressed = 0;
+		} else if (alphaPressed) {
+			alphaLock = 0;
+			alphaPressed = 0;
+		} else if (alphaLock) {
+			alphaLock = 0;
+			alphaPressed = 0;
+		} else {
+			alphaLock = 0;
+			alphaPressed = 1;
+		}
+		shiftPressed = 0;
+	}
+
+}
+
+void updateModifiersAfterKey() {
+	shiftPressed = 0;
+	if (!alphaLock) {
+		alphaPressed = 0;
+	}
+}
+
+//This function is used only in the editor itself, or the shell.
+//For popups, etc, GetKeyb() is used.
+
+//Wait for input, then returns a string or a control key
+int waitForKey(char* str) {
+	
+	//See https://bible.planet-casio.com/simlo/chm/v20/fx_legacy_keyboard.htm for the syscall
+	/*int column, row;
+	int type_of_waiting = 0;
+	int timeout_period = 0;
+	int key;
+	int menu = 0;
+	locate(1,1); Print("azer");
+	ML_display_vram();
+	//GetKeyWait_syscall(&column, &row, type_of_waiting, timeout_period, menu, &key);
+	key = GetKeyWait_syscall();
+	locate(1,1); Print("reza");
+	ML_display_vram();*/
+	
+	unsigned int key;
+	
+	GetKey(&key);
+	
+	//If shift/alpha, put a dummy key (optn is the only key for which shift/alpha gives 0) to reset modifier
+	if (key == KEY_CTRL_SHIFT || key == KEY_CTRL_ALPHA) {
+		updateModifiers(key);
+		putKey(KEY_CTRL_OPTN, 0);
+	
+		GetKey(&key);
+		goto shiftOrAlphaKey;
+	}
+	
+	
+	if (shiftPressed) {
+		switch(key) {
+			case KEY_CHAR_0: strcpy(str, "1j"); break;
+			case KEY_CHAR_1: strcpy(str, "[0 for i in range(\a)]"); break;
+			case KEY_CHAR_2: strcpy(str, "[[0 for i in range(\a)] for j in range()]"); break;
+			case KEY_CHAR_4: key=KEY_CTRL_CATALOG; goto control_key; break;
+			case KEY_CHAR_8: key=KEY_CTRL_CLIP; goto control_key; break;
+			case KEY_CHAR_9: key=KEY_CTRL_PASTE; goto control_key; break;
+			case KEY_CHAR_DP: strcpy(str,"="); break;
+			case KEY_CHAR_EXP: strcpy(str,"math.pi"); break;
+			case KEY_CHAR_PMINUS: strcpy(str,"__\a__"); break;
+			case KEY_CHAR_PLUS: strcpy(str,"["); break;
+			case KEY_CHAR_MINUS: strcpy(str,"]"); break;
+			case KEY_CHAR_MULT: strcpy(str,"{"); break;
+			case KEY_CHAR_DIV: strcpy(str,"}"); break;
+			case KEY_CTRL_EXE: strcpy(str,"\r"); break;
+			case KEY_CTRL_DEL: strcpy(str,"\b"); break;
+			case KEY_CHAR_LOG : strcpy(str,"e"); break;
+			case KEY_CTRL_UP: key=KEY_CTRL_PAGEUP; goto control_key; break;
+			case KEY_CTRL_DOWN: key=KEY_CTRL_PAGEDOWN; goto control_key; break;
+			case KEY_CTRL_LEFT: key=KEY_CTRL_HOME; goto control_key; break;
+			case KEY_CTRL_RIGHT: key=KEY_CTRL_END; goto control_key; break;
+			
+			default:
+				goto control_key;
+		}
+	} else if (alphaPressed || alphaLock) {
+		switch(key) {
+			case KEY_CTRL_XTT: strcpy(str,"a"); break;
+			case KEY_CHAR_LOG: strcpy(str,"b"); break;
+			case KEY_CHAR_LN: strcpy(str,"c"); break;
+			case KEY_CHAR_SIN: strcpy(str,"d"); break;
+			case KEY_CHAR_COS: strcpy(str,"e"); break;
+			case KEY_CHAR_TAN: strcpy(str,"f"); break;
+			case KEY_CHAR_FRAC: strcpy(str,"g"); break;
+			case KEY_CTRL_FD: strcpy(str,"h"); break;
+			case KEY_CHAR_LPAR: strcpy(str,"i"); break;
+			case KEY_CHAR_RPAR: strcpy(str,"j"); break;
+			case KEY_CHAR_COMMA: strcpy(str,"k"); break;
+			case KEY_CHAR_STORE: strcpy(str,"l"); break;
+			case KEY_CHAR_7: strcpy(str,"m"); break;
+			case KEY_CHAR_8: strcpy(str,"n"); break;
+			case KEY_CHAR_9: strcpy(str,"o"); break;
+			case KEY_CHAR_4: strcpy(str,"p"); break;
+			case KEY_CHAR_5: strcpy(str,"q"); break;
+			case KEY_CHAR_6: strcpy(str,"r"); break;
+			case KEY_CHAR_MULT: strcpy(str,"s"); break;
+			case KEY_CHAR_DIV: strcpy(str,"t"); break;
+			case KEY_CTRL_EXE: strcpy(str,"\r"); break;
+			case KEY_CTRL_DEL: strcpy(str,"\b"); break;
+			case KEY_CHAR_1: strcpy(str,"u"); break;
+			case KEY_CHAR_2: strcpy(str,"v"); break;
+			case KEY_CHAR_3: strcpy(str,"w"); break;
+			case KEY_CHAR_PLUS: strcpy(str,"x"); break;
+			case KEY_CHAR_MINUS: strcpy(str,"y"); break;
+			case KEY_CHAR_0: strcpy(str,"z"); break;
+			case KEY_CHAR_DP: strcpy(str," "); break;
+			case KEY_CHAR_EXP: strcpy(str,"\""); break;
+			
+			case KEY_CHAR_PMINUS: strcpy(str,"_"); break;
+			case KEY_CHAR_SQUARE: strcpy(str,"(\a)"); break;
+			case KEY_CHAR_POW: strcpy(str,"[\a]"); break;
+			case KEY_CTRL_OPTN: strcpy(str,":"); break;
+			case KEY_CTRL_VARS: strcpy(str,"#"); break;
+			
+			default:
+				goto control_key;
+		}
+	} else {
+		switch(key) {
+			case KEY_CHAR_0: strcpy(str,"0"); break;
+			case KEY_CHAR_1: strcpy(str,"1"); break;
+			case KEY_CHAR_2: strcpy(str,"2"); break;
+			case KEY_CHAR_3: strcpy(str,"3"); break;
+			case KEY_CHAR_4: strcpy(str,"4"); break;
+			case KEY_CHAR_5: strcpy(str,"5"); break;
+			case KEY_CHAR_6: strcpy(str,"6"); break;
+			case KEY_CHAR_7: strcpy(str,"7"); break;
+			case KEY_CHAR_8: strcpy(str,"8"); break;
+			case KEY_CHAR_9: strcpy(str,"9"); break;
+			case KEY_CHAR_DP: strcpy(str,"."); break;
+			case KEY_CHAR_EXP: strcpy(str,"e"); break;
+			case KEY_CHAR_PMINUS: strcpy(str,"_"); break;
+			case KEY_CHAR_PLUS: strcpy(str,"+"); break;
+			case KEY_CHAR_MINUS: strcpy(str,"-"); break;
+			case KEY_CHAR_MULT: strcpy(str,"*"); break;
+			case KEY_CHAR_DIV: strcpy(str,"/"); break;
+			case KEY_CTRL_EXE: strcpy(str,"\r"); break;
+			case KEY_CTRL_DEL: strcpy(str,"\b"); break;
+			case KEY_CHAR_LPAR: strcpy(str,"("); break;
+			case KEY_CHAR_RPAR: strcpy(str,")"); break;
+			case KEY_CHAR_COMMA: strcpy(str,"\b"); break;
+			case KEY_CHAR_STORE: strcpy(str,"  "); break;
+			case KEY_CHAR_SQUARE: strcpy(str,"**2"); break;
+			case KEY_CHAR_POW: strcpy(str,"**"); break;
+			
+			default:
+				goto control_key;
+		}
+	}
+	updateModifiersAfterKey();
+	if (_iAppMode == EDITOR) {
+		PrintKeyboardStatus();
+	}
+	
+	//Check for case
+	if (strlen(str) == 1 && str[0] >= 'a' && str[0] <= 'z' && _iACase == ALPHAUPPER) {
+		str[0] -= 32;
+	}
+	
+	return 0;
+	
+	//In case of a control key (f1-f6, arrows, exit...) don't write anything and return the key itself.
+	control_key:
+		updateModifiersAfterKey();
+        PrintKeyboardStatus();
+		strcpy(str, "");
+		return key;
+		
+	shiftOrAlphaKey:
+        PrintKeyboardStatus();
+		strcpy(str, "");
+		return key;
+	
+}
+
+// ----------------------------------------------------------------
+// Keyboard status
+void PrintKeyboardStatus()
+{
+  
+  //Variables
+  char cChr = '?';
+  char sStr[2];
+  
+  //Get character
+  if(!shiftPressed && !alphaPressed && !alphaLock)
+    cChr = '1';
+  else if(shiftPressed)
+    cChr = 'S';
+  else if(alphaPressed && _iACase==ALPHAUPPER)
+    cChr = 'A';
+  else if(alphaPressed && _iACase==ALPHALOWER)
+    cChr = 'a';
+  else if(alphaLock && _iACase==ALPHAUPPER)
+    cChr = 'B';
+  else if(alphaLock && _iACase==ALPHALOWER)
+    cChr = 'b';
+  else cChr = '?';
+  
+  //String
+  sStr[0]=cChr;
+  sStr[1]=0;
+  
+  //casiopy_print(sStr, 1);
+  
+  //Keyboard state
+  SetFont(FONTS);
+  SetColor(COLREV);
+  PrintStrXY(_iKbStatPx-1,_iKbStatPy-1," ");
+  PrintStrXY(_iKbStatPx-1,_iKbStatPy+0," ");
+  PrintStrXY(_iKbStatPx+0,_iKbStatPy-1," ");
+  PrintStrXY(_iKbStatPx+0,_iKbStatPy+0,sStr);
+}
 
 // Keyboard codes table
 struct sKeyCode _sKeyCode[KEYCODES]=
@@ -258,6 +500,9 @@ void KeyboardStatusChangeCase(void)
   {
     _iACase=(_iACase==ALPHAUPPER?ALPHALOWER:ALPHAUPPER);
     _cAlphaKill=0;
+	if (!alphaLock && !shiftPressed) {
+		alphaPressed = 1;
+	}
     PrintKeyboardStatus();
     Bdisp_PutDisp_DD();
   }
@@ -301,45 +546,7 @@ void KeyboardStatusLocation(int iPx, int iPy)
   _iKbStatPy=iPy;
 }
 
-// ----------------------------------------------------------------
-// Keyboard status
-void PrintKeyboardStatus()
-{
-  
-  //Variables
-  char cChr;
-  char sStr[2];
-  
-  //Exit if hide keyboard status is on
-  if(_cKeyStatusHide==1) return;
-  
-  //Get character
-  if(_iShift==0 && _iAlpha==ALPHAOFF)
-    cChr = '1';
-  else if(_iShift==1)
-    cChr = 'S';
-  else if(_iAlpha==ALPHAON && _iACase==ALPHAUPPER)
-    cChr = 'A';
-  else if(_iAlpha==ALPHAON && _iACase==ALPHALOWER)
-    cChr = 'a';
-  else if(_iAlpha==ALPHALOCK && _iACase==ALPHAUPPER)
-    cChr = 'B';
-  else if(_iAlpha==ALPHALOCK && _iACase==ALPHALOWER)
-    cChr = 'b';
-  
-  //String
-  sStr[0]=cChr;
-  sStr[1]=0;
-  
-  //Keyboard state
-  SetFont(FONTS);
-  SetColor(COLREV);
-  PrintStrXY(_iKbStatPx-1,_iKbStatPy-1," ");
-  PrintStrXY(_iKbStatPx-1,_iKbStatPy+0," ");
-  PrintStrXY(_iKbStatPx+0,_iKbStatPy-1," ");
-  PrintStrXY(_iKbStatPx+0,_iKbStatPy+0,sStr);
 
-}
 
 // ----------------------------------------------------------------
 // Get string

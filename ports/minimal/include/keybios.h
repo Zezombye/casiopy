@@ -261,6 +261,10 @@ extern "C" {
 #define	KEY_CTRL_RESERVE2	30061
 #define	KEY_CTRL_RESERVE3	30062
 
+//These keys don't actually exist in the standard
+#define KEY_CTRL_HOME 31000
+#define KEY_CTRL_END 31001
+
 
 // in Bkey_GetKeyWait function
 #define KEYWAIT_HALTON_TIMEROFF     0
