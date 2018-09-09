@@ -1133,12 +1133,13 @@ mp_parse_tree_t mp_parse(mp_lexer_t *lex, mp_parse_input_kind_t input_kind) {
         parser.cur_chunk->union_.next = parser.tree.chunk;
         parser.tree.chunk = parser.cur_chunk;
     }
-
+	
     if (
         lex->tok_kind != MP_TOKEN_END // check we are at the end of the token stream
         || parser.result_stack_top == 0 // check that we got a node (can fail on empty input)
         ) {
     syntax_error:;
+		
         mp_obj_t exc;
         if (lex->tok_kind == MP_TOKEN_INDENT) {
             exc = mp_obj_new_exception_msg(&mp_type_IndentationError,
@@ -1152,7 +1153,16 @@ mp_parse_tree_t mp_parse(mp_lexer_t *lex, mp_parse_input_kind_t input_kind) {
         }
         // add traceback to give info about file name and location
         // we don't have a 'block' name, so just pass the NULL qstr to indicate this
-        mp_obj_exception_add_traceback(exc, lex->source_name, lex->tok_line, MP_QSTR_NULL);
+        mp_obj_exception_add_traceback(exc, lex->source_name, lex->tok_line+((lex->tok_column) << 16), MP_QSTR_NULL);
+		
+		
+		// free the memory that we don't need anymore
+		m_del(rule_stack_t, parser.rule_stack, parser.rule_stack_alloc);
+		m_del(mp_parse_node_t, parser.result_stack, parser.result_stack_alloc);
+
+		// we also free the lexer on behalf of the caller
+		mp_lexer_free(lex);
+		
         nlr_raise(exc);
     }
 

@@ -1,4 +1,4 @@
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 01-Sep-2018 01:13:32  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 09-Sep-2018 11:39:22  PAGE    1
 
 
 ******** STATISTICS INFORMATION ********
@@ -6,7 +6,7 @@ SH SERIES C/C++ Compiler (Ver. 6.0C)                                            
 
 ********** ERROR INFORMATION ***********
 
-NUMBER OF ERRORS:           5
+NUMBER OF ERRORS:           1
 NUMBER OF WARNINGS:         0
 
 
@@ -14,7 +14,7 @@ NUMBER OF WARNINGS:         0
 
 ******* SOURCE LINE INFORMATION ********
 
-COMPILED SOURCE LINE:      240
+COMPILED SOURCE LINE:       46
 
 
 
@@ -67,5 +67,5 @@ COMPILED SOURCE LINE:      240
 *** COMMAND PARAMETER ***
 
 
-  -subcommand=C:\Users\Zezombye\AppData\Local\Temp\hmk5DB.tmp 
+  -subcommand=C:\Users\Zezombye\AppData\Local\Temp\hmk7F8C.tmp 
 

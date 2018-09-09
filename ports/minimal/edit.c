@@ -16,6 +16,7 @@
 #include "tinyprintf.h"
 #include "i18n.h"
 #include "MonochromeLib.h"
+#include "casiopy.h"
 
 // ----------------------------------------------------------------
 // Constants
@@ -252,7 +253,7 @@ int edit_main()
     int iNew;                    //New file flag
     struct Config sConfig;       //Configuration variables
     char sRoot[5];               //Root directory
-    char sFolder[MAXFNAME]="CasioPy";   //Folder name
+    char sFolder[MAXFNAME]="CASIOPY";   //Folder name
     char sFile[MAXFNAME]="";     //File name
     
     //Initializations
@@ -789,14 +790,28 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 				PopupMessage(1,"Binary files can","not be modified.",NULL,NULL,NULL);
 			}
 			
-			mpy_main(sText);
+			char str[30];
+			char filename[13];
+			strcpy(filename, _sFile);
+			filename[strlen(filename)-3] = '\0';
+			
+			sprintf(str, "from %s import *\r", filename);
+			
+			for (int k = 0; str[k]; k++) {
+				str[k] = tolower2(str[k]);
+			}
+			
+			_iAppMode = SHELL;
+			
+			mpy_main(str);
+			
+			_iAppMode = EDITOR;
 			iRefresh = 2;
-			//PopupMessage(1,"wesh","maggle",NULL,NULL,NULL);
 			
 			break;
 		
         //Save file
-        case -NODEFILESAVE: 
+        /*case -NODEFILESAVE: 
           if(iBinary==0)
           { 
             if(iSaved==0)
@@ -825,7 +840,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           }
           else
             PopupMessage(1,"Binary files can","not be modified.",NULL,NULL,NULL);
-          break;
+          break;*/
         
         //Save as
         case -NODEFILESVAS: 
@@ -895,10 +910,38 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           { 
             if(iSaved==0)
             {
-              if(sText[0]==ENDMARK)
+              if(sText[0]==ENDMARK) {
                 iAnswer=1;
-              else
-                iAnswer=PopupContinueYesNo("File not saved.","Ignore changes?",NULL);
+              } else {
+				//save the file
+				if(iBinary==0)
+					{ 
+						if(iSaved==0)
+						{
+						  iAnswer=1;
+						  if(iNewFile==1)
+						  {
+							if(FileExist(sRoot,sFolder,sFile)==1)
+							  iAnswer=PopupContinueYesNo(STR_FILEEXISTS,STR_CONTINUE,NULL);
+						  }  
+						  if(iAnswer==1)
+						  {
+							if(WriteFile(sRoot,sFolder,sFile,sText,sConfig->iNLMode)==1)
+							{
+							  MenuFunctionKey(KEY_CTRL_EXIT);
+							  iRefresh=2;
+							  iSaved=1;
+							  iNewFile=0;
+							}
+							else
+							  PopupMessage(1,STR_FILEWRITEERROR,NULL,NULL,NULL,NULL);
+						  }
+						}
+					} else {
+						PopupMessage(1,"Binary files can","not be modified.",NULL,NULL,NULL);
+					}
+                //iAnswer=PopupContinueYesNo("File not saved.","Ignore changes?",NULL);
+			  }
             }
             if(iSaved==1 || (iSaved==0 && iAnswer==1)) iExit=1;
           }
@@ -1134,7 +1177,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
         PrintFileName(sRoot,sFile,iBinary,iSaved);
         PrintInfoBar(sFolder,iCx+leftMostColumn,iCy+iTopLine,sConfig);
         //PrintInfoBar(sFolder,tabIndentForCurrentLine,iCy+iTopLine,sConfig);
-        //PrintKeyboardStatus();
+        PrintKeyboardStatus();
         DumpTextLines(sText,iLines,iLNum,iTopLine, leftMostColumn,iStart,iEnd,iCntx);
         Bdisp_PutDisp_DD();
       }
@@ -2378,7 +2421,8 @@ void ReadDirectory(char *sRoot, char *sFolder,struct Direc *sDirec,
 
 // ----------------------------------------------------------------
 // File explorer
-int Explorer(int iMode,char *sRoot, char *sFolder, 
+
+int Explorer (int iMode,char *sRoot, char *sFolder, 
              char *sFile,struct Config *sConfig,int *iNew)
 {
   
@@ -2464,6 +2508,7 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
         MenuDisableNode(MENUBAREXPL,3);
         MenuDisableNode(MENUBAREXPL,4);
         MenuDisableNode(MENUBAREXPL,5);
+        MenuEnableNode( MENUBAREXPL,2);
         MenuDisableNode(MENUBAREXP2,0);
         MenuDisableNode(MENUBAREXP2,1);
         MenuDisableNode(MENUBAREXP2,2);
@@ -2474,8 +2519,11 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
       else if(strlen(sFolder)>0)
       {
         MenuEnableNode( MENUBAREXPL,0);
-        MenuEnableNode( MENUBAREXPL,5);
+        MenuEnableNode( MENUBAREXPL,1);
         MenuEnableNode( MENUBAREXPL,2);
+        MenuEnableNode( MENUBAREXPL,3);
+        MenuEnableNode( MENUBAREXPL,4);
+        MenuEnableNode( MENUBAREXPL,5);
         MenuEnableNode( MENUBAREXP2,0);
         MenuEnableNode( MENUBAREXP2,1);
         MenuEnableNode( MENUBAREXP2,2);
@@ -2486,10 +2534,11 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
       else if(iFiles==0)
       {
         MenuDisableNode(MENUBAREXPL,0);
-        MenuDisableNode(MENUBAREXPL,5);
-        MenuDisableNode(MENUBAREXPL,2);
+        MenuDisableNode(MENUBAREXPL,1);
+        MenuDisableNode(MENUBAREXPL,3);
         MenuDisableNode(MENUBAREXPL,4);
-        MenuEnableNode( MENUBAREXPL,3);
+        MenuDisableNode(MENUBAREXPL,5);
+        MenuEnableNode( MENUBAREXPL,2);
         MenuDisableNode(MENUBAREXP2,0);
         MenuDisableNode(MENUBAREXP2,1);
         MenuDisableNode(MENUBAREXP2,2);
@@ -2499,9 +2548,12 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
       }
       else
       {
-        MenuEnableNode(MENUBAREXPL,0);
-        MenuEnableNode(MENUBAREXPL,5);
-        MenuEnableNode(MENUBAREXPL,2);
+        MenuEnableNode( MENUBAREXPL,0);
+        MenuEnableNode( MENUBAREXPL,1);
+        MenuEnableNode( MENUBAREXPL,2);
+        MenuEnableNode( MENUBAREXPL,3);
+        MenuEnableNode( MENUBAREXPL,4);
+        MenuEnableNode( MENUBAREXPL,5);
         MenuEnableNode(MENUBAREXP2,0);
         MenuEnableNode(MENUBAREXP2,1);
         MenuEnableNode(MENUBAREXP2,2);
@@ -2625,6 +2677,7 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
           switch(iCode)
           {
           
+			
             //File open / Save as / Auto set
             case NODEEXPLOPEN:
             case NODEAUTOSET:
@@ -2877,8 +2930,8 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
               
             //Help text
             case NODEHELPHELP: 
-              /*HelpText();
-              iRefresh=1;*/
+              HelpText();
+              iRefresh=1;
               break;
                 
             //About
@@ -2957,7 +3010,8 @@ int Explorer(int iMode,char *sRoot, char *sFolder,
         case KEY_CTRL_EXE:
           if(iFiles==0)
           {
-            iExit=1;
+            //iExit=1;
+			break;
           }
           if(_sFiles[iStart+iRow].iType==DT_DIRECTORY)
           {
@@ -4147,7 +4201,7 @@ void ConfigImport(struct Config *sConfig)
   //Variables
   int i;
   int iHandle = -1;
-  FONTCHARACTER defaultDir[] = {'\\', '\\', 'f', 'l', 's', '0', '\\', 'C', 'a', 's', 'i', 'o', 'P', 'y', 0};
+  FONTCHARACTER defaultDir[] = {'\\', '\\', 'f', 'l', 's', '0', '\\', 'C', 'A', 'S', 'I', 'O', 'P', 'Y', 0};
   //Open file
   /*iHandle=Bfile_OpenMainMemory(CONFIGFILE);
   if(iHandle>=0)
@@ -4171,7 +4225,7 @@ void ConfigImport(struct Config *sConfig)
     sConfig->iAutoOpen=0;
     strcpy(sConfig->sAutoRoot,"fls0");
     strcpy(sConfig->sAutoFile,"");
-    strcpy(sConfig->sAutoFolder,"CasioPy");
+    strcpy(sConfig->sAutoFolder,"CASIOPY");
     sConfig->iTextBuffer=TXTMINSIZE;
     sConfig->iClipBuffer=TXTMINCLIP;
     sConfig->iMaxFiles=MINFILES;
@@ -4856,7 +4910,7 @@ int GetFileName(char *sFile,int iMaxLen, char dontPutNameOfFile)
 
   //Write popup window
   PopUpWin(2);
-  locate(3,3); Print("Enter file name:");
+  locate(3,3); Print(STR_ENTERFILENAME);
   locate(3,4); Print("[            ]");
   MenuSetBar(MENUBARSTRN);
 
@@ -4876,7 +4930,7 @@ int GetFileName(char *sFile,int iMaxLen, char dontPutNameOfFile)
   //Check empty file name
   if(strlen(sName)==0 && iAnswer==1)
   {
-    PopupMessage(1,"Invalid filename!",NULL,NULL,NULL,NULL);
+    PopupMessage(1,STR_INVALIDFILENAME,NULL,NULL,NULL,NULL);
     iAnswer=0;
   }
   
@@ -4894,6 +4948,13 @@ int GetFileName(char *sFile,int iMaxLen, char dontPutNameOfFile)
 		sName[len+1] = 'p';
 		sName[len+2] = 'y';
 		sName[len+3] = '\0';
+	  }
+	  
+	  //Uppercase the file name
+	  for (int i = 0; sName[i] != '.'; i++) {
+		if (sName[i] >= 'a' && sName[i] <= 'z') {
+			sName[i] -= 32;
+		}
 	  }
 
 	  strcpy(sFile,sName);
@@ -4966,7 +5027,7 @@ int GetSearchString(char *sString)
 
   //Write popup window
   PopUpWin(2);
-  locate(3,3); Print("Search string:   ");
+  locate(3,3); Print(STR_SEARCHSTRING);
   locate(3,4); Print("[               ]");
   MenuSetBar(MENUBARSTRN);
 
@@ -4981,7 +5042,7 @@ int GetSearchString(char *sString)
   //Check empty file name
   if(strlen(sString0)==0 && iAnswer==1)
   {
-    PopupMessage(1,"Empty string!",NULL,NULL,NULL,NULL);
+    PopupMessage(1,STR_EMPTYSTRING,NULL,NULL,NULL,NULL);
     iAnswer=0;
   }
   
@@ -4994,227 +5055,99 @@ int GetSearchString(char *sString)
 
 }
 
-/*
+
 // ----------------------------------------------------------------
 // Help text
 void HelpText(void)
 {
   
+  #ifdef LANGUAGE_ENGLISH
+  
   //Help text
-  char sHelp[][33]=
-  {"Text editor for fx-9860G series ",  
-   "---------FILE EXPLORER----------",
-   "Main menu commands:             ",
-   "-OPEN: Open selected file/folder",
-   "-NEW:  Create new file.         ",
-   "-FILE: Go to File menu.         ",
-   "-OPTN: Go to options menu.      ",
-   "-ROOT: Changes root directory.  ",
-   "-DEL:  Delete selected file.    ",
-   "File menu commands:             ",
-   "-REN:  Rename file.             ",
-   "-COPY: Copy file.               ",
-   "-MOVE: Move file.               ",
-   "-NEWF: Create new folder.       ",
-   "-DELF: Delete selected folder.  ",
-   "                                ",
-   "                                ",
-   "                                ",
-   "Options menu commands:          ",
-   "-OPTN: Enter set up screen. Set ",
-   "       up screen is also called ",
-   "       with Shift+SETUP.        ",
-   "-MEM : Display memory status.   ",
-   "-HELP: This help screen.        ",
-   "-ABOU: Information about program",
-   "                                ",
-   "                                ",
-   "Root menu commands:             ",
-   "-MAIN: Change to main memory as ",
-   "       root directory.          ",
-   "-SMEM: Change to storage memory ",
-   "       as root directory.       ",
-   "-SDC:  Change to SD Card as root",
-   "       directory.               ",
-   "                                ",
-   "                                ",
-   "----------TEXT EDITOR-----------",
-   "Main menu commands:             ",
-   "-FILE: Go to file menu.         ",
-   "-EDIT: Go to edit menu.         ",
-   "-GOTO: Go to goto menu.         ",
-   "-OPTN: Go to options menu.      ",
-   "-CHAR: ASCII character set.     ",
-   "-A<>a: Change upper/lower case. ",
-   "                                ",
-   "File menu commands:             ",
-   "-SAVE :Save file to current     ",
-   "       location memory.         ",
-   "-S.AS: Save file with different ",
-   "       file/folder names.       ",
-   "-AUTO: Set current file to be   ",
-   "       opened automatically when",
-   "       program starts           ",
-   "                                ",
-   "Edit menu commands:             ",
-   "-CLIP: Text selection on / off. ",
-   "       Same as SHIFT+CLIP.      ",
-   "-COPY: Copy text to clipboard.  ",
-   "-CUT:  Copy text to clipboard   ",
-   "       and delete.              ",
-   "-PAST: Paste text from clipboard",
-   "       Same as SHIFT+PASTE.     ",
-   "-DEL:  Delete selected text.    ",
-   "-SRC:  Search string within text",
-   "-SRC+: Search again.            ",
-   "                                ",
-   "Goto menu commands:             ",
-   "-TOP:  Move cursor to beginning.",
-   "-BOTM: Move cursor to ending.   ",
-   "-HOME: Go to begining of line.  ",
-   "-END:  Go to ending of line.    ",
-   "-PAG-: Page up.                 ",
-   "-PAG+: Page down.               ",
-   "                                ",
-   "Options menu commands:          ",
-   "-OPTN: Enter set up screen.     ",
-   "       Same as SHIFT+SETUP.     ",
-   "-MEM:  Display memory status.   ",
-   "-HELP: This help screen.        ",
-   "-ABOU: Information about program",
-   "                                ",
-   "ASCII character set commands:   ",
-   "-INSR: Inserts char. into text. ",
-   "-BIND: Binds character to key.  ",
-   "-UBND: Unbinds character.       ",
-   "                                ",
-   "Bound characters are used in the",
-   "editor window by pressing VARS  ",
-   "key and then the key defined for",
-   "the bound character.            ",
-   "Information in the top bar:     ",
-   "-MM/SM/SD: Root directory.      ",
-   "-File name + [Folder] or Cursor.",
-   "-S/-: File saved flag           ",
-   "-T/B: Text file / Binary file   ",
-   "-1/S/a/A/b/B:Keyboard mode->    ",
-   " Numeric,Shift,Alpha lower,     ",
-   " Alpha upper,Alpha locked lower,",
-   " Alpha locked upper.            ",
-   "-------------SET UP-------------",
-   "<Try SDC>                       ",
-   "-YES: card is checked everytime ",
-   " the file explorer is called.   ",
-   "-NO: card is not tried never.   ",
-   " Use this option if your calc   ",
-   " does not have SD card because  ",
-   " file explorer opens faster.    ",
-   "                                ",
-   "<System Files>:                 ",
-   "-HIDN: System files are hidden  ",
-   " in the file explorer. System   ",
-   " files are *.g1? and those in   ",
-   " which attribute is not DT_FILE ",
-   " or DT_DIRECTORY. Files EDIT.CFG",
-   " and EDIT.DIR are system files. ",
-   "-DISP: System files are         ",
-   " displayed in the file explorer.",
-   "<New Line>                      ",
-   "-WIN: Files are stored using    ",
-   " CR+LF as line terminator as in ",
-   " windows systems.               ", 
-   "-UNIX: Files are stored using LF",
-   " as line terminator as in unix  ",
-   " systems.                       ", 
-   "                                ",
-   "                                ",
-   "<Word Wrap>                     ",
-   "-ON: Line breaks happen in      ",
-   " between of words, no cuts in   ",
-   " in the middle of words.        ",
-   "-OFF: Line breaks happen        ",
-   " anywhere, words are cut in     ",
-   " between.                       ",
-   "                                ",
-   "                                ",
-   "<Bytes free>                    ",
-   "-YES: Remaining memory is       ",
-   " displayed in last row of file  ",
-   " explorer.                      ",
-   "-NO: Remaining memory is not    ",
-   " displayed.                     ",
-   "                                ",
-   "                                ",
-   "                                ",
-   "<Default root directory>        ",
-   "-MAIN: Set main memory as root  ",
-   " when file explorer opens.      ",
-   "-SMEM: Set storage memory as    ",
-   " root when file explorer opens. ",
-   "-SDC: Set SD Card as root when  ",
-   " file explorer opens.            ",
-   "                                ",
-   "                                ",
-   "<Font size>                     ",
-   "-TINY: Set font size to 3x5     ",
-   " 32 columns x 8 rows            ",
-   "-SMAL: Set font size to 3x6     ",
-   " 32 columns x 7 rows            ",
-   "-MEDM: Set font size to 3x6     ",
-   " 25 columns x 7 rows            ",
-   "-LARG: Set font size to 5x7     ",
-   " 21 columns x 6 rows            ",
-   "<Info Bar>                      ",
-   "-FOLD: Folder name is displayed ",
-   " in the top bar.                ",
-   "-CURS: Current line and total   ",
-   " lines are displayed in the top ",
-   " bar.                           ", 
-   "                                ",
-   "                                ",
-   "                                ",
-   "<Text buffer size>              ",
-   "This option sets the size of the",
-   "buffer used to load the files.  ",
-   "It is maximun file size that can",
-   "be loaded in the text editor.   ",
-   "<Clipboard buffer size>         ",
-   "Size of the clipboard buffer. It",
-   "is the maximun data that you can",
-   "and copy and paste.             ",
-   "<Files/Dir.>                    ",
-   "This is the maximun number of   ",
-   "files per folder that can be    ",
-   "displayed in the file explorer  ",
-   "<Foldr.Max.>                    ",
-   "This is the maximun number of   ",
-   "folders that can be displayed in",
-   "the folder selection window.    ",
-   "                                ",
-   "<Auto open>                     ",
-   "-YES: Enable automatic file open",
-   " when application starts.       ",
-   "-NO: Disable automatic file open",
-   "<Auto root/Auto name/Auto foldr>",
-   "-SET: Set path for file to be   ",
-   " opened automatically.          ",
-   "-CLR: Clear file path.          ",
-   "                                ",
-   "                                ",
-   "  This program was developed    ",
-   "  from August 2008 to April     ",
-   "  2009 by Diego Marin. Report   ", 
-   "  any bugs or comments to:      ",
-   "                                ",
-   "       dmarin75@yahoo.es        ",
-   "%HELPEND%"
+  const char sHelp[][33] = {
+	"CasioPython v" CPY_VERSION,  
+	"Copyright (c) 2018 Zezombye",
+	"magmacubenetherrique<at>gmail.fr",
+	"",
+	"Thanks to Lephenixnoir and ",
+	"jickster for the help.",
+	"",
+	"Uses Edit by Diego Marin and",
+	"MicroPython by Damien George.",
+	"",
+	"This program is free software:",
+	"you can redistribute it and/or",
+	"modify it under the terms of the",
+	"GNU General Public License as",
+	"published by the Free Software",
+	"Foundation, either version 3 of",
+	"the License, or (at your option)",
+	"any later version.",
+	"",
+    "This program is distributed in",
+	"the hope that it will be useful,",
+    "but WITHOUT ANY WARRANTY;",
+	"without even the implied",
+	"warranty of MERCHANTABILITY or",
+	"FITNESS FOR A PARTICULAR",
+	"PURPOSE. See the GNU General",
+	"Public License for more details.",
+	"",
+    "You should have received a copy",
+	"of the GNU General Public",
+	"License along with this program.",
+	"If not, see",
+	"<https://www.gnu.org/licenses/>.",
+	"%HELPEND%"
    };
+   
+   #else
+	   
+   const char sHelp[][33] = {
+	"CasioPython v" CPY_VERSION,  
+	"Copyright (c) 2018 Zezombye",
+	"magmacubenetherrique<at>gmail.fr",
+	"",
+	"Merci a Lephenixnoir et ",
+	"jickster pour leur aide.",
+	"",
+	"Utilise Edit par Diego Marin et",
+	"MicroPython par Damien George.",
+	"",
+	"This program is free software:",
+	"you can redistribute it and/or",
+	"modify it under the terms of the",
+	"GNU General Public License as",
+	"published by the Free Software",
+	"Foundation, either version 3 of",
+	"the License, or (at your option)",
+	"any later version.",
+	"",
+    "This program is distributed in",
+	"the hope that it will be useful,",
+    "but WITHOUT ANY WARRANTY;",
+	"without even the implied",
+	"warranty of MERCHANTABILITY or",
+	"FITNESS FOR A PARTICULAR",
+	"PURPOSE. See the GNU General",
+	"Public License for more details.",
+	"",
+    "You should have received a copy",
+	"of the GNU General Public",
+	"License along with this program.",
+	"If not, see",
+	"<https://www.gnu.org/licenses/>.",
+	"%HELPEND%"
+   };
+   
+   #endif
+  
   
   //Variables
   int i;
   int iHPag=0;
   int iHPagMax;
-  int iStart;
+  int iStart = 0;
   int iExit;
   int iRefresh=1;
   int iCode;
@@ -5241,10 +5174,12 @@ void HelpText(void)
     //Rewrite screen
     if(iRefresh==1)
     {
-      SetFont(FONTS);
+	  
+	  Bdisp_AllClr_DDVRAM();
+      SetFont(FONTT);
       SetColor(COLNOR);
-      iStart=iHPag*(GetScrCAy()-1);
-      for(i=0;i<(GetScrCAy()-1);i++)
+      //iStart=iHPag*(GetScrCAy()-1);
+      for(i=0;i<(GetScrCAy());i++)
       {
         if(i+iStart<iHelpLines) 
           PrintStr(0,i,sHelp[i+iStart]);
@@ -5256,12 +5191,11 @@ void HelpText(void)
     //Flush screen
     if(iRefresh!=0)
     {
-      Bdisp_PutDisp_DD();
+	  
+      //Bdisp_PutDisp_DD();
       iRefresh=0;
     }
     
-    //Check keystroke
-    if(KbHit()){
         
       //Get Key
       iKey=GetKeyb();
@@ -5269,7 +5203,7 @@ void HelpText(void)
       //Process keys
       switch(iKey)
       {
-        //Process menu commands
+        /*//Process menu commands
         case KEY_CTRL_F1:
         case KEY_CTRL_F2:
         case KEY_CTRL_F3:
@@ -5308,23 +5242,32 @@ void HelpText(void)
             }
             break;
           }
-          break;
+          break;*/
+		  
+		  case KEY_CTRL_DOWN:
+			if (iStart < iHelpLines-8) iStart++;
+			iRefresh = 1;
+			break;
+			
+		  case KEY_CTRL_UP:
+			if (iStart > 0) iStart--;
+			iRefresh = 1;
+			break;
          
           //Exit
           case KEY_CTRL_EXIT:
             iExit=1;
             break;
       }
-   
-    }
   
   }while(iExit==0);
 
+  Bdisp_AllClr_DDVRAM();
   //Unhide keyboard status
   KeyboardStatusHide(0);
   MenuRestoreBar();
   
-}*/
+}
 
 // ----------------------------------------------------------------
 // Character selection 

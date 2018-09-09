@@ -5,7 +5,7 @@
 
 //Fonts
 #define FONTS 0 //3x5
-#define FONTT 1 //3x6
+#define FONTT 1 //3x7
 #define FONTM 3 //4x6
 #define FONTL 2 //5x7
 

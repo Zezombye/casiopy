@@ -414,7 +414,7 @@
 
 // Whether to use the POSIX reader for importing files
 #ifndef MICROPY_READER_POSIX
-#define MICROPY_READER_POSIX (0)
+#define MICROPY_READER_POSIX (1)
 #endif
 
 // Whether to use the VFS reader for importing files

@@ -17,7 +17,7 @@ build/py/modbuiltins.o: ../../py/modbuiltins.c include/stdio.h \
  include/machine/setjmp.h ../../py/objlist.h ../../py/objexcept.h \
  ../../py/objtuple.h ../../py/pystack.h ../../py/builtin.h \
  ../../py/stream.h ../../py/mperrno.h include/errno.h include/sys/errno.h \
- include/math.h ../../py/mphal.h mphalport.h ../../extmod/virtpin.h \
+ ../../py/mphal.h mphalport.h ../../extmod/virtpin.h \
  ../../lib/mp-readline/readline.h
 ../../py/modbuiltins.c include/stdio.h :
  include/_ansi.h include/newlib.h include/_newlib_version.h :
@@ -38,5 +38,5 @@ build/py/modbuiltins.o: ../../py/modbuiltins.c include/stdio.h \
  include/machine/setjmp.h ../../py/objlist.h ../../py/objexcept.h :
  ../../py/objtuple.h ../../py/pystack.h ../../py/builtin.h :
  ../../py/stream.h ../../py/mperrno.h include/errno.h include/sys/errno.h :
- include/math.h ../../py/mphal.h mphalport.h ../../extmod/virtpin.h :
+ ../../py/mphal.h mphalport.h ../../extmod/virtpin.h :
  ../../lib/mp-readline/readline.h :

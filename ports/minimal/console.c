@@ -188,9 +188,10 @@ int waitForKey(char* str) {
 			case KEY_CHAR_DIV: strcpy(str,"/"); break;
 			case KEY_CTRL_EXE: strcpy(str,"\r"); break;
 			case KEY_CTRL_DEL: strcpy(str,"\b"); break;
+			case KEY_CTRL_XTT: strcpy(str, "%"); break;
 			case KEY_CHAR_LPAR: strcpy(str,"("); break;
 			case KEY_CHAR_RPAR: strcpy(str,")"); break;
-			case KEY_CHAR_COMMA: strcpy(str,"\b"); break;
+			case KEY_CHAR_COMMA: strcpy(str,","); break;
 			case KEY_CHAR_STORE: strcpy(str,"  "); break;
 			case KEY_CHAR_SQUARE: strcpy(str,"**2"); break;
 			case KEY_CHAR_POW: strcpy(str,"**"); break;
@@ -214,12 +215,9 @@ int waitForKey(char* str) {
 	//In case of a control key (f1-f6, arrows, exit...) don't write anything and return the key itself.
 	control_key:
 		updateModifiersAfterKey();
-        PrintKeyboardStatus();
-		strcpy(str, "");
-		return key;
 		
 	shiftOrAlphaKey:
-        PrintKeyboardStatus();
+        if (_iAppMode == EDITOR) PrintKeyboardStatus();
 		strcpy(str, "");
 		return key;
 	
@@ -229,6 +227,7 @@ int waitForKey(char* str) {
 // Keyboard status
 void PrintKeyboardStatus()
 {
+	
   
   //Variables
   char cChr = '?';

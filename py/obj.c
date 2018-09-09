@@ -84,12 +84,12 @@ void mp_obj_print_exception(const mp_print_t *print, mp_obj_t exc) {
         mp_obj_exception_get_traceback(exc, &n, &values);
         if (n > 0) {
             assert(n % 3 == 0);
-            mp_print_str(print, "Traceback (most recent call last):\n");
+            mp_print_str(print, "Trace (most recent call last):\n");
             for (int i = n - 3; i >= 0; i -= 3) {
 #if MICROPY_ENABLE_SOURCE_LINE
-                mp_printf(print, "  File \"%q\", line %d", values[i], (int)values[i + 1]);
+                mp_printf(print, "File \"%q\", line %d, col %d", values[i], ((int)values[i + 1])&0x0000FFFF, ((int)values[i + 1]) >> 16);
 #else
-                mp_printf(print, "  File \"%q\"", values[i]);
+                mp_printf(print, "File \"%q\"", values[i]);
 #endif
                 // the block name can be NULL if it's unknown
                 qstr block = values[i + 2];

@@ -39,12 +39,19 @@ static char *stack_top;
 static char heap[2048];
 #endif
 
+//extern int nbOpenedFiles;
+//extern int openedFiles[];
+
 int mpy_main(char *text) {
 	ML_clear_vram();
 	ML_display_vram();
 	shellPosX = 0;
 	shellPosY = 0;
 	readline_index = 0;
+	/*for (int i = 0; i < 20; i++) {
+		openedFiles[i] = 0;
+	}*/
+	initNbOpenedFiles();
     int stack_dummy;
 	extern int rx_index;
 	rx_index = 1;
@@ -74,6 +81,8 @@ int mpy_main(char *text) {
     pyexec_frozen_module("frozentest.py");
     #endif
     mp_deinit();
+
+	closeAllFiles();
     return 0;
 }
 
@@ -87,9 +96,16 @@ void gc_collect(void) {
     gc_dump_info();
 }
 
-mp_lexer_t *mp_lexer_new_from_file(const char *filename) {
+/*mp_lexer_t *mp_lexer_new_from_file(const char *filename) {
     mp_raise_OSError(MP_ENOENT);
-}
+}*/
+
+//see lexer.c for this function
+/*mp_lexer_t *mp_lexer_new_from_file(const char *filename) {
+    mp_reader_t reader;
+    mp_reader_new_file(&reader, filename);
+    return mp_lexer_new(qstr_from_str(filename), reader);
+}*/
 
 /*mp_import_stat_t mp_import_stat(const char *path) {
     return MP_IMPORT_STAT_NO_EXIST;

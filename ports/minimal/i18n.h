@@ -11,6 +11,10 @@
 #define STR_COPYERROR "File copy error!"
 #define STR_FILEWRITEERROR "File write error!"
 #define STR_SAVINGFILE "Saving file..."
+#define STR_ENTERFILENAME "Enter file name:"
+#define STR_INVALIDFILENAME "Invalid file name!"
+#define STR_SEARCHSTRING "Search string:"
+#define STR_EMPTYSTRING "Empty string!"
 
 #else
 
@@ -23,14 +27,18 @@
 	
 #define STR_PROGLIST "Liste programmes"
 #define STR_NOPROGS "Aucun programme      "
-#define STR_CHARSEL "S\xE60A""lection Caract\xE609""re"
+#define STR_CHARSEL "Selection Caractere"
 #define STR_DELPROG "Suppr. programme?"
 #define STR_FILEEXISTS "Fichier existe"
-#define STR_OVERWRITE "Sur\xE60A""criture?"
+#define STR_OVERWRITE "Surecriture?"
 #define STR_RENAMEERROR "Erreur renommage!"
 #define STR_CONTINUE "Continuer?"
 #define STR_COPYERROR "Erreur copiage!"
-#define STR_FILEWRITEERROR "Erreur \xE60A""criture!"
+#define STR_FILEWRITEERROR "Erreur ecriture!"
 #define STR_SAVINGFILE "Sauvegarde..."
+#define STR_ENTERFILENAME "Nom fichier:"
+#define STR_INVALIDFILENAME "Nom invalide!"
+#define STR_SEARCHSTRING "Rechercher:"
+#define STR_EMPTYSTRING "Texte vide!"
 
 #endif

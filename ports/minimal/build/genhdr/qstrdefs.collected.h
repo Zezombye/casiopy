@@ -346,8 +346,6 @@ Q(collect)
 
 Q(complex)
 
-Q(complex)
-
 Q(const)
 
 Q(copy)
@@ -387,8 +385,6 @@ Q(exit)
 Q(extend)
 
 Q(find)
-
-Q(float)
 
 Q(float)
 

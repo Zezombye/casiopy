@@ -40,11 +40,13 @@ SRC_C = \
 	fesetenv.c \
 	tinyprintf.c \
 	MonochromeLib.c \
+	shell.c \
 	edit.c \
 	console.c \
 	menu.c \
 	font.c \
 	main.c \
+	posixio.c \
 	uart_core.c \
 	lib/utils/printf.c \
 	lib/utils/stdout_helpers.c \

@@ -544,8 +544,6 @@ void _reclaim_reent (struct _reent *);
 # 12 "include/alloca.h" 2
 # 83 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
-# 577 "../../py/mpconfig.h"
-typedef double mp_float_t;
 # 28 "<stdin>" 2
 
 
@@ -927,8 +925,6 @@ Q(collect)
 
 Q(complex)
 
-Q(complex)
-
 Q(const)
 
 Q(copy)
@@ -968,8 +964,6 @@ Q(exit)
 Q(extend)
 
 Q(find)
-
-Q(float)
 
 Q(float)
 

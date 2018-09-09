@@ -1,5 +1,5 @@
 def mem():
-  try:
+   try:
     l = [0]
     while True:
       try:
@@ -14,5 +14,3 @@ def mem():
   except:
     return 0
   return l[0]
-  
-mem()

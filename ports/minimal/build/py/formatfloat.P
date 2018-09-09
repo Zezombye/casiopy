@@ -4,15 +4,11 @@ build/py/formatfloat.o: ../../py/formatfloat.c ../../py/mpconfig.h \
  include/sys/config.h include/machine/ieeefp.h include/sys/features.h \
  include/sys/reent.h include/_ansi.h include/stddef.h \
  include/sys/_types.h include/machine/_types.h \
- include/machine/_default_types.h include/sys/lock.h include/assert.h \
- include/stdlib.h include/sys/cdefs.h include/machine/stdlib.h \
- include/math.h ../../py/formatfloat.h
+ include/machine/_default_types.h include/sys/lock.h
 ../../py/formatfloat.c ../../py/mpconfig.h :
  mpconfigport.h include/stdint.h include/stdint-gcc.h include/alloca.h :
  include/_ansi.h include/newlib.h include/_newlib_version.h :
  include/sys/config.h include/machine/ieeefp.h include/sys/features.h :
  include/sys/reent.h include/_ansi.h include/stddef.h :
  include/sys/_types.h include/machine/_types.h :
- include/machine/_default_types.h include/sys/lock.h include/assert.h :
- include/stdlib.h include/sys/cdefs.h include/machine/stdlib.h :
- include/math.h ../../py/formatfloat.h :
+ include/machine/_default_types.h include/sys/lock.h :

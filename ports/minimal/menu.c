@@ -68,8 +68,8 @@ void MenuInitialize(void)
   
   MenuSetNode(MENUBARPRGM, 0, "STMT", -1, MENUBARPRGM0, 0, NULL);
   MenuSetNode(MENUBARPRGM, 1, "LOOP", -1, MENUBARPRGM1, 0, NULL);
-  MenuSetNode(MENUBARPRGM, 2, "I/O", -1, MENUBARPRGM2, 0, NULL);
-  MenuSetNode(MENUBARPRGM, 3, "REL", -1, MENUBARPRGM3, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 2, "REL", -1, MENUBARPRGM2, 0, NULL);
+  MenuSetNode(MENUBARPRGM, 3, "I/O", -1, MENUBARPRGM3, 0, NULL);
   MenuSetNode(MENUBARPRGM, 4, "BOOL", -1, MENUBARPRGM4, 0, NULL);
   MenuSetNode(MENUBARPRGM, 5, "EXPT", -1, MENUBARPRGM5, 0, NULL);
   
@@ -87,19 +87,20 @@ void MenuInitialize(void)
   MenuSetPrgmNode(MENUBARPRGM1,4,"brk","break", NODEPRGM10);
   MenuSetPrgmNode(MENUBARPRGM1,5,"ctnu","continue", NODEPRGM11);
     
-  MenuSetPrgmNode(MENUBARPRGM2,0,"prnt","print(\a)", NODEPRGM12);
-  MenuSetPrgmNode(MENUBARPRGM2,1,"inpt","input(\a)", NODEPRGM13);
-  MenuSetPrgmNode(MENUBARPRGM2,2,"iprt","import ", NODEPRGM14);
-  MenuSetPrgmNode(MENUBARPRGM2,3,"f/i*","from \a import *", NODEPRGM15);
-  MenuSetPrgmNode(MENUBARPRGM2,4,"math","import math", NODEPRGM16);
-  MenuSetPrgmNode(MENUBARPRGM2,5,"rand","import random", NODEPRGM17);
+  MenuSetPrgmNode(MENUBARPRGM2,0,"==","==", NODEPRGM12);
+  MenuSetPrgmNode(MENUBARPRGM2,1,"!=","!=", NODEPRGM13);
+  MenuSetPrgmNode(MENUBARPRGM2,2,">=",">=", NODEPRGM14);
+  MenuSetPrgmNode(MENUBARPRGM2,3,"<=","<=", NODEPRGM15);
+  MenuSetPrgmNode(MENUBARPRGM2,4,">",">", NODEPRGM16);
+  MenuSetPrgmNode(MENUBARPRGM2,5,"<","<", NODEPRGM17);
   
-  MenuSetPrgmNode(MENUBARPRGM3,0,"==","==", NODEPRGM18);
-  MenuSetPrgmNode(MENUBARPRGM3,1,"!=","!=", NODEPRGM19);
-  MenuSetPrgmNode(MENUBARPRGM3,2,">=",">=", NODEPRGM20);
-  MenuSetPrgmNode(MENUBARPRGM3,3,"<=","<=", NODEPRGM21);
-  MenuSetPrgmNode(MENUBARPRGM3,4,">",">", NODEPRGM22);
-  MenuSetPrgmNode(MENUBARPRGM3,5,"<","<", NODEPRGM23);
+  MenuSetPrgmNode(MENUBARPRGM3,0,"prnt","print(\a)", NODEPRGM18);
+  MenuSetPrgmNode(MENUBARPRGM3,1,"inpt","input(\a)", NODEPRGM19);
+  MenuSetPrgmNode(MENUBARPRGM3,2,"iprt","import ", NODEPRGM20);
+  MenuSetPrgmNode(MENUBARPRGM3,3,"f/i*","from \a import *", NODEPRGM21);
+  MenuSetPrgmNode(MENUBARPRGM3,4,"math","import math", NODEPRGM22);
+  MenuSetPrgmNode(MENUBARPRGM3,5,"rand","import random", NODEPRGM23);
+  
   
   MenuSetPrgmNode(MENUBARPRGM4,0,"and"," and ", NODEPRGM24);
   MenuSetPrgmNode(MENUBARPRGM4,1,"or"," or ", NODEPRGM25);
@@ -149,7 +150,7 @@ void MenuInitialize(void)
   MenuSetNode(MENUBAROPTN,5,"ABOU",NODEHELPABOU,-1         ,0,NULL);*/
   
   //Explorer menu bar
-  MenuSetNode(MENUBAREXPL,0,"EXE",NODEEXPLEXE,-1         ,0,NULL);
+  MenuSetNode(MENUBAREXPL,0,"INFO",NODEHELPHELP,-1         ,0,NULL);
   MenuSetNode(MENUBAREXPL,1,"EDIT",NODEEXPLOPEN,-1         ,0,NULL);
   MenuSetNode(MENUBAREXPL,2,"NEW ",NODEEXPLNEW ,-1         ,0,NULL);
   MenuSetNode(MENUBAREXPL,3,"DEL ",NODEEXPLDEL ,-1         ,0,NULL);
@@ -191,12 +192,12 @@ void MenuInitialize(void)
   
   //Menu bar for messages
   MenuSetNode(MENUBARMESS,0,"OK  ",NODEMESSOK,-1           ,0,NULL);
- /* 
+  
   //Help text navigation
   MenuSetNode(MENUBARHNAV,0,"PAG-",NODEHELPPAGU,-1         ,0,NULL);
   MenuSetNode(MENUBARHNAV,1,"PAG+",NODEHELPPAGD,-1         ,0,NULL);
   MenuSetNode(MENUBARHNAV,5,"EXIT",NODEHELPEXIT,-1         ,0,NULL);
-  
+  /*
   //Configuration mode (Try SD Card)
   MenuSetNode(MENUBARTRSD,0,"YES",NODETRYSDYES,-1          ,0,NULL);
   MenuSetNode(MENUBARTRSD,1,"NO ",NODETRYSDNO ,-1          ,0,NULL);

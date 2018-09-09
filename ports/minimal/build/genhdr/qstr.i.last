@@ -1,8 +1,8 @@
-# 1 "../../py/builtinimport.c"
+# 1 "../../py/reader.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "../../py/builtinimport.c"
-# 28 "../../py/builtinimport.c"
+# 1 "../../py/reader.c"
+# 27 "../../py/reader.c"
 # 1 "include/stdio.h" 1
 # 29 "include/stdio.h"
 # 1 "include/_ansi.h" 1
@@ -726,20 +726,7 @@ typedef struct timespec timestruc_t;
 
 
 typedef __loff_t loff_t;
-# 46 "include/machine/types.h"
-struct flock {
- short l_type;
- short l_whence;
- off_t l_start;
- off_t l_len;
- pid_t l_pid;
-};
-
-
-
-
-
-
+# 59 "include/machine/types.h"
 typedef unsigned long vm_offset_t;
 
 
@@ -1062,66 +1049,144 @@ _putchar_unlocked(int _c)
 }
 # 797 "include/stdio.h"
 
-# 29 "../../py/builtinimport.c" 2
-# 1 "include/string.h" 1
-# 17 "include/string.h"
-# 1 "include/stddef.h" 1
-# 18 "include/string.h" 2
-# 27 "include/string.h"
-
-
-void * memchr (const void *, int, size_t);
-int memcmp (const void *, const void *, size_t);
-void * memcpy (void *restrict, const void *restrict, size_t);
-void * memmove (void *, const void *, size_t);
-void * memset (void *, int, size_t);
-char *strcat (char *restrict, const char *restrict);
-char *strchr (const char *, int);
-int strcmp (const char *, const char *);
-int strcoll (const char *, const char *);
-char *strcpy (char *restrict, const char *restrict);
-size_t strcspn (const char *, const char *);
-char *strerror (int);
-size_t strlen (const char *);
-char *strncat (char *restrict, const char *restrict, size_t);
-int strncmp (const char *, const char *, size_t);
-char *strncpy (char *restrict, const char *restrict, size_t);
-char *strpbrk (const char *, const char *);
-char *strrchr (const char *, int);
-size_t strspn (const char *, const char *);
-char *strstr (const char *, const char *);
-
-char *strtok (char *restrict, const char *restrict);
-
-size_t strxfrm (char *restrict, const char *restrict, size_t);
-# 86 "include/string.h"
-char *_strdup_r (struct _reent *, const char *);
-
-
-
-char *_strndup_r (struct _reent *, const char *, size_t);
-# 112 "include/string.h"
-char * _strerror_r (struct _reent *, int, int, int *);
-# 134 "include/string.h"
-char *strsignal (int __signo);
-# 175 "include/string.h"
-# 1 "include/sys/string.h" 1
-# 176 "include/string.h" 2
-
-
-# 30 "../../py/builtinimport.c" 2
+# 28 "../../py/reader.c" 2
 # 1 "include/assert.h" 1
 # 39 "include/assert.h"
 void __assert (const char *, int, const char *)
      __attribute__ ((__noreturn__));
 void __assert_func (const char *, int, const char *, const char *)
      __attribute__ ((__noreturn__));
-# 31 "../../py/builtinimport.c" 2
+# 29 "../../py/reader.c" 2
+# 1 "include/fxlib.h" 1
+# 18 "include/fxlib.h"
+# 1 "include/dispbios.h" 1
+# 65 "include/dispbios.h"
+typedef struct tag_DISPBOX{
+    int left;
+    int top;
+    int right;
+    int bottom;
+} DISPBOX;
 
-# 1 "../../py/compile.h" 1
-# 29 "../../py/compile.h"
-# 1 "../../py/lexer.h" 1
-# 29 "../../py/lexer.h"
+typedef struct tag_GRAPHDATA{
+    int width;
+    int height;
+    unsigned char *pBitmap;
+} GRAPHDATA;
+
+typedef struct tag_RECTANGLE{
+    DISPBOX LineArea;
+    unsigned char AreaKind;
+    unsigned char EffectWin;
+} RECTANGLE;
+
+typedef struct tag_DISPGRAPH{
+    int x;
+    int y;
+    GRAPHDATA GraphData;
+    unsigned char WriteModify;
+    unsigned char WriteKind;
+} DISPGRAPH;
+# 19 "include/fxlib.h" 2
+# 1 "include/filebios.h" 1
+# 32 "include/filebios.h"
+enum DEVICE_TYPE{
+    DEVICE_MAIN_MEMORY,
+    DEVICE_STORAGE,
+    DEVICE_SD_CARD,
+};
+# 101 "include/filebios.h"
+typedef struct tag_FILE_INFO
+{
+    unsigned short id;
+    unsigned short type;
+    unsigned long fsize;
+    unsigned long dsize;
+    unsigned int property;
+    unsigned long address;
+} FILE_INFO;
+# 20 "include/fxlib.h" 2
+# 1 "include/keybios.h" 1
+# 21 "include/fxlib.h" 2
+
+
+
+
+void Bdisp_AllClr_DD(void);
+void Bdisp_AllClr_VRAM(void);
+void Bdisp_AllClr_DDVRAM(void);
+void Bdisp_AreaClr_DD(const DISPBOX *pArea);
+void Bdisp_AreaClr_VRAM(const DISPBOX *pArea);
+void Bdisp_AreaClr_DDVRAM(const DISPBOX *pArea);
+void Bdisp_AreaReverseVRAM(int x1, int y1, int x2, int y2);
+void Bdisp_GetDisp_DD(unsigned char *pData);
+void Bdisp_GetDisp_VRAM(unsigned char *pData);
+void Bdisp_PutDisp_DD(void);
+void Bdisp_PutDispArea_DD(const DISPBOX *PutDispArea);
+void Bdisp_SetPoint_DD(int x, int y, unsigned char point);
+void Bdisp_SetPoint_VRAM(int x, int y, unsigned char point);
+void Bdisp_SetPoint_DDVRAM(int x, int y, unsigned char point);
+int Bdisp_GetPoint_VRAM(int x, int y);
+void Bdisp_WriteGraph_DD(const DISPGRAPH *WriteGraph);
+void Bdisp_WriteGraph_VRAM(const DISPGRAPH *WriteGraph);
+void Bdisp_WriteGraph_DDVRAM(const DISPGRAPH *WriteGraph);
+void Bdisp_ReadArea_DD(const DISPBOX *ReadArea, unsigned char *ReadData);
+void Bdisp_ReadArea_VRAM(const DISPBOX *ReadArea, unsigned char *ReadData);
+void Bdisp_DrawLineVRAM(int x1, int y1, int x2, int y2);
+void Bdisp_ClearLineVRAM(int x1, int y1, int x2, int y2);
+
+void locate(int x, int y);
+void Print(const unsigned char *str);
+void PrintRev(const unsigned char *str);
+void PrintC(const unsigned char *c);
+void PrintRevC(const unsigned char *str);
+void PrintLine(const unsigned char *str, int max);
+void PrintRLine(const unsigned char *str, int max);
+void PrintXY(int x, int y, const unsigned char *str, int type);
+int PrintMini(int x, int y, const unsigned char *str, int type);
+void SaveDisp(unsigned char num);
+void RestoreDisp(unsigned char num);
+void PopUpWin(int n);
+
+int Bfile_OpenFile(const unsigned short *filename, int mode);
+int Bfile_OpenMainMemory(const unsigned char *name);
+int Bfile_ReadFile(int HANDLE, void *buf, int size, int readpos);
+int Bfile_WriteFile(int HANDLE, const void *buf, int size);
+int Bfile_SeekFile(int HANDLE, int pos);
+int Bfile_CloseFile(int HANDLE);
+int Bfile_GetMediaFree(enum DEVICE_TYPE devicetype, int *freebytes);
+int Bfile_GetFileSize(int HANDLE);
+int Bfile_CreateFile(const unsigned short *filename, int size);
+int Bfile_CreateDirectory(const unsigned short *pathname);
+int Bfile_CreateMainMemory(const unsigned char *name);
+int Bfile_RenameMainMemory(const unsigned char *oldname, const unsigned char *newname);
+int Bfile_DeleteFile(const unsigned short *filename);
+int Bfile_DeleteDirectory(const unsigned short *pathname);
+int Bfile_DeleteMainMemory(const unsigned char *name);
+int Bfile_FindFirst(const unsigned short *pathname, int *FindHandle, unsigned short *foundfile, FILE_INFO *fileinfo);
+int Bfile_FindNext(int FindHandle, unsigned short *foundfile, FILE_INFO *fileinfo);
+int Bfile_FindClose(int FindHandle);
+
+void Bkey_Set_RepeatTime(long FirstCount, long NextCount);
+void Bkey_Get_RepeatTime(long *FirstCount, long *NextCount);
+void Bkey_Set_RepeatTime_Default(void);
+int GetKeyWait(int sel, int time, int menu, unsigned int *keycode);
+int IsKeyDown(int keycode);
+int IsKeyUp(int keycode);
+int GetKey(unsigned int *keycode);
+
+int SetTimer(int ID, int elapse, void (*hander)(void));
+int KillTimer(int ID);
+void Sleep(int millisecond);
+
+void SetQuitHandler(void (*callback)(void));
+int INIT_ADDIN_APPLICATION(int isAppli, unsigned short OptionNum);
+# 30 "../../py/reader.c" 2
+
+# 1 "../../py/runtime.h" 1
+# 29 "../../py/runtime.h"
+# 1 "../../py/mpstate.h" 1
+# 29 "../../py/mpstate.h"
 # 1 "include/stdint.h" 1
 # 16 "include/stdint.h"
 # 1 "include/stdint-gcc.h" 1
@@ -1186,7 +1251,7 @@ typedef unsigned int uintptr_t;
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
 # 17 "include/stdint.h" 2
-# 30 "../../py/lexer.h" 2
+# 30 "../../py/mpstate.h" 2
 
 # 1 "../../py/mpconfig.h" 1
 # 45 "../../py/mpconfig.h"
@@ -1200,11 +1265,9 @@ typedef long mp_off_t;
 # 1 "include/alloca.h" 1
 # 83 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
-# 577 "../../py/mpconfig.h"
-typedef double mp_float_t;
-# 32 "../../py/lexer.h" 2
-# 1 "../../py/qstr.h" 1
-# 30 "../../py/qstr.h"
+# 32 "../../py/mpstate.h" 2
+# 1 "../../py/mpthread.h" 1
+# 33 "../../py/mpstate.h" 2
 # 1 "../../py/misc.h" 1
 # 33 "../../py/misc.h"
 # 1 "include/stdbool.h" 1
@@ -1299,7 +1362,78 @@ void vstr_printf(vstr_t *vstr, const char *fmt, ...);
 int DEBUG_printf(const char *fmt, ...);
 
 extern mp_uint_t mp_verbose_flag;
-# 31 "../../py/qstr.h" 2
+# 34 "../../py/mpstate.h" 2
+# 1 "../../py/nlr.h" 1
+# 32 "../../py/nlr.h"
+# 1 "include/limits.h" 1
+# 11 "include/limits.h"
+# 1 "include/features.h" 1
+# 12 "include/limits.h" 2
+# 33 "../../py/nlr.h" 2
+# 1 "include/assert.h" 1
+# 39 "include/assert.h"
+void __assert (const char *, int, const char *)
+     __attribute__ ((__noreturn__));
+void __assert_func (const char *, int, const char *, const char *)
+     __attribute__ ((__noreturn__));
+# 34 "../../py/nlr.h" 2
+# 68 "../../py/nlr.h"
+# 1 "include/setjmp.h" 1
+# 10 "include/setjmp.h"
+# 1 "include/machine/setjmp.h" 1
+
+
+# 376 "include/machine/setjmp.h"
+typedef int jmp_buf[20];
+
+
+
+
+# 11 "include/setjmp.h" 2
+
+
+
+
+void longjmp (jmp_buf __jmpb, int __retval)
+   __attribute__ ((__noreturn__));
+
+
+
+int setjmp (jmp_buf __jmpb);
+
+
+# 69 "../../py/nlr.h" 2
+
+
+typedef struct _nlr_buf_t nlr_buf_t;
+struct _nlr_buf_t {
+
+    nlr_buf_t *prev;
+    void *ret_val;
+
+
+    jmp_buf jmpbuf;
+
+
+
+
+
+
+
+};
+# 117 "../../py/nlr.h"
+unsigned int nlr_push_tail(nlr_buf_t *top);
+void nlr_pop(void);
+__attribute__((noreturn)) void nlr_jump(void *val);
+
+
+
+
+__attribute__((noreturn)) void nlr_jump_fail(void *val);
+# 35 "../../py/mpstate.h" 2
+# 1 "../../py/obj.h" 1
+# 31 "../../py/obj.h"
+# 1 "../../py/qstr.h" 1
 # 39 "../../py/qstr.h"
 enum {
 
@@ -1338,11 +1472,7 @@ const byte *qstr_data(qstr q, size_t *len);
 
 void qstr_pool_info(size_t *n_pool, size_t *n_qstr, size_t *n_str_data_bytes, size_t *n_total_bytes);
 void qstr_dump_data(void);
-# 33 "../../py/lexer.h" 2
-# 1 "../../py/reader.h" 1
-# 29 "../../py/reader.h"
-# 1 "../../py/obj.h" 1
-# 32 "../../py/obj.h"
+# 32 "../../py/obj.h" 2
 # 1 "../../py/mpprint.h" 1
 # 48 "../../py/mpprint.h"
 typedef void (*mp_print_strn_t)(void *data, const char *str, size_t len);
@@ -1363,7 +1493,7 @@ extern const mp_print_t mp_plat_print;
 int mp_print_str(const mp_print_t *print, const char *str);
 int mp_print_strn(const mp_print_t *print, const char *str, size_t len, int flags, char fill, int width);
 
-int mp_print_float(const mp_print_t *print, mp_float_t f, char fmt, int flags, char fill, int width, int prec);
+
 
 
 int mp_printf(const mp_print_t *print, const char *fmt, ...);
@@ -1530,20 +1660,7 @@ static inline _Bool MP_OBJ_IS_SMALL_INT(mp_const_obj_t o)
 
 static inline _Bool MP_OBJ_IS_QSTR(mp_const_obj_t o)
     { return ((((mp_int_t)(o)) & 3) == 2); }
-
-
-
-
-
-
-extern const struct _mp_obj_float_t mp_const_float_e_obj;
-extern const struct _mp_obj_float_t mp_const_float_pi_obj;
-
-
-mp_float_t mp_obj_float_get(mp_obj_t self_in);
-mp_obj_t mp_obj_new_float(mp_float_t value);
-
-
+# 105 "../../py/obj.h"
 static inline _Bool MP_OBJ_IS_OBJ(mp_const_obj_t o)
     { return ((((mp_int_t)(o)) & 3) == 0); }
 # 246 "../../py/obj.h"
@@ -1830,8 +1947,8 @@ mp_obj_t mp_obj_new_bytes(const byte* data, size_t len);
 mp_obj_t mp_obj_new_bytearray(size_t n, void *items);
 mp_obj_t mp_obj_new_bytearray_by_ref(size_t n, void *items);
 
-mp_obj_t mp_obj_new_int_from_float(mp_float_t val);
-mp_obj_t mp_obj_new_complex(mp_float_t real, mp_float_t imag);
+
+
 
 mp_obj_t mp_obj_new_exception(const mp_obj_type_t *exc_type);
 mp_obj_t mp_obj_new_exception_arg1(const mp_obj_type_t *exc_type, mp_obj_t arg);
@@ -1872,9 +1989,9 @@ mp_int_t mp_obj_get_int(mp_const_obj_t arg);
 mp_int_t mp_obj_get_int_truncated(mp_const_obj_t arg);
 _Bool mp_obj_get_int_maybe(mp_const_obj_t arg, mp_int_t *value);
 
-mp_float_t mp_obj_get_float(mp_obj_t self_in);
-_Bool mp_obj_get_float_maybe(mp_obj_t arg, mp_float_t *value);
-void mp_obj_get_complex(mp_obj_t self_in, mp_float_t *real, mp_float_t *imag);
+
+
+
 
 
 void mp_obj_get_array(mp_obj_t o, size_t *len, mp_obj_t **items);
@@ -1917,24 +2034,7 @@ const char *mp_obj_str_get_data(mp_obj_t self_in, size_t *len);
 mp_obj_t mp_obj_str_intern(mp_obj_t str);
 mp_obj_t mp_obj_str_intern_checked(mp_obj_t obj);
 void mp_str_print_quoted(const mp_print_t *print, const byte *str_data, size_t str_len, _Bool is_bytes);
-
-
-
-
-
-
-static inline mp_int_t mp_float_hash(mp_float_t val) { return (mp_int_t)val; }
-
-mp_obj_t mp_obj_float_binary_op(mp_binary_op_t op, mp_float_t lhs_val, mp_obj_t rhs);
-
-
-void mp_obj_complex_get(mp_obj_t self_in, mp_float_t *real, mp_float_t *imag);
-mp_obj_t mp_obj_complex_binary_op(mp_binary_op_t op, mp_float_t lhs_real, mp_float_t lhs_imag, mp_obj_t rhs_in);
-
-
-
-
-
+# 744 "../../py/obj.h"
 void mp_obj_tuple_get(mp_obj_t self_in, size_t *len, mp_obj_t **items);
 void mp_obj_tuple_del(mp_obj_t self_in);
 mp_int_t mp_obj_tuple_hash(mp_obj_t self_in);
@@ -2043,398 +2143,7 @@ _Bool mp_seq_cmp_objs(mp_uint_t op, const mp_obj_t *items1, size_t len1, const m
 mp_obj_t mp_seq_index_obj(const mp_obj_t *items, size_t len, size_t n_args, const mp_obj_t *args);
 mp_obj_t mp_seq_count_obj(const mp_obj_t *items, size_t len, mp_obj_t value);
 mp_obj_t mp_seq_extract_slice(size_t len, const mp_obj_t *seq, mp_bound_slice_t *indexes);
-# 30 "../../py/reader.h" 2
-
-
-
-
-
-
-typedef struct _mp_reader_t {
-    void *data;
-    mp_uint_t (*readbyte)(void *data);
-    void (*close)(void *data);
-} mp_reader_t;
-
-void mp_reader_new_mem(mp_reader_t *reader, const byte *buf, size_t len, size_t free_len);
-void mp_reader_new_file(mp_reader_t *reader, const char *filename);
-void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, _Bool close_fd);
-# 34 "../../py/lexer.h" 2
-
-
-
-
-
-
-
-typedef enum _mp_token_kind_t {
-    MP_TOKEN_END,
-
-    MP_TOKEN_INVALID,
-    MP_TOKEN_DEDENT_MISMATCH,
-    MP_TOKEN_LONELY_STRING_OPEN,
-
-    MP_TOKEN_NEWLINE,
-    MP_TOKEN_INDENT,
-    MP_TOKEN_DEDENT,
-
-    MP_TOKEN_NAME,
-    MP_TOKEN_INTEGER,
-    MP_TOKEN_FLOAT_OR_IMAG,
-    MP_TOKEN_STRING,
-    MP_TOKEN_BYTES,
-
-    MP_TOKEN_ELLIPSIS,
-
-    MP_TOKEN_KW_FALSE,
-    MP_TOKEN_KW_NONE,
-    MP_TOKEN_KW_TRUE,
-    MP_TOKEN_KW___DEBUG__,
-    MP_TOKEN_KW_AND,
-    MP_TOKEN_KW_AS,
-    MP_TOKEN_KW_ASSERT,
-
-
-
-
-    MP_TOKEN_KW_BREAK,
-    MP_TOKEN_KW_CLASS,
-    MP_TOKEN_KW_CONTINUE,
-    MP_TOKEN_KW_DEF,
-    MP_TOKEN_KW_DEL,
-    MP_TOKEN_KW_ELIF,
-    MP_TOKEN_KW_ELSE,
-    MP_TOKEN_KW_EXCEPT,
-    MP_TOKEN_KW_FINALLY,
-    MP_TOKEN_KW_FOR,
-    MP_TOKEN_KW_FROM,
-    MP_TOKEN_KW_GLOBAL,
-    MP_TOKEN_KW_IF,
-    MP_TOKEN_KW_IMPORT,
-    MP_TOKEN_KW_IN,
-    MP_TOKEN_KW_IS,
-    MP_TOKEN_KW_LAMBDA,
-    MP_TOKEN_KW_NONLOCAL,
-    MP_TOKEN_KW_NOT,
-    MP_TOKEN_KW_OR,
-    MP_TOKEN_KW_PASS,
-    MP_TOKEN_KW_RAISE,
-    MP_TOKEN_KW_RETURN,
-    MP_TOKEN_KW_TRY,
-    MP_TOKEN_KW_WHILE,
-    MP_TOKEN_KW_WITH,
-    MP_TOKEN_KW_YIELD,
-
-    MP_TOKEN_OP_PLUS,
-    MP_TOKEN_OP_MINUS,
-    MP_TOKEN_OP_STAR,
-    MP_TOKEN_OP_DBL_STAR,
-    MP_TOKEN_OP_SLASH,
-    MP_TOKEN_OP_DBL_SLASH,
-    MP_TOKEN_OP_PERCENT,
-    MP_TOKEN_OP_LESS,
-    MP_TOKEN_OP_DBL_LESS,
-    MP_TOKEN_OP_MORE,
-    MP_TOKEN_OP_DBL_MORE,
-    MP_TOKEN_OP_AMPERSAND,
-    MP_TOKEN_OP_PIPE,
-    MP_TOKEN_OP_CARET,
-    MP_TOKEN_OP_TILDE,
-    MP_TOKEN_OP_LESS_EQUAL,
-    MP_TOKEN_OP_MORE_EQUAL,
-    MP_TOKEN_OP_DBL_EQUAL,
-    MP_TOKEN_OP_NOT_EQUAL,
-
-    MP_TOKEN_DEL_PAREN_OPEN,
-    MP_TOKEN_DEL_PAREN_CLOSE,
-    MP_TOKEN_DEL_BRACKET_OPEN,
-    MP_TOKEN_DEL_BRACKET_CLOSE,
-    MP_TOKEN_DEL_BRACE_OPEN,
-    MP_TOKEN_DEL_BRACE_CLOSE,
-    MP_TOKEN_DEL_COMMA,
-    MP_TOKEN_DEL_COLON,
-    MP_TOKEN_DEL_PERIOD,
-    MP_TOKEN_DEL_SEMICOLON,
-    MP_TOKEN_DEL_AT,
-    MP_TOKEN_DEL_EQUAL,
-    MP_TOKEN_DEL_PLUS_EQUAL,
-    MP_TOKEN_DEL_MINUS_EQUAL,
-    MP_TOKEN_DEL_STAR_EQUAL,
-    MP_TOKEN_DEL_SLASH_EQUAL,
-    MP_TOKEN_DEL_DBL_SLASH_EQUAL,
-    MP_TOKEN_DEL_PERCENT_EQUAL,
-    MP_TOKEN_DEL_AMPERSAND_EQUAL,
-    MP_TOKEN_DEL_PIPE_EQUAL,
-    MP_TOKEN_DEL_CARET_EQUAL,
-    MP_TOKEN_DEL_DBL_MORE_EQUAL,
-    MP_TOKEN_DEL_DBL_LESS_EQUAL,
-    MP_TOKEN_DEL_DBL_STAR_EQUAL,
-    MP_TOKEN_DEL_MINUS_MORE,
-} mp_token_kind_t;
-
-
-
-typedef struct _mp_lexer_t {
-    qstr source_name;
-    mp_reader_t reader;
-
-    unichar chr0, chr1, chr2;
-
-    size_t line;
-    size_t column;
-
-    mp_int_t emit_dent;
-    mp_int_t nested_bracket_level;
-
-    size_t alloc_indent_level;
-    size_t num_indent_level;
-    uint16_t *indent_level;
-
-    size_t tok_line;
-    size_t tok_column;
-    mp_token_kind_t tok_kind;
-    vstr_t vstr;
-} mp_lexer_t;
-
-mp_lexer_t *mp_lexer_new(qstr src_name, mp_reader_t reader);
-mp_lexer_t *mp_lexer_new_from_str_len(qstr src_name, const char *str, size_t len, size_t free_len);
-
-void mp_lexer_free(mp_lexer_t *lex);
-void mp_lexer_to_next(mp_lexer_t *lex);
-
-
-
-
-
-
-
-typedef enum {
-    MP_IMPORT_STAT_NO_EXIST,
-    MP_IMPORT_STAT_DIR,
-    MP_IMPORT_STAT_FILE,
-} mp_import_stat_t;
-
-mp_import_stat_t mp_import_stat(const char *path);
-mp_lexer_t *mp_lexer_new_from_file(const char *filename);
-# 30 "../../py/compile.h" 2
-# 1 "../../py/parse.h" 1
-# 29 "../../py/parse.h"
-# 1 "include/stddef.h" 1
-# 30 "../../py/parse.h" 2
-
-
-
-
-struct _mp_lexer_t;
-# 52 "../../py/parse.h"
-typedef uintptr_t mp_parse_node_t;
-
-typedef struct _mp_parse_node_struct_t {
-    uint32_t source_line;
-    uint32_t kind_num_nodes;
-    mp_parse_node_t nodes[];
-} mp_parse_node_struct_t;
-# 79 "../../py/parse.h"
-static inline mp_parse_node_t mp_parse_node_new_small_int(mp_int_t val) {
-    return (mp_parse_node_t)((0x1) | ((mp_uint_t)val << 1));
-}
-static inline mp_parse_node_t mp_parse_node_new_leaf(size_t kind, mp_int_t arg) {
-    return (mp_parse_node_t)(kind | ((mp_uint_t)arg << 4));
-}
-_Bool mp_parse_node_is_const_false(mp_parse_node_t pn);
-_Bool mp_parse_node_is_const_true(mp_parse_node_t pn);
-_Bool mp_parse_node_get_int_maybe(mp_parse_node_t pn, mp_obj_t *o);
-int mp_parse_node_extract_list(mp_parse_node_t *pn, size_t pn_kind, mp_parse_node_t **nodes);
-void mp_parse_node_print(mp_parse_node_t pn, size_t indent);
-
-typedef enum {
-    MP_PARSE_SINGLE_INPUT,
-    MP_PARSE_FILE_INPUT,
-    MP_PARSE_EVAL_INPUT,
-} mp_parse_input_kind_t;
-
-typedef struct _mp_parse_t {
-    mp_parse_node_t root;
-    struct _mp_parse_chunk_t *chunk;
-} mp_parse_tree_t;
-
-
-
-mp_parse_tree_t mp_parse(struct _mp_lexer_t *lex, mp_parse_input_kind_t input_kind);
-void mp_parse_tree_clear(mp_parse_tree_t *tree);
-# 31 "../../py/compile.h" 2
-# 1 "../../py/emitglue.h" 1
-# 33 "../../py/emitglue.h"
-typedef enum {
-    MP_CODE_UNUSED,
-    MP_CODE_RESERVED,
-    MP_CODE_BYTECODE,
-    MP_CODE_NATIVE_PY,
-    MP_CODE_NATIVE_VIPER,
-    MP_CODE_NATIVE_ASM,
-} mp_raw_code_kind_t;
-
-typedef struct _mp_raw_code_t {
-    mp_uint_t kind : 3;
-    mp_uint_t scope_flags : 7;
-    mp_uint_t n_pos_args : 11;
-    union {
-        struct {
-            const byte *bytecode;
-            const mp_uint_t *const_table;
-
-
-
-
-
-        } u_byte;
-        struct {
-            void *fun_data;
-            const mp_uint_t *const_table;
-            mp_uint_t type_sig;
-        } u_native;
-    } data;
-} mp_raw_code_t;
-
-mp_raw_code_t *mp_emit_glue_new_raw_code(void);
-
-void mp_emit_glue_assign_bytecode(mp_raw_code_t *rc, const byte *code,
-
-
-
-    const mp_uint_t *const_table,
-
-
-
-    mp_uint_t scope_flags);
-void mp_emit_glue_assign_native(mp_raw_code_t *rc, mp_raw_code_kind_t kind, void *fun_data, mp_uint_t fun_len, const mp_uint_t *const_table, mp_uint_t n_pos_args, mp_uint_t scope_flags, mp_uint_t type_sig);
-
-mp_obj_t mp_make_function_from_raw_code(const mp_raw_code_t *rc, mp_obj_t def_args, mp_obj_t def_kw_args);
-mp_obj_t mp_make_closure_from_raw_code(const mp_raw_code_t *rc, mp_uint_t n_closed_over, const mp_obj_t *args);
-# 32 "../../py/compile.h" 2
-
-
-enum {
-    MP_EMIT_OPT_NONE,
-    MP_EMIT_OPT_BYTECODE,
-    MP_EMIT_OPT_NATIVE_PYTHON,
-    MP_EMIT_OPT_VIPER,
-    MP_EMIT_OPT_ASM,
-};
-
-
-
-mp_obj_t mp_compile(mp_parse_tree_t *parse_tree, qstr source_file, uint emit_opt, _Bool is_repl);
-
-
-
-
-
-
-
-mp_obj_t mp_parse_compile_execute(mp_lexer_t *lex, mp_parse_input_kind_t parse_input_kind, mp_obj_dict_t *globals, mp_obj_dict_t *locals);
-# 33 "../../py/builtinimport.c" 2
-# 1 "../../py/objmodule.h" 1
-# 31 "../../py/objmodule.h"
-extern const mp_map_t mp_builtin_module_map;
-extern const mp_map_t mp_builtin_module_weak_links_map;
-
-mp_obj_t mp_module_get(qstr module_name);
-void mp_module_register(qstr qstr, mp_obj_t module);
-
-
-
-
-static inline void mp_module_call_init(qstr module_name, mp_obj_t module_obj) {
-    (void)module_name;
-    (void)module_obj;
-}
-# 34 "../../py/builtinimport.c" 2
-# 1 "../../py/persistentcode.h" 1
-# 33 "../../py/persistentcode.h"
-mp_raw_code_t *mp_raw_code_load(mp_reader_t *reader);
-mp_raw_code_t *mp_raw_code_load_mem(const byte *buf, size_t len);
-mp_raw_code_t *mp_raw_code_load_file(const char *filename);
-
-void mp_raw_code_save(mp_raw_code_t *rc, mp_print_t *print);
-void mp_raw_code_save_file(mp_raw_code_t *rc, const char *filename);
-# 35 "../../py/builtinimport.c" 2
-# 1 "../../py/runtime.h" 1
-# 29 "../../py/runtime.h"
-# 1 "../../py/mpstate.h" 1
-# 32 "../../py/mpstate.h"
-# 1 "../../py/mpthread.h" 1
-# 33 "../../py/mpstate.h" 2
-
-# 1 "../../py/nlr.h" 1
-# 32 "../../py/nlr.h"
-# 1 "include/limits.h" 1
-# 11 "include/limits.h"
-# 1 "include/features.h" 1
-# 12 "include/limits.h" 2
-# 33 "../../py/nlr.h" 2
-# 1 "include/assert.h" 1
-# 39 "include/assert.h"
-void __assert (const char *, int, const char *)
-     __attribute__ ((__noreturn__));
-void __assert_func (const char *, int, const char *, const char *)
-     __attribute__ ((__noreturn__));
-# 34 "../../py/nlr.h" 2
-# 68 "../../py/nlr.h"
-# 1 "include/setjmp.h" 1
-# 10 "include/setjmp.h"
-# 1 "include/machine/setjmp.h" 1
-
-
-# 376 "include/machine/setjmp.h"
-typedef int jmp_buf[20];
-
-
-
-
-# 11 "include/setjmp.h" 2
-
-
-
-
-void longjmp (jmp_buf __jmpb, int __retval)
-   __attribute__ ((__noreturn__));
-
-
-
-int setjmp (jmp_buf __jmpb);
-
-
-# 69 "../../py/nlr.h" 2
-
-
-typedef struct _nlr_buf_t nlr_buf_t;
-struct _nlr_buf_t {
-
-    nlr_buf_t *prev;
-    void *ret_val;
-
-
-    jmp_buf jmpbuf;
-
-
-
-
-
-
-
-};
-# 117 "../../py/nlr.h"
-unsigned int nlr_push_tail(nlr_buf_t *top);
-void nlr_pop(void);
-__attribute__((noreturn)) void nlr_jump(void *val);
-
-
-
-
-__attribute__((noreturn)) void nlr_jump_fail(void *val);
-# 35 "../../py/mpstate.h" 2
-
+# 36 "../../py/mpstate.h" 2
 # 1 "../../py/objlist.h" 1
 # 31 "../../py/objlist.h"
 typedef struct _mp_obj_list_t {
@@ -2727,472 +2436,517 @@ mp_uint_t mp_convert_obj_to_native(mp_obj_t obj, mp_uint_t type);
 mp_obj_t mp_convert_native_to_obj(mp_uint_t val, mp_uint_t type);
 mp_obj_t mp_native_call_function_n_kw(mp_obj_t fun_in, size_t n_args_kw, const mp_obj_t *args);
 void mp_native_raise(mp_obj_t o);
-# 36 "../../py/builtinimport.c" 2
-# 1 "../../py/builtin.h" 1
-# 31 "../../py/builtin.h"
-mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args);
-mp_obj_t mp_builtin_open(size_t n_args, const mp_obj_t *args, mp_map_t *kwargs);
-mp_obj_t mp_micropython_mem_info(size_t n_args, const mp_obj_t *args);
-
-extern const mp_obj_fun_builtin_var_t mp_builtin___build_class___obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin___import___obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin___repl_print___obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_abs_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_all_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_any_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_bin_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_callable_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_compile_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_chr_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_delattr_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_dir_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_divmod_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_eval_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_exec_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_execfile_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_getattr_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_setattr_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_globals_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_hasattr_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_hash_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_help_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_hex_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_id_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_isinstance_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_issubclass_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_iter_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_len_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_locals_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_max_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_min_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_next_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_oct_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_ord_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_pow_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_print_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_builtin_repr_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_round_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_sorted_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_sum_obj;
-
-extern const mp_obj_fun_builtin_var_t mp_builtin_input_obj;
-extern const mp_obj_fun_builtin_var_t mp_builtin_open_obj;
-
-extern const mp_obj_fun_builtin_fixed_t mp_namedtuple_obj;
-
-extern const mp_obj_fun_builtin_fixed_t mp_op_contains_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_op_getitem_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_op_setitem_obj;
-extern const mp_obj_fun_builtin_fixed_t mp_op_delitem_obj;
-
-extern const mp_obj_module_t mp_module___main__;
-extern const mp_obj_module_t mp_module_builtins;
-extern const mp_obj_module_t mp_module_array;
-extern const mp_obj_module_t mp_module_collections;
-extern const mp_obj_module_t mp_module_io;
-extern const mp_obj_module_t mp_module_math;
-extern const mp_obj_module_t mp_module_cmath;
-extern const mp_obj_module_t mp_module_micropython;
-extern const mp_obj_module_t mp_module_ustruct;
-extern const mp_obj_module_t mp_module_sys;
-extern const mp_obj_module_t mp_module_gc;
-extern const mp_obj_module_t mp_module_thread;
-
-extern const mp_obj_dict_t mp_module_builtins_globals;
+# 32 "../../py/reader.c" 2
+# 1 "../../py/mperrno.h" 1
+# 89 "../../py/mperrno.h"
+# 1 "include/errno.h" 1
 
 
-extern const mp_obj_module_t mp_module_uerrno;
-extern const mp_obj_module_t mp_module_uctypes;
-extern const mp_obj_module_t mp_module_uzlib;
-extern const mp_obj_module_t mp_module_ujson;
-extern const mp_obj_module_t mp_module_ure;
-extern const mp_obj_module_t mp_module_uheapq;
-extern const mp_obj_module_t mp_module_uhashlib;
-extern const mp_obj_module_t mp_module_ucryptolib;
-extern const mp_obj_module_t mp_module_ubinascii;
-extern const mp_obj_module_t mp_module_urandom;
-extern const mp_obj_module_t mp_module_uselect;
-extern const mp_obj_module_t mp_module_ussl;
-extern const mp_obj_module_t mp_module_utimeq;
-extern const mp_obj_module_t mp_module_machine;
-extern const mp_obj_module_t mp_module_lwip;
-extern const mp_obj_module_t mp_module_websocket;
-extern const mp_obj_module_t mp_module_webrepl;
-extern const mp_obj_module_t mp_module_framebuf;
-extern const mp_obj_module_t mp_module_btree;
 
-extern const char mp_help_default_text[];
-# 37 "../../py/builtinimport.c" 2
-# 1 "../../py/frozenmod.h" 1
-# 31 "../../py/frozenmod.h"
-enum {
-    MP_FROZEN_NONE,
-    MP_FROZEN_STR,
-    MP_FROZEN_MPY,
+
+typedef int error_t;
+
+
+
+# 1 "include/sys/errno.h" 1
+# 15 "include/sys/errno.h"
+extern int *__errno (void);
+
+
+
+
+extern const char * const _sys_errlist[];
+extern int _sys_nerr;
+# 10 "include/errno.h" 2
+# 90 "../../py/mperrno.h" 2
+# 33 "../../py/reader.c" 2
+# 1 "../../py/reader.h" 1
+# 36 "../../py/reader.h"
+typedef struct _mp_reader_t {
+    void *data;
+    mp_uint_t (*readbyte)(void *data);
+    void (*close)(void *data);
+} mp_reader_t;
+
+void mp_reader_new_mem(mp_reader_t *reader, const byte *buf, size_t len, size_t free_len);
+void mp_reader_new_file(mp_reader_t *reader, const char *filename);
+void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, _Bool close_fd);
+# 34 "../../py/reader.c" 2
+
+int nbOpenedFiles = 0;
+int openedFiles[] = {0};
+
+typedef struct _mp_reader_mem_t {
+    size_t free_len;
+    const byte *beg;
+    const byte *cur;
+    const byte *end;
+} mp_reader_mem_t;
+
+static mp_uint_t mp_reader_mem_readbyte(void *data) {
+    mp_reader_mem_t *reader = (mp_reader_mem_t*)data;
+    if (reader->cur < reader->end) {
+        return *reader->cur++;
+    } else {
+        return ((mp_uint_t)(-1));
+    }
+}
+
+static void mp_reader_mem_close(void *data) {
+    mp_reader_mem_t *reader = (mp_reader_mem_t*)data;
+    if (reader->free_len > 0) {
+        ((void)(reader->free_len), m_free((char*)reader->beg));
+    }
+    (((void)(1), m_free(reader)));
+}
+
+void mp_reader_new_mem(mp_reader_t *reader, const byte *buf, size_t len, size_t free_len) {
+    mp_reader_mem_t *rm = (((mp_reader_mem_t*)(m_malloc(sizeof(mp_reader_mem_t) * (1)))));
+    rm->free_len = free_len;
+    rm->beg = buf;
+    rm->cur = buf;
+    rm->end = buf + len;
+    reader->data = rm;
+    reader->readbyte = mp_reader_mem_readbyte;
+    reader->close = mp_reader_mem_close;
+}
+
+
+
+# 1 "include/sys/stat.h" 1
+# 9 "include/sys/stat.h"
+# 1 "include/time.h" 1
+# 16 "include/time.h"
+# 1 "include/stddef.h" 1
+# 17 "include/time.h" 2
+
+
+# 1 "include/machine/time.h" 1
+# 20 "include/time.h" 2
+# 29 "include/time.h"
+# 1 "include/sys/timespec.h" 1
+# 58 "include/sys/timespec.h"
+struct itimerspec {
+ struct timespec it_interval;
+ struct timespec it_value;
+};
+# 30 "include/time.h" 2
+
+
+
+
+
+
+
+struct tm
+{
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+
+
+
+
+
+
 };
 
-int mp_find_frozen_module(const char *str, size_t len, void **data);
-const char *mp_find_frozen_str(const char *str, size_t *len);
-mp_import_stat_t mp_frozen_stat(const char *str);
-# 38 "../../py/builtinimport.c" 2
-# 51 "../../py/builtinimport.c"
-_Bool mp_obj_is_package(mp_obj_t module) {
-    mp_obj_t dest[2];
-    mp_load_method_maybe(module, MP_QSTR___path__, dest);
-    return dest[0] != (((mp_obj_t)(void*)0));
-}
+clock_t clock (void);
+double difftime (time_t _time2, time_t _time1);
+time_t mktime (struct tm *_timeptr);
+time_t time (time_t *_timer);
+
+char *asctime (const struct tm *_tblock);
+char *ctime (const time_t *_time);
+struct tm *gmtime (const time_t *_timer);
+struct tm *localtime (const time_t *_timer);
+
+size_t strftime (char *restrict _s,
+        size_t _maxsize, const char *restrict _fmt,
+        const struct tm *restrict _t);
 
 
 
-static mp_import_stat_t mp_import_stat_any(const char *path) {
-
-    mp_import_stat_t st = mp_frozen_stat(path);
-    if (st != MP_IMPORT_STAT_NO_EXIST) {
-        return st;
-    }
-
-    return mp_import_stat(path);
-}
-
-static mp_import_stat_t stat_file_py_or_mpy(vstr_t *path) {
-    mp_import_stat_t stat = mp_import_stat_any(vstr_null_terminated_str(path));
-    if (stat == MP_IMPORT_STAT_FILE) {
-        return stat;
-    }
-# 83 "../../py/builtinimport.c"
-    return MP_IMPORT_STAT_NO_EXIST;
-}
-
-static mp_import_stat_t stat_dir_or_file(vstr_t *path) {
-    mp_import_stat_t stat = mp_import_stat_any(vstr_null_terminated_str(path));
-    (void)0;
-    if (stat == MP_IMPORT_STAT_DIR) {
-        return stat;
-    }
 
 
-    vstr_add_str(path, ".py");
-    return stat_file_py_or_mpy(path);
-}
-
-static mp_import_stat_t find_file(const char *file_str, uint file_len, vstr_t *dest) {
 
 
-    size_t path_num;
-    mp_obj_t *path_items;
-    mp_obj_list_get((((mp_obj_t)&(mp_state_ctx.vm.mp_sys_path_obj))), &path_num, &path_items);
+char *asctime_r (const struct tm *restrict,
+     char *restrict);
+char *ctime_r (const time_t *, char *);
+struct tm *gmtime_r (const time_t *restrict,
+     struct tm *restrict);
+struct tm *localtime_r (const time_t *restrict,
+     struct tm *restrict);
 
-    if (path_num == 0) {
+
+# 103 "include/time.h"
+void _tzset_r (struct _reent *);
+
+typedef struct __tzrule_struct
+{
+  char ch;
+  int m;
+  int n;
+  int d;
+  int s;
+  time_t change;
+  long offset;
+} __tzrule_type;
+
+typedef struct __tzinfo_struct
+{
+  int __tznorth;
+  int __tzyear;
+  __tzrule_type __tzrule[2];
+} __tzinfo_type;
+
+__tzinfo_type *__gettzinfo (void);
+# 10 "include/sys/stat.h" 2
+# 27 "include/sys/stat.h"
+struct stat
+{
+  dev_t st_dev;
+  ino_t st_ino;
+  mode_t st_mode;
+  nlink_t st_nlink;
+  uid_t st_uid;
+  gid_t st_gid;
+  dev_t st_rdev;
+  off_t st_size;
+# 50 "include/sys/stat.h"
+  time_t st_atime;
+  long st_spare1;
+  time_t st_mtime;
+  long st_spare2;
+  time_t st_ctime;
+  long st_spare3;
+  blksize_t st_blksize;
+  blkcnt_t st_blocks;
+  long st_spare4[2];
 
 
-        vstr_add_strn(dest, file_str, file_len);
-        return stat_dir_or_file(dest);
+};
+# 147 "include/sys/stat.h"
+int chmod (const char *__path, mode_t __mode );
+int fchmod (int __fd, mode_t __mode);
+int fstat (int __fd, struct stat *__sbuf );
+int mkdir (const char *_path, mode_t __mode );
+int mkfifo (const char *__path, mode_t __mode );
+int stat (const char *restrict __path, struct stat *restrict __sbuf );
+mode_t umask (mode_t __mask );
+# 76 "../../py/reader.c" 2
+# 1 "include/fcntl.h" 1
+# 12 "include/fcntl.h"
+# 1 "include/sys/fcntl.h" 1
 
-    } else {
 
-        for (size_t i = 0; i < path_num; i++) {
-            vstr_reset(dest);
-            size_t p_len;
-            const char *p = mp_obj_str_get_data(path_items[i], &p_len);
-            if (p_len > 0) {
-                vstr_add_strn(dest, p, p_len);
-                vstr_add_char(dest, '/');
+# 1 "include/sys/_default_fcntl.h" 1
+# 175 "include/sys/_default_fcntl.h"
+struct flock {
+ short l_type;
+ short l_whence;
+ long l_start;
+ long l_len;
+ short l_pid;
+ short l_xxx;
+};
+# 202 "include/sys/_default_fcntl.h"
+extern int open (const char *, int, ...);
+
+
+
+extern int creat (const char *, mode_t);
+extern int fcntl (int, int, ...);
+# 4 "include/sys/fcntl.h" 2
+# 13 "include/fcntl.h" 2
+# 46 "include/fcntl.h"
+extern int posix_fadvise (int, off_t, off_t, int);
+extern int posix_fallocate (int, off_t, off_t);
+# 77 "../../py/reader.c" 2
+# 1 "include/unistd.h" 1
+
+
+
+# 1 "include/sys/unistd.h" 1
+# 14 "include/sys/unistd.h"
+# 1 "include/stddef.h" 1
+# 15 "include/sys/unistd.h" 2
+
+extern char **environ;
+
+void _exit (int __status) __attribute__ ((__noreturn__));
+
+int access (const char *__path, int __amode);
+unsigned alarm (unsigned __secs);
+int chdir (const char *__path);
+int chmod (const char *__path, mode_t __mode);
+
+int chown (const char *__path, uid_t __owner, gid_t __group);
+
+
+
+
+int close (int __fildes);
+# 46 "include/sys/unistd.h"
+int dup (int __fildes);
+int dup2 (int __fildes, int __fildes2);
+# 61 "include/sys/unistd.h"
+int execl (const char *__path, const char *, ...);
+int execle (const char *__path, const char *, ...);
+int execlp (const char *__file, const char *, ...);
+
+
+
+int execv (const char *__path, char * const __argv[]);
+int execve (const char *__path, char * const __argv[], char * const __envp[]);
+int execvp (const char *__file, char * const __argv[]);
+# 93 "include/sys/unistd.h"
+pid_t fork (void);
+long fpathconf (int __fd, int __name);
+int fsync (int __fd);
+
+
+
+
+
+
+char * getcwd (char *__buf, size_t __size);
+
+
+
+
+
+
+
+gid_t getegid (void);
+uid_t geteuid (void);
+gid_t getgid (void);
+
+int getgroups (int __gidsetsize, gid_t __grouplist[]);
+
+
+
+char * getlogin (void);
+# 132 "include/sys/unistd.h"
+pid_t getpgrp (void);
+pid_t getpid (void);
+pid_t getppid (void);
+
+
+
+
+uid_t getuid (void);
+# 150 "include/sys/unistd.h"
+int isatty (int __fildes);
+# 159 "include/sys/unistd.h"
+int link (const char *__path1, const char *__path2);
+
+
+
+
+
+
+
+off_t lseek (int __fildes, off_t __offset, int __whence);
+# 176 "include/sys/unistd.h"
+long pathconf (const char *__path, int __name);
+int pause (void);
+
+
+
+int pipe (int __fildes[2]);
+
+
+
+
+
+
+
+int read (int __fd, void *__buf, size_t __nbyte);
+
+
+
+
+int rmdir (const char *__path);
+# 206 "include/sys/unistd.h"
+int setgid (gid_t __gid);
+
+
+
+
+
+
+
+int setpgid (pid_t __pid, pid_t __pgid);
+
+
+
+
+
+
+
+pid_t setsid (void);
+
+int setuid (uid_t __uid);
+
+
+
+
+unsigned sleep (unsigned int __seconds);
+
+
+
+long sysconf (int __name);
+pid_t tcgetpgrp (int __fildes);
+int tcsetpgrp (int __fildes, pid_t __pgrp_id);
+char * ttyname (int __fildes);
+int ttyname_r (int, char *, size_t);
+int unlink (const char *__path);
+
+
+
+
+
+
+int write (int __fd, const void *__buf, size_t __nbyte);
+
+
+
+
+
+
+extern char *optarg;
+extern int optind, opterr, optopt;
+int getopt(int, char * const [], const char *);
+extern int optreset;
+# 291 "include/sys/unistd.h"
+int getdtablesize (void);
+# 5 "include/unistd.h" 2
+# 78 "../../py/reader.c" 2
+
+typedef struct _mp_reader_posix_t {
+    _Bool close_fd;
+    int fd;
+    size_t len;
+    size_t pos;
+    byte buf[20];
+} mp_reader_posix_t;
+
+static mp_uint_t mp_reader_posix_readbyte(void *data) {
+    mp_reader_posix_t *reader = (mp_reader_posix_t*)data;
+    if (reader->pos >= reader->len) {
+        if (reader->len == 0) {
+            return ((mp_uint_t)(-1));
+        } else {
+
+   int n = Bfile_ReadFile(reader->fd, reader->buf, sizeof(reader->buf), -1);
+            if (n <= 0) {
+                reader->len = 0;
+                return ((mp_uint_t)(-1));
             }
-            vstr_add_strn(dest, file_str, file_len);
-            mp_import_stat_t stat = stat_dir_or_file(dest);
-            if (stat != MP_IMPORT_STAT_NO_EXIST) {
-                return stat;
-            }
+            reader->len = n;
+            reader->pos = 0;
+        }
+    }
+    return reader->buf[reader->pos++];
+}
+
+static void mp_reader_posix_close(void *data) {
+    mp_reader_posix_t *reader = (mp_reader_posix_t*)data;
+    if (reader->close_fd) {
+
+  Bfile_CloseFile(reader->fd);
+    }
+    (((void)(1), m_free(reader)));
+}
+
+void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, _Bool close_fd) {
+    mp_reader_posix_t *rp = (((mp_reader_posix_t*)(m_malloc(sizeof(mp_reader_posix_t) * (1)))));
+    rp->close_fd = close_fd;
+    rp->fd = fd;
+
+ int n = Bfile_ReadFile(rp->fd, rp->buf, sizeof(rp->buf), 0);
+    if (n == -1) {
+        if (close_fd) {
+
+   Bfile_CloseFile(fd);
         }
 
-
-        return MP_IMPORT_STAT_NO_EXIST;
+        mp_raise_OSError(2);
     }
+    rp->len = n;
+    rp->pos = 0;
+    reader->data = rp;
+    reader->readbyte = mp_reader_posix_readbyte;
+    reader->close = mp_reader_posix_close;
+}
 
+void closeAllFiles() {
+
+
+
+
+
+
+ for (int i = 0; i < nbOpenedFiles; i++) {
+  Bfile_CloseFile(openedFiles[i]);
+ }
+}
+
+void initNbOpenedFiles() {
+ nbOpenedFiles = 0;
 }
 
 
-static void do_load_from_lexer(mp_obj_t module_obj, mp_lexer_t *lex) {
+
+void mp_reader_new_file(mp_reader_t *reader, const char *filename) {
 
 
 
+ unsigned short path[] = {'\\', '\\', 'f', 'l', 's', '0', '\\', 'C', 'A', 'S', 'I', 'O', 'P', 'Y', '\\',
+
+ 0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+
+ int i;
+ for (i = 0; filename[i]; i++) {
+  path[15+i] = filename[i];
+ }
+
+ for (int i = 15; path[i] != '.' && path[i] != '\0'; i++) {
+  if (path[i] >= 'a' && filename[i] <= 'z') {
+   path[i] -= 32;
+  }
+ }
+
+
+ if(!(strlen(filename) >= 3 && !strcmp(filename + strlen(filename) - 3, ".py"))) {
+  path[i+0] = '.';
+  path[i+1] = 'p';
+  path[i+2] = 'y';
+  path[i+3] = '\0';
+   }
 
 
 
-    mp_obj_dict_t *mod_globals = mp_obj_module_get_globals(module_obj);
-    mp_parse_compile_execute(lex, MP_PARSE_FILE_INPUT, mod_globals, mod_globals);
+ if (nbOpenedFiles >= 20) {
+  mp_raise_OSError(24);
+ }
+ int fd = Bfile_OpenFile(path, 0x01);
+    if (fd < 0) {
+
+        mp_raise_OSError(2);
+  Bfile_CloseFile(fd);
+    }
+ openedFiles[nbOpenedFiles] = fd;
+ nbOpenedFiles++;
+
+    mp_reader_new_file_from_fd(reader, fd, 1);
 }
-
-
-
-static void do_execute_raw_code(mp_obj_t module_obj, mp_raw_code_t *raw_code) {
-
-
-
-
-
-
-
-    mp_obj_dict_t *mod_globals = mp_obj_module_get_globals(module_obj);
-
-
-    mp_obj_dict_t *volatile old_globals = mp_globals_get();
-    mp_obj_dict_t *volatile old_locals = mp_locals_get();
-
-
-    mp_globals_set(mod_globals);
-    mp_locals_set(mod_globals);
-
-    nlr_buf_t nlr;
-    if ((nlr_push_tail(&nlr), setjmp((&nlr)->jmpbuf)) == 0) {
-        mp_obj_t module_fun = mp_make_function_from_raw_code(raw_code, (((mp_obj_t)(void*)0)), (((mp_obj_t)(void*)0)));
-        mp_call_function_0(module_fun);
-
-
-        nlr_pop();
-        mp_globals_set(old_globals);
-        mp_locals_set(old_locals);
-    } else {
-
-        mp_globals_set(old_globals);
-        mp_locals_set(old_locals);
-        nlr_jump(nlr.ret_val);
-    }
-}
-
-
-static void do_load(mp_obj_t module_obj, vstr_t *file) {
-
-    char *file_str = vstr_null_terminated_str(file);
-
-
-
-
-
-    void *modref;
-    int frozen_type = mp_find_frozen_module(file_str, file->len, &modref);
-# 208 "../../py/builtinimport.c"
-    if (frozen_type == MP_FROZEN_MPY) {
-        do_execute_raw_code(module_obj, modref);
-        return;
-    }
-# 226 "../../py/builtinimport.c"
-    {
-        mp_lexer_t *lex = mp_lexer_new_from_file(file_str);
-        do_load_from_lexer(module_obj, lex);
-        return;
-    }
-
-
-
-
-
-}
-
-static void chop_component(const char *start, const char **end) {
-    const char *p = *end;
-    while (p > start) {
-        if (*--p == '.') {
-            *end = p;
-            return;
-        }
-    }
-    *end = p;
-}
-
-mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args) {
-# 259 "../../py/builtinimport.c"
-    mp_obj_t module_name = args[0];
-    mp_obj_t fromtuple = (((mp_obj_t)&mp_const_none_obj));
-    mp_int_t level = 0;
-    if (n_args >= 4) {
-        fromtuple = args[3];
-        if (n_args >= 5) {
-            level = (((mp_int_t)(args[4])) >> 1);
-            if (level < 0) {
-                mp_raise_ValueError(((void *)0));
-            }
-        }
-    }
-
-    size_t mod_len;
-    const char *mod_str = mp_obj_str_get_data(module_name, &mod_len);
-
-    if (level != 0) {
-
-
-
-
-
-
-
-        level--;
-        mp_obj_t this_name_q = mp_obj_dict_get(((mp_obj_t)mp_globals_get()), ((mp_obj_t)((((mp_uint_t)(MP_QSTR___name__)) << 2) | 2)));
-        ((this_name_q != (((mp_obj_t)(void*)0))) ? (void)0 : __assert_func ("../../py/builtinimport.c", 285, __func__, "this_name_q != MP_OBJ_NULL"));
-
-
-
-
-
-
-        mp_map_t *globals_map = &mp_globals_get()->map;
-        mp_map_elem_t *elem = mp_map_lookup(globals_map, ((mp_obj_t)((((mp_uint_t)(MP_QSTR___path__)) << 2) | 2)), MP_MAP_LOOKUP);
-        _Bool is_pkg = (elem != ((void *)0));
-# 303 "../../py/builtinimport.c"
-        size_t this_name_l;
-        const char *this_name = mp_obj_str_get_data(this_name_q, &this_name_l);
-
-        const char *p = this_name + this_name_l;
-        if (!is_pkg) {
-
-
-            chop_component(this_name, &p);
-        }
-
-        while (level--) {
-            chop_component(this_name, &p);
-        }
-
-
-        if (p == this_name) {
-            mp_raise_ValueError("cannot perform relative import");
-        }
-
-        uint new_mod_l = (mod_len == 0 ? (size_t)(p - this_name) : (size_t)(p - this_name) + 1 + mod_len);
-        char *new_mod = __builtin_alloca(new_mod_l);
-        memcpy(new_mod, this_name, p - this_name);
-        if (mod_len != 0) {
-            new_mod[p - this_name] = '.';
-            memcpy(new_mod + (p - this_name) + 1, mod_str, mod_len);
-        }
-
-        qstr new_mod_q = qstr_from_strn(new_mod, new_mod_l);
-        mp_local_free(new_mod);
-        (void)0;
-        module_name = ((mp_obj_t)((((mp_uint_t)(new_mod_q)) << 2) | 2));
-        mod_str = qstr_str(new_mod_q);
-        mod_len = new_mod_l;
-    }
-
-
-    qstr module_name_qstr = mp_obj_str_get_qstr(module_name);
-    mp_obj_t module_obj = mp_module_get(module_name_qstr);
-    if (module_obj != (((mp_obj_t)(void*)0))) {
-        (void)0;
-
-        char *p = strchr(mod_str, '.');
-        if (p == ((void *)0)) {
-            return module_obj;
-        }
-
-        if (fromtuple != (((mp_obj_t)&mp_const_none_obj))) {
-            return module_obj;
-        }
-
-        qstr pkg_name = qstr_from_strn(mod_str, p - mod_str);
-        return mp_module_get(pkg_name);
-    }
-    (void)0;
-
-    uint last = 0;
-    vstr_t path; char path_buf[((256))]; vstr_init_fixed_buf(&path, ((256)), path_buf);
-    module_obj = (((mp_obj_t)(void*)0));
-    mp_obj_t top_module_obj = (((mp_obj_t)(void*)0));
-    mp_obj_t outer_module_obj = (((mp_obj_t)(void*)0));
-    uint i;
-    for (i = 1; i <= mod_len; i++) {
-        if (i == mod_len || mod_str[i] == '.') {
-
-            qstr mod_name = qstr_from_strn(mod_str, i);
-            (void)0;
-            (void)0;
-
-
-            mp_import_stat_t stat;
-            if (vstr_len(&path) == 0) {
-
-                stat = find_file(mod_str, i, &path);
-            } else {
-
-                vstr_add_char(&path, '/');
-                vstr_add_strn(&path, mod_str + last, i - last);
-                stat = stat_dir_or_file(&path);
-            }
-            (void)0;
-
-            if (stat == MP_IMPORT_STAT_NO_EXIST) {
-# 398 "../../py/builtinimport.c"
-                {
-
-
-                    if (((3)) == (1)) {
-                        mp_raise_msg(&mp_type_ImportError, "module not found");
-                    } else {
-                        nlr_jump(((void*)mp_obj_new_exception_msg_varg(&mp_type_ImportError, "no module named '%q'", mod_name)))
-                                                              ;
-                    }
-                }
-            } else {
-
-                module_obj = mp_module_get(mod_name);
-            }
-
-            if (module_obj == (((mp_obj_t)(void*)0))) {
-
-
-                module_obj = mp_obj_new_module(mod_name);
-# 426 "../../py/builtinimport.c"
-                if (i == mod_len && fromtuple == (((mp_obj_t)&mp_const_false_obj)) && stat != MP_IMPORT_STAT_DIR) {
-                    mp_obj_module_t *o = ((void*)module_obj);
-                    mp_obj_dict_store(((mp_obj_t)o->globals), ((mp_obj_t)((((mp_uint_t)(MP_QSTR___name__)) << 2) | 2)), ((mp_obj_t)((((mp_uint_t)(MP_QSTR___main__)) << 2) | 2)));
-
-
-
-
-
-
-                }
-
-                if (stat == MP_IMPORT_STAT_DIR) {
-                    (void)0;
-
-
-                    mp_store_attr(module_obj, MP_QSTR___path__, mp_obj_new_str(vstr_str(&path), vstr_len(&path)));
-                    size_t orig_path_len = path.len;
-                    vstr_add_char(&path, '/');
-                    vstr_add_str(&path, "__init__.py");
-                    if (stat_file_py_or_mpy(&path) != MP_IMPORT_STAT_FILE) {
-
-                    } else {
-                        do_load(module_obj, &path);
-                    }
-                    path.len = orig_path_len;
-                } else {
-                    do_load(module_obj, &path);
-
-
-
-
-                }
-            }
-            if (outer_module_obj != (((mp_obj_t)(void*)0))) {
-                qstr s = qstr_from_strn(mod_str + last, i - last);
-                mp_store_attr(outer_module_obj, s, module_obj);
-            }
-            outer_module_obj = module_obj;
-            if (top_module_obj == (((mp_obj_t)(void*)0))) {
-                top_module_obj = module_obj;
-            }
-            last = i + 1;
-        }
-    }
-
-
-    if (fromtuple != (((mp_obj_t)&mp_const_none_obj))) {
-        return module_obj;
-    }
-
-    return top_module_obj;
-}
-# 515 "../../py/builtinimport.c"
-const mp_obj_fun_builtin_var_t mp_builtin___import___obj = {{&mp_type_fun_builtin_var}, 0, 1, 5, .fun.var = mp_builtin___import__};

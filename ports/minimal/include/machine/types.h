@@ -43,13 +43,13 @@ struct __flock32 {
 };
 #endif
 
-struct flock {
-	short	 l_type;	/* F_RDLCK, F_WRLCK, or F_UNLCK */
-	short	 l_whence;	/* flag to choose starting offset */
-	off_t	 l_start;	/* relative offset, in bytes */
-	off_t	 l_len;		/* length, in bytes; 0 means lock to EOF */
-	pid_t	 l_pid;		/* returned with F_GETLK */
-};
+//struct flock {
+//	short	 l_type;	/* F_RDLCK, F_WRLCK, or F_UNLCK */
+//	short	 l_whence;	/* flag to choose starting offset */
+//	off_t	 l_start;	/* relative offset, in bytes */
+//	off_t	 l_len;		/* length, in bytes; 0 means lock to EOF */
+//	pid_t	 l_pid;		/* returned with F_GETLK */
+//};
 
 #ifndef __BIT_TYPES_DEFINED
 #define __BIT_TYPES_DEFINED__ 1

@@ -7,7 +7,8 @@ build/py/reader.o: ../../py/reader.c include/stdio.h include/_ansi.h \
  include/sys/_stdint.h include/sys/_pthreadtypes.h \
  include/machine/types.h include/endian.h include/bits/wordsize.h \
  include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h \
- include/assert.h ../../py/runtime.h ../../py/mpstate.h include/stdint.h \
+ include/assert.h include/fxlib.h include/dispbios.h include/filebios.h \
+ include/keybios.h ../../py/runtime.h ../../py/mpstate.h include/stdint.h \
  include/stdint-gcc.h ../../py/mpconfig.h mpconfigport.h include/alloca.h \
  ../../py/mpthread.h ../../py/misc.h include/stdbool.h ../../py/nlr.h \
  include/limits.h include/features.h include/setjmp.h \
@@ -15,7 +16,10 @@ build/py/reader.o: ../../py/reader.c include/stdio.h include/_ansi.h \
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h \
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h \
  ../../py/pystack.h ../../py/mperrno.h include/errno.h \
- include/sys/errno.h ../../py/reader.h
+ include/sys/errno.h ../../py/reader.h include/sys/stat.h include/time.h \
+ include/machine/time.h include/sys/timespec.h include/fcntl.h \
+ include/sys/fcntl.h include/sys/_default_fcntl.h include/unistd.h \
+ include/sys/unistd.h
 ../../py/reader.c include/stdio.h include/_ansi.h :
  include/newlib.h include/_newlib_version.h include/sys/config.h :
  include/machine/ieeefp.h include/sys/features.h include/sys/cdefs.h :
@@ -25,7 +29,8 @@ build/py/reader.o: ../../py/reader.c include/stdio.h include/_ansi.h \
  include/sys/_stdint.h include/sys/_pthreadtypes.h :
  include/machine/types.h include/endian.h include/bits/wordsize.h :
  include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h :
- include/assert.h ../../py/runtime.h ../../py/mpstate.h include/stdint.h :
+ include/assert.h include/fxlib.h include/dispbios.h include/filebios.h :
+ include/keybios.h ../../py/runtime.h ../../py/mpstate.h include/stdint.h :
  include/stdint-gcc.h ../../py/mpconfig.h mpconfigport.h include/alloca.h :
  ../../py/mpthread.h ../../py/misc.h include/stdbool.h ../../py/nlr.h :
  include/limits.h include/features.h include/setjmp.h :
@@ -33,4 +38,7 @@ build/py/reader.o: ../../py/reader.c include/stdio.h include/_ansi.h \
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h :
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h :
  ../../py/pystack.h ../../py/mperrno.h include/errno.h :
- include/sys/errno.h ../../py/reader.h :
+ include/sys/errno.h ../../py/reader.h include/sys/stat.h include/time.h :
+ include/machine/time.h include/sys/timespec.h include/fcntl.h :
+ include/sys/fcntl.h include/sys/_default_fcntl.h include/unistd.h :
+ include/sys/unistd.h :
