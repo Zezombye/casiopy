@@ -8,18 +8,18 @@ build/main.o: main.c include/stdint.h include/stdint-gcc.h \
  include/sys/_stdint.h include/sys/_pthreadtypes.h \
  include/machine/types.h include/endian.h include/bits/wordsize.h \
  include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h \
- include/string.h include/sys/string.h ../../py/compile.h \
- ../../py/lexer.h ../../py/mpconfig.h mpconfigport.h include/alloca.h \
- ../../py/qstr.h ../../py/misc.h include/stdbool.h \
- build/genhdr/qstrdefs.generated.h ../../py/reader.h ../../py/obj.h \
- ../../py/mpprint.h ../../py/runtime0.h ../../py/parse.h \
- ../../py/emitglue.h ../../py/runtime.h ../../py/mpstate.h \
- ../../py/mpthread.h ../../py/nlr.h include/limits.h include/features.h \
- include/assert.h include/setjmp.h include/machine/setjmp.h \
- ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h \
- ../../py/pystack.h ../../py/repl.h ../../py/gc.h ../../py/mperrno.h \
- include/errno.h include/sys/errno.h ../../lib/utils/pyexec.h \
- MonochromeLib.h
+ include/string.h include/sys/string.h include/stdlib.h \
+ include/machine/stdlib.h ../../py/compile.h ../../py/lexer.h \
+ ../../py/mpconfig.h mpconfigport.h include/alloca.h ../../py/qstr.h \
+ ../../py/misc.h include/stdbool.h build/genhdr/qstrdefs.generated.h \
+ ../../py/reader.h ../../py/obj.h ../../py/mpprint.h ../../py/runtime0.h \
+ ../../py/parse.h ../../py/emitglue.h ../../py/runtime.h \
+ ../../py/mpstate.h ../../py/mpthread.h ../../py/nlr.h include/limits.h \
+ include/features.h include/assert.h include/setjmp.h \
+ include/machine/setjmp.h ../../py/objlist.h ../../py/objexcept.h \
+ ../../py/objtuple.h ../../py/pystack.h ../../py/repl.h ../../py/gc.h \
+ ../../py/mperrno.h include/errno.h include/sys/errno.h \
+ ../../lib/utils/pyexec.h MonochromeLib.h
 main.c include/stdint.h include/stdint-gcc.h :
  include/stdio.h include/_ansi.h include/newlib.h :
  include/_newlib_version.h include/sys/config.h include/machine/ieeefp.h :
@@ -30,15 +30,15 @@ main.c include/stdint.h include/stdint-gcc.h :
  include/sys/_stdint.h include/sys/_pthreadtypes.h :
  include/machine/types.h include/endian.h include/bits/wordsize.h :
  include/sys/_timespec.h include/sys/sysmacros.h include/sys/stdio.h :
- include/string.h include/sys/string.h ../../py/compile.h :
- ../../py/lexer.h ../../py/mpconfig.h mpconfigport.h include/alloca.h :
- ../../py/qstr.h ../../py/misc.h include/stdbool.h :
- build/genhdr/qstrdefs.generated.h ../../py/reader.h ../../py/obj.h :
- ../../py/mpprint.h ../../py/runtime0.h ../../py/parse.h :
- ../../py/emitglue.h ../../py/runtime.h ../../py/mpstate.h :
- ../../py/mpthread.h ../../py/nlr.h include/limits.h include/features.h :
- include/assert.h include/setjmp.h include/machine/setjmp.h :
- ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h :
- ../../py/pystack.h ../../py/repl.h ../../py/gc.h ../../py/mperrno.h :
- include/errno.h include/sys/errno.h ../../lib/utils/pyexec.h :
- MonochromeLib.h :
+ include/string.h include/sys/string.h include/stdlib.h :
+ include/machine/stdlib.h ../../py/compile.h ../../py/lexer.h :
+ ../../py/mpconfig.h mpconfigport.h include/alloca.h ../../py/qstr.h :
+ ../../py/misc.h include/stdbool.h build/genhdr/qstrdefs.generated.h :
+ ../../py/reader.h ../../py/obj.h ../../py/mpprint.h ../../py/runtime0.h :
+ ../../py/parse.h ../../py/emitglue.h ../../py/runtime.h :
+ ../../py/mpstate.h ../../py/mpthread.h ../../py/nlr.h include/limits.h :
+ include/features.h include/assert.h include/setjmp.h :
+ include/machine/setjmp.h ../../py/objlist.h ../../py/objexcept.h :
+ ../../py/objtuple.h ../../py/pystack.h ../../py/repl.h ../../py/gc.h :
+ ../../py/mperrno.h include/errno.h include/sys/errno.h :
+ ../../lib/utils/pyexec.h MonochromeLib.h :

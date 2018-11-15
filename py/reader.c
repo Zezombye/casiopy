@@ -33,7 +33,8 @@
 #include "py/reader.h"
 
 int nbOpenedFiles = 0;
-int openedFiles[] = {0};
+#define MAX_OPENED_FILES 3
+int openedFiles[MAX_OPENED_FILES] = {0};
 
 typedef struct _mp_reader_mem_t {
     size_t free_len; // if >0 mem is freed on close by: m_free(beg, free_len)
@@ -181,7 +182,7 @@ void mp_reader_new_file(mp_reader_t *reader, const char *filename) {
 	  
 	
 	//casiopy_print(path, strlen(path));
-	if (nbOpenedFiles >= 20) {
+	if (nbOpenedFiles >= MAX_OPENED_FILES) {
 		mp_raise_OSError(MP_EMFILE);
 	}
 	int fd = Bfile_OpenFile(path, _OPENMODE_READ);

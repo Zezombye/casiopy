@@ -2503,7 +2503,7 @@ int Explorer (int iMode,char *sRoot, char *sFolder,
     {
       if(strlen(sFolder)>0 && iFiles==0)
       {
-        MenuDisableNode(MENUBAREXPL,0);
+        MenuEnableNode(MENUBAREXPL,0);
         MenuDisableNode(MENUBAREXPL,1);
         MenuDisableNode(MENUBAREXPL,3);
         MenuDisableNode(MENUBAREXPL,4);
@@ -2533,7 +2533,7 @@ int Explorer (int iMode,char *sRoot, char *sFolder,
       }
       else if(iFiles==0)
       {
-        MenuDisableNode(MENUBAREXPL,0);
+        MenuEnableNode(MENUBAREXPL,0);
         MenuDisableNode(MENUBAREXPL,1);
         MenuDisableNode(MENUBAREXPL,3);
         MenuDisableNode(MENUBAREXPL,4);

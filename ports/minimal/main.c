@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "py/compile.h"
 #include "py/runtime.h"
@@ -16,6 +17,7 @@ unsigned int key;
 extern int shellPosX;
 extern int shellPosY;
 extern int readline_index;
+const char *heap;
 
 #if MICROPY_ENABLE_COMPILER
 void do_str(const char *src, mp_parse_input_kind_t input_kind) {
@@ -35,14 +37,24 @@ void do_str(const char *src, mp_parse_input_kind_t input_kind) {
 #endif
 
 static char *stack_top;
-#if MICROPY_ENABLE_GC
-static char heap[2048];
-#endif
 
 //extern int nbOpenedFiles;
 //extern int openedFiles[];
 
 int mpy_main(char *text) {
+	
+	int heapLen = 32768;
+	#if MICROPY_ENABLE_GC
+	heap = malloc(heapLen);
+	#endif
+	
+	if (heap == NULL) {
+		int key;
+		locate(1,1);
+		Print("Couldn't alloc!");
+		GetKey(&key);
+	}
+	
 	ML_clear_vram();
 	ML_display_vram();
 	shellPosX = 0;
@@ -58,7 +70,7 @@ int mpy_main(char *text) {
     stack_top = (char*)&stack_dummy;
 
     #if MICROPY_ENABLE_GC
-    gc_init(heap, heap + sizeof(heap));
+    gc_init(heap, heap + heapLen);
     #endif
     mp_init();
     #if MICROPY_ENABLE_COMPILER
@@ -80,6 +92,7 @@ int mpy_main(char *text) {
 	casiopy_print("azer", 4);
     pyexec_frozen_module("frozentest.py");
     #endif
+	free(heap);
     mp_deinit();
 
 	closeAllFiles();
