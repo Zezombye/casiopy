@@ -16,6 +16,11 @@
 #define STR_SEARCHSTRING "Search string:"
 #define STR_EMPTYSTRING "Empty string!"
 
+#define STR_POWUSED1 "Pow has been used!   "
+#define STR_POWUSED2 "Please report to Zez "
+#define STR_POWUSED3 "the function used.   "
+#define STR_POWUSED4 "                     "
+
 #else
 
 //é = \xE60A
@@ -41,4 +46,8 @@
 #define STR_SEARCHSTRING "Rechercher:"
 #define STR_EMPTYSTRING "Texte vide!"
 
+#define STR_POWUSED1 "Fonction pow utilisee"
+#define STR_POWUSED2 "Informez Zezombye de "
+#define STR_POWUSED3 "la fonction que vous "
+#define STR_POWUSED4 "avez utilisee svp.   "
 #endif

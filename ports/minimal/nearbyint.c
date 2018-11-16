@@ -42,7 +42,7 @@ double
 nearbyint (double x)
 {
   int key;
-  casiopy_print("test1", 5);
+  //shell_print("test1", 5);
   GetKey(&key);
   return 0.0;
   fenv_t env;

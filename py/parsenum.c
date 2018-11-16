@@ -26,7 +26,7 @@
 
 int key;
 #define breakpoint(x)\
-casiopy_print(""#x, 1);\
+shell_print(""#x, 1);\
 GetKey(&key);
  
 #include <stdbool.h>
@@ -38,9 +38,9 @@ GetKey(&key);
 #include "py/smallint.h"
 #include <math.h>
 
-double pow(double x, double y) {
+/*double pow(double x, double y) {
 	return 42.42;
-}
+}*/
 
 STATIC NORETURN void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {
     // if lex!=NULL then the parser called us and we need to convert the
@@ -236,14 +236,14 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len, bool allow_imag, bool
         }
     } else {
 		
-		breakpoint(f);
+		//breakpoint(f);
         // string should be a decimal number
         parse_dec_in_t in = PARSE_DEC_IN_INTG;
         bool exp_neg = false;
         int exp_val = 0;
         int exp_extra = 0;
         while (str < top) {
-			breakpoint(g);
+			//breakpoint(g);
             unsigned int dig = *str++;
             if ('0' <= dig && dig <= '9') {
 				//breakpoint(h);
@@ -308,20 +308,32 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len, bool allow_imag, bool
             exp_val -= SMALL_NORMAL_EXP;
             dec_val *= SMALL_NORMAL_VAL;
         }
-		breakpoint(l);
-		printf("\n%d", exp_val);
-		printf("\n%f\n", dec_val);
-		breakpoint(p);
-		printf("%.60lf\n", pow(10, exp_val));
-		breakpoint(q);
+		//breakpoint(l);
+		//printf("\n%d", exp_val);
+		//printf("\n%f\n", dec_val);
+		//breakpoint(p);
+		//printf("%.60lf\n", pow(10, exp_val));
+		//breakpoint(q);
+		
         dec_val *= MICROPY_FLOAT_C_FUN(pow)(10, exp_val);
 		
-		printf("\n%.60f\n", dec_val);
+		//because pow() doesn't fucking work
+		/*if (exp_val >= 0) {
+			for (int i = 0; i < exp_val; i++) {
+				dec_val *= 10;
+			}
+		} else {
+			for (int i = 0; i > exp_val; i--) {
+				dec_val /= 10;
+			}
+		}*/
+		
+		//printf("\n%.60f\n", dec_val);
 		//dec_val *= pow(10, exp_val);
-		breakpoint(m);
+		//breakpoint(m);
     }
 	
-	breakpoint(k);
+	//breakpoint(k);
 	
     // negate value if needed
     if (dec_neg) {

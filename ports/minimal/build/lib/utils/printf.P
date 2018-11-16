@@ -8,7 +8,8 @@ build/lib/utils/printf.o: ../../lib/utils/printf.c ../../py/mpconfig.h \
  include/sys/cdefs.h include/sys/string.h include/stdarg.h ../../py/obj.h \
  ../../py/misc.h include/stdbool.h ../../py/qstr.h \
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h \
- ../../py/mphal.h mphalport.h ../../extmod/virtpin.h
+ ../../py/mphal.h mphalport.h ../../extmod/virtpin.h \
+ ../../py/formatfloat.h
 ../../lib/utils/printf.c ../../py/mpconfig.h :
  mpconfigport.h include/stdint.h include/stdint-gcc.h include/alloca.h :
  include/_ansi.h include/newlib.h include/_newlib_version.h :
@@ -20,3 +21,4 @@ build/lib/utils/printf.o: ../../lib/utils/printf.c ../../py/mpconfig.h \
  ../../py/misc.h include/stdbool.h ../../py/qstr.h :
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h :
  ../../py/mphal.h mphalport.h ../../extmod/virtpin.h :
+ ../../py/formatfloat.h :

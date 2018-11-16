@@ -6,7 +6,8 @@ build/py/modcmath.o: ../../py/modcmath.c ../../py/builtin.h \
  include/stddef.h include/sys/_types.h include/machine/_types.h \
  include/machine/_default_types.h include/sys/lock.h ../../py/misc.h \
  include/stdbool.h ../../py/qstr.h build/genhdr/qstrdefs.generated.h \
- ../../py/mpprint.h ../../py/runtime0.h
+ ../../py/mpprint.h ../../py/runtime0.h include/math.h \
+ include/sys/cdefs.h
 ../../py/modcmath.c ../../py/builtin.h :
  ../../py/obj.h ../../py/mpconfig.h mpconfigport.h include/stdint.h :
  include/stdint-gcc.h include/alloca.h include/_ansi.h include/newlib.h :
@@ -15,4 +16,5 @@ build/py/modcmath.o: ../../py/modcmath.c ../../py/builtin.h \
  include/stddef.h include/sys/_types.h include/machine/_types.h :
  include/machine/_default_types.h include/sys/lock.h ../../py/misc.h :
  include/stdbool.h ../../py/qstr.h build/genhdr/qstrdefs.generated.h :
- ../../py/mpprint.h ../../py/runtime0.h :
+ ../../py/mpprint.h ../../py/runtime0.h include/math.h :
+ include/sys/cdefs.h :

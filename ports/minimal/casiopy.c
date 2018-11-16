@@ -2,10 +2,25 @@
 #include <fxlib.h>
 #include "tinyprintf.h"
 #include "MonochromeLib.h"
-
+#include "i18n.h"
 
 
 unsigned int key;
+
+//A warning if pow() is ever used.
+
+/*double pow(double x, double y) {
+	locate(1,1);
+	Print(STR_POWUSED1);
+	locate(1,2);
+	Print(STR_POWUSED2);
+	locate(1,3);
+	Print(STR_POWUSED3);
+	locate(1,4);
+	Print(STR_POWUSED4);
+	GetKey(&key);
+	return 1.0;
+}*/
 
 
 int main(int isappli, unsigned short optnum)

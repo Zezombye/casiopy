@@ -1,3 +1,5 @@
+Q(name)
+Q(version)
 Q(micropython)
 Q(__name__)
 Q(sys)

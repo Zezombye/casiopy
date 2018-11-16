@@ -36,7 +36,6 @@ SRC_C = \
 	casiopy.c \
 	nan.c \
 	copysign.c \
-	nearbyint.c \
 	fesetenv.c \
 	tinyprintf.c \
 	MonochromeLib.c \
@@ -53,6 +52,48 @@ SRC_C = \
 	lib/utils/pyexec.c \
 	lib/libc/string0.c \
 	lib/mp-readline/readline.c \
+	extmod/modurandom.c \
+        lib/libm_dbl/acos.c \
+        lib/libm_dbl/acosh.c \
+        lib/libm_dbl/asin.c \
+        lib/libm_dbl/asinh.c \
+        lib/libm_dbl/atan.c \
+        lib/libm_dbl/atan2.c \
+        lib/libm_dbl/atanh.c \
+        lib/libm_dbl/ceil.c \
+        lib/libm_dbl/cos.c \
+        lib/libm_dbl/cosh.c \
+        lib/libm_dbl/erf.c \
+        lib/libm_dbl/exp.c \
+        lib/libm_dbl/expm1.c \
+        lib/libm_dbl/floor.c \
+        lib/libm_dbl/fmod.c \
+        lib/libm_dbl/frexp.c \
+        lib/libm_dbl/ldexp.c \
+        lib/libm_dbl/lgamma.c \
+        lib/libm_dbl/log.c \
+        lib/libm_dbl/log10.c \
+        lib/libm_dbl/log1p.c \
+        lib/libm_dbl/modf.c \
+        lib/libm_dbl/nearbyint.c \
+        lib/libm_dbl/pow.c \
+        lib/libm_dbl/rint.c \
+        lib/libm_dbl/scalbn.c \
+        lib/libm_dbl/sin.c \
+        lib/libm_dbl/sinh.c \
+        lib/libm_dbl/sqrt.c \
+        lib/libm_dbl/tan.c \
+        lib/libm_dbl/tanh.c \
+        lib/libm_dbl/tgamma.c \
+        lib/libm_dbl/trunc.c \
+        lib/libm_dbl/__cos.c \
+        lib/libm_dbl/__expo2.c \
+        lib/libm_dbl/__fpclassify.c \
+        lib/libm_dbl/__rem_pio2.c \
+        lib/libm_dbl/__rem_pio2_large.c \
+        lib/libm_dbl/__signbit.c \
+        lib/libm_dbl/__sin.c \
+        lib/libm_dbl/__tan.c \
 	$(BUILD)/_frozen_mpy.c \
 
 OBJ = $(PY_CORE_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o))

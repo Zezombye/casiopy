@@ -11,7 +11,7 @@ build/py/modmath.o: ../../py/modmath.c ../../py/builtin.h ../../py/obj.h \
  include/features.h include/sys/cdefs.h include/bits/wordsize.h \
  include/assert.h include/setjmp.h include/machine/setjmp.h \
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h \
- ../../py/pystack.h
+ ../../py/pystack.h include/math.h
 ../../py/modmath.c ../../py/builtin.h ../../py/obj.h :
  ../../py/mpconfig.h mpconfigport.h include/stdint.h include/stdint-gcc.h :
  include/alloca.h include/_ansi.h include/newlib.h :
@@ -25,4 +25,4 @@ build/py/modmath.o: ../../py/modmath.c ../../py/builtin.h ../../py/obj.h \
  include/features.h include/sys/cdefs.h include/bits/wordsize.h :
  include/assert.h include/setjmp.h include/machine/setjmp.h :
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h :
- ../../py/pystack.h :
+ ../../py/pystack.h include/math.h :

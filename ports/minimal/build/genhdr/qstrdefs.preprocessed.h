@@ -71,12 +71,12 @@ typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
 # 17 "include/stdint.h" 2
 # 2 "./mpconfigport.h" 2
-# 70 "./mpconfigport.h"
+# 72 "./mpconfigport.h"
 typedef int mp_int_t;
 typedef unsigned mp_uint_t;
 
 typedef long mp_off_t;
-# 82 "./mpconfigport.h"
+# 84 "./mpconfigport.h"
 # 1 "include/alloca.h" 1
 # 10 "include/alloca.h"
 # 1 "include/_ansi.h" 1
@@ -542,8 +542,10 @@ extern struct _reent *const _global_impure_ptr ;
 
 void _reclaim_reent (struct _reent *);
 # 12 "include/alloca.h" 2
-# 83 "./mpconfigport.h" 2
+# 85 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
+# 577 "../../py/mpconfig.h"
+typedef double mp_float_t;
 # 28 "<stdin>" 2
 
 
@@ -599,9 +601,97 @@ Q(BytesIO)
 
 Q(BytesIO)
 
+Q(EACCES)
+
+Q(EACCES)
+
+Q(EADDRINUSE)
+
+Q(EADDRINUSE)
+
+Q(EAGAIN)
+
+Q(EAGAIN)
+
+Q(EALREADY)
+
+Q(EALREADY)
+
+Q(EBADF)
+
+Q(EBADF)
+
+Q(ECONNABORTED)
+
+Q(ECONNABORTED)
+
+Q(ECONNREFUSED)
+
+Q(ECONNREFUSED)
+
+Q(ECONNRESET)
+
+Q(ECONNRESET)
+
+Q(EEXIST)
+
+Q(EEXIST)
+
+Q(EHOSTUNREACH)
+
+Q(EHOSTUNREACH)
+
+Q(EINPROGRESS)
+
+Q(EINPROGRESS)
+
+Q(EINVAL)
+
+Q(EINVAL)
+
+Q(EIO)
+
+Q(EIO)
+
+Q(EISDIR)
+
+Q(EISDIR)
+
+Q(ENOBUFS)
+
+Q(ENOBUFS)
+
+Q(ENODEV)
+
+Q(ENODEV)
+
+Q(ENOENT)
+
+Q(ENOENT)
+
+Q(ENOMEM)
+
+Q(ENOMEM)
+
+Q(ENOTCONN)
+
+Q(ENOTCONN)
+
 Q(EOFError)
 
 Q(EOFError)
+
+Q(EOPNOTSUPP)
+
+Q(EOPNOTSUPP)
+
+Q(EPERM)
+
+Q(EPERM)
+
+Q(ETIMEDOUT)
+
+Q(ETIMEDOUT)
 
 Q(Ellipsis)
 
@@ -715,6 +805,10 @@ Q(__class__)
 
 Q(__contains__)
 
+Q(__contains__)
+
+Q(__contains__)
+
 Q(__delitem__)
 
 Q(__delitem__)
@@ -799,6 +893,20 @@ Q(__name__)
 
 Q(__name__)
 
+Q(__name__)
+
+Q(__name__)
+
+Q(__name__)
+
+Q(__name__)
+
+Q(__name__)
+
+Q(__name__)
+
+Q(__name__)
+
 Q(__new__)
 
 Q(__new__)
@@ -826,6 +934,8 @@ Q(__repl_print__)
 Q(__repr__)
 
 Q(__repr__)
+
+Q(__reversed__)
 
 Q(__setitem__)
 
@@ -865,15 +975,35 @@ Q(_star_)
 
 Q(abs)
 
+Q(acos)
+
+Q(add)
+
 Q(all)
 
 Q(any)
 
 Q(append)
 
+Q(append)
+
 Q(args)
 
 Q(argv)
+
+Q(array)
+
+Q(array)
+
+Q(array)
+
+Q(array)
+
+Q(asin)
+
+Q(atan)
+
+Q(atan2)
 
 Q(big)
 
@@ -889,6 +1019,10 @@ Q(builtins)
 
 Q(builtins)
 
+Q(bytearray)
+
+Q(bytearray)
+
 Q(bytecode)
 
 Q(byteorder)
@@ -899,7 +1033,13 @@ Q(bytes)
 
 Q(bytes)
 
+Q(calcsize)
+
 Q(callable)
+
+Q(ceil)
+
+Q(choice)
 
 Q(chr)
 
@@ -911,6 +1051,8 @@ Q(clear)
 
 Q(clear)
 
+Q(clear)
+
 Q(close)
 
 Q(close)
@@ -920,8 +1062,14 @@ Q(close)
 Q(closure)
 
 Q(closure)
+
+Q(cmath)
+
+Q(cmath)
 
 Q(collect)
+
+Q(complex)
 
 Q(complex)
 
@@ -931,11 +1079,27 @@ Q(copy)
 
 Q(copy)
 
-Q(count)
+Q(copy)
+
+Q(copy)
+
+Q(copysign)
+
+Q(cos)
+
+Q(cos)
 
 Q(count)
 
 Q(count)
+
+Q(count)
+
+Q(default)
+
+Q(degrees)
+
+Q(deleter)
 
 Q(dict)
 
@@ -943,11 +1107,25 @@ Q(dict)
 
 Q(dict_view)
 
+Q(difference)
+
+Q(difference)
+
+Q(difference_update)
+
 Q(dir)
 
 Q(disable)
 
+Q(discard)
+
 Q(divmod)
+
+Q(doc)
+
+Q(e)
+
+Q(e)
 
 Q(enable)
 
@@ -955,25 +1133,57 @@ Q(end)
 
 Q(endswith)
 
+Q(enumerate)
+
+Q(enumerate)
+
+Q(errorcode)
+
 Q(eval)
 
 Q(exec)
 
 Q(exit)
 
+Q(exp)
+
+Q(exp)
+
 Q(extend)
+
+Q(extend)
+
+Q(fabs)
+
+Q(filter)
+
+Q(filter)
 
 Q(find)
 
 Q(float)
 
+Q(float)
+
+Q(floor)
+
 Q(flush)
 
+Q(fmod)
+
 Q(format)
+
+Q(frexp)
 
 Q(from_bytes)
 
 Q(fromkeys)
+
+Q(frozenset)
+
+Q(frozenset)
+
+Q(function)
 
 Q(function)
 
@@ -1004,6 +1214,10 @@ Q(generator)
 Q(get)
 
 Q(getattr)
+
+Q(getrandbits)
+
+Q(getter)
 
 Q(getvalue)
 
@@ -1039,19 +1253,43 @@ Q(int)
 
 Q(int)
 
+Q(intersection)
+
+Q(intersection)
+
+Q(intersection_update)
+
 Q(isalpha)
 
 Q(isdigit)
 
+Q(isdisjoint)
+
+Q(isdisjoint)
+
 Q(isenabled)
+
+Q(isfinite)
+
+Q(isinf)
 
 Q(isinstance)
 
 Q(islower)
 
+Q(isnan)
+
 Q(isspace)
 
 Q(issubclass)
+
+Q(issubset)
+
+Q(issubset)
+
+Q(issuperset)
+
+Q(issuperset)
 
 Q(isupper)
 
@@ -1067,13 +1305,19 @@ Q(iterator)
 
 Q(iterator)
 
+Q(iterator)
+
 Q(join)
+
+Q(key)
 
 Q(key)
 
 Q(keys)
 
 Q(keys)
+
+Q(ldexp)
 
 Q(len)
 
@@ -1089,6 +1333,10 @@ Q(little)
 
 Q(locals)
 
+Q(log)
+
+Q(log)
+
 Q(lower)
 
 Q(lstrip)
@@ -1097,21 +1345,39 @@ Q(map)
 
 Q(map)
 
+Q(math)
+
+Q(math)
+
+Q(max)
+
 Q(mem_alloc)
 
 Q(mem_free)
 
-Q(micropython)
+Q(memoryview)
+
+Q(memoryview)
 
 Q(micropython)
 
 Q(micropython)
 
 Q(micropython)
+
+Q(micropython)
+
+Q(min)
+
+Q(modf)
 
 Q(module)
 
 Q(modules)
+
+Q(name)
+
+Q(namedtuple)
 
 Q(next)
 
@@ -1129,9 +1395,23 @@ Q(opt_level)
 
 Q(ord)
 
+Q(pack)
+
+Q(pack_into)
+
 Q(path)
 
 Q(pend_throw)
+
+Q(phase)
+
+Q(pi)
+
+Q(pi)
+
+Q(polar)
+
+Q(pop)
 
 Q(pop)
 
@@ -1141,9 +1421,23 @@ Q(popitem)
 
 Q(pow)
 
+Q(pow)
+
 Q(print)
 
 Q(print_exception)
+
+Q(property)
+
+Q(property)
+
+Q(radians)
+
+Q(randint)
+
+Q(random)
+
+Q(randrange)
 
 Q(range)
 
@@ -1159,6 +1453,10 @@ Q(readline)
 
 Q(real)
 
+Q(rect)
+
+Q(remove)
+
 Q(remove)
 
 Q(replace)
@@ -1168,6 +1466,10 @@ Q(repr)
 Q(reverse)
 
 Q(reverse)
+
+Q(reversed)
+
+Q(reversed)
 
 Q(rfind)
 
@@ -1179,6 +1481,8 @@ Q(rsplit)
 
 Q(rstrip)
 
+Q(seed)
+
 Q(seek)
 
 Q(send)
@@ -1187,15 +1491,33 @@ Q(send)
 
 Q(sep)
 
+Q(set)
+
+Q(set)
+
 Q(setattr)
 
 Q(setdefault)
+
+Q(setter)
+
+Q(sin)
+
+Q(sin)
+
+Q(slice)
+
+Q(slice)
 
 Q(sort)
 
 Q(sorted)
 
 Q(split)
+
+Q(sqrt)
+
+Q(sqrt)
 
 Q(start)
 
@@ -1227,9 +1549,17 @@ Q(super)
 
 Q(super)
 
+Q(symmetric_difference)
+
+Q(symmetric_difference)
+
+Q(symmetric_difference_update)
+
 Q(sys)
 
 Q(sys)
+
+Q(tan)
 
 Q(throw)
 
@@ -1237,6 +1567,10 @@ Q(throw)
 
 Q(to_bytes)
 
+Q(trunc)
+
+Q(tuple)
+
 Q(tuple)
 
 Q(tuple)
@@ -1245,17 +1579,47 @@ Q(type)
 
 Q(type)
 
+Q(ucollections)
+
+Q(ucollections)
+
+Q(uerrno)
+
+Q(uerrno)
+
 Q(uio)
 
 Q(uio)
+
+Q(uniform)
+
+Q(union)
+
+Q(union)
+
+Q(unpack)
+
+Q(unpack_from)
+
+Q(update)
 
 Q(update)
 
 Q(upper)
 
+Q(urandom)
+
+Q(urandom)
+
+Q(ustruct)
+
+Q(ustruct)
+
 Q(value)
 
 Q(values)
+
+Q(version)
 
 Q(version)
 
