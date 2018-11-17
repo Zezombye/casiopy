@@ -1437,6 +1437,10 @@ Q(randint)
 
 Q(random)
 
+Q(random)
+
+Q(random)
+
 Q(randrange)
 
 Q(range)
@@ -1606,10 +1610,6 @@ Q(update)
 Q(update)
 
 Q(upper)
-
-Q(urandom)
-
-Q(urandom)
 
 Q(ustruct)
 

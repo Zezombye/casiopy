@@ -55,6 +55,9 @@ STATIC bool repl_display_debugging_info = 0;
 #define EXEC_FLAG_SOURCE_IS_VSTR (16)
 #define EXEC_FLAG_SOURCE_IS_FILENAME (32)
 
+#define PYEXEC_STR_STARTLINE ">>>\x80"
+#define PYEXEC_STR_CONTLINE "...\x80"
+
 // parses, compiles and executes the code in the lexer
 // frees the lexer before returning
 // EXEC_FLAG_PRINT_EOF prints 2 EOF chars: 1 after normal output, 1 after exception output
@@ -221,7 +224,7 @@ STATIC int pyexec_raw_repl_process_char(int c) {
 
 reset:
     vstr_reset(MP_STATE_VM(repl_line));
-    mp_hal_stdout_tx_str(">");
+    mp_hal_stdout_tx_str(PYEXEC_STR_STARTLINE);
 
     return 0;
 }
@@ -266,7 +269,7 @@ STATIC int pyexec_friendly_repl_process_char(int c) {
 
         vstr_add_byte(MP_STATE_VM(repl_line), '\n');
         repl.cont_line = true;
-        readline_note_newline("... ");
+        readline_note_newline(PYEXEC_STR_CONTLINE);
         return 0;
 
     } else {
@@ -287,7 +290,7 @@ STATIC int pyexec_friendly_repl_process_char(int c) {
 
         if (mp_repl_continue_with_input(vstr_null_terminated_str(MP_STATE_VM(repl_line)))) {
             vstr_add_byte(MP_STATE_VM(repl_line), '\n');
-            readline_note_newline("... ");
+            readline_note_newline(PYEXEC_STR_CONTLINE);
             return 0;
         }
 
@@ -300,7 +303,7 @@ exec: ;
 input_restart:
         vstr_reset(MP_STATE_VM(repl_line));
         repl.cont_line = false;
-        readline_init(MP_STATE_VM(repl_line), ">>> ");
+        readline_init(MP_STATE_VM(repl_line), PYEXEC_STR_STARTLINE);
         return 0;
     }
 }
@@ -329,7 +332,7 @@ raw_repl_reset:
 
     for (;;) {
         vstr_reset(&line);
-        mp_hal_stdout_tx_str(">");
+        mp_hal_stdout_tx_str(PYEXEC_STR_STARTLINE);
         for (;;) {
             int c = mp_hal_stdin_rx_chr();
             if (c == CHAR_CTRL_A) {
@@ -432,7 +435,7 @@ friendly_repl_reset:
         #endif
 
         vstr_reset(&line);
-        int ret = readline(&line, ">>> ", text);
+        int ret = readline(&line, PYEXEC_STR_STARTLINE, text);
         mp_parse_input_kind_t parse_input_kind = MP_PARSE_SINGLE_INPUT;
 
         if (ret == CHAR_CTRL_A) {
@@ -488,7 +491,7 @@ friendly_repl_reset:
             // got a line with non-zero length, see if it needs continuing
             while (mp_repl_continue_with_input(vstr_null_terminated_str(&line))) {
                 vstr_add_byte(&line, '\n');
-                ret = readline(&line, "... ", text);
+                ret = readline(&line, PYEXEC_STR_CONTLINE, text);
                 if (ret == CHAR_CTRL_C) {
                     // cancel everything
                     mp_hal_stdout_tx_str("\n");

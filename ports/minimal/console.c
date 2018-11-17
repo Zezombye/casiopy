@@ -195,6 +195,8 @@ int waitForKey(char* str) {
 			case KEY_CHAR_STORE: strcpy(str,"  "); break;
 			case KEY_CHAR_SQUARE: strcpy(str,"**2"); break;
 			case KEY_CHAR_POW: strcpy(str,"**"); break;
+			case KEY_CTRL_LEFT: strcpy(str,"\x03"); break;
+			case KEY_CTRL_RIGHT: strcpy(str,"\x04"); break;
 			
 			default:
 				goto control_key;

@@ -17,7 +17,7 @@ build/lib/mp-readline/readline.o: ../../lib/mp-readline/readline.c \
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h \
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h \
  ../../py/repl.h ../../py/mphal.h mphalport.h ../../extmod/virtpin.h \
- ../../lib/mp-readline/readline.h
+ ../../lib/mp-readline/readline.h specialchars.h
 ../../lib/mp-readline/readline.c :
  include/stdio.h include/_ansi.h include/newlib.h :
  include/_newlib_version.h include/sys/config.h include/machine/ieeefp.h :
@@ -37,4 +37,4 @@ build/lib/mp-readline/readline.o: ../../lib/mp-readline/readline.c \
  build/genhdr/qstrdefs.generated.h ../../py/mpprint.h ../../py/runtime0.h :
  ../../py/objlist.h ../../py/objexcept.h ../../py/objtuple.h :
  ../../py/repl.h ../../py/mphal.h mphalport.h ../../extmod/virtpin.h :
- ../../lib/mp-readline/readline.h :
+ ../../lib/mp-readline/readline.h specialchars.h :

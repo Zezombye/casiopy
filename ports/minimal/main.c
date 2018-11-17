@@ -57,8 +57,7 @@ int mpy_main(char *text) {
 	
 	ML_clear_vram();
 	ML_display_vram();
-	shellPosX = 0;
-	shellPosY = 0;
+	shell_init();
 	readline_index = 0;
 	/*for (int i = 0; i < 20; i++) {
 		openedFiles[i] = 0;

@@ -143,7 +143,8 @@ static const unsigned int _iFont3x5[128]={
 };
 
 // Font 3x7 data
-const int _iFont3x7[128]={
+// Main font used in CasioPython (shell+editor)
+const int _iFont3x7[129]={
  2022255, //Character 000 [NUL]
  2022255, //Character 001 [SOH]
  2022255, //Character 002 [STX]
@@ -154,7 +155,7 @@ const int _iFont3x7[128]={
  2022255, //Character 007 [BEL]
  2022255, //Character 008 [BS]
  2022255, //Character 009 [TAB]
- 2022255, //Character 010 [LF]
+ 64288, //Character 010 [LF]
  2022255, //Character 011 [VT]
 0, //Character 012 [FF]
  2022255, //Character 013 [CR]
@@ -271,8 +272,9 @@ const int _iFont3x7[128]={
 74896,  //Character 124 [|]
 108696, //Character 125 [}]
 20032,  //Character 126 [~]
-0, //Character 127 []
-
+0, //Character 127 [],
+1024, //Character 128 (shell start of line)
+1024, //Character 128 (shell start of line)
 };
 //Current context
 int _iCntx=0;

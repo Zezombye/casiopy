@@ -70,7 +70,7 @@ STATIC uint32_t yasmarang_randbelow(uint32_t n) {
 
 #endif
 
-STATIC mp_obj_t mod_urandom_getrandbits(mp_obj_t num_in) {
+STATIC mp_obj_t mod_random_getrandbits(mp_obj_t num_in) {
     int n = mp_obj_get_int(num_in);
     if (n > 32 || n == 0) {
         mp_raise_ValueError(NULL);
@@ -80,9 +80,9 @@ STATIC mp_obj_t mod_urandom_getrandbits(mp_obj_t num_in) {
     mask >>= (32 - n);
     return mp_obj_new_int_from_uint(yasmarang() & mask);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_urandom_getrandbits_obj, mod_urandom_getrandbits);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_random_getrandbits_obj, mod_random_getrandbits);
 
-STATIC mp_obj_t mod_urandom_seed(mp_obj_t seed_in) {
+STATIC mp_obj_t mod_random_seed(mp_obj_t seed_in) {
     mp_uint_t seed = mp_obj_get_int_truncated(seed_in);
     yasmarang_pad = seed;
     yasmarang_n = 69;
@@ -90,11 +90,11 @@ STATIC mp_obj_t mod_urandom_seed(mp_obj_t seed_in) {
     yasmarang_dat = 0;
     return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_urandom_seed_obj, mod_urandom_seed);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_random_seed_obj, mod_random_seed);
 
 #if MICROPY_PY_URANDOM_EXTRA_FUNCS
 
-STATIC mp_obj_t mod_urandom_randrange(size_t n_args, const mp_obj_t *args) {
+STATIC mp_obj_t mod_random_randrange(size_t n_args, const mp_obj_t *args) {
     mp_int_t start = mp_obj_get_int(args[0]);
     if (n_args == 1) {
         // range(stop)
@@ -134,9 +134,9 @@ STATIC mp_obj_t mod_urandom_randrange(size_t n_args, const mp_obj_t *args) {
 error:
     mp_raise_ValueError(NULL);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_urandom_randrange_obj, 1, 3, mod_urandom_randrange);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_random_randrange_obj, 1, 3, mod_random_randrange);
 
-STATIC mp_obj_t mod_urandom_randint(mp_obj_t a_in, mp_obj_t b_in) {
+STATIC mp_obj_t mod_random_randint(mp_obj_t a_in, mp_obj_t b_in) {
     mp_int_t a = mp_obj_get_int(a_in);
     mp_int_t b = mp_obj_get_int(b_in);
     if (a <= b) {
@@ -145,9 +145,9 @@ STATIC mp_obj_t mod_urandom_randint(mp_obj_t a_in, mp_obj_t b_in) {
         mp_raise_ValueError(NULL);
     }
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_urandom_randint_obj, mod_urandom_randint);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_random_randint_obj, mod_random_randint);
 
-STATIC mp_obj_t mod_urandom_choice(mp_obj_t seq) {
+STATIC mp_obj_t mod_random_choice(mp_obj_t seq) {
     mp_int_t len = mp_obj_get_int(mp_obj_len(seq));
     if (len > 0) {
         return mp_obj_subscr(seq, mp_obj_new_int(yasmarang_randbelow(len)), MP_OBJ_SENTINEL);
@@ -155,7 +155,7 @@ STATIC mp_obj_t mod_urandom_choice(mp_obj_t seq) {
         nlr_raise(mp_obj_new_exception(&mp_type_IndexError));
     }
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_urandom_choice_obj, mod_urandom_choice);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_random_choice_obj, mod_random_choice);
 
 #if MICROPY_PY_BUILTINS_FLOAT
 
@@ -184,42 +184,42 @@ STATIC mp_float_t yasmarang_float(void) {
     return u.f - 1;
 }
 
-STATIC mp_obj_t mod_urandom_random(void) {
+STATIC mp_obj_t mod_random_random(void) {
     return mp_obj_new_float(yasmarang_float());
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_urandom_random_obj, mod_urandom_random);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_random_random_obj, mod_random_random);
 
-STATIC mp_obj_t mod_urandom_uniform(mp_obj_t a_in, mp_obj_t b_in) {
+STATIC mp_obj_t mod_random_uniform(mp_obj_t a_in, mp_obj_t b_in) {
     mp_float_t a = mp_obj_get_float(a_in);
     mp_float_t b = mp_obj_get_float(b_in);
     return mp_obj_new_float(a + (b - a) * yasmarang_float());
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_urandom_uniform_obj, mod_urandom_uniform);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_random_uniform_obj, mod_random_uniform);
 
 #endif
 
 #endif // MICROPY_PY_URANDOM_EXTRA_FUNCS
 
-STATIC const mp_rom_map_elem_t mp_module_urandom_globals_table[] = {
-    { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_urandom) },
-    { MP_ROM_QSTR(MP_QSTR_getrandbits), MP_ROM_PTR(&mod_urandom_getrandbits_obj) },
-    { MP_ROM_QSTR(MP_QSTR_seed), MP_ROM_PTR(&mod_urandom_seed_obj) },
+STATIC const mp_rom_map_elem_t mp_module_random_globals_table[] = {
+    { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_random) },
+    { MP_ROM_QSTR(MP_QSTR_getrandbits), MP_ROM_PTR(&mod_random_getrandbits_obj) },
+    { MP_ROM_QSTR(MP_QSTR_seed), MP_ROM_PTR(&mod_random_seed_obj) },
     #if MICROPY_PY_URANDOM_EXTRA_FUNCS
-    { MP_ROM_QSTR(MP_QSTR_randrange), MP_ROM_PTR(&mod_urandom_randrange_obj) },
-    { MP_ROM_QSTR(MP_QSTR_randint), MP_ROM_PTR(&mod_urandom_randint_obj) },
-    { MP_ROM_QSTR(MP_QSTR_choice), MP_ROM_PTR(&mod_urandom_choice_obj) },
+    { MP_ROM_QSTR(MP_QSTR_randrange), MP_ROM_PTR(&mod_random_randrange_obj) },
+    { MP_ROM_QSTR(MP_QSTR_randint), MP_ROM_PTR(&mod_random_randint_obj) },
+    { MP_ROM_QSTR(MP_QSTR_choice), MP_ROM_PTR(&mod_random_choice_obj) },
     #if MICROPY_PY_BUILTINS_FLOAT
-    { MP_ROM_QSTR(MP_QSTR_random), MP_ROM_PTR(&mod_urandom_random_obj) },
-    { MP_ROM_QSTR(MP_QSTR_uniform), MP_ROM_PTR(&mod_urandom_uniform_obj) },
+    { MP_ROM_QSTR(MP_QSTR_random), MP_ROM_PTR(&mod_random_random_obj) },
+    { MP_ROM_QSTR(MP_QSTR_uniform), MP_ROM_PTR(&mod_random_uniform_obj) },
     #endif
     #endif
 };
 
-STATIC MP_DEFINE_CONST_DICT(mp_module_urandom_globals, mp_module_urandom_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mp_module_random_globals, mp_module_random_globals_table);
 
-const mp_obj_module_t mp_module_urandom = {
+const mp_obj_module_t mp_module_random = {
     .base = { &mp_type_module },
-    .globals = (mp_obj_dict_t*)&mp_module_urandom_globals,
+    .globals = (mp_obj_dict_t*)&mp_module_random_globals,
 };
 
 #endif //MICROPY_PY_URANDOM

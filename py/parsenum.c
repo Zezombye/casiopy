@@ -317,16 +317,6 @@ mp_obj_t mp_parse_num_decimal(const char *str, size_t len, bool allow_imag, bool
 		
         dec_val *= MICROPY_FLOAT_C_FUN(pow)(10, exp_val);
 		
-		//because pow() doesn't fucking work
-		/*if (exp_val >= 0) {
-			for (int i = 0; i < exp_val; i++) {
-				dec_val *= 10;
-			}
-		} else {
-			for (int i = 0; i > exp_val; i--) {
-				dec_val /= 10;
-			}
-		}*/
 		
 		//printf("\n%.60f\n", dec_val);
 		//dec_val *= pow(10, exp_val);

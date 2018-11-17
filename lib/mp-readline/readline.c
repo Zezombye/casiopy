@@ -33,6 +33,7 @@
 #include "py/repl.h"
 #include "py/mphal.h"
 #include "lib/mp-readline/readline.h"
+#include "specialchars.h"
 
 #if 0 // print debugging info
 #define DEBUG_PRINT (1)
@@ -105,50 +106,51 @@ int readline_process_char(int c) {
     bool redraw_from_cursor = false;
     int redraw_step_forward = 0;
     if (rl.escape_seq == ESEQ_NONE) {
+		
+		// printable character
+            vstr_ins_char(rl.line, rl.cursor_pos, c);
+            // set redraw parameters
+            redraw_from_cursor = true;
+            redraw_step_forward = 1;
+		
         if (CHAR_CTRL_A <= c && c <= CHAR_CTRL_E && vstr_len(rl.line) == rl.orig_line_len) {
             // control character with empty line
             return c;
-        } else if (c == CHAR_CTRL_A) {
+        } else if (c == CHAR_HOME) {
             // CTRL-A with non-empty line is go-to-start-of-line
             goto home_key;
-        #if MICROPY_REPL_EMACS_KEYS
-        } else if (c == CHAR_CTRL_B) {
+        } else if (c == CHAR_LEFT) {
             // CTRL-B with non-empty line is go-back-one-char
             goto left_arrow_key;
-        #endif
-        } else if (c == CHAR_CTRL_C) {
+        } else if (c == CHAR_CANCEL) {
             // CTRL-C with non-empty line is cancel
             return c;
-        #if MICROPY_REPL_EMACS_KEYS
-        } else if (c == CHAR_CTRL_D) {
+        /*} else if (c == CHAR_DELETE) {
             // CTRL-D with non-empty line is delete-at-cursor
-            goto delete_key;
-        #endif
-        } else if (c == CHAR_CTRL_E) {
+            goto delete_key;*/
+        } else if (c == CHAR_END) {
             // CTRL-E is go-to-end-of-line
             goto end_key;
-        #if MICROPY_REPL_EMACS_KEYS
-        } else if (c == CHAR_CTRL_F) {
+        } else if (c == CHAR_RIGHT) {
             // CTRL-F with non-empty line is go-forward-one-char
             goto right_arrow_key;
-        } else if (c == CHAR_CTRL_K) {
+        /*} else if (c == CHAR_CTRL_K) {
             // CTRL-K is kill from cursor to end-of-line, inclusive
             vstr_cut_tail_bytes(rl.line, last_line_len - rl.cursor_pos);
             // set redraw parameters
-            redraw_from_cursor = true;
-        } else if (c == CHAR_CTRL_N) {
+            redraw_from_cursor = true;*/
+        } else if (c == CHAR_DOWN) {
             // CTRL-N is go to next line in history
             goto down_arrow_key;
-        } else if (c == CHAR_CTRL_P) {
+        } else if (c == CHAR_UP) {
             // CTRL-P is go to previous line in history
             goto up_arrow_key;
-        } else if (c == CHAR_CTRL_U) {
+        /*} else if (c == CHAR_CTRL_U) {
             // CTRL-U is kill from beginning-of-line up to cursor
             vstr_cut_out_bytes(rl.line, rl.orig_line_len, rl.cursor_pos - rl.orig_line_len);
             // set redraw parameters
             redraw_step_back = rl.cursor_pos - rl.orig_line_len;
-            redraw_from_cursor = true;
-        #endif
+            redraw_from_cursor = true;*/
         } else if (c == '\r') {
             // newline
             mp_hal_stdout_tx_str("\n");
@@ -157,7 +159,7 @@ int readline_process_char(int c) {
         } else if (c == 27) {
             // escape sequence
             rl.escape_seq = ESEQ_ESC;
-        } else if (c == 8 || c == 127) {
+        } else if (c == '\b' || c == 127) {
             // backspace/delete
             if (rl.cursor_pos > rl.orig_line_len) {
                 // work out how many chars to backspace
@@ -207,13 +209,13 @@ int readline_process_char(int c) {
                 redraw_step_forward = compl_len;
             }
         #endif
-        } else if (32 <= c && c <= 126) {
+        } /*else if (32 <= c && c <= 126) {
             // printable character
             vstr_ins_char(rl.line, rl.cursor_pos, c);
             // set redraw parameters
             redraw_from_cursor = true;
             redraw_step_forward = 1;
-        }
+        }*/
     } else if (rl.escape_seq == ESEQ_ESC) {
         switch (c) {
             case '[':
@@ -233,9 +235,7 @@ int readline_process_char(int c) {
         } else {
             rl.escape_seq = ESEQ_NONE;
             if (c == 'A') {
-#if MICROPY_REPL_EMACS_KEYS
 up_arrow_key:
-#endif
                 // up arrow
                 if (rl.hist_cur + 1 < (int)READLINE_HIST_SIZE && MP_STATE_PORT(readline_hist)[rl.hist_cur + 1] != NULL) {
                     // increase hist num
@@ -249,9 +249,7 @@ up_arrow_key:
                     redraw_step_forward = rl.line->len - rl.orig_line_len;
                 }
             } else if (c == 'B') {
-#if MICROPY_REPL_EMACS_KEYS
 down_arrow_key:
-#endif
                 // down arrow
                 if (rl.hist_cur >= 0) {
                     // decrease hist num
@@ -267,17 +265,13 @@ down_arrow_key:
                     redraw_step_forward = rl.line->len - rl.orig_line_len;
                 }
             } else if (c == 'C') {
-#if MICROPY_REPL_EMACS_KEYS
 right_arrow_key:
-#endif
                 // right arrow
                 if (rl.cursor_pos < rl.line->len) {
                     redraw_step_forward = 1;
                 }
             } else if (c == 'D') {
-#if MICROPY_REPL_EMACS_KEYS
 left_arrow_key:
-#endif
                 // left arrow
                 if (rl.cursor_pos > rl.orig_line_len) {
                     redraw_step_back = 1;
@@ -302,9 +296,7 @@ end_key:
                 redraw_step_forward = rl.line->len - rl.cursor_pos;
             } else if (rl.escape_seq_buf[0] == '3') {
                 // delete
-#if MICROPY_REPL_EMACS_KEYS
 delete_key:
-#endif
                 if (rl.cursor_pos < rl.line->len) {
                     vstr_cut_out_bytes(rl.line, rl.cursor_pos, 1);
                     redraw_from_cursor = true;
