@@ -16,11 +16,31 @@ int shellTextEnd;
 int shellTextCursorPos;
 int shellCursorX;
 int shellCursorLine;
-char displayEndOfShell;
+int shellTopLineOffset;
+//char displayEndOfShell;
 #define SHELL_BUFFER_SIZE 200
 char shellText[SHELL_BUFFER_SIZE] = {0};
 
 extern const int _iFont3x7[];
+
+void shell_pgup() {	
+	/*locate(1,1);
+			Print("pgup");
+			GetKey(&key);*/
+	shellTopLineOffset -= 3;
+	if (shellTopLineOffset < -shellTopLine) {
+		shellTopLineOffset = -shellTopLine;
+	}
+	shell_draw(0);
+}
+
+void shell_pgdown() {
+	shellTopLineOffset += 3;
+	if (shellTopLineOffset > 0) {
+		shellTopLineOffset = 0;
+	}
+	shell_draw(0);
+}
 
 void shell_init() {
 	shellTopLine = -8; //nth line that is displayed at the top of the shell; as character wrap is activated, this is not just a matter of counting the \ns.
@@ -30,8 +50,50 @@ void shell_init() {
 	shellTextCursorPos = 0; //position of the cursor, relative to the text
 	shellCursorX = 0; //x position of the cursor, relative to the screen
 	shellCursorLine = 0; //line of the cursor (y position), relative to the text
-	char displayEndOfShell = 1;
+	shellTopLineOffset = 0; //offset used with pgup/pgdown, is reset to 0 when a character is printed or cursor is moved
+	//displayEndOfShell = 1;
 	memset(shellText, 0, SHELL_BUFFER_SIZE);
+}
+
+void shell_move_cursor_left(unsigned int pos) {
+	if (pos == 0) return;
+	/*locate(1,1);
+			Print("left");
+			GetKey(&key);*/
+	for (int i = 0; i < pos; i++) {
+		shellTextCursorPos--;
+		shellCursorX--;
+		//shellTextEnd--;
+		if (shellCursorX < 0) {
+			shellCursorX = 31;
+			shellCursorLine--;
+			if (shellCursorLine < shellTopLine) {
+				shellTopLine--;
+			}
+		}
+	}
+	shell_draw(1);
+}
+
+void shell_move_cursor_right(char currentChar) {
+	shellTextCursorPos++;
+	shellCursorX++;
+	//shellTextEnd++;
+	if (shellTextEnd < shellTextCursorPos) {
+		shellTextEnd++;
+	}
+	
+	if (currentChar == '\n' || shellCursorX >= 32) {
+		shellCursorX = 0;
+		shellCursorLine++;
+		shellTopLine++;
+	}
+}
+
+void shell_erase_after_cursor() {
+	//As shell_draw only displays until shellTextEnd, just set it to the cursor pos
+	shellTextEnd = shellTextCursorPos;
+	shell_draw(1);
 }
 
 void shell_print(char* str, unsigned int len) {
@@ -58,20 +120,14 @@ void shell_print(char* str, unsigned int len) {
 			
 		} else if (str[i] == CHAR_LEFT) {
 			
-			shellTextCursorPos--;
-			if (shellTextCursorPos < 0) {
-				shellTextCursorPos = 31;
-				shellCursorLine--;
-				if (shellCursorLine < shellTopLine) {
-					shellTopLine--;
-				}
-			}
+			
 			
 		} else if (str[i] == CHAR_RIGHT) {
 			
 			shellTextCursorPos++;
-			if (shellTextCursorPos >= 32) {
-				shellTextCursorPos = 0;
+			shellCursorX++;
+			if (shellCursorX >= 32) {
+				shellCursorX = 0;
 				shellCursorLine++;
 				
 			}
@@ -97,8 +153,14 @@ void shell_print(char* str, unsigned int len) {
 				shellTopLine--;
 			}
 			
-			shellText[shellTextEnd] = str[i];
-			shellTextCursorPos++;
+			//special case for \n (if the cursor is at the middle of the line and user presses [exe])
+			if (str[i] == '\n') {
+				shellTextCursorPos = shellTextEnd;
+			}
+			
+			shellText[shellTextCursorPos] = str[i];
+			shell_move_cursor_right(str[i]);
+			/*shellTextCursorPos++;
 			shellCursorX++;
 			shellTextEnd++;
 			
@@ -106,7 +168,7 @@ void shell_print(char* str, unsigned int len) {
 				shellCursorX = 0;
 				shellCursorLine++;
 				shellTopLine++;
-			}
+			}*/
 			
 		}
 		
@@ -115,13 +177,23 @@ void shell_print(char* str, unsigned int len) {
 	
 	//we basically (efficiently) reprint all the text each time a string is printed
 	//not very efficient, but dealing with deletes, scrolling up, etc is not easy
+	shell_draw(1);
+
+	
+}
+
+void shell_draw(char resetTopLineOffset) {
+		
 	
 	shellPosX = 0;
 	shellPosY = 0;
 	
+	if (resetTopLineOffset) {
+		shellTopLineOffset = 0;
+	}
 
 	
-	int shellTopLineTemp = shellTopLine;
+	int shellTopLineTemp = shellTopLine+shellTopLineOffset;
 	if (shellTopLineTemp < 0) {
 		shellTopLineTemp = 0;
 	}
@@ -129,7 +201,8 @@ void shell_print(char* str, unsigned int len) {
 	int lineCount = 0;
 	
 	ML_clear_vram();
-	for (int i = 0; shellText[i]; i++) {
+	for (int i = 0; i < shellTextEnd; i++) {
+	//for (int i = 0; shellText[i]; i++) {
 				
 		//"ghost write" until we reach shell top line
 		if (lineCount >= shellTopLineTemp) {
@@ -139,7 +212,7 @@ void shell_print(char* str, unsigned int len) {
 			for (int k = charHeight*charLength-1; k >= 0; k--) { //browses through the pixels of the character specified, shifting the 1 of j to the right each time, so that it makes 0b01000.., 0b001000... etc
 				
 				if (_iFont3x7[shellText[i]] & j) { //checks if the bit that is a 1 in the j is also a 1 in the character
-					ML_pixel(shellPosX+k%(charLength), shellPosY+k/charLength, 1); //if so, locates the pixel at the coordinates, using modulo and division to calculate the coordinates relative to the top left of the character
+					ML_pixel(1+shellPosX+k%(charLength), shellPosY+k/charLength, 1); //if so, locates the pixel at the coordinates, using modulo and division to calculate the coordinates relative to the top left of the character
 				}
 				
 				if (j != 1)
@@ -166,7 +239,12 @@ void shell_print(char* str, unsigned int len) {
 	sprintf(strtest, "%d", shellTextEnd);
 	locate(19,1);
 	Print(strtest);
+	/*sprintf(strtest, "%d", shellTopLine);
+	locate(19,2);
+	Print(strtest);
+	sprintf(strtest, "%d", shellTopLineOffset);
+	locate(19,3);
+	Print(strtest);*/
 	ML_line(shellCursorX*(charLength+1), (shellCursorLine-shellTopLineTemp)*(charHeight), shellCursorX*(charLength+1), (shellCursorLine-shellTopLineTemp)*(charHeight)+charHeight, ML_BLACK);
 	ML_display_vram();
-	
 }

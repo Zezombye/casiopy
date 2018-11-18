@@ -46,6 +46,8 @@
 
 enum { ESEQ_NONE, ESEQ_ESC, ESEQ_ESC_BRACKET, ESEQ_ESC_BRACKET_DIGIT, ESEQ_ESC_O };
 
+extern int shellTopLineOffset;
+
 void readline_init0(void) {
     memset(MP_STATE_PORT(readline_hist), 0, READLINE_HIST_SIZE * sizeof(const char*));
 }
@@ -66,9 +68,10 @@ STATIC char *str_dup_maybe(const char *str) {
 #endif
 
 // ...and provide the implementation using them
-#if MICROPY_HAL_HAS_VT100
+
 STATIC void mp_hal_move_cursor_back(uint pos) {
-    if (pos <= 4) {
+	shell_move_cursor_left(pos);
+    /*if (pos <= 4) {
         // fast path for most common case of 1 step back
         mp_hal_stdout_tx_strn("\b\b\b\b", pos);
     } else {
@@ -79,14 +82,15 @@ STATIC void mp_hal_move_cursor_back(uint pos) {
             vt100_command[n] = 'D'; // replace null char
             mp_hal_stdout_tx_strn(vt100_command, n + 1);
         }
-    }
+    }*/
 }
 
 STATIC void mp_hal_erase_line_from_cursor(uint n_chars_to_erase) {
-    (void)n_chars_to_erase;
-    mp_hal_stdout_tx_strn("\x1b", 1);
+	shell_erase_after_cursor();
+    /*(void)n_chars_to_erase;
+    mp_hal_stdout_tx_strn("\x1b", 1);*/
 }
-#endif
+
 
 typedef struct _readline_t {
     vstr_t *line;
@@ -107,16 +111,17 @@ int readline_process_char(int c) {
     int redraw_step_forward = 0;
     if (rl.escape_seq == ESEQ_NONE) {
 		
-		// printable character
-            vstr_ins_char(rl.line, rl.cursor_pos, c);
-            // set redraw parameters
-            redraw_from_cursor = true;
-            redraw_step_forward = 1;
 		
-        if (CHAR_CTRL_A <= c && c <= CHAR_CTRL_E && vstr_len(rl.line) == rl.orig_line_len) {
+		/*if (c >= 0x01 && c <= 0x06) {
+			char str[2] = {0};
+			str[0] = c;
+			shell_print(str, 1);
+		}*/
+		
+        /*if (CHAR_CTRL_A <= c && c <= CHAR_CTRL_E && vstr_len(rl.line) == rl.orig_line_len) {
             // control character with empty line
             return c;
-        } else if (c == CHAR_HOME) {
+        } else*/ if (c == CHAR_HOME) {
             // CTRL-A with non-empty line is go-to-start-of-line
             goto home_key;
         } else if (c == CHAR_LEFT) {
@@ -139,18 +144,18 @@ int readline_process_char(int c) {
             vstr_cut_tail_bytes(rl.line, last_line_len - rl.cursor_pos);
             // set redraw parameters
             redraw_from_cursor = true;*/
-        } else if (c == CHAR_DOWN) {
+        } else if (c == CHAR_PGDOWN) {
             // CTRL-N is go to next line in history
             goto down_arrow_key;
-        } else if (c == CHAR_UP) {
+        } else if (c == CHAR_PGUP) {
             // CTRL-P is go to previous line in history
             goto up_arrow_key;
-        /*} else if (c == CHAR_CTRL_U) {
-            // CTRL-U is kill from beginning-of-line up to cursor
-            vstr_cut_out_bytes(rl.line, rl.orig_line_len, rl.cursor_pos - rl.orig_line_len);
-            // set redraw parameters
-            redraw_step_back = rl.cursor_pos - rl.orig_line_len;
-            redraw_from_cursor = true;*/
+        } else if (c == CHAR_UP) {
+            shell_pgup();
+			return -1;
+        } else if (c == CHAR_DOWN) {
+            shell_pgdown();
+			return -1;
         } else if (c == '\r') {
             // newline
             mp_hal_stdout_tx_str("\n");
@@ -209,13 +214,13 @@ int readline_process_char(int c) {
                 redraw_step_forward = compl_len;
             }
         #endif
-        } /*else if (32 <= c && c <= 126) {
+        } else if (32 <= c && c <= 126) {
             // printable character
             vstr_ins_char(rl.line, rl.cursor_pos, c);
             // set redraw parameters
             redraw_from_cursor = true;
             redraw_step_forward = 1;
-        }*/
+        }
     } else if (rl.escape_seq == ESEQ_ESC) {
         switch (c) {
             case '[':
@@ -445,20 +450,39 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 	
     for (;;) {
 		//casiopy_print("b", 1);
-		char str[10] = {0};
+		char str[45] = {0};
 		
 		if (waitForKey(str) == KEY_CTRL_EXIT) {
 			return -KEY_CTRL_EXIT;
 		}
 		
+		int charsAfterCursorCounter = 0;
+		char countCharsAfterCursor = 0;
+		
 		for (int i = 0; str[i]; i++) {
 			
 			//casiopy_print("c", 1);
 			int c = str[i];
-			int r = readline_process_char(c);
-			if (r >= 0) {
-				return r;
+			
+			if (c == '\a') {
+				countCharsAfterCursor = 1;
+			} else {
+				
+				if (countCharsAfterCursor) {
+					charsAfterCursorCounter++;
+				}
+				
+				int r = readline_process_char(c);
+				if (r >= 0) {
+					return r;
+				}
 			}
+			
+			
+		}
+		
+		for (int i = 0; i < charsAfterCursorCounter; i++) {
+			readline_process_char(CHAR_LEFT);
 		}
 		
         

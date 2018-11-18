@@ -10,3 +10,5 @@
 //0x0A = \n
 #define CHAR_SHELL_LINE_START 0x0B
 #define CHAR_CANCEL 0x0E
+#define CHAR_PGUP 0x0F
+#define CHAR_PGDOWN 0x10

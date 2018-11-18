@@ -17,6 +17,7 @@
 #include "i18n.h"
 #include "MonochromeLib.h"
 #include "casiopy.h"
+#include "specialchars.h"
 
 // ----------------------------------------------------------------
 // Constants
@@ -560,7 +561,8 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
                      &iRefresh,iLNum,iLines,sText,iCntx);
           break;
           
-        //Cursor home
+		//These commands are now treated as special chars
+        /*//Cursor home
 		case KEY_CTRL_HOME:
         case -NODEGOTOHOME: 
           MoveCursor(&tabIndentForCurrentLine, CURSORHOME,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
@@ -586,7 +588,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
         case -NODEGOTOPGD: 
           MoveCursor(&tabIndentForCurrentLine, CURSORPAGEDOWN,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
           &iRefresh,iLNum,iLines,sText,iCntx);
-          break;
+          break;*/
       
         //Clip mode on / off
         case KEY_CTRL_CLIP:
@@ -809,39 +811,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 			iRefresh = 2;
 			
 			break;
-		
-        //Save file
-        /*case -NODEFILESAVE: 
-          if(iBinary==0)
-          { 
-            if(iSaved==0)
-            {
-              iAnswer=1;
-              if(iNewFile==1)
-              {
-                if(FileExist(sRoot,sFolder,sFile)==1)
-                  iAnswer=PopupContinueYesNo(STR_FILEEXISTS,STR_CONTINUE,NULL);
-              }  
-              if(iAnswer==1)
-              {
-                if(WriteFile(sRoot,sFolder,sFile,sText,sConfig->iNLMode)==1)
-                {
-                  MenuFunctionKey(KEY_CTRL_EXIT);
-                  iRefresh=2;
-                  iSaved=1;
-                  iNewFile=0;
-                }
-                else
-                  PopupMessage(1,STR_FILEWRITEERROR,NULL,NULL,NULL,NULL);
-              }
-            }
-            else
-              PopupMessage(1,"Already saved!",NULL,NULL,NULL,NULL);
-          }
-          else
-            PopupMessage(1,"Binary files can","not be modified.",NULL,NULL,NULL);
-          break;*/
-        
+		        
         //Save as
         case -NODEFILESVAS: 
           if(GetFolder(sRootAux,sFolderAux,sConfig))
@@ -979,7 +949,9 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           iRefresh=2;
           break;
         
-        //Cursor x++
+		
+		//Now treated as special chars
+        /*//Cursor x++
         case KEY_CTRL_RIGHT: 
           MoveCursor(&tabIndentForCurrentLine, CURSORRIGHT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
           &iRefresh,iLNum,iLines,sText,iCntx);
@@ -1025,7 +997,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           iRefresh=1;
           iSaved=0;
           break;
-        
+        */
         //Print characters
         default: 
 			/*Do not insert characters in clip mode*/
@@ -1052,7 +1024,54 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 				if (cChr == '\a') {
 					countCharsAfterCursor = 1;
 					continue;
-					
+				
+				} else if (cChr == CHAR_RIGHT) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORRIGHT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_LEFT) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+					&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_DOWN) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORDOWN,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+					&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_UP) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORUP,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+					&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_END) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSOREND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+					&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_HOME) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORHOME,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+                     &iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_PGDOWN) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORPAGEDOWN,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+					&iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
+				} else if (cChr == CHAR_PGUP) {
+				
+					MoveCursor(&tabIndentForCurrentLine, CURSORPAGEUP,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,
+                     &iRefresh,iLNum,iLines,sText,iCntx);
+					continue;
+				
 				} else if (cChr == '\b') {
 					if(iLines[iTopLine+iCy-1]+iCx+leftMostColumn==0) {
 						//Mark cursor position

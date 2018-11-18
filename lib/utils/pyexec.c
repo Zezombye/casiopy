@@ -55,8 +55,8 @@ STATIC bool repl_display_debugging_info = 0;
 #define EXEC_FLAG_SOURCE_IS_VSTR (16)
 #define EXEC_FLAG_SOURCE_IS_FILENAME (32)
 
-#define PYEXEC_STR_STARTLINE ">>>\x80"
-#define PYEXEC_STR_CONTLINE "...\x80"
+#define PYEXEC_STR_STARTLINE ">>> "
+#define PYEXEC_STR_CONTLINE "... "
 
 // parses, compiles and executes the code in the lexer
 // frees the lexer before returning
