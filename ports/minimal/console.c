@@ -86,7 +86,7 @@ int waitForKey(char* str) {
 	ML_display_vram();*/
 	
 	unsigned int key;
-	
+	strcpy(str, "");
 	GetKey(&key);
 	
 	//If shift/alpha, put a dummy key (optn is the only key for which shift/alpha gives 0) to reset modifier
@@ -111,23 +111,23 @@ int waitForKey(char* str) {
 			
 			case KEY_CHAR_1: strcpy(str, "[0 for i in range(\a)]"); break;
 			case KEY_CHAR_2: strcpy(str, "[[0 for i in range(\a)] for j in range()]"); break;
-			//case KEY_CHAR_3: strcpy(str, ""); break;
+			case KEY_CHAR_3: strcpy(str, "random.randint(\a)"); break;
 			case KEY_CHAR_PLUS: strcpy(str,"["); break;
 			case KEY_CHAR_MINUS: strcpy(str,"]"); break;
 			
 			case KEY_CHAR_4: key=KEY_CTRL_CATALOG; goto control_key; break;
 			case KEY_CHAR_5: strcpy(str, "^"); break;
-			//case KEY_CHAR_6: strcpy(str, ""); break;
+			case KEY_CHAR_6: strcpy(str, "\\"); break;
 			case KEY_CHAR_MULT: strcpy(str,"{"); break;
 			case KEY_CHAR_DIV: strcpy(str,"}"); break;
 			
-			//case KEY_CHAR_7: strcpy(str, ""); break;
+			case KEY_CHAR_7: strcpy(str, "?"); break;
 			case KEY_CHAR_8: key=KEY_CTRL_CLIP; goto control_key; break;
 			case KEY_CHAR_9: key=KEY_CTRL_PASTE; goto control_key; break;
 			case KEY_CTRL_DEL: strcpy(str,"\x03\x04\b"); break;
 			
-			case KEY_CHAR_FRAC: strcpy(str, "<"); break;
-			case KEY_CTRL_FD: strcpy(str, ">"); break;
+			case KEY_CHAR_FRAC: strcpy(str, "!="); break;
+			case KEY_CTRL_FD: strcpy(str, "'"); break;
 			case KEY_CHAR_LPAR: strcpy(str,"\a**(1/3)"); break;
 			case KEY_CHAR_RPAR: strcpy(str,"**-1"); break;
 			case KEY_CHAR_COMMA: strcpy(str, "&"); break;
@@ -136,9 +136,9 @@ int waitForKey(char* str) {
 			case KEY_CTRL_XTT: strcpy(str, "~"); break;
 			case KEY_CHAR_LOG: strcpy(str,"e"); break;
 			case KEY_CHAR_LN: strcpy(str,"math.exp(\a)"); break;
-			case KEY_CHAR_SIN: strcpy(str,"asin(\a)"); break;
-			case KEY_CHAR_COS: strcpy(str,"acos(\a)"); break;
-			case KEY_CHAR_TAN: strcpy(str,"atan(\a)"); break;
+			case KEY_CHAR_SIN: strcpy(str,"math.asin(\a)"); break;
+			case KEY_CHAR_COS: strcpy(str,"math.acos(\a)"); break;
+			case KEY_CHAR_TAN: strcpy(str,"math.atan(\a)"); break;
 			
 			case KEY_CHAR_SQUARE: strcpy(str,"math.sqrt(\a)"); break;
 			case KEY_CHAR_POW: strcpy(str,"**(1/\a)"); break;
@@ -200,6 +200,8 @@ int waitForKey(char* str) {
 			case KEY_CTRL_LEFT: strcpy(str,"\x03"); break;
 			case KEY_CTRL_RIGHT: strcpy(str,"\x04"); break;
 			
+			case KEY_CTRL_F1: strcpy(str,"\x11"); goto control_key; break;
+			
 			default:
 				goto control_key;
 		}
@@ -229,8 +231,8 @@ int waitForKey(char* str) {
 			case KEY_CTRL_DEL: strcpy(str,"\x03\x04\b"); break;
 			case KEY_CTRL_AC: strcpy(str,"\x04\b"); break;
 			
-			case KEY_CHAR_FRAC: strcpy(str,"!="); break;
-			case KEY_CTRL_FD: strcpy(str,"'"); break;
+			case KEY_CHAR_FRAC: strcpy(str,"<"); break;
+			case KEY_CTRL_FD: strcpy(str,">"); break;
 			case KEY_CHAR_LPAR: strcpy(str,"("); break;
 			case KEY_CHAR_RPAR: strcpy(str,")"); break;
 			case KEY_CHAR_COMMA: strcpy(str,","); break;
@@ -239,20 +241,22 @@ int waitForKey(char* str) {
 			case KEY_CTRL_XTT: strcpy(str, "%"); break;
 			case KEY_CHAR_LOG: strcpy(str,"math.log10(\a)"); break;
 			case KEY_CHAR_LN: strcpy(str,"math.log(\a)"); break;
-			case KEY_CHAR_SIN: strcpy(str,"sin(\a)"); break;
-			case KEY_CHAR_COS: strcpy(str,"cos(\a)"); break;
-			case KEY_CHAR_TAN: strcpy(str,"tan(\a)"); break;
+			case KEY_CHAR_SIN: strcpy(str,"math.sin(\a)"); break;
+			case KEY_CHAR_COS: strcpy(str,"math.cos(\a)"); break;
+			case KEY_CHAR_TAN: strcpy(str,"math.tan(\a)"); break;
 			
 			case KEY_CHAR_SQUARE: strcpy(str,"**2"); break;
 			case KEY_CHAR_POW: strcpy(str,"**"); break;
 			
 			//case KEY_CTRL_OPTN: strcpy(str, ""); break;
-			//case KEY_CTRL_VARS: strcpy(str, ""); break;
+			//case KEY_CTRL_VARS: strcpy(str, "\x11"); break;
 			
 			case KEY_CTRL_UP: strcpy(str,"\x01"); break;
 			case KEY_CTRL_DOWN: strcpy(str,"\x02"); break;
 			case KEY_CTRL_LEFT: strcpy(str,"\x03"); break;
 			case KEY_CTRL_RIGHT: strcpy(str,"\x04"); break;
+			
+			case KEY_CTRL_F1: strcpy(str,"\x11"); goto control_key; break;
 			
 			default:
 				goto control_key;
@@ -276,7 +280,7 @@ int waitForKey(char* str) {
 		
 	shiftOrAlphaKey:
         if (_iAppMode == EDITOR) PrintKeyboardStatus();
-		strcpy(str, "");
+		//strcpy(str, "");
 		return key;
 	
 }

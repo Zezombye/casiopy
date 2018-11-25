@@ -477,7 +477,7 @@
 
 // Whether to provide the mp_kbd_exception object, and micropython.kbd_intr function
 #ifndef MICROPY_KBD_EXCEPTION
-#define MICROPY_KBD_EXCEPTION (0)
+#define MICROPY_KBD_EXCEPTION (1)
 #endif
 
 // Prefer to raise KeyboardInterrupt asynchronously (from signal or interrupt

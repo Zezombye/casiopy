@@ -1309,6 +1309,8 @@ Q(iterator)
 
 Q(join)
 
+Q(kbd_intr)
+
 Q(key)
 
 Q(key)

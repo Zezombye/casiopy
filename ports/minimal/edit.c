@@ -920,7 +920,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           break;
           
         //Set up
-        case -NODEHELPOPTN:
+        /*case -NODEHELPOPTN:
         case KEY_CTRL_SETUP:
           iAFont=sConfig->iFont;
           iAWWrap=sConfig->iWordWrap;
@@ -947,7 +947,7 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
           }
           MenuFunctionKey(KEY_CTRL_EXIT);
           iRefresh=2;
-          break;
+          break;*/
         
 		
 		//Now treated as special chars
@@ -1001,7 +1001,6 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
         //Print characters
         default: 
 			/*Do not insert characters in clip mode*/
-			if(iClipMode==1) break;
 			
 			if (-iKey >= NODEPRGM0) {
 		
@@ -1072,55 +1071,65 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
                      &iRefresh,iLNum,iLines,sText,iCntx);
 					continue;
 				
+				} else if (cChr == CHAR_AUTOCOMPLETE) {
+					
 				} else if (cChr == '\b') {
-					if(iLines[iTopLine+iCy-1]+iCx+leftMostColumn==0) {
-						//Mark cursor position
-						MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-
-						//Delete character from text
-						iLen=strlen(sText);
-						iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-						if(iPtr<iLen-1)
+					
+					if (iClipMode == 1) {
+						if(iStart!=iEnd)
 						{
-						for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
-						CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+						  iLen=strlen(sText);
+						  if(iStart<iEnd)
+						  {
+							MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,iEnd-iStart,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							for(i=iStart;i<iLen;i++) sText[i]=sText[i+iEnd-iStart];
+						  }
+						  else if(iStart>iEnd)
+						  {
+							MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							for(i=iEnd;i<iLen;i++) sText[i]=sText[i+iStart-iEnd];
+						  }
+						  CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+						  MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+						  iClipMode=0;
+						  iStart=0;
+						  iEnd=0;
+						  iRefresh=1;
+						  iSaved=0;
 						}
-						MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-						iColumn=iCx;
-						iRefresh=1;
-						iSaved=0;
-						break;
-					}
-					  
-					MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-					MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-					  
-					iLen=strlen(sText);
-					iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
-					
-					char isSpace = 0;
-					if (iPtr < iLen-1) isSpace = sText[iPtr] == ' ';
-					  
-					if(iPtr<iLen-1)
-					{
-						for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
-						CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
-					}
-					iColumn=iCx;
-					MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
-					iRefresh=1;
-					iSaved=0;
-					
-					if (countCharsAfterCursor) {
-						charsAfterCursorCounter--;
-					}
-					  
-					if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ' && (iCx+leftMostColumn)%2 == 1) {
+						else
+						{
+						  if(iKey==-NODEEDITDEL) PopupMessage(1,"No text selected!",NULL,NULL,NULL,NULL);
+						}
+					} else {
+						if(iLines[iTopLine+iCy-1]+iCx+leftMostColumn==0) {
+							//Mark cursor position
+							MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+
+							//Delete character from text
+							iLen=strlen(sText);
+							iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+							if(iPtr<iLen-1)
+							{
+							for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
+							CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+							}
+							MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							iColumn=iCx;
+							iRefresh=1;
+							iSaved=0;
+							break;
+						}
+						  
 						MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 						MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 						  
 						iLen=strlen(sText);
 						iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+						
+						char isSpace = 0;
+						if (iPtr < iLen-1) isSpace = sText[iPtr] == ' ';
 						  
 						if(iPtr<iLen-1)
 						{
@@ -1131,12 +1140,33 @@ int Editor(char *sRoot, char *sFolder, char *sFile,
 						MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
 						iRefresh=1;
 						iSaved=0;
+						
 						if (countCharsAfterCursor) {
 							charsAfterCursorCounter--;
 						}
+						  
+						if (isSpace && iPtr > 0 && sText[iPtr-1] == ' ' && (iCx+leftMostColumn)%2 == 1) {
+							MoveCursor(&tabIndentForCurrentLine, CURSORLEFT,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							MoveCursor(&tabIndentForCurrentLine, CURSORMARK,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							  
+							iLen=strlen(sText);
+							iPtr=iLines[iTopLine+iCy-1]+iCx+leftMostColumn;
+							  
+							if(iPtr<iLen-1)
+							{
+								for(i=iPtr;i<iLen;i++) sText[i]=sText[i+1];
+								CalcLines(sText,iLines,&iLNum,iTopLine,iCntx,sConfig);
+							}
+							iColumn=iCx;
+							MoveCursor(&tabIndentForCurrentLine, CURSORFIND,1,&iCx,&iCy,&iTopLine,&leftMostColumn,&iColumn,&iRefresh,iLNum,iLines,sText,iCntx);
+							iRefresh=1;
+							iSaved=0;
+							if (countCharsAfterCursor) {
+								charsAfterCursorCounter--;
+							}
+						}
 					}
-										
-				} else {
+				} else if (iClipMode != 1) {
 					
 					int nbIndents = tabIndentForCurrentLine;
 				

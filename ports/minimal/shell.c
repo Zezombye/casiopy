@@ -2,6 +2,8 @@
 #include "tinyprintf.h"
 #include "MonochromeLib.h"
 #include "specialchars.h"
+#include <keybios.h>
+#include <fxlib.h>
 
 unsigned int key;
 
@@ -18,7 +20,8 @@ int shellCursorX;
 int shellCursorLine;
 int shellTopLineOffset;
 //char displayEndOfShell;
-#define SHELL_BUFFER_SIZE 200
+#define SHELL_BUFFER_SIZE 2048
+#define SHELL_MAX_LINES 9
 char shellText[SHELL_BUFFER_SIZE] = {0};
 
 extern const int _iFont3x7[];
@@ -43,7 +46,7 @@ void shell_pgdown() {
 }
 
 void shell_init() {
-	shellTopLine = -8; //nth line that is displayed at the top of the shell; as character wrap is activated, this is not just a matter of counting the \ns.
+	shellTopLine = -SHELL_MAX_LINES+1; //nth line that is displayed at the top of the shell; as character wrap is activated, this is not just a matter of counting the \ns.
 	shellPosX = 0; //position (relative to the screen, and in pixels) of the current printed character
 	shellPosY = 0;
 	shellTextEnd = 0; //to not have to recalculate strlen(shellText) each time
@@ -86,7 +89,9 @@ void shell_move_cursor_right(char currentChar) {
 	if (currentChar == '\n' || shellCursorX >= 32) {
 		shellCursorX = 0;
 		shellCursorLine++;
-		shellTopLine++;
+		if (shellCursorLine-shellTopLine > SHELL_MAX_LINES-1) {
+			shellTopLine++;
+		}
 	}
 }
 
@@ -97,6 +102,8 @@ void shell_erase_after_cursor() {
 }
 
 void shell_print(char* str, unsigned int len) {
+
+	//len=strlen(str);
 
 	for (int i = 0; i < len; i++) {
 		
@@ -134,28 +141,36 @@ void shell_print(char* str, unsigned int len) {
 			
 		} else {
 			
+			//Memory shift
 			if (shellTextEnd == SHELL_BUFFER_SIZE) {
 				/*locate(1,1);
 				Print("moving memory");
 				GetKey(&key);*/
 				//get size of first line
-				int firstLineBreak = 0;
-				for (firstLineBreak = 0; firstLineBreak < 32; firstLineBreak++) {
-					if (firstLineBreak > 0 && shellText[firstLineBreak-1] == '\n') {
-						break;
+				int memCount = 0;
+				int nbLinesMoved = 0;
+				while (memCount < 200) {
+					int firstLineBreak = 0;
+					for (firstLineBreak = 0; firstLineBreak < 32; firstLineBreak++) {
+						if (firstLineBreak > 0 && shellText[firstLineBreak+memCount-1] == '\n') {
+							break;
+						}
 					}
+					memCount += firstLineBreak;
+					nbLinesMoved++;
 				}
-				memmove(shellText, shellText+firstLineBreak, SHELL_BUFFER_SIZE-firstLineBreak);
-				memset(shellText+SHELL_BUFFER_SIZE-firstLineBreak, 0, firstLineBreak);
-				shellTextEnd -= firstLineBreak;
-				shellTextCursorPos -= firstLineBreak;
-				shellCursorLine--;
-				shellTopLine--;
+				memmove(shellText, shellText+memCount, SHELL_BUFFER_SIZE-memCount);
+				memset(shellText+SHELL_BUFFER_SIZE-memCount, 0, memCount);
+				shellTextEnd -= memCount;
+				shellTextCursorPos -= memCount;
+				shellCursorLine -= nbLinesMoved;
+				shellTopLine -= nbLinesMoved;
 			}
 			
 			//special case for \n (if the cursor is at the middle of the line and user presses [exe])
 			if (str[i] == '\n') {
 				shellTextCursorPos = shellTextEnd;
+				shellCursorLine = shellTopLine+SHELL_MAX_LINES-1;
 			}
 			
 			shellText[shellTextCursorPos] = str[i];
@@ -236,15 +251,19 @@ void shell_draw(char resetTopLineOffset) {
 		}
 	}
 	char strtest[10] = {0};
-	sprintf(strtest, "%d", shellTextEnd);
-	locate(19,1);
+	/*sprintf(strtest, "%d", shellTextEnd);
+	locate(18,1);
 	Print(strtest);
-	/*sprintf(strtest, "%d", shellTopLine);
+	sprintf(strtest, "%d", shellTopLine);
 	locate(19,2);
 	Print(strtest);
 	sprintf(strtest, "%d", shellTopLineOffset);
 	locate(19,3);
 	Print(strtest);*/
 	ML_line(shellCursorX*(charLength+1), (shellCursorLine-shellTopLineTemp)*(charHeight), shellCursorX*(charLength+1), (shellCursorLine-shellTopLineTemp)*(charHeight)+charHeight, ML_BLACK);
-	ML_display_vram();
+	Bdisp_PutDisp_DD();
+	/*if (IsKeyDown(KEY_CTRL_MENU)) {
+		GetKey(&key);
+	}*/
+	//ML_display_vram();
 }

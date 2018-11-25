@@ -15,9 +15,9 @@
 #define MONOCHROMELIB
 
 //While waiting for ML bug on SH4 to be fixed...
-/*#define ML_pixel(x,y,col) Bdisp_SetPoint_VRAM(x,y,col)
-#define ML_display_vram() Bdisp_PutDisp_DD()
-#define ML_clear_vram() Bdisp_AllClr_VRAM()*/
+//#define ML_pixel(x,y,col) Bdisp_SetPoint_VRAM(x,y,col)
+//#define ML_display_vram() Bdisp_PutDisp_DD()
+//#define ML_clear_vram() Bdisp_AllClr_VRAM()
 
  #define ML_ALL //Auto define all functions
 

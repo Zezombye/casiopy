@@ -12,3 +12,4 @@
 #define CHAR_CANCEL 0x0E
 #define CHAR_PGUP 0x0F
 #define CHAR_PGDOWN 0x10
+#define CHAR_AUTOCOMPLETE 0x11

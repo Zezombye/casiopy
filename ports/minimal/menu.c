@@ -76,7 +76,7 @@ void MenuInitialize(void)
   MenuSetPrgmNode(MENUBARPRGM0,0,"if","if \a:\n", NODEPRGM0);
   MenuSetPrgmNode(MENUBARPRGM0,1,"else","else:\n", NODEPRGM1);
   MenuSetPrgmNode(MENUBARPRGM0,2,"i/e","if \a:\n\n\belse:\n", NODEPRGM2);
-  MenuSetPrgmNode(MENUBARPRGM0,3,"elif","elif:\n", NODEPRGM3);
+  MenuSetPrgmNode(MENUBARPRGM0,3,"elif","elif \a:\n", NODEPRGM3);
   MenuSetPrgmNode(MENUBARPRGM0,4,"def","def \a():\n", NODEPRGM4);
   MenuSetPrgmNode(MENUBARPRGM0,5,"rtrn","return ", NODEPRGM5);
   

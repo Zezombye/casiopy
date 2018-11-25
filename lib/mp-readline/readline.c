@@ -193,7 +193,7 @@ int readline_process_char(int c) {
                 redraw_from_cursor = true;
             }
         #if MICROPY_HELPER_REPL
-        } else if (c == 9) {
+        } else if (c == CHAR_AUTOCOMPLETE) {
             // tab magic
             const char *compl_str;
             size_t compl_len = mp_repl_autocomplete(rl.line->buf + rl.orig_line_len, rl.cursor_pos - rl.orig_line_len, &mp_plat_print, &compl_str);
