@@ -213,7 +213,7 @@
 // Avoid using C stack when making Python function calls. C stack still
 // may be used if there's no free heap.
 #ifndef MICROPY_STACKLESS
-#define MICROPY_STACKLESS (0)
+#define MICROPY_STACKLESS (1)
 #endif
 
 // Never use C stack when making Python function calls. This may break
@@ -462,7 +462,7 @@
 // Whether to check C stack usage. C stack used for calling Python functions,
 // etc. Not checking means segfault on overflow.
 #ifndef MICROPY_STACK_CHECK
-#define MICROPY_STACK_CHECK (0)
+#define MICROPY_STACK_CHECK (1)
 #endif
 
 // Whether to have an emergency exception buffer
@@ -710,14 +710,14 @@ typedef double mp_float_t;
 // This costs some code size and makes load/store/delete of instance
 // attributes slower for the classes that use this feature
 #ifndef MICROPY_PY_DESCRIPTORS
-#define MICROPY_PY_DESCRIPTORS (0)
+#define MICROPY_PY_DESCRIPTORS (1)
 #endif
 
 // Whether to support class __delattr__ and __setattr__ methods
 // This costs some code size and makes store/delete of instance
 // attributes slower for the classes that use this feature
 #ifndef MICROPY_PY_DELATTR_SETATTR
-#define MICROPY_PY_DELATTR_SETATTR (0)
+#define MICROPY_PY_DELATTR_SETATTR (1)
 #endif
 
 // Support for async/await/async for/async with
@@ -751,17 +751,17 @@ typedef double mp_float_t;
 
 // Whether str.center() method provided
 #ifndef MICROPY_PY_BUILTINS_STR_CENTER
-#define MICROPY_PY_BUILTINS_STR_CENTER (0)
+#define MICROPY_PY_BUILTINS_STR_CENTER (1)
 #endif
 
 // Whether str.partition()/str.rpartition() method provided
 #ifndef MICROPY_PY_BUILTINS_STR_PARTITION
-#define MICROPY_PY_BUILTINS_STR_PARTITION (0)
+#define MICROPY_PY_BUILTINS_STR_PARTITION (1)
 #endif
 
 // Whether str.splitlines() method provided
 #ifndef MICROPY_PY_BUILTINS_STR_SPLITLINES
-#define MICROPY_PY_BUILTINS_STR_SPLITLINES (0)
+#define MICROPY_PY_BUILTINS_STR_SPLITLINES (1)
 #endif
 
 // Whether to support bytearray object
@@ -787,7 +787,7 @@ typedef double mp_float_t;
 // Whether to support slice attribute read access,
 // i.e. slice.start, slice.stop, slice.step
 #ifndef MICROPY_PY_BUILTINS_SLICE_ATTRS
-#define MICROPY_PY_BUILTINS_SLICE_ATTRS (0)
+#define MICROPY_PY_BUILTINS_SLICE_ATTRS (1)
 #endif
 
 // Whether to support frozenset object
@@ -811,12 +811,12 @@ typedef double mp_float_t;
 // the same object will compare as not-equal.  With it enabled the semantics
 // match CPython and ranges are equal if they yield the same sequence of items.
 #ifndef MICROPY_PY_BUILTINS_RANGE_BINOP
-#define MICROPY_PY_BUILTINS_RANGE_BINOP (0)
+#define MICROPY_PY_BUILTINS_RANGE_BINOP (1)
 #endif
 
 // Whether to support rounding of integers (incl bignum); eg round(123,-1)=120
 #ifndef MICROPY_PY_BUILTINS_ROUND_INT
-#define MICROPY_PY_BUILTINS_ROUND_INT (0)
+#define MICROPY_PY_BUILTINS_ROUND_INT (1)
 #endif
 
 // Whether to support timeout exceptions (like socket.timeout)
@@ -830,20 +830,20 @@ typedef double mp_float_t;
 // "Reverse" methods are controlled by
 // MICROPY_PY_REVERSE_SPECIAL_METHODS below.
 #ifndef MICROPY_PY_ALL_SPECIAL_METHODS
-#define MICROPY_PY_ALL_SPECIAL_METHODS (0)
+#define MICROPY_PY_ALL_SPECIAL_METHODS (1)
 #endif
 
 // Whether to support all inplace arithmetic operarion methods
 // (__imul__, etc.)
 #ifndef MICROPY_PY_ALL_INPLACE_SPECIAL_METHODS
-#define MICROPY_PY_ALL_INPLACE_SPECIAL_METHODS (0)
+#define MICROPY_PY_ALL_INPLACE_SPECIAL_METHODS (1)
 #endif
 
 // Whether to support reverse arithmetic operarion methods
 // (__radd__, etc.). Additionally gated by
 // MICROPY_PY_ALL_SPECIAL_METHODS.
 #ifndef MICROPY_PY_REVERSE_SPECIAL_METHODS
-#define MICROPY_PY_REVERSE_SPECIAL_METHODS (0)
+#define MICROPY_PY_REVERSE_SPECIAL_METHODS (1)
 #endif
 
 // Whether to support compile function
@@ -895,7 +895,7 @@ typedef double mp_float_t;
 
 // Support for calls to pow() with 3 integer arguments
 #ifndef MICROPY_PY_BUILTINS_POW3
-#define MICROPY_PY_BUILTINS_POW3 (0)
+#define MICROPY_PY_BUILTINS_POW3 (1)
 #endif
 
 // Whether to provide the help function
@@ -975,7 +975,7 @@ typedef double mp_float_t;
 
 // Whether to provide special math functions: math.{erf,erfc,gamma,lgamma}
 #ifndef MICROPY_PY_MATH_SPECIAL_FUNCTIONS
-#define MICROPY_PY_MATH_SPECIAL_FUNCTIONS (0)
+#define MICROPY_PY_MATH_SPECIAL_FUNCTIONS (1)
 #endif
 
 // Whether to provide "cmath" module
@@ -1041,7 +1041,7 @@ typedef double mp_float_t;
 
 // Whether to provide "sys.maxsize" constant
 #ifndef MICROPY_PY_SYS_MAXSIZE
-#define MICROPY_PY_SYS_MAXSIZE (0)
+#define MICROPY_PY_SYS_MAXSIZE (1)
 #endif
 
 // Whether to provide "sys.modules" dictionary
@@ -1062,7 +1062,7 @@ typedef double mp_float_t;
 
 // Whether to provide "sys.getsizeof" function
 #ifndef MICROPY_PY_SYS_GETSIZEOF
-#define MICROPY_PY_SYS_GETSIZEOF (0)
+#define MICROPY_PY_SYS_GETSIZEOF (1)
 #endif
 
 // Whether to provide sys.{stdin,stdout,stderr} objects

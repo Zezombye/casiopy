@@ -17,6 +17,7 @@ unsigned int key;
 extern int shellPosX;
 extern int shellPosY;
 extern int readline_index;
+extern char isSH4;
 const char *heap;
 
 #if MICROPY_ENABLE_COMPILER
@@ -43,10 +44,23 @@ static char *stack_top;
 
 int mpy_main(char *text) {
 	
-	int heapLen = 32768;
-	#if MICROPY_ENABLE_GC
-	heap = malloc(heapLen);
-	#endif
+	mp_stack_set_limit(2048);
+	
+	
+	/*	int key;
+		locate(1,1);
+		Print(osVersion);
+		GetKey(&key);*/
+	int heapLen;
+	
+	if (!isSH4) {
+		heapLen = 32768;
+		heap = malloc(heapLen);
+	} else {
+		heapLen = 262144;
+		heap = 0x88040000;
+	}
+	
 	
 	if (heap == NULL) {
 		int key;
@@ -59,39 +73,24 @@ int mpy_main(char *text) {
 	ML_display_vram();
 	shell_init();
 	readline_index = 0;
-	/*for (int i = 0; i < 20; i++) {
-		openedFiles[i] = 0;
-	}*/
 	initNbOpenedFiles();
     int stack_dummy;
 	extern int rx_index;
 	rx_index = 1;
     stack_top = (char*)&stack_dummy;
-
+	
+	mp_stack_ctrl_init();
+	
     #if MICROPY_ENABLE_GC
     gc_init(heap, heap + heapLen);
     #endif
     mp_init();
-    #if MICROPY_ENABLE_COMPILER
-    #if MICROPY_REPL_EVENT_DRIVEN
-    pyexec_event_repl_init();
-    for (;;) {
-        int c = mp_hal_stdin_rx_chr();
-        if (pyexec_event_repl_process_char(c)) {
-            break;
-        }
-    }
-    #else
-	//Print("7");GetKey(&key);
+	
+    
     pyexec_friendly_repl(text);
-    #endif
-    //do_str("print('hello world!', list(x+1 for x in range(10)), end='eol\\n')", MP_PARSE_SINGLE_INPUT);
-    //do_str("for i in range(10):\r\n  print(i)", MP_PARSE_FILE_INPUT);
-    #else
-	casiopy_print("azer", 4);
-    pyexec_frozen_module("frozentest.py");
-    #endif
-	free(heap);
+	
+	
+	if (!isSH4) free(heap);
     mp_deinit();
 
 	closeAllFiles();

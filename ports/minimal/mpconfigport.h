@@ -58,6 +58,7 @@
 #define MICROPY_FLOAT_IMPL          (MICROPY_FLOAT_IMPL_DOUBLE)
 #define MICROPY_PY_URANDOM (1)
 #define MICROPY_PY_URANDOM_EXTRA_FUNCS (1)
+#define MP_NEED_LOG2 (1)
 
 // type definitions for the specific machine
 

@@ -111,7 +111,7 @@ void MenuInitialize(void)
   
   MenuSetPrgmNode(MENUBARPRGM5,0,"try","try:\n", NODEPRGM30);
   MenuSetPrgmNode(MENUBARPRGM5,1,"expt","except \a:\n", NODEPRGM31);
-  MenuSetPrgmNode(MENUBARPRGM5,2,"t/ex","try:\n\a\n\bexcept :\n", NODEPRGM31);
+  MenuSetPrgmNode(MENUBARPRGM5,2,"t/ex","try:\n\a\n\bexcept :\n", NODEPRGM32);
   MenuSetPrgmNode(MENUBARPRGM5,3,"fnly","finally:\n", NODEPRGM33);
   MenuSetPrgmNode(MENUBARPRGM5,4,"t/ef","try:\n\a\n\bexcept :\n\n\bfinally:\n", NODEPRGM34);
   MenuSetPrgmNode(MENUBARPRGM5,5,"rse","raise ", NODEPRGM35);

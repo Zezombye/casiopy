@@ -6,6 +6,7 @@
 
 
 unsigned int key;
+char isSH4 = 0;
 
 //A warning if pow() is ever used.
 
@@ -41,6 +42,12 @@ int main(int isappli, unsigned short optnum)
 	locate(1,1); Print(str);
 	
 	GetKey(&key);*/
+	
+	char osVersion[11];
+	getOsVersion(osVersion);
+	if (osVersion[9] == '1') {
+		isSH4 = 1;
+	}
 	
 	edit_main();
 	//mpy_main();

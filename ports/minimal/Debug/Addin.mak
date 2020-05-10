@@ -3,8 +3,8 @@
 #
 ############################
 # Directory defines
-TCDIR = D:\CASIO\fx-9860G SDK\OS\SH
-OSDIR = D:\CASIO\fx-9860G SDK\OS
+TCDIR = C:\CASIO\fx-9860G SDK\OS\SH
+OSDIR = C:\CASIO\fx-9860G SDK\OS
 APPDIR = C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal
 OUTDIR = C:\cygwin64\home\Zezombye\micropython\micropython-master\ports\minimal\Debug
 

@@ -71,12 +71,12 @@ typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
 # 17 "include/stdint.h" 2
 # 2 "./mpconfigport.h" 2
-# 72 "./mpconfigport.h"
+# 73 "./mpconfigport.h"
 typedef int mp_int_t;
 typedef unsigned mp_uint_t;
 
 typedef long mp_off_t;
-# 84 "./mpconfigport.h"
+# 85 "./mpconfigport.h"
 # 1 "include/alloca.h" 1
 # 10 "include/alloca.h"
 # 1 "include/_ansi.h" 1
@@ -542,7 +542,7 @@ extern struct _reent *const _global_impure_ptr ;
 
 void _reclaim_reent (struct _reent *);
 # 12 "include/alloca.h" 2
-# 85 "./mpconfigport.h" 2
+# 86 "./mpconfigport.h" 2
 # 46 "../../py/mpconfig.h" 2
 # 577 "../../py/mpconfig.h"
 typedef double mp_float_t;
@@ -785,7 +785,11 @@ Q(ZeroDivisionError)
 
 Q(_0x0a_)
 
+Q(__abs__)
+
 Q(__add__)
+
+Q(__and__)
 
 Q(__bool__)
 
@@ -809,9 +813,23 @@ Q(__contains__)
 
 Q(__contains__)
 
+Q(__delattr__)
+
+Q(__delattr__)
+
+Q(__delattr__)
+
+Q(__delete__)
+
+Q(__delete__)
+
 Q(__delitem__)
 
 Q(__delitem__)
+
+Q(__dir__)
+
+Q(__divmod__)
 
 Q(__enter__)
 
@@ -824,8 +842,14 @@ Q(__eq__)
 Q(__exit__)
 
 Q(__exit__)
+
+Q(__floordiv__)
 
 Q(__ge__)
+
+Q(__get__)
+
+Q(__get__)
 
 Q(__getattr__)
 
@@ -845,19 +869,43 @@ Q(__hash__)
 
 Q(__iadd__)
 
+Q(__iand__)
+
+Q(__ifloordiv__)
+
+Q(__ilshift__)
+
+Q(__imod__)
+
 Q(__import__)
 
+Q(__imul__)
+
 Q(__init__)
 
 Q(__init__)
+
+Q(__invert__)
+
+Q(__ior__)
+
+Q(__ipow__)
+
+Q(__irshift__)
 
 Q(__isub__)
 
 Q(__iter__)
 
+Q(__itruediv__)
+
+Q(__ixor__)
+
 Q(__le__)
 
 Q(__len__)
+
+Q(__lshift__)
 
 Q(__lt__)
 
@@ -867,9 +915,11 @@ Q(__main__)
 
 Q(__main__)
 
+Q(__mod__)
+
 Q(__module__)
 
-Q(__name__)
+Q(__mul__)
 
 Q(__name__)
 
@@ -906,6 +956,10 @@ Q(__name__)
 Q(__name__)
 
 Q(__name__)
+
+Q(__name__)
+
+Q(__neg__)
 
 Q(__new__)
 
@@ -919,13 +973,23 @@ Q(__next__)
 
 Q(__next__)
 
-Q(__path__)
+Q(__or__)
 
 Q(__path__)
 
 Q(__path__)
+
+Q(__path__)
+
+Q(__pos__)
+
+Q(__pow__)
 
 Q(__qualname__)
+
+Q(__radd__)
+
+Q(__rand__)
 
 Q(__repl_print__)
 
@@ -937,15 +1001,53 @@ Q(__repr__)
 
 Q(__reversed__)
 
+Q(__rfloordiv__)
+
+Q(__rlshift__)
+
+Q(__rmod__)
+
+Q(__rmul__)
+
+Q(__ror__)
+
+Q(__rpow__)
+
+Q(__rrshift__)
+
+Q(__rshift__)
+
+Q(__rsub__)
+
+Q(__rtruediv__)
+
+Q(__rxor__)
+
+Q(__set__)
+
+Q(__set__)
+
+Q(__setattr__)
+
+Q(__setattr__)
+
+Q(__setattr__)
+
 Q(__setitem__)
 
 Q(__setitem__)
+
+Q(__sizeof__)
 
 Q(__str__)
 
 Q(__sub__)
 
 Q(__traceback__)
+
+Q(__truediv__)
+
+Q(__xor__)
 
 Q(_brace_open__colon__hash_b_brace_close_)
 
@@ -977,6 +1079,8 @@ Q(abs)
 
 Q(acos)
 
+Q(acosh)
+
 Q(add)
 
 Q(all)
@@ -1001,9 +1105,13 @@ Q(array)
 
 Q(asin)
 
+Q(asinh)
+
 Q(atan)
 
 Q(atan2)
+
+Q(atanh)
 
 Q(big)
 
@@ -1038,6 +1146,8 @@ Q(calcsize)
 Q(callable)
 
 Q(ceil)
+
+Q(center)
 
 Q(choice)
 
@@ -1089,6 +1199,8 @@ Q(cos)
 
 Q(cos)
 
+Q(cosh)
+
 Q(count)
 
 Q(count)
@@ -1137,6 +1249,10 @@ Q(enumerate)
 
 Q(enumerate)
 
+Q(erf)
+
+Q(erfc)
+
 Q(errorcode)
 
 Q(eval)
@@ -1148,6 +1264,8 @@ Q(exit)
 Q(exp)
 
 Q(exp)
+
+Q(expm1)
 
 Q(extend)
 
@@ -1201,6 +1319,8 @@ Q(function)
 
 Q(function)
 
+Q(gamma)
+
 Q(gc)
 
 Q(gc)
@@ -1216,6 +1336,8 @@ Q(get)
 Q(getattr)
 
 Q(getrandbits)
+
+Q(getsizeof)
 
 Q(getter)
 
@@ -1311,6 +1433,8 @@ Q(join)
 
 Q(kbd_intr)
 
+Q(keepends)
+
 Q(key)
 
 Q(key)
@@ -1322,6 +1446,8 @@ Q(keys)
 Q(ldexp)
 
 Q(len)
+
+Q(lgamma)
 
 Q(list)
 
@@ -1339,6 +1465,12 @@ Q(log)
 
 Q(log)
 
+Q(log10)
+
+Q(log10)
+
+Q(log2)
+
 Q(lower)
 
 Q(lstrip)
@@ -1352,6 +1484,10 @@ Q(math)
 Q(math)
 
 Q(max)
+
+Q(maximum_space_recursion_space_depth_space_exceeded)
+
+Q(maxsize)
 
 Q(mem_alloc)
 
@@ -1400,6 +1536,8 @@ Q(ord)
 Q(pack)
 
 Q(pack_into)
+
+Q(partition)
 
 Q(path)
 
@@ -1483,6 +1621,8 @@ Q(rindex)
 
 Q(round)
 
+Q(rpartition)
+
 Q(rsplit)
 
 Q(rstrip)
@@ -1511,6 +1651,8 @@ Q(sin)
 
 Q(sin)
 
+Q(sinh)
+
 Q(slice)
 
 Q(slice)
@@ -1521,9 +1663,13 @@ Q(sorted)
 
 Q(split)
 
+Q(splitlines)
+
 Q(sqrt)
 
 Q(sqrt)
+
+Q(start)
 
 Q(start)
 
@@ -1534,6 +1680,10 @@ Q(staticmethod)
 Q(staticmethod)
 
 Q(step)
+
+Q(step)
+
+Q(stop)
 
 Q(stop)
 
@@ -1566,6 +1716,8 @@ Q(sys)
 Q(sys)
 
 Q(tan)
+
+Q(tanh)
 
 Q(throw)
 

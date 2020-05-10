@@ -4275,7 +4275,13 @@ void ConfigImport(struct Config *sConfig)
     strcpy(sConfig->sAutoRoot,"fls0");
     strcpy(sConfig->sAutoFile,"");
     strcpy(sConfig->sAutoFolder,"CASIOPY");
-    sConfig->iTextBuffer=TXTMINSIZE;
+	
+	extern char isSH4;
+	if (isSH4) {
+		sConfig->iTextBuffer=32768;
+	} else {
+		sConfig->iTextBuffer=4096;
+	}
     sConfig->iClipBuffer=TXTMINCLIP;
     sConfig->iMaxFiles=MINFILES;
     sConfig->iMaxFolders=MINFOLDERS;

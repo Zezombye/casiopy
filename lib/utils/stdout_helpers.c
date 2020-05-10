@@ -22,5 +22,5 @@ void mp_hal_stdout_tx_strn_cooked(const char *str, size_t len) {
 
 // Send zero-terminated string
 void mp_hal_stdout_tx_str(const char *str) {
-    mp_hal_stdout_tx_strn(str, strlen(str));
+    mp_hal_stdout_tx_strn(str, strlen(str)+1);
 }

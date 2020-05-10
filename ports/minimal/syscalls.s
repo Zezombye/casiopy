@@ -1,4 +1,5 @@
 	.global _putKey
+	.global _getOsVersion
 	.global _ML_vram_adress
 	
 
@@ -49,6 +50,14 @@ _calloc_syscall:
     nop
 1:
     .long    0xE6B
+	
+_getOsVersion:
+    mov.l    syscall_table, r2
+    mov.l    1f, r0
+    jmp      @r2
+    nop
+1:
+    .long    0x2EE
 
 syscall_table:
     .long    0x80010070

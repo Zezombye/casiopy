@@ -486,6 +486,7 @@ friendly_repl_reset:
         } else if (ret == -KEY_CTRL_EXIT) {
 			return;
         } else if (vstr_len(&line) == 0) {
+			//mp_hal_stdout_tx_str("B");
             continue;
 		} else {
             // got a line with non-zero length, see if it needs continuing

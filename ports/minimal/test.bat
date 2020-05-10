@@ -1,0 +1,1 @@
+echo test>c:\cygwin64\home\Zezombye\test.txt

@@ -152,10 +152,10 @@ int readline_process_char(int c) {
             goto up_arrow_key;
         } else if (c == CHAR_UP) {
             shell_pgup();
-			return -1;
+			return -10;
         } else if (c == CHAR_DOWN) {
             shell_pgdown();
-			return -1;
+			return -10;
         } else if (c == '\r') {
             // newline
             mp_hal_stdout_tx_str("\n");
@@ -220,7 +220,9 @@ int readline_process_char(int c) {
             // set redraw parameters
             redraw_from_cursor = true;
             redraw_step_forward = 1;
-        }
+        } else if (c == 0) {
+			shell_draw(1);
+		}
     } else if (rl.escape_seq == ESEQ_ESC) {
         switch (c) {
             case '[':
@@ -424,8 +426,6 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 	
 	if (text != NULL) {
 		for (;text[readline_index] != 0;) {
-			//str[0] = text[i];
-			//casiopy_print(str, 1);
 			int r;
 			if (text[readline_index] != 0x0C) {
 				if (text[readline_index] == '\n') {
@@ -435,9 +435,6 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 				}
 				readline_index++;
 			} else {
-				/*casiopy_print("azer");
-				char str[10];
-				waitForKey(str);*/
 				r = readline_process_char('\r');
 				readline_index++;
 			}
@@ -449,7 +446,7 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 
 	
     for (;;) {
-		//casiopy_print("b", 1);
+		start:;
 		char str[45] = {0};
 		
 		if (waitForKey(str) == KEY_CTRL_EXIT) {
@@ -461,7 +458,6 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 		
 		for (int i = 0; str[i]; i++) {
 			
-			//casiopy_print("c", 1);
 			int c = str[i];
 			
 			if (c == '\a') {
@@ -475,17 +471,17 @@ int readline(vstr_t *line, const char *prompt, char *text) {
 				int r = readline_process_char(c);
 				if (r >= 0) {
 					return r;
+				} else if (r == -10) {
+					goto start;
 				}
 			}
-			
-			
 		}
+		
 		
 		for (int i = 0; i < charsAfterCursorCounter; i++) {
 			readline_process_char(CHAR_LEFT);
 		}
-		
-        
+		readline_process_char('\0');
     }
 }
 

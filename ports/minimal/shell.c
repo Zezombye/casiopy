@@ -9,7 +9,8 @@ unsigned int key;
 
 int charLength = 3;
 int charHeight = 7;
-	
+
+char redrawShell = 0;
 
 int shellTopLine;
 int shellPosX;
@@ -92,6 +93,7 @@ void shell_move_cursor_right(char currentChar) {
 		if (shellCursorLine-shellTopLine > SHELL_MAX_LINES-1) {
 			shellTopLine++;
 		}
+		redrawShell = 1;
 	}
 }
 
@@ -103,6 +105,7 @@ void shell_erase_after_cursor() {
 
 void shell_print(char* str, unsigned int len) {
 
+	redrawShell = 0;
 	//len=strlen(str);
 
 	for (int i = 0; i < len; i++) {
@@ -138,6 +141,9 @@ void shell_print(char* str, unsigned int len) {
 				shellCursorLine++;
 				
 			}
+			
+		} else if (str[i] == '\0') {
+			redrawShell = 1;
 			
 		} else {
 			
@@ -192,7 +198,9 @@ void shell_print(char* str, unsigned int len) {
 	
 	//we basically (efficiently) reprint all the text each time a string is printed
 	//not very efficient, but dealing with deletes, scrolling up, etc is not easy
-	shell_draw(1);
+	if (redrawShell) {
+		shell_draw(1);
+	}
 
 	
 }
